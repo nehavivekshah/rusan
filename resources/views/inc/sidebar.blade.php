@@ -13,35 +13,40 @@
     $pro = ["premium", "pro"];
 @endphp
 <div class="sidebar @if(isset($_COOKIE['sidebarOpen']) && $_COOKIE['sidebarOpen'] == 'open') open @endif">
-    <div class="logo_details sidebar-toggle-trigger">
-        @if(!empty($company->logo))
-            <img src="{{ asset('assets/images/company/logos/' . ($company->logo ?? '')) }}" alt="{{$company->name ?? ''}}">
-        @else
-            <div class="logo_name text-white">{{ $company->name ?? 'Admin Panel' }}</div>
-        @endif
+
+    {{-- ═══ BRAND HEADER ═══ --}}
+    <div class="sb-brand sidebar-toggle-trigger">
+        <div class="sb-logo-mark">
+            @if(!empty($company->logo))
+                <img src="{{ asset('assets/images/company/logos/' . ($company->logo ?? '')) }}" alt="{{ $company->name ?? '' }}" class="sb-logo-img">
+            @else
+                <span class="sb-logo-abbr">{{ strtoupper(substr($company->name ?? 'R', 0, 1)) }}</span>
+            @endif
+        </div>
+        <div class="sb-brand-text">
+            <div class="sb-brand-name">{{ $company->name ?? 'Rusan CRM' }}</div>
+            <div class="sb-brand-tag">Enterprise CRM</div>
+        </div>
     </div>
 
-    {{-- Sidebar Clock Widget --}}
-    <div class="sidebar-clock-wrap">
-        <div id="sbClock">--:--</div>
-        <div id="sbDate">{{ date('D, M d') }}</div>
+    {{-- ═══ USER PROFILE STRIP ═══ --}}
+    <div class="sb-profile-card">
+        <div class="sb-avatar">
+            @if(!empty(Auth::user()->photo))
+                <img src="{{ asset('assets/images/profile/' . Auth::user()->photo) }}" alt="{{ Auth::user()->name }}">
+            @else
+                <span class="sb-avatar-initials">{{ strtoupper(substr(Auth::user()->name ?? 'U', 0, 2)) }}</span>
+            @endif
+            <span class="sb-online-dot"></span>
+        </div>
+        <div class="sb-profile-info">
+            <div class="sb-profile-name">{{ Auth::user()->name ?? '' }}</div>
+            <div class="sb-profile-role">{{ $roles->title ?? 'Staff' }}</div>
+        </div>
+        <div class="sb-profile-time" id="sbTime">--:--</div>
     </div>
+
     <ul class="nav-list" id="accordion">
-
-        <li class="profile sidebar-toggle-trigger">
-            <div class="profile_details">
-                @if(!empty(Auth::user()->photo))
-                    <img src="{{ asset('assets/images/profile/' . (Auth::user()->photo ?? '')) }}" class="shadow-sm"
-                        alt="{{Auth::user()->name ?? ''}}">
-                @else
-                    <img src="{{ asset('assets/images/profile/user.png') }}" alt="profile image">
-                @endif
-                <div class="profile_content">
-                    <div class="name">{{ Auth::user()->name ?? '' }}</div>
-                    <div class="designation">{{ $roles->title ?? '' }}</div>
-                </div>
-            </div>
-        </li>
 
         <li class="nav-title">MAIN</li>
         <li>

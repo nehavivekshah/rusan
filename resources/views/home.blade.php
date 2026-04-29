@@ -31,48 +31,87 @@
 
         <div class="db-wrap">
 
-            {{-- ═══════════════════════ USER-FRIENDLY HERO BANNER ═══════════════════════ --}}
-            <div class="db-hero-premium">
-                <div class="db-hero-content">
-                    <div class="db-hero-welcome">
-                        <div class="db-hero-text">
-                            <h1 class="db-hero-title">Welcome back, {{ explode(' ', Auth::user()->name ?? 'User')[0] }}! 👋</h1>
-                            <p class="db-hero-subtitle">
-                                @if(Auth::user()->role == 'master')
-                                    System Administrator Panel | {{ date('l, F jS') }}
-                                @else
-                                    You have <strong>{{ $myPendingTasks }}</strong> tasks to follow up on today. Let's make it a productive day!
-                                @endif
-                            </p>
-                        </div>
-                        <div class="db-hero-search-wrap">
-                            <i class="bx bx-search db-hero-search-icon"></i>
-                            <input type="text" class="db-hero-search" placeholder="Search leads, customers or deals..." onkeyup="heroSearch(this.value)">
-                        </div>
+            {{-- ═══════════════════════════ HERO BANNER v3 ═══════════════════════════ --}}
+            <div class="hb-root">
+                {{-- Left Column --}}
+                <div class="hb-left">
+                    <div class="hb-date-strip">
+                        <i class="bx bx-calendar-week"></i>
+                        <span>{{ date('l, d F Y') }}</span>
+                        <span class="hb-date-sep">·</span>
+                        <span id="hbLiveClock">--:--</span>
                     </div>
-                    
+                    <h1 class="hb-greeting">
+                        @php $hr = (int) date('G'); $gr = $hr < 12 ? '☀️ Good Morning' : ($hr < 17 ? '🌤 Good Afternoon' : '🌙 Good Evening'); @endphp
+                        {{ $gr }}, <span class="hb-name">{{ explode(' ', Auth::user()->name ?? 'User')[0] }}</span>
+                    </h1>
+                    <p class="hb-sub">
+                        @if(Auth::user()->role == 'master')
+                            You are logged in as <strong>System Administrator</strong>. All portals are under your control.
+                        @else
+                            @if($myPendingTasks > 0)
+                                You have <span class="hb-task-count">{{ $myPendingTasks }}</span> pending tasks today.
+                                @if(count($overdueLeadsList) > 0)
+                                    <span class="hb-overdue-badge">{{ count($overdueLeadsList) }} Overdue Leads!</span>
+                                @endif
+                            @else
+                                All caught up! <strong>{{ $company->name ?? 'Your CRM' }}</strong> is looking great today.
+                            @endif
+                        @endif
+                    </p>
                     @if(Auth::user()->role != 'master')
-                    <div class="db-hero-glance">
-                        <div class="db-glance-card">
-                            <span class="db-glance-val">{{ count($leads) }}</span>
-                            <span class="db-glance-label">Total Leads</span>
-                        </div>
-                        <div class="db-glance-card">
-                            <span class="db-glance-val">{{ count($clients) }}</span>
-                            <span class="db-glance-label">Customers</span>
-                        </div>
-                        <div class="db-glance-card">
-                            <span class="db-glance-val text-warning">{{ $pendingProposals }}</span>
-                            <span class="db-glance-label">Proposals</span>
-                        </div>
+                    <div class="hb-actions">
+                        <a href="/manage-lead" class="hb-btn hb-btn-primary"><i class="bx bx-plus-circle"></i> New Lead</a>
+                        <a href="/leads" class="hb-btn hb-btn-ghost"><i class="bx bx-list-ul"></i> View Pipeline</a>
                     </div>
                     @endif
                 </div>
-                
-                {{-- Dynamic Greeting Background Elements --}}
-                <div class="db-hero-decor">
-                    <div class="decor-circle-1"></div>
-                    <div class="decor-circle-2"></div>
+
+                @if(Auth::user()->role != 'master')
+                {{-- Right Column: Mini KPI Grid --}}
+                <div class="hb-right">
+                    <a href="/leads" class="hb-mini-kpi">
+                        <div class="hb-mk-icon" style="background:rgba(255,255,255,0.12)"><i class="bx bx-trending-up"></i></div>
+                        <div class="hb-mk-body">
+                            <div class="hb-mk-val">{{ count($leads) }}</div>
+                            <div class="hb-mk-label">Total Leads</div>
+                        </div>
+                    </a>
+                    <a href="/clients" class="hb-mini-kpi">
+                        <div class="hb-mk-icon" style="background:rgba(255,255,255,0.12)"><i class="bx bx-user-check"></i></div>
+                        <div class="hb-mk-body">
+                            <div class="hb-mk-val">{{ count($clients) }}</div>
+                            <div class="hb-mk-label">Customers</div>
+                        </div>
+                    </a>
+                    <a href="/proposals" class="hb-mini-kpi">
+                        <div class="hb-mk-icon" style="background:rgba(254,2,1,0.2)"><i class="bx bx-file-blank"></i></div>
+                        <div class="hb-mk-body">
+                            <div class="hb-mk-val">{{ $pendingProposals }}</div>
+                            <div class="hb-mk-label">Proposals</div>
+                        </div>
+                    </a>
+                    <a href="/invoices" class="hb-mini-kpi">
+                        <div class="hb-mk-icon" style="background:rgba(255,255,255,0.12)"><i class="bx bx-receipt"></i></div>
+                        <div class="hb-mk-body">
+                            <div class="hb-mk-val">₹{{ number_format($outstandingInvoices/1000, 0) }}K</div>
+                            <div class="hb-mk-label">Outstanding</div>
+                        </div>
+                    </a>
+                </div>
+                @else
+                {{-- Master right side --}}
+                <div class="hb-right hb-right-master">
+                    <div class="hb-master-badge"><i class="bx bx-shield-quarter"></i> Master Administrator</div>
+                    <p style="color:rgba(255,255,255,0.6); font-size:0.85rem; margin:0;">Full system access is active.</p>
+                </div>
+                @endif
+
+                {{-- BG Decor --}}
+                <div class="hb-bg-decor">
+                    <span class="hb-decor-blob hb-decor-1"></span>
+                    <span class="hb-decor-blob hb-decor-2"></span>
+                    <span class="hb-decor-blob hb-decor-3"></span>
                 </div>
             </div>
 
@@ -387,146 +426,269 @@
             padding: 20px 24px 36px;
         }
 
-        /* ── User Friendly Hero Banner ── */
-        .db-hero-premium {
-            background: linear-gradient(135deg, #163f7a 0%, #1e40af 100%);
+
+        /* ══════════════════════════════════════════
+           HERO BANNER v3 — Split Layout
+        ══════════════════════════════════════════ */
+        .hb-root {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            background: linear-gradient(135deg, #163f7a 0%, #1a4a8f 50%, #0f2d57 100%);
             border-radius: 24px;
-            padding: 32px 40px;
-            margin-bottom: 32px;
-            position: relative;
+            margin-bottom: 28px;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(22, 63, 122, 0.2);
-            color: #ffffff;
+            position: relative;
+            min-height: 200px;
+            box-shadow: 0 20px 40px rgba(22, 63, 122, 0.25), 0 4px 8px rgba(0,0,0,0.1);
         }
 
-        .db-hero-content {
+        /* Left */
+        .hb-left {
+            flex: 1;
+            padding: 36px 40px;
             position: relative;
             z-index: 2;
-            width: 100%;
-        }
-
-        .db-hero-welcome {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .db-hero-text { flex: 1; min-width: 300px; }
-
-        .db-hero-title {
-            font-size: 2.1rem;
-            font-weight: 800;
-            margin: 0;
-            letter-spacing: -0.8px;
-        }
-
-        .db-hero-subtitle {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.85);
-            margin-top: 6px;
-            max-width: 480px;
-            line-height: 1.5;
-        }
-
-        /* Hero Search Bar */
-        .db-hero-search-wrap {
-            position: relative;
-            flex: 0 0 350px;
-            min-width: 250px;
-        }
-
-        .db-hero-search {
-            width: 100%;
-            padding: 12px 18px 12px 48px;
-            border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(8px);
-            color: #fff;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .db-hero-search::placeholder { color: rgba(255, 255, 255, 0.6); }
-
-        .db-hero-search:focus {
-            background: #fff;
-            color: #1e293b;
-            outline: none;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-
-        .db-hero-search-icon {
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.7);
-            pointer-events: none;
-        }
-
-        .db-hero-search:focus + .db-hero-search-icon { color: #163f7a; }
-
-        /* Glance Cards */
-        .db-hero-glance {
-            display: flex;
-            gap: 16px;
-            margin-top: 32px;
-            flex-wrap: wrap;
-        }
-
-        .db-glance-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 14px 24px;
             display: flex;
             flex-direction: column;
-            min-width: 140px;
-            transition: transform 0.3s ease;
+            justify-content: center;
+            gap: 12px;
         }
 
-        .db-glance-card:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
+        .hb-date-strip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.55);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
         }
 
-        .db-glance-val {
-            font-size: 1.35rem;
+        .hb-date-strip i { font-size: 0.9rem; }
+        .hb-date-sep { opacity: 0.3; }
+
+        #hbLiveClock {
+            font-weight: 700;
+            color: rgba(255,255,255,0.75);
+        }
+
+        .hb-greeting {
+            font-size: 2rem;
             font-weight: 800;
+            color: #fff;
+            margin: 0;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
         }
 
-        .db-glance-label {
+        .hb-name {
+            color: #f0e68c;
+            /* warm highlight for name */
+        }
+
+        .hb-sub {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            margin: 0;
+            line-height: 1.6;
+            max-width: 480px;
+        }
+
+        .hb-task-count {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+            font-weight: 800;
+            padding: 1px 10px;
+            border-radius: 20px;
+        }
+
+        .hb-overdue-badge {
+            display: inline-block;
+            background: #fe0201;
+            color: #fff;
             font-size: 0.7rem;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: rgba(255, 255, 255, 0.6);
-            margin-top: 2px;
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin-left: 6px;
+            animation: hb-pulse 2s infinite;
         }
 
-        /* Decoration */
-        .db-hero-decor { position: absolute; inset: 0; pointer-events: none; }
-        .decor-circle-1 {
-            position: absolute; width: 300px; height: 300px;
-            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
-            top: -100px; right: -50px; border-radius: 50%;
+        @keyframes hb-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
-        .decor-circle-2 {
-            position: absolute; width: 200px; height: 200px;
+
+        .hb-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+        .hb-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 9px 20px;
+            border-radius: 12px;
+            font-size: 0.83rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .hb-btn-primary {
+            background: #fff;
+            color: #163f7a;
+        }
+
+        .hb-btn-primary:hover {
+            background: #f0e68c;
+            color: #163f7a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .hb-btn-ghost {
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hb-btn-ghost:hover {
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* Right: Mini KPI grid */
+        .hb-right {
+            flex: 0 0 300px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: rgba(255,255,255,0.06);
+            border-left: 1px solid rgba(255,255,255,0.08);
+            position: relative;
+            z-index: 2;
+        }
+
+        .hb-right-master {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            padding: 24px;
+            grid-template-columns: unset;
+        }
+
+        .hb-master-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hb-mini-kpi {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 24px 16px;
+            text-decoration: none;
             background: rgba(255,255,255,0.03);
-            bottom: -50px; left: 10%; border-radius: 50%;
+            transition: background 0.2s ease;
             border: 1px solid rgba(255,255,255,0.05);
         }
 
-        @media (max-width: 992px) {
-            .db-hero-welcome { flex-direction: column; align-items: flex-start; gap: 20px; }
-            .db-hero-search-wrap { flex: 1; width: 100%; }
+        .hb-mini-kpi:hover {
+            background: rgba(255,255,255,0.1);
         }
+
+        .hb-mk-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        .hb-mk-body { text-align: center; }
+
+        .hb-mk-val {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .hb-mk-label {
+            font-size: 0.62rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-top: 4px;
+        }
+
+        /* Background blobs */
+        .hb-bg-decor { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 1; }
+
+        .hb-decor-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+        }
+
+        .hb-decor-1 {
+            width: 300px; height: 300px;
+            background: rgba(255,255,255,0.05);
+            top: -100px; right: 200px;
+        }
+
+        .hb-decor-2 {
+            width: 200px; height: 200px;
+            background: rgba(30, 64, 175, 0.4);
+            bottom: -60px; left: 40%;
+        }
+
+        .hb-decor-3 {
+            width: 150px; height: 150px;
+            background: rgba(254, 2, 1, 0.08);
+            top: -30px; left: 30%;
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .hb-right { flex: 0 0 240px; }
+        }
+
+        @media (max-width: 900px) {
+            .hb-root { flex-direction: column; }
+            .hb-right { flex: unset; border-left: none; border-top: 1px solid rgba(255,255,255,0.08); grid-template-columns: repeat(4, 1fr); }
+            .hb-left { padding: 24px 24px 20px; }
+        }
+
+        @media (max-width: 600px) {
+            .hb-greeting { font-size: 1.5rem; }
+            .hb-right { grid-template-columns: repeat(2, 1fr); }
+        }
+
 
         /* ── KPI Cards ── */
         .db-kpi-row {
@@ -1334,8 +1496,20 @@
         // ── Hero Quick Search ──
         window.heroSearch = function(val) {
             const query = val.toLowerCase().trim();
-            // Implement search logic here
         };
+
+        // ── Hero Banner Live Clock ──
+        (function tickHbClock() {
+            const el = document.getElementById('hbLiveClock');
+            const st = document.getElementById('sbTime');
+            if (el || st) {
+                const now = new Date();
+                const t = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true });
+                if (el) el.textContent = t;
+                if (st) st.textContent = t;
+            }
+            setTimeout(tickHbClock, 1000);
+        })();
     </script>
 
     <!-- Firebase Scripts -->
