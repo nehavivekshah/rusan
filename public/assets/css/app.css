@@ -1,0 +1,146 @@
+.h-90 {
+    height: 100vh;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.response-msg {
+    position: fixed;
+    top: 10%;
+    width: 100%;
+    left: 0%;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.alert {
+    position: fixed;
+    bottom: 6%;
+    margin: auto;
+    min-width: 165px;
+    max-width: 418px;
+    padding: 5px;
+    font-size: 13px;
+    text-align: center;
+    font-weight: 500;
+    background-color: var(--bs-black);
+    --bs-alert-border-color: var(--bs-black);
+    --bs-alert-color: var(--bs-gray-300);
+    --bs-alert-link-color: var(--bs-gray-100);
+}
+
+.bg-light {
+    background-image: linear-gradient(to right, #006666 0%, #006666 51%, #006666 100%);
+}
+
+.text-color {
+    color: #006666;
+}
+
+.btn-default {
+    background-color: #006666;
+    border-color: #006666;
+    color: #fff;
+}
+
+.btn-default:hover {
+    background-color: #006666;
+    border-color: #006666;
+    color: #fff;
+}
+
+.card-body {
+    padding: 25px 28px;
+}
+
+.form-control {
+    background-color: #ddd;
+    border: 1px solid #ddd;
+    /* border-radius: 25px; */
+}
+
+/* button.btn {
+    border-radius: 25px;
+} */
+
+/* .input-icon {
+    width: 30px;
+    background: #ddd;
+    padding-left: 12px;
+} */
+
+.form-control:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0 rgba(13, 110, 253, .25);
+}
+
+.input-icon {
+    width: 45px;
+    background: #ddd;
+    padding: 0px 12px;
+    border-top-left-radius: var(--radius-sm) !important;
+    border-bottom-left-radius: var(--radius-sm) !important;
+}
+
+.card-title {
+    font-size: 21px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    margin-bottom: 30px !important;
+    /* padding: 15px 10px; */
+}
+
+.card-title-2 {
+    font-size: 21px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    margin-bottom: 15px !important;
+    /* padding: 15px 10px; */
+}
+
+span.small {
+    font-size: 14px !important;
+    color: #006666;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+a.forgotPassword {
+    float: right;
+    font-size: 13px;
+    position: absolute;
+    right: 30px;
+    margin-top: -20px;
+    text-decoration: none;
+    color: #444;
+}
+
+@keyframes hide {
+    0% {
+        opacity: 1;
+    }
+
+    99% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.auto-hide {
+    animation: hide 21s forwards;
+    /* 20s delay + 1s for fade out */
+}

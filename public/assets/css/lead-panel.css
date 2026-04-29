@@ -1,0 +1,658 @@
+/* =================================================================
+   Lead Details Panel – Contract-Style Modal Popup
+   Matches the cf-* design language from the Contract Modal
+================================================================= */
+
+/* ── Container & Global Base ── */
+#leadModal .modal-content {
+    display: flex;
+    flex-direction: column;
+    background: #f4fbfb !important;
+    max-height: 90vh;
+}
+
+.ld-body {
+    padding: 0 !important;
+    overflow-y: auto !important;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Modal Header (matching cf-modal-header) ── */
+.ld-header {
+    position: relative;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #005757, #007e7e);
+    color: #ffffff;
+    border-bottom: none;
+    border-radius: 16px 16px 0 0;
+}
+
+.ld-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    overflow-x: auto;
+}
+
+.ld-avatar {
+    width: 46px;
+    height: 46px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+.ld-name {
+    font-size: 0.975rem;
+    font-weight: 700;
+    margin: 0;
+    color: #ffffff;
+    line-height: 1.3;
+}
+
+.ld-company {
+    font-size: 0.73rem;
+    color: rgba(255, 255, 255, 0.72);
+    display: block;
+    margin-top: 1px;
+}
+
+.ld-status-chip {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: inline-block;
+}
+
+.ld-quick-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.ld-quick-btn:hover {
+    background: rgba(255, 255, 255, 0.22);
+    transform: translateY(-1px);
+}
+
+.ld-quick-btn i {
+    font-size: 1.05rem;
+}
+
+/* ── Segmented Control Tabs (matching cf-section-title style) ── */
+.ld-tab-nav {
+    display: flex;
+    background: #ffffff;
+    padding: 6px 16px;
+    gap: 4px;
+    border-bottom: 1.5px solid #e8eaed;
+}
+
+.ld-tab {
+    padding: 7px 14px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #5f6368;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.ld-tab i {
+    font-size: 0.95rem;
+    color: #80868b;
+}
+
+.ld-tab:hover {
+    background: #f1f3f4;
+    color: #202124;
+}
+
+.ld-tab.active {
+    background: rgba(0, 102, 102, 0.08);
+    color: #006666;
+}
+
+.ld-tab.active i {
+    color: #006666;
+}
+
+/* ── Content Layout ── */
+.tab-content {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.ld-tab-pane {
+    flex: 1;
+    display: none;
+    overflow-y: auto;
+    padding: 0;
+}
+
+.ld-tab-pane.active {
+    display: block;
+}
+
+.ld-scroll {
+    padding: 20px;
+}
+
+/* ── Section Title (matching cf-section-title) ── */
+.ld-section-label {
+    font-size: .72rem;
+    font-weight: 700;
+    color: #006666;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    margin: 18px 0 12px;
+    padding-bottom: 4px;
+    border-bottom: 1.5px solid rgba(0, 102, 102, .12);
+}
+
+.ld-section-label:first-child {
+    margin-top: 0;
+}
+
+/* ── Info Grid & Cards (View Mode) ── */
+.ld-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.ld-info-card {
+    background: #ffffff;
+    border: 1.5px solid #e8eaed;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.ld-info-card-header {
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: #006666;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1.5px solid rgba(0, 102, 102, .08);
+    padding-bottom: 8px;
+}
+
+.ld-info-card-header i {
+    font-size: 1rem;
+}
+
+.ld-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0;
+    border-bottom: 1px solid #f4f5f6;
+}
+
+.ld-info-row:last-child {
+    border-bottom: none;
+}
+
+.ld-info-label {
+    font-size: 0.78rem;
+    color: #5f6368;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ld-info-label i {
+    font-size: 1rem;
+    color: #006666;
+    width: 18px;
+    text-align: center;
+}
+
+.ld-info-val {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #202124;
+    text-align: right;
+    max-width: 60%;
+    word-break: break-word;
+}
+
+.ld-info-val a {
+    color: #006666;
+    text-decoration: none;
+}
+
+.ld-info-val a:hover {
+    text-decoration: underline;
+}
+
+/* ── Action Bar (View Mode) ── */
+.ld-action-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 12px 0 0;
+    border-top: 1.5px solid #e8eaed;
+    margin-top: 8px;
+}
+
+/* ── Buttons (matching cf-btn-*) ── */
+.ld-btn {
+    font-size: .82rem;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    line-height: 1;
+    text-decoration: none;
+}
+
+.ld-btn-primary {
+    background: #006666;
+    color: #fff;
+}
+
+.ld-btn-primary:hover {
+    background: #004e4e;
+}
+
+.ld-btn-danger {
+    background: rgba(234, 67, 53, 0.1);
+    color: #ea4335;
+    border: 1.5px solid rgba(234, 67, 53, 0.15);
+}
+
+.ld-btn-danger:hover {
+    background: rgba(234, 67, 53, 0.18);
+}
+
+.ld-btn-ghost {
+    background: #fff;
+    color: #5f6368;
+    border: 1.5px solid #d1d5db;
+}
+
+.ld-btn-ghost:hover {
+    background: #f5f5f5;
+}
+
+/* ── Edit Mode (matching cf-input-box / cf-wrap) ── */
+.ld-edit-banner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: rgba(0, 102, 102, 0.06);
+    border-bottom: 1.5px solid rgba(0, 102, 102, 0.12);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #006666;
+}
+
+.ld-edit-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    padding-top: 16px;
+    border-top: 1.5px solid #e8eaed;
+    margin-top: 8px;
+}
+
+/* ── Form Controls (matching cf-input-box / cf-field) ── */
+.ld-label {
+    font-size: .78rem;
+    color: #5f6368;
+    font-weight: 400;
+    margin-bottom: 5px;
+    display: block;
+    text-transform: none;
+}
+
+#ld-edit-mode .input-group {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    background: #fff;
+    overflow: hidden;
+    transition: border-color .15s, box-shadow .15s;
+    height: 40px;
+}
+
+#ld-edit-mode .input-group:focus-within {
+    border-color: #006666;
+    box-shadow: 0 0 0 3px rgba(0, 102, 102, .08);
+}
+
+#ld-edit-mode .input-group .input-group-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 100%;
+    flex-shrink: 0;
+    color: #006666;
+    font-size: 1rem;
+    border: none;
+    border-right: 1.5px solid #e8eaed;
+    background: #f8fdfd;
+    padding: 0;
+}
+
+#ld-edit-mode .input-group .form-control,
+#ld-edit-mode .input-group .form-select {
+    flex: 1;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent;
+    font-size: .875rem;
+    color: #202124;
+    padding: 0 10px;
+    height: 100%;
+}
+
+#ld-edit-mode .input-group .form-control::placeholder {
+    color: #9aa0a6;
+}
+
+#ld-edit-mode .input-group .form-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='%235f6368'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 28px;
+}
+
+/* ── Conversation Tab — Two-Column Layout ── */
+.ld-convo-wrap {
+    display: flex;
+    height: 100%;
+    min-height: 0;
+}
+
+.ld-timeline-col {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    border-right: 1.5px solid #e8eaed;
+}
+
+.ld-timeline-head {
+    font-size: .72rem;
+    font-weight: 700;
+    color: #006666;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    padding: 14px 16px 10px;
+    border-bottom: 1.5px solid rgba(0, 102, 102, .12);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff;
+}
+
+.ld-note-col {
+    width: 310px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+}
+
+.ld-note-head {
+    font-size: .72rem;
+    font-weight: 700;
+    color: #006666;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    padding: 14px 16px 10px;
+    border-bottom: 1.5px solid rgba(0, 102, 102, .12);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ld-note-form {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+
+.ld-note-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.ld-note-field textarea,
+.ld-note-field input[type="datetime-local"] {
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    font-size: .85rem;
+    color: #202124;
+    padding: 10px;
+    transition: border-color .15s, box-shadow .15s;
+    background: #fff;
+}
+
+.ld-note-field textarea:focus,
+.ld-note-field input[type="datetime-local"]:focus {
+    outline: none;
+    border-color: #006666;
+    box-shadow: 0 0 0 3px rgba(0, 102, 102, .08);
+}
+
+/* ── Vertical Timeline ── */
+.ld-timeline {
+    position: relative;
+    padding: 16px 16px 16px 36px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.ld-timeline::before {
+    content: '';
+    position: absolute;
+    left: 22px;
+    top: 16px;
+    bottom: 16px;
+    width: 2px;
+    background: linear-gradient(180deg, #006666, #e8eaed);
+    border-radius: 2px;
+}
+
+.ld-timeline-item {
+    position: relative;
+    margin-bottom: 18px;
+    padding-left: 20px;
+}
+
+.ld-tl-dot {
+    position: absolute;
+    left: -19px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2.5px solid #006666;
+    z-index: 2;
+    box-shadow: 0 0 0 3px rgba(0, 102, 102, .1);
+}
+
+.ld-tl-meta {
+    font-size: 0.70rem;
+    color: #80868b;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.ld-tl-body {
+    background: #ffffff;
+    border: 1.5px solid #e8eaed;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 0.82rem;
+    color: #3c4043;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.ld-tl-msg {
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* ── Assign Tab Card ── */
+.ld-assign-card {
+    background: #ffffff;
+    border: 1.5px solid #e8eaed;
+    border-radius: 12px;
+    padding: 28px;
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.ld-assign-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: rgba(0, 102, 102, 0.08);
+    color: #006666;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+}
+
+.ld-assign-card .input-group {
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color .15s, box-shadow .15s;
+}
+
+.ld-assign-card .input-group:focus-within {
+    border-color: #006666;
+    box-shadow: 0 0 0 3px rgba(0, 102, 102, .08);
+}
+
+.ld-assign-card .input-group .input-group-text {
+    background: #f8fdfd;
+    border: none;
+    border-right: 1.5px solid #e8eaed;
+    color: #006666;
+}
+
+.ld-assign-card .input-group .form-select {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* ── Proposals Tab ── */
+#tab-porposal .table thead {
+    background: linear-gradient(135deg, #005757, #007e7e) !important;
+}
+
+#tab-porposal .table thead th {
+    color: #fff !important;
+    font-weight: 600;
+    font-size: 0.78rem;
+    border: none;
+    padding: 10px 12px;
+}
+
+#tab-porposal .table tbody td {
+    font-size: 0.82rem;
+    padding: 10px 12px;
+    vertical-align: middle;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .ld-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ld-header {
+        padding: 14px 16px;
+    }
+
+    .ld-avatar {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .ld-convo-wrap {
+        flex-direction: column;
+    }
+
+    .ld-timeline-col {
+        border-right: none;
+        border-bottom: 1.5px solid #e8eaed;
+    }
+
+    .ld-note-col {
+        width: 100%;
+    }
+
+    .ld-tab {
+        padding: 6px 10px;
+        font-size: 0.72rem;
+    }
+
+    .ld-tab i {
+        display: none;
+    }
+}

@@ -1,0 +1,58 @@
+Array
+(
+    [0] => stdClass Object
+        (
+            [Tables_in_laravel] => companies
+        )
+
+    [1] => stdClass Object
+        (
+            [Tables_in_laravel] => failed_jobs
+        )
+
+    [2] => stdClass Object
+        (
+            [Tables_in_laravel] => leads
+        )
+
+    [3] => stdClass Object
+        (
+            [Tables_in_laravel] => migrations
+        )
+
+    [4] => stdClass Object
+        (
+            [Tables_in_laravel] => password_reset_tokens
+        )
+
+    [5] => stdClass Object
+        (
+            [Tables_in_laravel] => personal_access_tokens
+        )
+
+    [6] => stdClass Object
+        (
+            [Tables_in_laravel] => task_comments
+        )
+
+    [7] => stdClass Object
+        (
+            [Tables_in_laravel] => task_working_hours
+        )
+
+    [8] => stdClass Object
+        (
+            [Tables_in_laravel] => tasks
+        )
+
+    [9] => stdClass Object
+        (
+            [Tables_in_laravel] => todo_lists
+        )
+
+    [10] => stdClass Object
+        (
+            [Tables_in_laravel] => users
+        )
+
+)

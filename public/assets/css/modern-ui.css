@@ -1,0 +1,745 @@
+/* ==========================================================================
+   ESE CRM - MODERN UI ENHANCEMENTS (2026 UPDATE)
+   Goal: Premium, user-friendly, clean aesthetic globally.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #006666;
+    --primary-hover: #004d4d;
+    --primary-light: rgba(0, 102, 102, 0.08);
+    --primary-glow: rgba(0, 102, 102, 0.2);
+
+    --surface-color: #ffffff;
+    --background-color: #f4f7f6;
+
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+
+    --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
+    --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+    --shadow-floating: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+
+    --transition-snappy: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Typography & Body */
+body {
+    background-color: var(--background-color) !important;
+    color: var(--text-main) !important;
+    font-family: 'Inter', 'Roboto', sans-serif !important;
+    letter-spacing: -0.01em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600 !important;
+    /* color: var(--text-main) !important; */
+    letter-spacing: -0.02em;
+}
+
+/* ================== OVERHAUL FORMS & INPUTS ================== */
+.form-control,
+.form-select {
+    border: 1px solid var(--border-color) !important;
+    padding: 0.55rem 1rem !important;
+    font-size: 0.95rem !important;
+    color: var(--text-main) !important;
+    background-color: var(--surface-color) !important;
+    transition: var(--transition-snappy) !important;
+    box-shadow: none !important;
+    height: 42px !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary-color) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 4px var(--primary-glow) !important;
+    background-color: #ffffff !important;
+}
+
+.leads-toolbar-left .form-control,
+.leads-toolbar-left .form-select {
+    height: 36px;
+    padding: 0 14px !important;
+    border-radius: 20px !important;
+}
+
+/* Bootstrap Select override */
+.bootstrap-select>.dropdown-toggle {
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-sm) !important;
+    background: var(--surface-color) !important;
+    padding: 0.55rem 1rem !important;
+    box-shadow: none !important;
+}
+
+.bootstrap-select>.dropdown-toggle.bs-placeholder {
+    color: var(--text-muted) !important;
+}
+
+.bootstrap-select.show>.dropdown-toggle {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 4px var(--primary-glow) !important;
+}
+
+.dropdown-menu {
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    box-shadow: var(--shadow-floating) !important;
+    border-radius: var(--radius-md) !important;
+    padding: 0.5rem !important;
+}
+
+.dropdown-item {
+    border-radius: 6px !important;
+    padding: 0.5rem 1rem !important;
+    font-weight: 500 !important;
+    transition: background 0.15s ease !important;
+}
+
+.dropdown-item:active,
+.dropdown-item.active {
+    background-color: var(--primary-light) !important;
+    color: var(--primary-color) !important;
+}
+
+/* ================== BUTTONS ================== */
+.btn {
+    border-radius: var(--radius-sm) !important;
+    /* padding: 0.6rem 1.2rem !important; */
+    font-weight: 500 !important;
+    transition: var(--transition-snappy) !important;
+    letter-spacing: 0.01em !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.btn:active {
+    transform: translateY(1px) !important;
+}
+
+.btn-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-light) !important;
+    color: #fff !important;
+    box-shadow: 0 2px 4px var(--primary-glow) !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover) !important;
+    box-shadow: 0 4px 8px var(--primary-glow) !important;
+    transform: translateY(-1px);
+}
+
+.btn-outline-primary {
+    color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    background-color: transparent !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-light) !important;
+    color: var(--primary-hover) !important;
+    border-color: var(--primary-hover) !important;
+}
+
+.btn-light {
+    background-color: #f1f5f9 !important;
+    border-color: transparent !important;
+    color: var(--text-main) !important;
+}
+
+.btn-light:hover {
+    background-color: #e2e8f0 !important;
+}
+
+/* ================== CARDS & CONTAINERS ================== */
+.card,
+.dash-container {
+    /* background: var(--surface-color) !important;
+    border: 1px solid rgba(226, 232, 240, 0.6) !important;
+    border-radius: var(--radius-md) !important;
+    box-shadow: var(--shadow-soft) !important; */
+    /* transition: var(--transition-snappy) !important;
+    margin-bottom: 1.5rem; */
+}
+
+.card:hover {
+    box-shadow: var(--shadow-hover) !important;
+}
+
+.card-header {
+    background-color: transparent !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    padding: 1.25rem 1.5rem !important;
+    font-weight: 600 !important;
+    color: var(--text-main) !important;
+}
+
+/* ================== DATATABLES REDESIGN ================== */
+.table-responsive {
+    border-radius: var(--radius-md) !important;
+    background-color: var(--surface-color);
+    padding: 0.5rem;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+table.dataTable {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    width: 100% !important;
+    border: none !important;
+    margin-top: 1rem !important;
+}
+
+table.dataTable thead th {
+    border-bottom: 2px solid var(--border-color) !important;
+    border-top: none !important;
+    color: var(--text-muted) !important;
+    font-weight: 600 !important;
+    font-size: 0.75rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    padding: 1rem !important;
+    background: transparent !important;
+}
+
+table.dataTable tbody td {
+    padding: 1rem !important;
+    vertical-align: middle !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    color: var(--text-main) !important;
+    font-size: 0.9rem !important;
+    transition: background 0.15s ease !important;
+}
+
+table.dataTable tbody tr {
+    transition: all 0.2s ease;
+}
+
+/* Hover Effect: Soft float and light background */
+table.dataTable tbody tr:hover {
+    background-color: var(--primary-light) !important;
+}
+
+table.dataTable tbody tr:hover td {
+    color: var(--primary-color) !important;
+}
+
+.leads-table .bg-alert:hover {
+    background-color: #ff818d !important;
+    border-left: 3px solid #ea4335;
+}
+
+table.dataTable tbody tr:last-child td {
+    border-bottom: none !important;
+}
+
+/* Pagination Modernization */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    border: none !important;
+    background: transparent !important;
+    /* padding: 0.5rem 0.9rem !important;
+    margin: 0 4px !important; */
+    border-radius: var(--radius-sm) !important;
+    color: var(--text-muted) !important;
+    font-weight: 500 !important;
+    transition: var(--transition-snappy) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: var(--border-color) !important;
+    color: var(--text-main) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    background: var(--primary-color) !important;
+    color: #fff !important;
+    box-shadow: 0 2px 4px var(--primary-glow) !important;
+}
+
+/* DataTables Search input */
+.dataTables_filter input {
+    border: 1px solid var(--border-color) !important;
+    border-radius: 10px !important;
+    padding: 0.4rem 1rem !important;
+    outline: none !important;
+    box-shadow: none !important;
+    transition: var(--transition-snappy) !important;
+}
+
+.dataTables_filter input:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px var(--primary-glow) !important;
+}
+
+/* ================== SIDEBAR ENHANCEMENTS ================== */
+.sidebar {
+    background: rgba(0, 51, 51, 0.95) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+}
+
+.sidebar li a {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.sidebar li a:hover {
+    background-color: rgba(255, 255, 255, 0.12) !important;
+    /* transform: translateX(4px) !important; */
+}
+
+.sidebar li a.active {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border-left: 4px solid #fff !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* ================== HEADER ENHANCEMENTS ================== */
+.dashboard-header {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.4) !important;
+    box-shadow: 0 4px 20px -10px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Badge Standardization */
+.badge {
+    padding: 0.4em 0.8em !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.02em !important;
+    border-radius: 6px !important;
+}
+
+.badge.bg-success {
+    background-color: #10b981 !important;
+    color: #fff !important;
+}
+
+.badge.bg-danger {
+    background-color: #ef4444 !important;
+    color: #fff !important;
+}
+
+.badge.bg-warning {
+    background-color: #f59e0b !important;
+    color: #fff !important;
+}
+
+.badge.bg-info {
+    background-color: #3b82f6 !important;
+    color: #fff !important;
+}
+
+/* Custom Scrollbar for a premium feel */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 102, 102, 0.2);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 102, 102, 0.4);
+}
+
+/* ================== LEADS TOOLBAR OPTIMIZATION ================== */
+.leads-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    background: #ffffff;
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+    position: relative;
+    margin-top: 8px;
+}
+
+.leads-toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.leads-toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* Base Styles for Toolbar Elements */
+.lb-select {
+    border: 1px solid var(--border-color) !important;
+    border-radius: 10px !important;
+    padding: 0 14px !important;
+    min-height: 36px !important;
+    font-size: 0.85rem !important;
+    color: var(--text-main);
+    background: #f8fafc;
+    transition: var(--transition-snappy);
+    max-width: 200px !important;
+}
+
+.lb-select:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px var(--primary-glow) !important;
+    background: #fff;
+}
+
+.lb-btn {
+    border-radius: 20px !important;
+    padding: 7px 16px !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition-snappy);
+    white-space: nowrap;
+}
+
+.lb-btn-primary {
+    background: var(--primary-color) !important;
+    color: #fff !important;
+    border: none;
+}
+
+.lb-btn-primary:hover {
+    background: var(--primary-hover) !important;
+    transform: translateY(-1px);
+}
+
+.lb-btn-secondary {
+    background: #e6f4f1 !important;
+    color: var(--primary-color) !important;
+    border: 1px solid rgba(0, 102, 102, 0.1) !important;
+}
+
+.lb-btn-secondary:hover {
+    background: #d3ece7 !important;
+}
+
+.lb-btn-ghost {
+    background: #f1f5f9 !important;
+    color: #475569 !important;
+    border: 1px solid #e2e8f0 !important;
+}
+
+.lb-btn-ghost:hover {
+    background: #e2e8f0 !important;
+    color: #1e293b !important;
+}
+
+.lb-icon-btn {
+    min-width: 36px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+    cursor: pointer;
+    transition: var(--transition-snappy);
+}
+
+.lb-icon-btn:hover {
+    background: #e2e8f0;
+    color: var(--primary-color);
+}
+
+/* --- Mobile Specific Optimization (Max 768px) --- */
+@media (max-width: 768px) {
+    .leads-toolbar {
+        flex-direction: column;
+        align-items: stretch !important;
+        gap: 12px !important;
+        padding: 10px 0 10px 0 !important;
+        /* Unified padding, 0 on sides */
+        overflow: hidden !important;
+    }
+
+    /* Horizontal Scrolling Filters (Pills Pattern) */
+    .leads-toolbar-left {
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        padding: 5px 15px !important;
+        /* Safe side padding */
+        margin: 0 !important;
+        -webkit-overflow-scrolling: touch !important;
+        gap: 12px !important;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .leads-toolbar-left::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Add a subtle fade indicator on the right */
+    .leads-toolbar-left::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 30px;
+        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.8));
+        pointer-events: none;
+        z-index: 5;
+        display: none;
+        /* Only show if we can detect overflow or just use padding */
+    }
+
+    .lb-select {
+        min-width: 140px;
+        flex-shrink: 0;
+    }
+
+    #ajaxTags {
+        min-width: 100% !important;
+    }
+
+    /* Action Buttons - Structured Grid */
+    .leads-toolbar-right {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 6px !important;
+        padding: 0 10px !important;
+        /* match left side padding */
+    }
+
+    /* Special handling for the last child (Add Lead) */
+    .leads-toolbar-right a:last-child {
+        grid-column: span 4 !important;
+        margin-top: 4px !important;
+        padding: 10px !important;
+    }
+
+    /* Hide text on mobile for secondary actions to save space */
+    .leads-toolbar-right a .d-none.d-sm-inline {
+        display: none !important;
+    }
+
+    .lb-btn {
+        padding: 8px !important;
+        justify-content: center !important;
+        border-radius: 12px !important;
+    }
+
+    .lb-btn i {
+        font-size: 1.1rem;
+    }
+
+    /* --- Task Page Specific Toolbar Adjustments --- */
+    .leads-toolbar-left {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 15px !important;
+        width: 100% !important;
+    }
+
+    .lb-page-count {
+        width: 100% !important;
+        justify-content: center !important;
+        background: rgba(0, 102, 102, 0.05) !important;
+        border: 1px solid rgba(0, 102, 102, 0.1) !important;
+        padding: 8px 15px !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* .leads-toolbar-left .d-md-flex {
+        display: flex !important;
+        justify-content: center !important;
+        overflow-x: auto;
+        padding: 5px 0 !important;
+        width: 100% !important;
+        gap: 10px !important;
+        border: none !important;
+        margin: 0 !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    */
+    .tb-legend {
+        flex-shrink: 0;
+        white-space: nowrap;
+        font-size: 10px !important;
+        font-weight: 700 !important;
+        padding: 6px 14px !important;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    /* Action Grid - Project filter and Search tasks to be stacked */
+    .leads-toolbar-right {
+        display: flex !important;
+        /* flex-direction: column !important; */
+        gap: 12px !important;
+        width: 100% !important;
+        padding: 0 15px !important;
+    }
+
+    button#refreshBtn {
+        display: none;
+    }
+
+    .tk-project-filter-wrap,
+    .tb-search-wrap,
+    .tb-search-box,
+    .tb-search-input,
+    .tk-project-filter-select {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Add Task Button - Full Width */
+    .leads-toolbar-right button.lb-btn-primary {
+        display: flex !important;
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 12px !important;
+        font-weight: 600 !important;
+        margin-top: 5px !important;
+        border-radius: 10px !important;
+        margin-left: 0px !important;
+    }
+
+    span.select2.select2-container.select2-container--default {
+        width: 100% !important;
+    }
+
+    /* --- Global Mobile Overrides --- */
+    .dash-container {
+        padding: 15px 12px 30px !important;
+    }
+
+    .task__section .text {
+        font-size: 1.25rem !important;
+        /* Smaller page titles */
+        padding: 12px 12px !important;
+    }
+
+    /* Dashboard Stat Cards - Better vertical scaling */
+    .dash-stat-card {
+        padding: 15px !important;
+        margin-bottom: 5px !important;
+    }
+
+    .dash-stat-value {
+        font-size: 1.5rem !important;
+    }
+
+    .dash-stat-label {
+        font-size: 0.75rem !important;
+    }
+
+    /* Quick Actions Grid - Force 2 columns if space allows, otherwise stack */
+    .quick-actions-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+    }
+
+    .action-tile {
+        padding: 12px !important;
+        gap: 10px !important;
+    }
+
+    .action-tile i {
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 1.1rem !important;
+    }
+
+    .action-tile-body h6 {
+        font-size: 0.82rem !important;
+        margin-bottom: 2px !important;
+    }
+
+    /* Charts scaling */
+    .dash-chart-container {
+        height: 220px !important;
+    }
+
+    /* Responsive Table Standardization */
+    .table-responsive {
+        border: none !important;
+        margin-bottom: 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Fix potential sidebar overlap issues on mobile */
+    body.sidebar-open {
+        overflow: hidden !important;
+    }
+
+    /* Ensure modals don't have massive side margins on tiny screens */
+    .modal-dialog {
+        margin: 0.5rem !important;
+    }
+
+    /* Header scaling fix */
+    .dashboard-header {
+        padding: 10px 12px !important;
+    }
+
+    .header-page-title {
+        font-size: 1.1rem !important;
+        max-width: 160px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .header-left {
+        gap: 8px !important;
+    }
+
+    .header-right {
+        gap: 6px !important;
+    }
+
+    /* Adjusting icon buttons for touch */
+    .header-icon-btn,
+    .header-user-btn {
+        padding: 8px !important;
+    }
+
+    .header-avatar {
+        width: 30px !important;
+        height: 30px !important;
+    }
+
+    span#kbTotalBadge {
+        display: none;
+    }
+}
