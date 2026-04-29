@@ -33,22 +33,22 @@
 }
 
 .bg-light {
-    background-image: linear-gradient(to right, #006666 0%, #006666 51%, #006666 100%);
+    background-image: linear-gradient(to right, #163f7a 0%, #163f7a 51%, #163f7a 100%);
 }
 
 .text-color {
-    color: #006666;
+    color: #163f7a;
 }
 
 .btn-default {
-    background-color: #006666;
-    border-color: #006666;
+    background-color: #163f7a;
+    border-color: #163f7a;
     color: #fff;
 }
 
 .btn-default:hover {
-    background-color: #006666;
-    border-color: #006666;
+    background-color: #163f7a;
+    border-color: #163f7a;
     color: #fff;
 }
 
@@ -110,7 +110,7 @@
 
 span.small {
     font-size: 14px !important;
-    color: #006666;
+    color: #163f7a;
     font-weight: 500;
     text-transform: capitalize;
 }
