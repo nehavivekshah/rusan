@@ -217,6 +217,10 @@ Route::group(['middleware' => ['auth', 'checkplan']], function () {
     Route::post('/initiate-call', [\App\Http\Controllers\AjaxController::class, 'initiateExotelCall'])->name('call.initiate');
     Route::post('/manage-client/interaction', [ClientController::class, 'storeInteraction'])->name('clients.interaction');
 
+    /* Third-Party Integrations */
+    Route::get('/integrations', [\App\Http\Controllers\IntegrationsController::class, 'index'])->name('integrations.index');
+    Route::post('/integrations', [\App\Http\Controllers\IntegrationsController::class, 'store'])->name('integrations.store');
+
     /*Client Comments Management Router*/
     Route::get('/client-comments', [LeadController::class, 'clientComments']);
     Route::get('/manage-client-comment', [LeadController::class, 'manageClientComment'])->name('manageClientComment');

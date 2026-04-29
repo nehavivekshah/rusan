@@ -24,7 +24,7 @@
                     <button class="btn btn-light text-primary fw-bold rounded-pill px-4" onclick="triggerCall('+{{ $customer->mob }}')">
                         <i class="bx bx-phone me-1"></i> Call
                     </button>
-                    <button class="btn btn-success fw-bold rounded-pill px-4" onclick="sendWhatsapp('+{{ $customer->whatsapp ?? $customer->mob }}')">
+                    <button class="btn btn-success fw-bold rounded-pill px-4" onclick="openWhatsappModal('+{{ $customer->whatsapp ?? $customer->mob }}')">
                         <i class="bx bxl-whatsapp me-1"></i> WhatsApp
                     </button>
                 </div>
@@ -224,7 +224,46 @@
             </div>
         </div>
     </div>
+    </div>
 </section>
+
+<!-- WhatsApp Modal -->
+<div class="modal fade" id="whatsappModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title fw-bold"><i class="bx bxl-whatsapp text-success me-2"></i>Send WhatsApp Message</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="whatsappForm">
+                <div class="modal-body p-4">
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Recipient</label>
+                        <input type="text" class="form-control rounded-3" id="wa_recipient" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Message Content</label>
+                        <textarea class="form-control rounded-3" id="wa_message" rows="4" placeholder="Type your message here..."></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Attachment / Link (Optional)</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0"><i class="bx bx-link"></i></span>
+                            <input type="url" class="form-control rounded-end-3 border-start-0" id="wa_link" placeholder="https://example.com/file.pdf">
+                        </div>
+                        <div class="form-text small mt-1">Link will be appended to the message.</div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 pt-0 p-4">
+                    <button type="button" class="btn btn-light rounded-pill px-4 fw-bold" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-success rounded-pill px-4 fw-bold">
+                        <i class="bx bx-send me-1"></i> Send Now
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <style>
 .timeline-item { position: relative; }
@@ -252,14 +291,47 @@ function triggerCall(phone) {
         confirmButtonText: 'Yes, Call Now'
     }).then((result) => {
         if (result.isConfirmed) {
-            // Placeholder for Exotel API integration
-            Swal.fire('Calling...', 'Request sent to Exotel Server.', 'success');
+            // Initiate AJAX call to our Exotel endpoint
+            fetch('/initiate-call', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ phone: phone })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire('Calling...', 'Connection established.', 'success');
+                } else {
+                    Swal.fire('Call Failed', data.message || 'Check your Exotel configuration.', 'error');
+                }
+            })
+            .catch(() => Swal.fire('Error', 'Communication server unreachable.', 'error'));
         }
     });
 }
 
-function sendWhatsapp(phone) {
-    window.open('https://api.whatsapp.com/send/?phone=' + phone.replace('+', '') + '&text=Hello, this is regarding your request on eseCRM.', '_blank');
+function openWhatsappModal(phone) {
+    document.getElementById('wa_recipient').value = phone;
+    var myModal = new bootstrap.Modal(document.getElementById('whatsappModal'));
+    myModal.show();
 }
+
+document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var phone = document.getElementById('wa_recipient').value.replace('+', '');
+    var msg = encodeURIComponent(document.getElementById('wa_message').value);
+    var link = document.getElementById('wa_link').value;
+    
+    if (link) {
+        msg += "%0A%0A" + encodeURIComponent("🔗 Link: " + link);
+    }
+    
+    var url = 'https://api.whatsapp.com/send/?phone=' + phone + '&text=' + msg;
+    window.open(url, '_blank');
+    bootstrap.Modal.getInstance(document.getElementById('whatsappModal')).hide();
+});
 </script>
 @endsection

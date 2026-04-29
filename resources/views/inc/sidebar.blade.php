@@ -343,7 +343,12 @@
         @endif
 
         <li class="nav-title">SYSTEM</li>
-
+        <li>
+            <a href="/integrations" @if(Request::segment(1) == 'integrations') class="active" @endif>
+                <i class="bx bx-cog"></i>
+                <span class="link_name">Integrations</span>
+            </a>
+        </li>
         <li>
             <a href="/products" @if(Request::segment(1) == 'products') class="active" @endif>
                 <i class="bx bx-package"></i>
