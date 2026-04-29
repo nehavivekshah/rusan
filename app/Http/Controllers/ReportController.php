@@ -78,4 +78,10 @@ class ReportController extends Controller
             'forecastData'
         ));
     }
+
+    public function emailTracking()
+    {
+        $emails = \App\Models\TrackedEmail::orderBy('created_at', 'DESC')->limit(100)->get();
+        return view('reports.email-tracking', compact('emails'));
+    }
 }

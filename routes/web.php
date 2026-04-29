@@ -32,7 +32,7 @@ Route::get('/proposal/{id}/{token}', [LeadController::class, 'proposal']);
 Route::get('/proposal/{id}/{token}/download', [LeadController::class, 'downloadPdf'])->name('proposal.download');
 Route::post('/proposal/{id}/{token}/accept', [LeadController::class, 'acceptProposal'])->name('proposal.accept');
 Route::post('/proposal/{id}/{token}/decline', [LeadController::class, 'declineProposal'])->name('proposal.decline');
-Route::get('/', [HomeController::class, 'home']);
+Route::get('/', [HomeController::class, 'index']);
 Route::post('/send', [HomeController::class, 'send']);
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', [AuthController::class, 'register'])->name('register');
@@ -51,10 +51,10 @@ Route::group(['middleware' => 'guest'], function () {
     // This one serves as a cron/scheduler hook (unauthenticated scheduler calls)
     Route::get('/reminders', [LeadController::class, 'reminderScript'])->name('reminderScript');
     Route::post('/enquiry-submit', [AjaxController::class, 'storeEnquiry'])->name('enquiry.submit');
-
+    
     /* Email Tracking */
-    Route::get('/et/o/{token}', [\App\Http\Controllers\EmailTrackingController::class, 'trackOpen'])->name('track.open');
-    Route::get('/et/c/{token}', [\App\Http\Controllers\EmailTrackingController::class, 'trackClick'])->name('track.click');
+    Route::get('/t/o/{token}', [\App\Http\Controllers\EmailTrackingController::class, 'trackOpen'])->name('email.track_open');
+    Route::get('/t/c/{token}', [\App\Http\Controllers\EmailTrackingController::class, 'trackClick'])->name('email.track_click');
 });
 
 Route::group(['middleware' => ['auth', 'checkplan']], function () {
@@ -63,6 +63,8 @@ Route::group(['middleware' => ['auth', 'checkplan']], function () {
 
 
     // Routes for managing todo list items
+    Route::get('/reports', [\App\Http\Controllers\ReportController::class, 'index']);
+    Route::get('/reports/email-tracking', [\App\Http\Controllers\ReportController::class, 'emailTracking']);
     Route::get('/todo-lists', [TaskController::class, 'index']); // Fetch all tasks
     Route::post('/manage-todolist-item', [TaskController::class, 'store']); // Create new task
     Route::put('/manage-todolist-item/{id}', [TaskController::class, 'update']); // Update task completion
@@ -209,7 +211,7 @@ Route::group(['middleware' => ['auth', 'checkplan']], function () {
     Route::post('/products/update/{id}', [\App\Http\Controllers\ProductController::class, 'update'])->name('products.update');
     Route::delete('/products/delete/{id}', [\App\Http\Controllers\ProductController::class, 'destroy'])->name('products.destroy');
     Route::get('/products/get/{id}', [\App\Http\Controllers\ProductController::class, 'getProductAjax'])->name('products.get');
-
+    
     /* Customer 360 View */
     Route::get('/customer-360/{type}/{id}', [\App\Http\Controllers\Customer360Controller::class, 'view'])->name('customer.360');
     Route::post('/initiate-call', [\App\Http\Controllers\AjaxController::class, 'initiateExotelCall'])->name('call.initiate');

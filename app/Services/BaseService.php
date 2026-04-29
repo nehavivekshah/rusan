@@ -70,12 +70,22 @@ class BaseService
             $fromAddress = $settings?->from_address;
             $fromName = $settings?->from_name;
 
+            // Generate tracking token
+            $trackingToken = bin2hex(random_bytes(16));
+            \App\Models\TrackedEmail::create([
+                'cid' => $companyId ?: Auth::user()->cid,
+                'recipient' => $to,
+                'subject' => $subject,
+                'tracking_token' => $trackingToken
+            ]);
+
             $mailable = new CustomMailable(
                 $subject,
                 $viewName,
                 $viewData,
                 $fromAddress,
-                $fromName
+                $fromName,
+                $trackingToken
             );
 
             Mail::to($to)->send($mailable);

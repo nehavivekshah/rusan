@@ -373,6 +373,7 @@ class AjaxController extends Controller
     public function storeEnquiry(Request $request)
     {
         $validated = $request->validate([
+            'cid'     => 'required|exists:companies,id',
             'name'    => 'required|string|max:255',
             'email'   => 'nullable|email|max:255',
             'mob'     => 'nullable|string|max:20',
@@ -381,6 +382,30 @@ class AjaxController extends Controller
         ]);
 
         $enquiry = Enquiry::create($validated);
+
+        // Automation: Create a Lead from this enquiry
+        $lead = Leads::create([
+            'cid'     => $validated['cid'],
+            'name'    => $validated['name'],
+            'email'   => $validated['email'],
+            'mob'     => $validated['mob'],
+            'purpose' => $validated['subject'] . ' - ' . $validated['message'],
+            'status'  => 0, // Fresh
+            'source'  => 'Web Enquiry'
+        ]);
+
+        // Send Welcome Email
+        if ($lead->email) {
+            $baseService = new \App\Services\BaseService();
+            $baseService->sendMail(
+                $lead->email, 
+                'Welcome to ' . \App\Models\Companies::find($validated['cid'])->name, 
+                'emails.welcome', 
+                ['name' => $lead->name, 'messages' => 'Thank you for your enquiry. Our team will contact you shortly.'],
+                null,
+                $validated['cid']
+            );
+        }
 
         if ($request->ajax()) {
             return response()->json(['success' => true, 'message' => 'Your enquiry has been submitted successfully!']);

@@ -72,6 +72,9 @@
             </td>
         </tr>
     </table>
+    @if(isset($trackingToken))
+        <img src="{{ route('email.track_open', ['token' => $trackingToken]) }}" width="1" height="1" style="display:none;" />
+    @endif
 </body>
 </html>
 

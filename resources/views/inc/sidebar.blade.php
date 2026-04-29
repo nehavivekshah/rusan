@@ -105,6 +105,20 @@
                 </li>
             @endif
 
+            <li class="nav-title">ANALYTICS</li>
+            <li>
+                <a href="/reports" @if(Request::segment(1) == 'reports' && Request::segment(2) == '') class="active" @endif>
+                    <i class="bx bx-bar-chart-alt-2"></i>
+                    <span class="link_name">Sales Analytics</span>
+                </a>
+            </li>
+            <li>
+                <a href="/reports/email-tracking" @if(Request::segment(1) == 'reports' && Request::segment(2) == 'email-tracking') class="active" @endif>
+                    <i class="bx bx-mail-send"></i>
+                    <span class="link_name">Email Analytics</span>
+                </a>
+            </li>
+
             @if(in_array('clients', $roleArray) || in_array('All', $roleArray))
                 <li>
                     <a href="/clients" @if(Request::segment(1) == 'clients') class="active" @endif>
