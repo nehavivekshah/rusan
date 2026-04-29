@@ -31,34 +31,41 @@
 
         <div class="db-wrap">
 
-            {{-- ═══════════════════════ GREETING BANNER ═══════════════════════ --}}
-            <div class="db-hero">
-                <div class="db-hero-left">
-                    <div class="db-hero-greeting">{{ $greeting }}, {{ explode(' ', Auth::user()->name ?? 'User')[0] }} 👋
-                    </div>
-                    <div class="db-hero-sub">
+            {{-- ═══════════════════════ PREMIUM GREETING BANNER ═══════════════════════ --}}
+            <div class="db-hero-premium">
+                <div class="db-hero-content">
+                    <div class="db-hero-badge">System Status: Online</div>
+                    <h1 class="db-hero-title">{{ $greeting }}, {{ explode(' ', Auth::user()->name ?? 'User')[0] }}</h1>
+                    <p class="db-hero-subtitle">
                         @if(Auth::user()->role == 'master')
-                            Welcome back to Rusan Master Panel — {{ date('l, d M Y') }}
+                            Master Administration Portal — {{ date('l, F jS') }}
                         @else
-                            Here's what's happening with <strong>{{ $company->name ?? 'your company' }}</strong> today.
+                            Welcome back to <strong>{{ $company->name ?? 'Rusan CRM' }}</strong>. Here is your sales overview for today.
                         @endif
-                    </div>
+                    </p>
+                    
                     @if(Auth::user()->role != 'master')
-                        <div class="db-hero-pills">
-                            <span class="db-pill db-pill-green"><i class="bx bx-trending-up"></i> {{ count($leads) }}
-                                Leads</span>
-                            <span class="db-pill db-pill-blue"><i class="bx bx-user"></i> {{ count($clients) }} Customers</span>
-                            <span class="db-pill db-pill-yellow"><i class="bx bx-task"></i> {{ $myPendingTasks }} Tasks</span>
-                            @if(count($overdueLeadsList) > 0)
-                                <span class="db-pill db-pill-red"><i class="bx bx-alarm"></i> {{ count($overdueLeadsList) }}
-                                    Overdue</span>
-                            @endif
+                    <div class="db-hero-stats">
+                        <div class="db-hs-item">
+                            <span class="db-hs-val">{{ count($leads) }}</span>
+                            <span class="db-hs-label">Active Leads</span>
                         </div>
+                        <div class="db-hs-sep"></div>
+                        <div class="db-hs-item">
+                            <span class="db-hs-val">{{ count($clients) }}</span>
+                            <span class="db-hs-label">Customers</span>
+                        </div>
+                        <div class="db-hs-sep"></div>
+                        <div class="db-hs-item">
+                            <span class="db-hs-val">{{ $myPendingTasks }}</span>
+                            <span class="db-hs-label">Open Tasks</span>
+                        </div>
+                    </div>
                     @endif
                 </div>
-                <div class="db-hero-right">
-                    <div class="db-clock" id="dbClock">--:--</div>
-                    <div class="db-date-label">{{ date('D, d M Y') }}</div>
+                <div class="db-hero-visual">
+                    <div class="db-visual-circle"></div>
+                    <div class="db-visual-circle-small"></div>
                 </div>
             </div>
 
@@ -128,52 +135,52 @@
                                     class="bx bx-bolt-circle"></i></span>
                             <span class="db-card-title">Quick Actions</span>
                         </div>
-                        <div class="db-qa-grid db-qa-grid-3col">
+                        <div class="db-qa-grid">
                             @if(in_array('leads', $roleArray) || in_array('All', $roleArray) || Auth::user()->role == '0')
-                                <a href="/manage-lead" class="db-qa-btn" style="--qa:#163f7a;">
-                                    <i class="bx bx-plus-circle"></i>
-                                    <span>New Lead</span>
+                                <a href="/manage-lead" class="db-qa-item">
+                                    <div class="db-qai-icon qai-blue"><i class="bx bx-user-plus"></i></div>
+                                    <span class="db-qai-text">New Lead</span>
                                 </a>
                             @endif
                             @if(in_array('clients', $roleArray) || in_array('All', $roleArray))
-                                <a href="/manage-client" class="db-qa-btn" style="--qa:#1a73e8;">
-                                    <i class="bx bx-user-plus"></i>
-                                    <span>Add Customer</span>
+                                <a href="/manage-client" class="db-qa-item">
+                                    <div class="db-qai-icon qai-indigo"><i class="bx bx-group"></i></div>
+                                    <span class="db-qai-text">Add Customer</span>
                                 </a>
                             @endif
                             @if(in_array('proposals', $roleArray) || in_array('All', $roleArray))
-                                <a href="/manage-proposal" class="db-qa-btn" style="--qa:#ea4335;">
-                                    <i class="bx bx-file-blank"></i>
-                                    <span>New Proposal</span>
+                                <a href="/manage-proposal" class="db-qa-item">
+                                    <div class="db-qai-icon qai-red"><i class="bx bx-file-blank"></i></div>
+                                    <span class="db-qai-text">New Proposal</span>
                                 </a>
                             @endif
                             @if(in_array('invoice', $roleArray) || in_array('All', $roleArray))
-                                <a href="/manage-invoice" class="db-qa-btn" style="--qa:#163f7a;">
-                                    <i class="bx bx-receipt"></i>
-                                    <span>New Invoice</span>
+                                <a href="/manage-invoice" class="db-qa-item">
+                                    <div class="db-qai-icon qai-cyan"><i class="bx bx-receipt"></i></div>
+                                    <span class="db-qai-text">New Invoice</span>
                                 </a>
                             @endif
                             @if(in_array('tasks', $roleArray) || in_array('All', $roleArray))
-                                <a href="/task" class="db-qa-btn" style="--qa:#fbbc04;">
-                                    <i class="bx bx-task"></i>
-                                    <span>My Tasks</span>
+                                <a href="/task" class="db-qa-item">
+                                    <div class="db-qai-icon qai-yellow"><i class="bx bx-task"></i></div>
+                                    <span class="db-qai-text">My Tasks</span>
                                 </a>
                             @endif
                             @if(in_array('attendances', $roleArray) || in_array('All', $roleArray))
-                                <a href="/attendances" class="db-qa-btn" style="--qa:#0d47a1;">
-                                    <i class="bx bx-calendar-check"></i>
-                                    <span>Attendance</span>
+                                <a href="/attendances" class="db-qa-item">
+                                    <div class="db-qai-icon qai-navy"><i class="bx bx-calendar-check"></i></div>
+                                    <span class="db-qai-text">Attendance</span>
                                 </a>
                             @endif
                             @if(in_array('reports', $roleArray) || in_array('All', $roleArray))
-                                <a href="/reports" class="db-qa-btn" style="--qa:#5f6368;">
-                                    <i class="bx bx-line-chart"></i>
-                                    <span>Reports</span>
+                                <a href="/reports" class="db-qa-item">
+                                    <div class="db-qai-icon qai-gray"><i class="bx bx-line-chart"></i></div>
+                                    <span class="db-qai-text">Reports</span>
                                 </a>
                             @endif
-                            <a href="/support" class="db-qa-btn" style="--qa:#8b5cf6;">
-                                <i class="bx bx-help-circle"></i>
-                                <span>Support</span>
+                            <a href="/support" class="db-qa-item">
+                                <div class="db-qai-icon qai-purple"><i class="bx bx-help-circle"></i></div>
+                                <span class="db-qai-text">Support</span>
                             </a>
                         </div>
                     </div>
@@ -316,37 +323,37 @@
 
             @else
                 {{-- ════════ MASTER VIEW ════════ --}}
-                <div class="db-grid-2 mb-28">
-                    <a href="/companies" class="db-kpi-card" style="--kc:#163f7a;">
-                        <div class="db-kpi-icon"><i class="bx bx-building"></i></div>
+                <div class="db-kpi-row">
+                    <a href="/companies" class="db-kpi-card">
+                        <div class="db-kpi-icon qai-blue"><i class="bx bx-building"></i></div>
                         <div class="db-kpi-body">
                             <div class="db-kpi-val">Companies</div>
-                            <div class="db-kpi-label">Manage all clients</div>
-                            <div class="db-kpi-meta"><i class="bx bx-chevron-right"></i> Open Panel</div>
+                            <div class="db-kpi-label">Active Portals</div>
+                            <div class="db-kpi-meta"><i class="bx bx-chevron-right"></i> Manage</div>
                         </div>
                     </a>
-                    <a href="/subscriptions" class="db-kpi-card" style="--kc:#fbbc04;">
-                        <div class="db-kpi-icon"><i class="bx bx-crown"></i></div>
+                    <a href="/subscriptions" class="db-kpi-card">
+                        <div class="db-kpi-icon qai-yellow"><i class="bx bx-crown"></i></div>
                         <div class="db-kpi-body">
                             <div class="db-kpi-val">Subscriptions</div>
                             <div class="db-kpi-label">Plans & Billing</div>
-                            <div class="db-kpi-meta"><i class="bx bx-chevron-right"></i> Open Panel</div>
+                            <div class="db-kpi-meta"><i class="bx bx-chevron-right"></i> Manage</div>
                         </div>
                     </a>
-                    <a href="/enquiries" class="db-kpi-card" style="--kc:#163f7a;">
-                        <div class="db-kpi-icon"><i class="bx bx-mail-send"></i></div>
+                    <a href="/enquiries" class="db-kpi-card">
+                        <div class="db-kpi-icon qai-indigo"><i class="bx bx-mail-send"></i></div>
                         <div class="db-kpi-body">
                             <div class="db-kpi-val">Enquiries</div>
                             <div class="db-kpi-label">Landing Page Leads</div>
-                            <div class="db-kpi-meta"><i class="bx bx-chevron-right"></i> Open Panel</div>
+                            <div class="db-kpi-meta"><i class="bx bx-chevron-right"></i> Manage</div>
                         </div>
                     </a>
-                    <a href="/licensing" class="db-kpi-card" style="--kc:#ea4335;">
-                        <div class="db-kpi-icon"><i class="bx bx-file"></i></div>
+                    <a href="/licensing" class="db-kpi-card">
+                        <div class="db-kpi-icon qai-red"><i class="bx bx-file"></i></div>
                         <div class="db-kpi-body">
                             <div class="db-kpi-val">Licensing</div>
                             <div class="db-kpi-label">Product Keys</div>
-                            <div class="db-kpi-meta"><i class="bx bx-chevron-right"></i> Open Panel</div>
+                            <div class="db-kpi-meta"><i class="bx bx-chevron-right"></i> Manage</div>
                         </div>
                     </a>
                 </div>
@@ -373,96 +380,84 @@
             padding: 20px 24px 36px;
         }
 
-        /* ── Hero Banner ── */
-        .db-hero {
-            background: linear-gradient(135deg, #005757 0%, #163f7a 60%, #163f7a 100%);
-            border-radius: 20px;
-            padding: 28px 32px;
+        /* ── Hero Banner Premium ── */
+        .db-hero-premium {
+            background: linear-gradient(135deg, #163f7a 0%, #0f2d57 100%);
+            border-radius: 24px;
+            padding: 40px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 24px;
+            margin-bottom: 32px;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 20px 40px rgba(22, 63, 122, 0.15);
+            color: #ffffff;
         }
 
-        .db-hero::before {
-            content: '';
-            position: absolute;
-            right: -60px;
-            top: -60px;
-            width: 240px;
-            height: 240px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, .06);
-            pointer-events: none;
-        }
-
-        .db-hero::after {
-            content: '';
-            position: absolute;
-            right: 80px;
-            bottom: -80px;
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, .04);
-            pointer-events: none;
-        }
-
-        .db-hero-greeting {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #fff;
-        }
-
-        .db-hero-sub {
-            font-size: 0.83rem;
-            color: rgba(255, 255, 255, .75);
-            margin-top: 4px;
-        }
-
-        .db-hero-pills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 7px;
-            margin-top: 14px;
-        }
-
-        .db-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 0.72rem;
-            font-weight: 700;
-            padding: 4px 11px;
+        .db-hero-badge {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
             border-radius: 20px;
-            background: rgba(255, 255, 255, .15);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, .25);
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 16px;
         }
 
-        .db-pill i {
-            font-size: 0.82rem;
-        }
-
-        .db-hero-right {
-            text-align: right;
-            flex-shrink: 0;
-        }
-
-        .db-clock {
-            font-size: 2.4rem;
+        .db-hero-title {
+            font-size: 2.2rem;
             font-weight: 800;
-            color: #fff;
-            letter-spacing: 2px;
-            line-height: 1;
+            margin: 0;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
         }
 
-        .db-date-label {
-            font-size: 0.72rem;
-            color: rgba(255, 255, 255, .7);
-            margin-top: 4px;
+        .db-hero-subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 8px;
+            max-width: 500px;
+        }
+
+        .db-hero-stats {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .db-hs-item { display: flex; flex-direction: column; }
+        .db-hs-val { font-size: 1.4rem; font-weight: 800; }
+        .db-hs-label { font-size: 0.75rem; color: rgba(255, 255, 255, 0.6); font-weight: 500; }
+        .db-hs-sep { width: 1px; height: 30px; background: rgba(255, 255, 255, 0.15); }
+
+        .db-hero-visual {
+            position: absolute;
+            right: -50px;
+            top: -50px;
+            width: 300px;
+            height: 300px;
+            pointer-events: none;
+        }
+
+        .db-visual-circle {
+            position: absolute;
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        }
+
+        .db-visual-circle-small {
+            position: absolute;
+            right: 100px; bottom: 40px;
+            width: 120px; height: 120px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         /* ── KPI Cards ── */
@@ -475,48 +470,40 @@
 
         .db-kpi-card {
             position: relative;
-            overflow: hidden;
             background: #fff;
-            border-radius: 16px;
-            border: 1px solid #e8eaed;
-            padding: 18px 18px 16px;
+            border-radius: 20px;
+            border: 1px solid #eef0f2;
+            padding: 24px;
             display: flex;
-            align-items: center;
-            gap: 14px;
+            flex-direction: column;
+            gap: 16px;
             text-decoration: none;
-            transition: transform .18s, box-shadow .18s;
-            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
 
         .db-kpi-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 28px rgba(0, 0, 0, .10);
-        }
-
-        .db-kpi-glow {
-            position: absolute;
-            right: -20px;
-            top: -20px;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: var(--kc);
-            opacity: .06;
-            pointer-events: none;
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-color);
         }
 
         .db-kpi-icon {
-            width: 46px;
-            height: 46px;
-            border-radius: 12px;
-            flex-shrink: 0;
-            background: color-mix(in srgb, var(--kc) 12%, transparent);
-            color: var(--kc);
-            font-size: 1.4rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: rgba(22, 63, 122, 0.08);
+            color: #163f7a;
+            font-size: 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid color-mix(in srgb, var(--kc) 18%, transparent);
+            transition: all 0.3s ease;
+        }
+
+        .db-kpi-card:hover .db-kpi-icon {
+            background: #163f7a;
+            color: #fff;
         }
 
         .db-kpi-body {
@@ -524,30 +511,32 @@
         }
 
         .db-kpi-val {
-            font-size: 1.35rem;
+            font-size: 1.75rem;
             font-weight: 800;
-            color: #202124;
-            line-height: 1.1;
+            color: #1e293b;
+            line-height: 1;
+            letter-spacing: -1px;
         }
 
         .db-kpi-label {
-            font-size: 0.72rem;
-            color: #5f6368;
-            margin-top: 2px;
-            font-weight: 500;
+            font-size: 0.85rem;
+            color: #64748b;
+            font-weight: 600;
+            margin-top: 4px;
         }
 
         .db-kpi-meta {
             display: inline-flex;
             align-items: center;
-            gap: 3px;
-            font-size: 0.65rem;
+            gap: 4px;
+            font-size: 0.7rem;
             font-weight: 700;
-            color: var(--kc);
-            background: color-mix(in srgb, var(--kc) 10%, transparent);
-            border-radius: 20px;
-            padding: 2px 8px;
-            margin-top: 5px;
+            color: #163f7a;
+            background: rgba(22, 63, 122, 0.08);
+            border-radius: 6px;
+            padding: 4px 10px;
+            margin-top: 12px;
+            width: fit-content;
         }
 
         /* ── Generic Card ── */
@@ -726,10 +715,65 @@
             margin-bottom: 22px;
         }
 
-        /* ── Quick Actions — 2-col when inside narrow card ── */
-        .db-qa-grid-2col {
-            grid-template-columns: repeat(2, 1fr) !important;
+        /* ── Quick Actions Grid ── */
+        .db-qa-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            padding: 18px;
         }
+
+        .db-qa-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 8px;
+            border-radius: 16px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            background: #f8fafc;
+            border: 1px solid transparent;
+        }
+
+        .db-qa-item:hover {
+            background: #fff;
+            border-color: #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transform: translateY(-2px);
+        }
+
+        .db-qai-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: transform 0.2s ease;
+        }
+
+        .db-qa-item:hover .db-qai-icon {
+            transform: scale(1.1);
+        }
+
+        .db-qai-text {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #475569;
+            text-align: center;
+        }
+
+        .qai-blue { background: rgba(37, 99, 235, 0.1); color: #2563eb; }
+        .qai-indigo { background: rgba(79, 70, 229, 0.1); color: #4f46e5; }
+        .qai-red { background: rgba(220, 38, 38, 0.1); color: #dc2626; }
+        .qai-cyan { background: rgba(8, 145, 178, 0.1); color: #0891b2; }
+        .qai-yellow { background: rgba(202, 138, 4, 0.1); color: #ca8a04; }
+        .qai-navy { background: #163f7a15; color: #163f7a; }
+        .qai-gray { background: rgba(71, 85, 105, 0.1); color: #475569; }
+        .qai-purple { background: rgba(147, 51, 234, 0.1); color: #9333ea; }
 
         /* ── Horizontal Live Feed ── */
         .db-feed-horiz {
@@ -1072,8 +1116,8 @@
             const revenueCtx = document.getElementById('revenueChart').getContext('2d');
             const monthlyRevenue = {!! json_encode($monthlyRevenue) !!};
             const revGrad = revenueCtx.createLinearGradient(0, 0, 0, 200);
-            revGrad.addColorStop(0, 'rgba(52,168,83,0.25)');
-            revGrad.addColorStop(1, 'rgba(52,168,83,0)');
+            revGrad.addColorStop(0, 'rgba(22, 63, 122, 0.2)');
+            revGrad.addColorStop(1, 'rgba(22, 63, 122, 0)');
             const _revCfg = {
                 type: 'line',
                 data: {
@@ -1082,9 +1126,9 @@
                         label: 'Revenue (₹)',
                         data: monthlyRevenue,
                         borderColor: '#163f7a',
-                        backgroundColor: 'rgba(52,168,83,0.15)',
+                        backgroundColor: revGrad,
                         fill: true, tension: 0.45,
-                        pointBackgroundColor: '#163f7a', pointRadius: 4, pointHoverRadius: 7, borderWidth: 2.5
+                        pointBackgroundColor: '#163f7a', pointRadius: 4, pointHoverRadius: 7, borderWidth: 3
                     }]
                 },
                 options: {
@@ -1130,8 +1174,8 @@
             const actCtx = document.getElementById('activityFlowChart').getContext('2d');
             const actLabels = {!! json_encode($activityChartLabels) !!};
             const actDatasets = {!! json_encode($activityChartDatasets) !!};
-            const palette = ['rgba(52,168,83,.7)', 'rgba(26,115,232,.7)', 'rgba(139,92,246,.7)',
-                'rgba(251,188,4,.7)', 'rgba(234,67,53,.7)', 'rgba(22, 63, 122,.7)'];
+            const palette = ['rgba(22, 63, 122, 0.7)', 'rgba(37, 99, 235, 0.7)', 'rgba(79, 70, 229, 0.7)',
+                'rgba(14, 165, 233, 0.7)', 'rgba(234, 67, 53, 0.7)', 'rgba(11, 31, 61, 0.7)'];
             const _actCfg = {
                 type: 'bar',
                 data: {
