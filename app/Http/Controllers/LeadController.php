@@ -605,6 +605,9 @@ class LeadController extends Controller
         $proposal = !empty($validatedData['id']) ? Proposals::findOrFail($validatedData['id']) : new Proposals();
         if (!$proposal->exists) {
             $proposal->uid = Auth::User()->id ?? null;
+            $proposal->secure_token = \Illuminate\Support\Str::random(32);
+        } elseif (!$proposal->secure_token) {
+            $proposal->secure_token = \Illuminate\Support\Str::random(32);
         }
 
         // 4) Assign values
@@ -636,7 +639,7 @@ class LeadController extends Controller
                 $message = "We have also attached our business proposal for your kind perusal.<br><br>
                             <b>Proposal ID:</b> #000" . ($proposal->id ?? '') . "<br>
                             <b>Valid Until:</b> " . (date_format(date_create($proposal->open_till ?? null), 'd M, Y')) . "<br>
-                            You can view the full proposal at the following link: <a href='https://esecrm.com/proposal/" . ($proposal->id ?? '') . "/" . md5($proposal->client_email ?? '') . "'>View Proposal</a><br><br>
+                            You can view the full proposal at the following link: <a href='https://esecrm.com/proposal/" . ($proposal->id ?? '') . "/" . ($proposal->secure_token) . "'>View Proposal</a><br><br>
                             If you have any questions or comments, feel free to reach out or comment online. We are here to assist you.<br><br>
                             Thank you once again for your interest and trust.<br><br>";
 
@@ -704,7 +707,7 @@ class LeadController extends Controller
 
         $proposalItems = Proposal_items::where('proposal_id', ($proposal->id ?? ''))->get();
 
-        if (md5($proposal->client_email) !== $token) {
+        if (($proposal->secure_token ?? '') !== $token) {
             abort(403, 'Unauthorized or invalid token.');
         }
 
@@ -738,7 +741,7 @@ class LeadController extends Controller
 
             $proposalItems = Proposal_items::where('proposal_id', $proposal->id)->get();
 
-            if (md5($proposal->client_email) !== $token) {
+            if (($proposal->secure_token ?? '') !== $token) {
                 abort(403, 'Unauthorized or invalid token.');
             }
 
@@ -774,7 +777,7 @@ class LeadController extends Controller
             <b>Proposal ID:</b> #000{$proposal->id}<br>
             <b>Valid Until:</b> " . ($proposal->open_till ? date('d M, Y', strtotime($proposal->open_till)) : '-') . "<br>
             You can view the full proposal at the following link: 
-            <a href='https://esecrm.com/proposal/{$proposal->id}/" . md5($proposal->client_email) . "'>View Proposal</a><br><br>
+            <a href='https://esecrm.com/proposal/{$proposal->id}/" . ($proposal->secure_token) . "'>View Proposal</a><br><br>
             If you have any questions or comments, feel free to reach out or comment online. We are here to assist you.<br><br>
             Thank you once again for your interest and trust.<br><br>
         ";
@@ -840,7 +843,7 @@ class LeadController extends Controller
             <b>Proposal ID:</b> #000{$proposal->id}<br>
             <b>Valid Until:</b> " . ($proposal->open_till ? date('d M, Y', strtotime($proposal->open_till)) : '-') . "<br>
             You can view the full proposal at the following link: 
-            <a href='https://esecrm.com/proposal/{$proposal->id}/" . md5($proposal->client_email) . "'>View Proposal</a><br><br>
+            <a href='https://esecrm.com/proposal/{$proposal->id}/" . ($proposal->secure_token) . "'>View Proposal</a><br><br>
             We look forward to working together and building a successful collaboration.<br><br>
             If you have any questions or suggestions, feel free to reach out to us.<br><br>
             Thank you for your trust and confidence in our company.<br><br>

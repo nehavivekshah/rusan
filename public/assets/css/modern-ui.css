@@ -6,10 +6,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-    --primary-color: #006666;
-    --primary-hover: #004d4d;
-    --primary-light: rgba(0, 102, 102, 0.08);
-    --primary-glow: rgba(0, 102, 102, 0.2);
+    --primary-color: #163f7a;
+    --primary-hover: #0f2d57;
+    --primary-light: rgba(22, 63, 122, 0.08);
+    --primary-glow: rgba(22, 63, 122, 0.2);
 
     --surface-color: #ffffff;
     --background-color: #f4f7f6;

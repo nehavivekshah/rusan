@@ -131,8 +131,8 @@
                                                 style="background:linear-gradient(135deg,#006666,#009688);color:#fff;">
                                                 {{ strtoupper(substr($client->name ?? 'C', 0, 1)) }}
                                             </div>
-                                            <div>
-                                                <div class="fw-500">{{ $client->name ?? '' }}</div>
+                                             <div>
+                                                <div class="fw-500"><a href="/customer-360/client/{{ $client->id }}" class="text-decoration-none text-dark">{{ $client->name ?? '' }}</a></div>
                                                 <div class="text-muted small d-none">{{ $client->company ?? '' }}</div>
                                             </div>
                                         </div>

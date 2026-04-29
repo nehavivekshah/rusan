@@ -230,7 +230,7 @@ class NewLeadController extends Controller
 
                     $data[] = [
                         'checkbox' => '<input type="checkbox" class="checklead" value="' . $lead->id . '">',
-                        'name' => '<div class="d-flex align-items-center gap-1"><strong>' . e($lead->name) . '</strong>' . $scoreBadge . $duplicateWarning . '</div>' . $company,
+                        'name' => '<div class="d-flex align-items-center gap-1"><a href="/customer-360/lead/' . $lead->id . '" class="text-decoration-none text-dark"><strong>' . e($lead->name) . '</strong></a>' . $scoreBadge . $duplicateWarning . '</div>' . $company,
                         'company' => e(substr($lead->company, 0, 20)),
                         'mobile' => e("+" . $lead->mob),
                         'status' => $statusBadge,
@@ -409,11 +409,23 @@ class NewLeadController extends Controller
             'next_date' => 'nullable|date'
         ]);
 
-        Lead_comments::create([
+        $comment = Lead_comments::create([
             'lead_id' => $request->lead_id,
             'msg' => $request->msg,
             'next_date' => $request->next_date,
         ]);
+
+        // Automatically create a CRM Task for the follow-up
+        if ($request->filled('next_date')) {
+            \App\Models\CrmTask::create([
+                'user_id' => Auth::id(),
+                'rel_type' => 'Lead',
+                'rel_id' => $request->lead_id,
+                'name' => 'Follow up: ' . substr($request->msg, 0, 50),
+                'due_date' => date('Y-m-d', strtotime($request->next_date)),
+                'status' => 'Pending'
+            ]);
+        }
 
         // Update lead status to "Follow Up" (1) if it was Fresh (0)
         $lead = Leads::find($request->lead_id);

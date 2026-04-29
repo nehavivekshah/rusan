@@ -3,15 +3,15 @@
 :root {
     --card-radius: 8px;
     /* Google flat card radius */
-    --accent-primary: #006666;
+    --accent-primary: #163f7a;
     /* Custom Brand Primary */
-    --accent-red: #ea4335;
+    --accent-red: #fe0201;
     --accent-yellow: #fbbc04;
     --accent-green: #34a853;
-    --accent-indigo: #1a73e8;
+    --accent-indigo: #163f7a;
     --accent-emerald: #34a853;
     /* Google Green */
-    --accent-rose: #ea4335;
+    --accent-rose: #fe0201;
     /* Google Red */
     --accent-amber: #fbbc04;
     /* Google Yellow */
@@ -64,7 +64,7 @@ body {
    ========================================================================== */
 
 .sidebar {
-    background: linear-gradient(180deg, #004d4d 0%, #006060 50%, #007070 100%) !important;
+    background: linear-gradient(180deg, #163f7a 0%, #0f2d57 100%) !important;
     border-right: none !important;
     box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15) !important;
 }
@@ -481,7 +481,7 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: #006666;
+    background: #163f7a;
     color: #ffffff;
     border: none;
     border-radius: 20px;
@@ -495,8 +495,8 @@ body {
 }
 
 .header-action-btn:hover {
-    background: #005555;
-    box-shadow: 0 2px 6px rgba(0, 102, 102, 0.25);
+    background: #0f2d57;
+    box-shadow: 0 2px 6px rgba(22, 63, 122, 0.25);
     color: #fff;
 }
 

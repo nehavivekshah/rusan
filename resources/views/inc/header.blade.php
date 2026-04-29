@@ -28,7 +28,7 @@
                     <li class="dropdown-section-label">Create New</li>
                     <li>
                         <a class="dropdown-item header-dropdown-item" href="/manage-lead">
-                            <span class="hdi-icon" style="background:rgba(26,115,232,0.08); color:#1a73e8;"><i class="bx bx-user-plus"></i></span>
+                            <span class="hdi-icon" style="background:rgba(22,63,122,0.08); color:#163f7a;"><i class="bx bx-user-plus"></i></span>
                             <div>
                                 <div class="hdi-title">New Lead</div>
                                 <small class="hdi-sub">Add to sales pipeline</small>
@@ -128,10 +128,10 @@
                     @if($overdueCount > 0)
                         <li>
                             <a class="dropdown-item header-dropdown-item" href="/newleads?status=1">
-                                <span class="hdi-icon" style="background:rgba(234,67,53,0.08); color:#ea4335;"><i class="bx bx-time-five"></i></span>
+                                <span class="hdi-icon" style="background:rgba(254,2,1,0.08); color:#fe0201;"><i class="bx bx-time-five"></i></span>
                                 <div>
                                     <div class="hdi-title">Overdue Follow-ups</div>
-                                    <small class="hdi-sub" style="color:#ea4335;">{{ $overdueCount }} tasks past reminder</small>
+                                    <small class="hdi-sub" style="color:#fe0201;">{{ $overdueCount }} tasks past reminder</small>
                                 </div>
                             </a>
                         </li>
@@ -158,7 +158,7 @@
         {{-- User Avatar Dropdown --}}
         <div class="dropdown">
             <a href="#" class="header-user-btn no-caret dropdown-toggle" data-bs-toggle="dropdown" aria-label="Account menu">
-                <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=006666&color=ffff00&size=64"
+                <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=163f7a&color=ffffff&size=64"
                      class="header-avatar" width="34" height="34" alt="{{ Auth::user()->name }}">
                 <i class="bx bx-chevron-down d-none d-lg-block" style="font-size: 0.9rem; color: #5f6368;"></i>
             </a>
@@ -207,7 +207,7 @@
 <style>
 /* ── Sidebar Toggle Button (Hamburger) ── */
 .header-menu-btn {
-    background: #006666 !important;
+    background: #163f7a !important;
     border: none;
     border-radius: 8px;
     width: 98px;
@@ -225,9 +225,9 @@
 }
 
 .header-menu-btn:hover {
-    background: #004d4d !important;
+    background: #0f2d57 !important;
     transform: scale(1.08);
-    box-shadow: 0 6px 16px rgba(0, 102, 102, 0.3);
+    box-shadow: 0 6px 16px rgba(22, 63, 122, 0.3);
 }
 
 .header-menu-btn:active {
@@ -295,7 +295,7 @@
     border-bottom: 1px solid #e8eaed;
     background: #fff;
 }
-.gs-icon { font-size: 1.3rem; color: #006666; flex-shrink: 0; }
+.gs-icon { font-size: 1.3rem; color: #163f7a; flex-shrink: 0; }
 .gs-input {
     flex: 1; border: none; outline: none;
     font-size: 1rem; color: #202124; background: transparent;
@@ -334,7 +334,7 @@
 }
 .gs-item:hover, .gs-item.active {
     background: #f8f9fa;
-    border-left-color: #006666;
+    border-left-color: #163f7a;
     color: #202124;
 }
 .gs-item-icon {
@@ -353,7 +353,7 @@
 .gs-loading { text-align: center; padding: 20px; }
 .gs-spinner {
     width: 24px; height: 24px; border: 3px solid #e8eaed;
-    border-top-color: #006666; border-radius: 50%;
+    border-top-color: #163f7a; border-radius: 50%;
     animation: gsSpin 0.7s linear infinite; display: inline-block;
 }
 

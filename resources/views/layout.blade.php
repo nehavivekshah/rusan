@@ -7,7 +7,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon">
+        <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#163f7a">
     
         <title>@yield('title', 'Customer Relationship Management')</title>
         
@@ -44,7 +46,7 @@
                 width: 50px;
                 height: 50px;
                 border: 6px solid #ccc;
-                border-top: 6px solid #3498db;
+                border-top: 6px solid #163f7a;
                 border-radius: 50%;
                 animation: spin 1s linear infinite;
             }
@@ -215,7 +217,7 @@
                         title: 'Upgrade Required',
                         text: 'The ' + (featureName ? featureName + ' ' : '') + 'feature is only available on our Premium or Pro plans. Please upgrade your subscription to unlock it.',
                         confirmButtonText: 'Understood',
-                        confirmButtonColor: '#1a73e8'
+                        confirmButtonColor: '#163f7a'
                     });
                 } else {
                     alert('The ' + (featureName ? featureName + ' ' : '') + 'feature is only available on Premium. Please upgrade your subscription to unlock it.');
@@ -275,6 +277,13 @@
 
         @include('inc.todo-modal')
         @stack('scripts')
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js');
+                });
+            }
+        </script>
     </body>
 
 </html>

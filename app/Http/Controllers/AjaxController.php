@@ -22,6 +22,14 @@ use App\Models\Attendances;
 
 class AjaxController extends Controller
 {
+    public function initiateExotelCall(Request $request)
+    {
+        $request->validate(['phone' => 'required']);
+        $exotel = new \App\Services\ExotelService();
+        $result = $exotel->initiateCall($request->phone);
+        return response()->json($result);
+    }
+
     public function task()
     {
         return view('task');

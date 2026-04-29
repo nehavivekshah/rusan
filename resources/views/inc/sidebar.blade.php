@@ -330,6 +330,13 @@
 
         <li class="nav-title">SYSTEM</li>
 
+        <li>
+            <a href="/products" @if(Request::segment(1) == 'products') class="active" @endif>
+                <i class="bx bx-package"></i>
+                <span class="link_name">Products Master</span>
+            </a>
+        </li>
+
         @if(Auth::user()->role == 'master')
             <li>
                 <a href="/licensing" @if(Request::segment(1) == 'licensing' || Request::segment(1) == 'manage-license')

@@ -1,0 +1,16 @@
+{
+  "name": "Rusan CRM",
+  "short_name": "Rusan",
+  "start_url": "/home",
+  "display": "standalone",
+  "background_color": "#163f7a",
+  "theme_color": "#163f7a",
+  "description": "Enterprise-grade Sales CRM for Rusan",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ]
+}
