@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const orig = this.textContent;
             this.textContent = '✓ Inserted';
             this.style.background = 'rgba(52,168,83,0.15)';
-            this.style.color = '#34a853';
+            this.style.color = '#163f7a';
             setTimeout(() => {
                 this.textContent = orig;
                 this.style.background = '';

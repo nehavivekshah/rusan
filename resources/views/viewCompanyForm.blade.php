@@ -4,12 +4,12 @@
 .rv-section-title {
     font-size: .72rem;
     font-weight: 700;
-    color: #006666;
+    color: #163f7a;
     text-transform: uppercase;
     letter-spacing: .07em;
     margin: 20px 0 10px;
     padding-bottom: 4px;
-    border-bottom: 1.5px solid rgba(0,102,102,.1);
+    border-bottom: 1.5px solid rgba(22, 63, 122,.1);
 }
 .rv-section-title:first-child { margin-top: 0; }
 
@@ -24,7 +24,7 @@
 .rv-value { font-size: 0.85rem; color: #202124; font-weight: 500; text-align: right; }
 
 .rv-header-gradient {
-    background: linear-gradient(135deg, #005757, #007e7e);
+    background: linear-gradient(135deg, #005757, #163f7a);
     padding: 24px 20px;
     border-radius: 16px 16px 0 0;
     display: flex;
@@ -76,7 +76,7 @@
         @if($company->logo)
             <img src="{{ asset('assets/images/company/logos/' . $company->logo) }}" alt="">
         @else
-            <i class="bx bx-building" style="font-size:2rem; color:#006666;"></i>
+            <i class="bx bx-building" style="font-size:2rem; color:#163f7a;"></i>
         @endif
     </div>
     <div class="rv-title-group">
@@ -107,7 +107,7 @@
                 <div class="rv-data-row">
                     <span class="rv-label">Subscription</span>
                     <span class="rv-value">
-                        <span class="badge" style="background:rgba(0,102,102,0.1); color:#006666; text-transform:capitalize;">{{ $company->plan ?? 'Standard' }}</span>
+                        <span class="badge" style="background:rgba(22, 63, 122,0.1); color:#163f7a; text-transform:capitalize;">{{ $company->plan ?? 'Standard' }}</span>
                     </span>
                 </div>
             </div>
@@ -176,7 +176,7 @@
             <div class="dash-card p-3" style="background:#fff; border-radius:12px; border:1px solid #e8eaed;">
                 <div class="rv-section-title">Registered Address</div>
                 <div class="d-flex align-items-start gap-3 p-2">
-                    <div class="p-2 rounded bg-light" style="color:#006666;">
+                    <div class="p-2 rounded bg-light" style="color:#163f7a;">
                         <i class="bx bx-map-pin" style="font-size:1.5rem;"></i>
                     </div>
                     <div>

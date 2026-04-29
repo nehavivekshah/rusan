@@ -9,9 +9,9 @@
 <style>
 .cf-wrap * { box-sizing: border-box; font-family: inherit; }
 .cf-section-title {
-    font-size:.72rem; font-weight:700; color:#006666; text-transform:uppercase;
+    font-size:.72rem; font-weight:700; color:#163f7a; text-transform:uppercase;
     letter-spacing:.07em; margin:16px 0 10px; padding-bottom:4px;
-    border-bottom:1.5px solid rgba(0,102,102,.12);
+    border-bottom:1.5px solid rgba(22, 63, 122,.12);
 }
 .cf-section-title:first-child { margin-top:0; }
 .cf-field { display:flex; flex-direction:column; }
@@ -22,10 +22,10 @@
     border-radius:8px; background:#fff; overflow:hidden; height:42px;
     transition:border-color .15s, box-shadow .15s;
 }
-.cf-input-box:focus-within { border-color:#006666; box-shadow:0 0 0 3px rgba(0,102,102,.08); }
+.cf-input-box:focus-within { border-color:#163f7a; box-shadow:0 0 0 3px rgba(22, 63, 122,.08); }
 .cf-icon {
     display:flex; align-items:center; justify-content:center; width:38px; height:100%;
-    flex-shrink:0; color:#006666; font-size:1.05rem;
+    flex-shrink:0; color:#163f7a; font-size:1.05rem;
     border-right:1.5px solid #e8eaed; background:#f8fdfd;
 }
 .cf-input-box input, .cf-input-box textarea {
@@ -44,14 +44,14 @@
 .rv-history-table tr:last-child td { border-bottom:none; }
 .rv-history-table tr:hover td { background:#fafefe; }
 .rv-editable { border:1px solid #e0e0e0; border-radius:6px; padding:3px 8px; width:110px; font-size:.82rem; color:#202124; background:#fff; cursor:pointer; }
-.rv-editable:focus { border-color:#006666; outline:none; box-shadow:0 0 0 2px rgba(0,102,102,.1); }
+.rv-editable:focus { border-color:#163f7a; outline:none; box-shadow:0 0 0 2px rgba(22, 63, 122,.1); }
 .rv-status-dot { font-size:.7rem; font-weight:600; margin-left:6px; }
 
 /* Summary bar */
 .rv-summary-bar {
     display:flex; align-items:center; justify-content:space-between;
-    background:linear-gradient(135deg,rgba(0,102,102,.06),rgba(0,102,102,.04));
-    border:1px solid rgba(0,102,102,.12); border-radius:10px;
+    background:linear-gradient(135deg,rgba(22, 63, 122,.06),rgba(22, 63, 122,.04));
+    border:1px solid rgba(22, 63, 122,.12); border-radius:10px;
     padding:10px 14px; margin-bottom:14px;
 }
 .rv-summary-bar .rv-summary-company { font-size:.875rem; font-weight:700; color:#202124; }
@@ -66,7 +66,7 @@
 }
 .cf-btn-cancel { font-size:.85rem; padding:8px 20px; border-radius:8px; border:1.5px solid #d1d5db; background:#fff; color:#5f6368; cursor:pointer; }
 .cf-btn-cancel:hover { background:#f5f5f5; }
-.cf-btn-save { font-size:.85rem; font-weight:600; padding:8px 22px; border-radius:8px; border:none; background:#006666; color:#fff; cursor:pointer; display:flex; align-items:center; gap:5px; }
+.cf-btn-save { font-size:.85rem; font-weight:600; padding:8px 22px; border-radius:8px; border:none; background:#163f7a; color:#fff; cursor:pointer; display:flex; align-items:center; gap:5px; }
 .cf-btn-save:hover { background:#004e4e; }
 </style>
 
@@ -85,7 +85,7 @@
     {{-- Summary bar --}}
     <div class="rv-summary-bar">
         <div class="rv-summary-company">
-            <i class="bx bx-buildings me-1" style="color:#006666;"></i>
+            <i class="bx bx-buildings me-1" style="color:#163f7a;"></i>
             {{ $client->company ?? $client->name ?? '—' }}
         </div>
         <div class="rv-summary-bal">
@@ -103,8 +103,8 @@
         <div class="row g-3 mb-2">
             <div class="col-md-6 cf-field">
                 <label>Amount Received (₹) <span class="req">*</span></label>
-                <div class="cf-input-box" style="border-color:#34a853;">
-                    <span class="cf-icon" style="color:#34a853; background:rgba(52,168,83,.05); font-weight:700; font-size:.9rem;">₹</span>
+                <div class="cf-input-box" style="border-color:#163f7a;">
+                    <span class="cf-icon" style="color:#163f7a; background:rgba(52,168,83,.05); font-weight:700; font-size:.9rem;">₹</span>
                     <input type="number" name="received" id="received" placeholder="0.00" required>
                 </div>
             </div>
@@ -117,7 +117,7 @@
             </div>
             <div class="col-12 cf-field">
                 <label style="display:flex; align-items:center; gap:7px; cursor:pointer;">
-                    <input type="checkbox" name="send" value="1" checked style="width:15px;height:15px;accent-color:#006666;">
+                    <input type="checkbox" name="send" value="1" checked style="width:15px;height:15px;accent-color:#163f7a;">
                     Send Thank You Note
                 </label>
                 <div class="cf-input-box cf-textarea-box mt-1">
@@ -163,7 +163,7 @@
                         </td>
                         <td>
                             <span style="font-size:.72rem; font-weight:600; padding:2px 8px; border-radius:20px;
-                                background:rgba(52,168,83,.08); color:#34a853;">
+                                background:rgba(52,168,83,.08); color:#163f7a;">
                                 {{ $status }}
                             </span>
                         </td>

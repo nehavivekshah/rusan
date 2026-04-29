@@ -47,11 +47,11 @@
             width: 16px;
             height: 16px;
             cursor: pointer;
-            accent-color: #006666;
+            accent-color: #163f7a;
         }
 
         #leadslists tbody tr.selected-row {
-            background: rgba(0, 102, 102, 0.06) !important;
+            background: rgba(22, 63, 122, 0.06) !important;
         }
 
         /* ─── Floating Bulk Action Bar ─── */
@@ -84,7 +84,7 @@
         #bulkSelCount {
             font-size: 0.82rem;
             font-weight: 700;
-            color: #006666;
+            color: #163f7a;
             background: #e6f4f0;
             padding: 4px 10px;
             border-radius: 20px;
@@ -102,7 +102,7 @@
         }
 
         #bulkAssignBtn {
-            background: #006666;
+            background: #163f7a;
             color: #fff;
             border: none;
             border-radius: 8px;
@@ -398,7 +398,7 @@
                                                         <span class="ld-info-label"><i class="bx bx-rupee"></i> Lead
                                                             Value</span>
                                                         <span class="ld-info-val" id="v_value"
-                                                            style="color:#34a853;font-weight:700;">—</span>
+                                                            style="color:#163f7a;font-weight:700;">—</span>
                                                     </div>
                                                     <div class="ld-info-row">
                                                         <span class="ld-info-label"><i class="bx bx-user-check"></i>
@@ -416,7 +416,7 @@
                                                         <span class="ld-info-label"><i class="bx bx-user-pin"></i> Assigned
                                                             To</span>
                                                         <span class="ld-info-val" id="v_assigned"
-                                                            style="color:#006666;font-weight:700;">—</span>
+                                                            style="color:#163f7a;font-weight:700;">—</span>
                                                     </div>
                                                     <div class="ld-info-row">
                                                         <span class="ld-info-label"><i class="bx bx-error"></i> Potential
@@ -722,7 +722,7 @@
                                 <div class="table-responsive">
                                     <table class="table table-hover mb-0"
                                         style="font-size:0.82rem;border-radius:10px;overflow:hidden;">
-                                        <thead style="background:linear-gradient(135deg,#005757,#007e7e);">
+                                        <thead style="background:linear-gradient(135deg,#005757,#163f7a);">
                                             <tr>
                                                 <th
                                                     style="color:#fff !important;font-weight:600;border:none;padding:10px 12px;">

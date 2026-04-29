@@ -7,7 +7,7 @@
         $totalAmount = $project->amount ?? 0;
         $pendingAmount = max(0, $totalAmount - $totalPaid);
         $recoveryPct = $totalAmount > 0 ? min(100, round(($totalPaid / $totalAmount) * 100)) : 0;
-        $pctColor = $recoveryPct >= 80 ? '#34a853' : ($recoveryPct >= 40 ? '#fbbc04' : '#ea4335');
+        $pctColor = $recoveryPct >= 80 ? '#163f7a' : ($recoveryPct >= 40 ? '#fbbc04' : '#ea4335');
 
         $paidInvoices = $invoices->where('status', 'paid')->count();
         $unpaidInvoices = $invoices->where('status', '!=', 'paid')->count();
@@ -103,9 +103,9 @@
                     <div class="pv-kpi-label">Contract Value</div>
                     <div class="pv-kpi-val">₹{{ number_format($totalAmount, 0) }}</div>
                 </div>
-                <div class="pv-kpi" style="border-color:#34a85340;">
-                    <div class="pv-kpi-label" style="color:#34a853;">Recovered</div>
-                    <div class="pv-kpi-val" style="color:#34a853;">₹{{ number_format($totalPaid, 0) }}</div>
+                <div class="pv-kpi" style="border-color:#163f7a40;">
+                    <div class="pv-kpi-label" style="color:#163f7a;">Recovered</div>
+                    <div class="pv-kpi-val" style="color:#163f7a;">₹{{ number_format($totalPaid, 0) }}</div>
                 </div>
                 <div class="pv-kpi" style="border-color:#ea433540;">
                     <div class="pv-kpi-label" style="color:#ea4335;">Pending</div>
@@ -189,13 +189,13 @@
                                     </div>
                                     <div class="pv-info-item">
                                         <div class="pv-info-label"><i class="bx bx-hash"></i> Batch No.</div>
-                                        <div class="pv-info-val fw-bold" style="color:#006666;">
+                                        <div class="pv-info-val fw-bold" style="color:#163f7a;">
                                             {{ $project->batchNo ?: '—' }}
                                         </div>
                                     </div>
                                     <div class="pv-info-item">
                                         <div class="pv-info-label"><i class="bx bx-money"></i> Budget</div>
-                                        <div class="pv-info-val fw-bold" style="color:#006666;font-size:1.05rem;">
+                                        <div class="pv-info-val fw-bold" style="color:#163f7a;font-size:1.05rem;">
                                             ₹{{ number_format($totalAmount, 2) }}
                                         </div>
                                     </div>
@@ -338,7 +338,7 @@
                             <strong>₹{{ number_format($totalAmount, 2) }}</strong>
                         </div>
                         <div class="pv-bs-sep"></div>
-                        <div class="pv-bs-item" style="color:#34a853;">
+                        <div class="pv-bs-item" style="color:#163f7a;">
                             <span>Recovered</span>
                             <strong>₹{{ number_format($totalPaid, 2) }}</strong>
                         </div>
@@ -415,7 +415,7 @@
                                         $overdue = \Carbon\Carbon::parse($inv->due_date)->isPast() && $inv->status != 'paid';
                                     @endphp
                                     <tr>
-                                        <td><span class="fw-bold" style="color:#006666;">{{ $inv->invoice_number }}</span></td>
+                                        <td><span class="fw-bold" style="color:#163f7a;">{{ $inv->invoice_number }}</span></td>
                                         <td>{{ \Carbon\Carbon::parse($inv->date)->format('d M, Y') }}</td>
                                         <td>
                                             <span class="{{ $overdue ? 'text-danger fw-bold' : '' }}">
@@ -666,7 +666,7 @@
                                                 {{ \Carbon\Carbon::parse($prop->open_till)->format('d M, Y') }}
                                             </span>
                                         </td>
-                                        <td class="fw-bold" style="color:#006666;">₹{{ number_format($prop->grand_total, 0) }}
+                                        <td class="fw-bold" style="color:#163f7a;">₹{{ number_format($prop->grand_total, 0) }}
                                         </td>
                                         <td>
                                             @if($prop->status == 'Accepted')
@@ -749,7 +749,7 @@
             navigator.clipboard.writeText(key).then(() => {
                 const btn = document.querySelector('.pv-copy-btn');
                 btn.innerHTML = '<i class="bx bx-check"></i> Copied!';
-                btn.style.background = '#34a853';
+                btn.style.background = '#163f7a';
                 setTimeout(() => {
                     btn.innerHTML = '<i class="bx bx-copy"></i> Copy';
                     btn.style.background = '';

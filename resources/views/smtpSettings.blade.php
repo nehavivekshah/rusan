@@ -239,7 +239,7 @@
                 </div>
             </div>
             <div class="smtp-tip-card">
-                <i class="bx bx-shield smtp-tip-icon" style="color:#34a853;"></i>
+                <i class="bx bx-shield smtp-tip-icon" style="color:#163f7a;"></i>
                 <div>
                     <div class="smtp-tip-title">Security Note</div>
                     <div class="smtp-tip-body">Always use <strong>TLS or SSL</strong>. Never use port <code>25</code> in production — it's blocked by most cloud providers.</div>
@@ -259,7 +259,7 @@
 /* ── Banner ── */
 .smtp-banner {
     display: flex; align-items: center; gap: 18px;
-    background: linear-gradient(135deg, #005757, #007e7e);
+    background: linear-gradient(135deg, #005757, #163f7a);
     border-radius: 18px; padding: 20px 24px; color: #fff; flex-wrap: wrap;
 }
 .smtp-banner-icon {
@@ -289,7 +289,7 @@
     padding: 5px 14px; font-size: 0.78rem; font-weight: 600; color: #5f6368;
     cursor: pointer; transition: all 0.15s;
 }
-.smtp-preset-btn:hover { border-color: #006666; color: #006666; background: rgba(0,102,102,0.04); }
+.smtp-preset-btn:hover { border-color: #163f7a; color: #163f7a; background: rgba(22, 63, 122,0.04); }
 
 /* ── Form Card ── */
 .smtp-form-card { border-radius: 18px; border: 1px solid #e8eaed; overflow: hidden; }
@@ -298,7 +298,7 @@
 .smtp-form-header {
     display: flex; align-items: center; justify-content: space-between;
     padding: 20px 28px;
-    background: linear-gradient(135deg, #005757, #007e7e);
+    background: linear-gradient(135deg, #005757, #163f7a);
 }
 .smtp-form-header-title { font-size: 1rem; font-weight: 700; color: #fff; margin: 0; }
 .smtp-form-header-sub   { font-size: 0.74rem; color: rgba(255,255,255,.72); margin: 4px 0 0; }
@@ -314,10 +314,10 @@
 
 /* ── Section title ── */
 .smtp-section-title {
-    font-size: 0.72rem; font-weight: 700; color: #006666;
+    font-size: 0.72rem; font-weight: 700; color: #163f7a;
     text-transform: uppercase; letter-spacing: .07em;
     margin: 24px 0 14px; padding-bottom: 5px;
-    border-bottom: 1.5px solid rgba(0,102,102,.12);
+    border-bottom: 1.5px solid rgba(22, 63, 122,.12);
 }
 .smtp-section-title:first-child { margin-top: 0; }
 
@@ -334,13 +334,13 @@
     transition: border-color .15s, box-shadow .15s; height: 44px;
 }
 .smtp-input-box:focus-within {
-    border-color: #006666;
-    box-shadow: 0 0 0 3px rgba(0,102,102,.08);
+    border-color: #163f7a;
+    box-shadow: 0 0 0 3px rgba(22, 63, 122,.08);
 }
 .smtp-icon {
     display: flex; align-items: center; justify-content: center;
     width: 40px; height: 100%; flex-shrink: 0;
-    color: #006666; font-size: 1.05rem;
+    color: #163f7a; font-size: 1.05rem;
     border-right: 1.5px solid #e8eaed; background: #f8fdfd;
 }
 .smtp-input-box input,
@@ -364,7 +364,7 @@
     cursor: pointer; display: flex; align-items: center; justify-content: center;
     transition: color .15s;
 }
-.smtp-eye-btn:hover { color: #006666; }
+.smtp-eye-btn:hover { color: #163f7a; }
 
 /* ── Test button ── */
 .smtp-test-btn {
@@ -391,13 +391,13 @@
 .smtp-btn-save {
     display: inline-flex; align-items: center; gap: 6px;
     font-size: 0.85rem; font-weight: 700; padding: 9px 24px; border-radius: 10px;
-    border: none; background: #006666; color: #fff;
+    border: none; background: #163f7a; color: #fff;
     cursor: pointer; transition: background .15s;
 }
 .smtp-btn-save:hover { background: #004e4e; }
 
 /* ── Result Badge ── */
-.smtp-result-ok  { background: rgba(52,168,83,0.1); color:#34a853; border-radius:8px; padding:8px 14px; font-size:0.82rem; font-weight:600; display:flex; align-items:center; gap:5px; }
+.smtp-result-ok  { background: rgba(52,168,83,0.1); color:#163f7a; border-radius:8px; padding:8px 14px; font-size:0.82rem; font-weight:600; display:flex; align-items:center; gap:5px; }
 .smtp-result-err { background: rgba(234,67,53,0.1); color:#ea4335; border-radius:8px; padding:8px 14px; font-size:0.82rem; font-weight:600; display:flex; align-items:center; gap:5px; }
 
 /* ── Tips Row ── */
@@ -410,7 +410,7 @@
 .smtp-tip-icon { font-size: 1.8rem; flex-shrink: 0; margin-top: 2px; }
 .smtp-tip-title { font-size: 0.82rem; font-weight: 700; color: #202124; margin-bottom: 5px; }
 .smtp-tip-body  { font-size: 0.76rem; color: #5f6368; line-height: 1.6; }
-.smtp-tip-body code { background: rgba(0,102,102,0.08); color: #006666; padding: 1px 5px; border-radius: 4px; font-size: 0.73rem; }
+.smtp-tip-body code { background: rgba(22, 63, 122,0.08); color: #163f7a; padding: 1px 5px; border-radius: 4px; font-size: 0.73rem; }
 
 @media (max-width: 768px) {
     .smtp-form-body   { padding: 16px; }
@@ -453,8 +453,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         /* highlight applied preset button */
         document.querySelectorAll('.smtp-preset-btn').forEach(b => b.style.borderColor = '');
-        event.currentTarget.style.borderColor = '#006666';
-        event.currentTarget.style.color       = '#006666';
+        event.currentTarget.style.borderColor = '#163f7a';
+        event.currentTarget.style.color       = '#163f7a';
     };
 
     /* ── Send Test Email ── */

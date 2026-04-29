@@ -43,7 +43,7 @@
             {{-- ── Stat Cards ── --}}
             <div class="rv-stat-row mb-4">
                 <div class="rv-stat-card">
-                    <div class="rv-stat-icon" style="background:rgba(0,102,102,0.10);color:#006666;">
+                    <div class="rv-stat-icon" style="background:rgba(22, 63, 122,0.10);color:#163f7a;">
                         <i class="bx bx-file"></i>
                     </div>
                     <div>
@@ -52,11 +52,11 @@
                     </div>
                 </div>
                 <div class="rv-stat-card">
-                    <div class="rv-stat-icon" style="background:rgba(52,168,83,0.10);color:#34a853;">
+                    <div class="rv-stat-icon" style="background:rgba(52,168,83,0.10);color:#163f7a;">
                         <i class="bx bx-check-shield"></i>
                     </div>
                     <div>
-                        <div class="rv-stat-num" style="color:#34a853;">{{ $activeCount }}</div>
+                        <div class="rv-stat-num" style="color:#163f7a;">{{ $activeCount }}</div>
                         <div class="rv-stat-label">Active</div>
                     </div>
                 </div>
@@ -157,7 +157,7 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center gap-2">
-                                            <div class="lb-avatar-sm" style="background:linear-gradient(135deg,#006666,#009688);color:#fff; cursor:pointer;" onclick="$('#{{ $contract->id }}').trigger('dblclick')">
+                                            <div class="lb-avatar-sm" style="background:linear-gradient(135deg,#163f7a,#0f2d57);color:#fff; cursor:pointer;" onclick="$('#{{ $contract->id }}').trigger('dblclick')">
                                                 {{ strtoupper(substr($contract->name ?? 'C', 0, 1)) }}
                                             </div>
                                             <div>
@@ -214,7 +214,7 @@
                                             @endif
 
                                             @if(in_array('contracts_edit',$roleArray) || in_array('All',$roleArray))
-                                            <button type="button" class="btn kb-action-btn open-contract-modal" data-url="/manage-contract?id={{ $contract->id }}&ajax=1" title="Edit" style="background:rgba(0,102,102,0.10);color:#006666; border:none;">
+                                            <button type="button" class="btn kb-action-btn open-contract-modal" data-url="/manage-contract?id={{ $contract->id }}&ajax=1" title="Edit" style="background:rgba(22, 63, 122,0.10);color:#163f7a; border:none;">
                                                 <i class="bx bx-edit"></i>
                                             </button>
                                             @endif
@@ -306,7 +306,7 @@
                     const content = document.getElementById('manageContractModalContent');
                     const modalEl = document.getElementById('manageContractModal');
 
-                    content.innerHTML = '<div class="p-5 text-center"><i class="bx bx-loader-alt bx-spin" style="font-size:2rem;color:#006666;"></i><p class="mt-2 text-muted">Loading form...</p></div>';
+                    content.innerHTML = '<div class="p-5 text-center"><i class="bx bx-loader-alt bx-spin" style="font-size:2rem;color:#163f7a;"></i><p class="mt-2 text-muted">Loading form...</p></div>';
 
                     bootstrap.Modal.getOrCreateInstance(modalEl).show();
 

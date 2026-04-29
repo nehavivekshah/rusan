@@ -90,8 +90,8 @@
             <div class="tk-board">
                 @php
                     $colColors = [
-                        '#1a73e8', '#9334e9', '#006666', '#f29900',
-                        '#34a853', '#ea4335', '#0b8043', '#e52592'
+                        '#1a73e8', '#9334e9', '#163f7a', '#f29900',
+                        '#163f7a', '#ea4335', '#0b8043', '#e52592'
                     ];
                 @endphp
 
@@ -133,8 +133,8 @@
                                         '1' => ['#ea4335', 'Urgent',      'bg-danger'],
                                         '2' => ['#f29900', 'Pending',     'bg-warning'],
                                         '3' => ['#1a73e8', 'In Progress', 'bg-primary'],
-                                        '4' => ['#34a853', 'Done',        'bg-success'],
-                                        '5' => ['#006666', 'Closed',      'bg-secondary'],
+                                        '4' => ['#163f7a', 'Done',        'bg-success'],
+                                        '5' => ['#163f7a', 'Closed',      'bg-secondary'],
                                     ];
                                     $sc = $statusColors[$task->status] ?? ['#9aa0a6', 'Open', 'bg-light'];
                                     $displayTitle = strlen($task->title) > 55
@@ -253,14 +253,14 @@
     @if($canAddTask)
     <style>
         .cf-wrap * { box-sizing: border-box; font-family: inherit; }
-        .cf-section-title { font-size: .72rem; font-weight: 700; color: #006666; text-transform: uppercase; letter-spacing: .07em; margin: 18px 0 12px; padding-bottom: 4px; border-bottom: 1.5px solid rgba(0,102,102,.12); }
+        .cf-section-title { font-size: .72rem; font-weight: 700; color: #163f7a; text-transform: uppercase; letter-spacing: .07em; margin: 18px 0 12px; padding-bottom: 4px; border-bottom: 1.5px solid rgba(22, 63, 122,.12); }
         .cf-section-title:first-child { margin-top: 0; }
         .cf-field { display: flex; flex-direction: column; }
         .cf-field label { font-size: .78rem; color: #5f6368; font-weight: 400; margin-bottom: 5px; text-transform: none; }
         .cf-field label .req { color: #ea4335; }
         .cf-input-box { display: flex; align-items: center; border: 1.5px solid #d1d5db; border-radius: 8px; background: #fff; overflow: hidden; transition: border-color .15s, box-shadow .15s; height: 42px; }
-        .cf-input-box:focus-within { border-color: #006666; box-shadow: 0 0 0 3px rgba(0,102,102,.08); }
-        .cf-input-box .cf-icon { display: flex; align-items: center; justify-content: center; width: 38px; height: 100%; flex-shrink: 0; color: #006666; font-size: 1.05rem; border-right: 1.5px solid #e8eaed; background: #f8fdfd; }
+        .cf-input-box:focus-within { border-color: #163f7a; box-shadow: 0 0 0 3px rgba(22, 63, 122,.08); }
+        .cf-input-box .cf-icon { display: flex; align-items: center; justify-content: center; width: 38px; height: 100%; flex-shrink: 0; color: #163f7a; font-size: 1.05rem; border-right: 1.5px solid #e8eaed; background: #f8fdfd; }
         .cf-input-box input, .cf-input-box select, .cf-input-box textarea { flex: 1; border: none !important; outline: none !important; box-shadow: none !important; background: transparent; font-size: .875rem; color: #202124; padding: 0 10px; height: 100%; appearance: none; -webkit-appearance: none; }
         .cf-input-box select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='%235f6368'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; padding-right: 28px; }
         .cf-input-box.cf-textarea-box { height: auto; align-items: flex-start; }
@@ -268,8 +268,8 @@
         
         /* Select2 wrapper */
         .cf-select2-wrap { position: relative; border: 1.5px solid #d1d5db; border-radius: 8px; overflow: hidden; background: #fff; display: flex; align-items: center; height: 42px; transition: border-color .15s, box-shadow .15s; }
-        .cf-select2-wrap:focus-within { border-color: #006666; box-shadow: 0 0 0 3px rgba(0,102,102,.08); }
-        .cf-select2-wrap .cf-icon-abs { display: flex; align-items: center; justify-content: center; width: 38px; height: 100%; flex-shrink: 0; color: #006666; font-size: 1.05rem; border-right: 1.5px solid #e8eaed; background: #f8fdfd; pointer-events: none; z-index: 2; }
+        .cf-select2-wrap:focus-within { border-color: #163f7a; box-shadow: 0 0 0 3px rgba(22, 63, 122,.08); }
+        .cf-select2-wrap .cf-icon-abs { display: flex; align-items: center; justify-content: center; width: 38px; height: 100%; flex-shrink: 0; color: #163f7a; font-size: 1.05rem; border-right: 1.5px solid #e8eaed; background: #f8fdfd; pointer-events: none; z-index: 2; }
         .cf-select2-wrap .select2-container { flex: 1; min-width: 0; }
         .cf-select2-wrap .select2-container--default .select2-selection--single { height: 42px; border: none !important; border-radius: 0; padding-left: 10px; display: flex; align-items: center; background: transparent; box-shadow: none !important; }
         .cf-select2-wrap .select2-container--default.select2-container--focus .select2-selection--single, .cf-select2-wrap .select2-container--default.select2-container--open .select2-selection--single { border: none !important; box-shadow: none !important; }
@@ -279,27 +279,27 @@
         .select2-dropdown { border: 1.5px solid #d1d5db; border-radius: 8px; box-shadow: 0 6px 24px rgba(0,0,0,.1); z-index: 99999 !important; overflow: hidden; }
         .select2-search--dropdown .select2-search__field { border: 1px solid #e0e0e0; border-radius: 6px; font-size: .85rem; padding: 6px 10px; }
         .select2-results__option { font-size: .85rem; padding: 8px 12px; }
-        .select2-results__option--highlighted { background: #006666 !important; color: #fff !important; }
+        .select2-results__option--highlighted { background: #163f7a !important; color: #fff !important; }
         .cf-select2-wrap select { border: 0 !important; outline: none !important; box-shadow: none !important; }
         
         /* Filter override for Select2 */
         .tk-project-filter-box .select2-container--default .select2-selection--single { height: 38px; border: 1.5px solid #d1d5db !important; border-radius: 10px !important; display: flex; align-items: center; padding-left: 12px; }
         .tk-project-filter-box .select2-container--default.select2-container--open .select2-selection--single,
-        .tk-project-filter-box .select2-container--default.select2-container--focus .select2-selection--single { border-color: #006666 !important; box-shadow: 0 0 0 3px rgba(0,102,102,.08) !important; }
+        .tk-project-filter-box .select2-container--default.select2-container--focus .select2-selection--single { border-color: #163f7a !important; box-shadow: 0 0 0 3px rgba(22, 63, 122,.08) !important; }
         
-        .cf-modal-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: linear-gradient(135deg, #005757, #007e7e); border-radius: 16px 16px 0 0; }
+        .cf-modal-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: linear-gradient(135deg, #005757, #163f7a); border-radius: 16px 16px 0 0; }
         .cf-modal-header-title { font-size: .975rem; font-weight: 700; color: #fff; margin: 0; }
         .cf-modal-header-sub { font-size: .73rem; color: rgba(255,255,255,.72); margin: 0; }
         .cf-modal-header .btn-close { filter: invert(1); opacity:.8; }
         .cf-modal-footer { padding: 12px 20px; border-top: 1px solid #e8eaed; display: flex; justify-content: flex-end; gap: 8px; background: #fff; border-radius: 0 0 16px 16px; }
         .cf-btn-cancel { font-size: .85rem; padding: 8px 20px; border-radius: 8px; border: 1.5px solid #d1d5db; background: #fff; color: #5f6368; cursor: pointer; transition: background .15s; }
         .cf-btn-cancel:hover { background: #f5f5f5; }
-        .cf-btn-save { font-size: .85rem; font-weight: 600; padding: 8px 22px; border-radius: 8px; border: none; background: #006666; color: #fff; cursor: pointer; transition: background .15s; display: flex; align-items: center; gap: 5px; }
+        .cf-btn-save { font-size: .85rem; font-weight: 600; padding: 8px 22px; border-radius: 8px; border: none; background: #163f7a; color: #fff; cursor: pointer; transition: background .15s; display: flex; align-items: center; gap: 5px; }
         .cf-btn-save:hover { background: #004e4e; }
         .cf-assignee-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; max-height: 180px; overflow-y: auto; }
         .cf-assignee-label { display: flex; align-items: center; gap: 6px; padding: 6px 10px; border: 1.5px solid #e8eaed; border-radius: 6px; cursor: pointer; font-size: 0.8rem; background: #fff; transition: all 0.2s; }
-        .cf-assignee-label:hover { border-color: #006666; background: #f8fdfd; }
-        .cf-assignee-label input[type="checkbox"] { accent-color: #006666; width: 14px; height: 14px; }
+        .cf-assignee-label:hover { border-color: #163f7a; background: #f8fdfd; }
+        .cf-assignee-label input[type="checkbox"] { accent-color: #163f7a; width: 14px; height: 14px; }
     </style>
 
     <div class="modal fade" id="createTaskModal" tabindex="-1" aria-labelledby="createTaskModalLabel" aria-hidden="true">
@@ -444,7 +444,7 @@
                         <div class="modal-dialog modal-xl modal-dialog-centered">
                             <div class="modal-content" style="border-radius:16px; border:none; box-shadow: 0 10px 40px rgba(0,0,0,0.2);">
                                 <div class="p-5 text-center">
-                                    <i class="bx bx-loader-alt bx-spin" style="font-size:2rem;color:#006666;"></i>
+                                    <i class="bx bx-loader-alt bx-spin" style="font-size:2rem;color:#163f7a;"></i>
                                     <p class="mt-2 text-muted">Loading Task Details...</p>
                                 </div>
                             </div>

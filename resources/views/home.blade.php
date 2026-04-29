@@ -12,10 +12,10 @@
         // Lead status counts for funnel
         $leadStatusMap = [
             1 => ['label' => 'New', 'color' => '#1a73e8'],
-            2 => ['label' => 'In Progress', 'color' => '#34a853'],
+            2 => ['label' => 'In Progress', 'color' => '#163f7a'],
             3 => ['label' => 'Follow-up', 'color' => '#fbbc04'],
             4 => ['label' => 'Negotiation', 'color' => '#ff6d00'],
-            5 => ['label' => 'Converted', 'color' => '#006666'],
+            5 => ['label' => 'Converted', 'color' => '#163f7a'],
             6 => ['label' => 'Rejected', 'color' => '#ea4335'],
         ];
         $leadByStatus = [];
@@ -66,7 +66,7 @@
                 {{-- ═══════════════════════ KPI CARDS ═══════════════════════ --}}
                 <div class="db-kpi-row">
 
-                    <a href="/invoices" class="db-kpi-card" style="--kc:#006666;">
+                    <a href="/invoices" class="db-kpi-card" style="--kc:#163f7a;">
                         <div class="db-kpi-icon"><i class="bx bx-receipt"></i></div>
                         <div class="db-kpi-body">
                             <div class="db-kpi-val">₹{{ number_format($outstandingInvoices, 0) }}</div>
@@ -76,7 +76,7 @@
                         <div class="db-kpi-glow"></div>
                     </a>
 
-                    <a href="/leads" class="db-kpi-card" style="--kc:#34a853;">
+                    <a href="/leads" class="db-kpi-card" style="--kc:#163f7a;">
                         <div class="db-kpi-icon"><i class="bx bx-trending-up"></i></div>
                         <div class="db-kpi-body">
                             <div class="db-kpi-val">{{ count($leads) }}</div>
@@ -130,7 +130,7 @@
                         </div>
                         <div class="db-qa-grid db-qa-grid-3col">
                             @if(in_array('leads', $roleArray) || in_array('All', $roleArray) || Auth::user()->role == '0')
-                                <a href="/manage-lead" class="db-qa-btn" style="--qa:#34a853;">
+                                <a href="/manage-lead" class="db-qa-btn" style="--qa:#163f7a;">
                                     <i class="bx bx-plus-circle"></i>
                                     <span>New Lead</span>
                                 </a>
@@ -148,7 +148,7 @@
                                 </a>
                             @endif
                             @if(in_array('invoice', $roleArray) || in_array('All', $roleArray))
-                                <a href="/manage-invoice" class="db-qa-btn" style="--qa:#006666;">
+                                <a href="/manage-invoice" class="db-qa-btn" style="--qa:#163f7a;">
                                     <i class="bx bx-receipt"></i>
                                     <span>New Invoice</span>
                                 </a>
@@ -181,7 +181,7 @@
                     {{-- Revenue Line Chart --}}
                     <div class="db-card">
                         <div class="db-card-head">
-                            <span class="db-card-icon" style="color:#34a853; background:rgba(52,168,83,.08);"><i class="bx bx-line-chart"></i></span>
+                            <span class="db-card-icon" style="color:#163f7a; background:rgba(52,168,83,.08);"><i class="bx bx-line-chart"></i></span>
                             <span class="db-card-title">Revenue Growth</span>
                             <span class="db-card-badge" style="background:#e8f5e9; color:#2e7d32;">{{ date('Y') }}</span>
                             <span class="ms-auto db-card-sub">Monthly revenue</span>
@@ -195,10 +195,10 @@
                     {{-- Lead Pipeline Donut --}}
                     <div class="db-card">
                         <div class="db-card-head">
-                            <span class="db-card-icon" style="color:#006666; background:rgba(0,102,102,.08);"><i
+                            <span class="db-card-icon" style="color:#163f7a; background:rgba(22, 63, 122,.08);"><i
                                     class="bx bx-pie-chart-alt-2"></i></span>
                             <span class="db-card-title">Lead Pipeline</span>
-                            <span class="db-card-badge" style="background:#e6f4f4; color:#006666;">{{ count($leads) }}
+                            <span class="db-card-badge" style="background:#e6f4f4; color:#163f7a;">{{ count($leads) }}
                                 Total</span>
                         </div>
                         <div class="db-donut-wrap">
@@ -277,7 +277,7 @@
                             @endforeach
                             @if(count($overdueLeadsList) == 0 && count($expiringProposals) == 0)
                                 <div class="db-empty-state">
-                                    <i class="bx bx-check-shield" style="font-size:2.2rem; color:#34a853;"></i>
+                                    <i class="bx bx-check-shield" style="font-size:2.2rem; color:#163f7a;"></i>
                                     <p>All clear!</p>
                                 </div>
                             @endif
@@ -317,7 +317,7 @@
             @else
                 {{-- ════════ MASTER VIEW ════════ --}}
                 <div class="db-grid-2 mb-28">
-                    <a href="/companies" class="db-kpi-card" style="--kc:#006666;">
+                    <a href="/companies" class="db-kpi-card" style="--kc:#163f7a;">
                         <div class="db-kpi-icon"><i class="bx bx-building"></i></div>
                         <div class="db-kpi-body">
                             <div class="db-kpi-val">Companies</div>
@@ -333,7 +333,7 @@
                             <div class="db-kpi-meta"><i class="bx bx-chevron-right"></i> Open Panel</div>
                         </div>
                     </a>
-                    <a href="/enquiries" class="db-kpi-card" style="--kc:#34a853;">
+                    <a href="/enquiries" class="db-kpi-card" style="--kc:#163f7a;">
                         <div class="db-kpi-icon"><i class="bx bx-mail-send"></i></div>
                         <div class="db-kpi-body">
                             <div class="db-kpi-val">Enquiries</div>
@@ -375,7 +375,7 @@
 
         /* ── Hero Banner ── */
         .db-hero {
-            background: linear-gradient(135deg, #005757 0%, #007e7e 60%, #34a853 100%);
+            background: linear-gradient(135deg, #005757 0%, #163f7a 60%, #163f7a 100%);
             border-radius: 20px;
             padding: 28px 32px;
             display: flex;
@@ -874,7 +874,7 @@
             height: 32px;
             border-radius: 50%;
             flex-shrink: 0;
-            background: linear-gradient(135deg, #006666, #34a853);
+            background: linear-gradient(135deg, #163f7a, #163f7a);
             color: #fff;
             font-size: 0.8rem;
             font-weight: 800;
@@ -1081,10 +1081,10 @@
                     datasets: [{
                         label: 'Revenue (₹)',
                         data: monthlyRevenue,
-                        borderColor: '#34a853',
+                        borderColor: '#163f7a',
                         backgroundColor: 'rgba(52,168,83,0.15)',
                         fill: true, tension: 0.45,
-                        pointBackgroundColor: '#34a853', pointRadius: 4, pointHoverRadius: 7, borderWidth: 2.5
+                        pointBackgroundColor: '#163f7a', pointRadius: 4, pointHoverRadius: 7, borderWidth: 2.5
                     }]
                 },
                 options: {
@@ -1108,7 +1108,7 @@
             // ── Lead Pipeline Donut Chart ──
             const donutCtx = document.getElementById('leadsDonutChart').getContext('2d');
             const donutData = {!! json_encode(array_values(array_map(fn($s) => $leadByStatus[$s] ?? 0, array_keys($leadStatusMap)))) !!};
-            const donutColors = ['#1a73e8', '#34a853', '#fbbc04', '#ff6d00', '#006666', '#ea4335'];
+            const donutColors = ['#1a73e8', '#163f7a', '#fbbc04', '#ff6d00', '#163f7a', '#ea4335'];
             const donutLabels = {!! json_encode(array_values(array_map(fn($m) => $m['label'], $leadStatusMap))) !!};
             new Chart(donutCtx, {
                 type: 'doughnut',
@@ -1131,7 +1131,7 @@
             const actLabels = {!! json_encode($activityChartLabels) !!};
             const actDatasets = {!! json_encode($activityChartDatasets) !!};
             const palette = ['rgba(52,168,83,.7)', 'rgba(26,115,232,.7)', 'rgba(139,92,246,.7)',
-                'rgba(251,188,4,.7)', 'rgba(234,67,53,.7)', 'rgba(0,102,102,.7)'];
+                'rgba(251,188,4,.7)', 'rgba(234,67,53,.7)', 'rgba(22, 63, 122,.7)'];
             const _actCfg = {
                 type: 'bar',
                 data: {

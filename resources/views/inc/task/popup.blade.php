@@ -86,7 +86,7 @@
                             .cf-nav-tabs::-webkit-scrollbar-thumb { background: #c1c5cb; border-radius: 4px; }
                             .cf-nav-tabs .nav-item { margin-bottom: -1px; }
                             .cf-nav-tabs .nav-link { color: #6c757d; font-weight: 600; border: none; border-bottom: 3px solid transparent; background: transparent !important; padding: 10px 16px; transition: 0.2s; white-space: nowrap; }
-                            .cf-nav-tabs .nav-link.active { color: #006666; border-bottom: 3px solid #006666; }
+                            .cf-nav-tabs .nav-link.active { color: #163f7a; border-bottom: 3px solid #163f7a; }
                             .cf-nav-tabs .nav-link:hover:not(.active) { border-bottom: 3px solid #d1d5db; color: #495057; }
                         </style>
 
@@ -138,7 +138,7 @@
                                     
                         <div class="bg-white border rounded p-3" style="border-color:#d1d5db;">
                             <div class="d-flex justify-content-end mb-2">
-                                <button type="button" class="btn btn-sm" onclick="document.getElementById('taskAttachmentInput').click()" style="background:rgba(0,102,102,0.1); color:#006666; font-weight:600;">
+                                <button type="button" class="btn btn-sm" onclick="document.getElementById('taskAttachmentInput').click()" style="background:rgba(22, 63, 122,0.1); color:#163f7a; font-weight:600;">
                                     <i class="bx bx-upload"></i> Upload
                                 </button>
                                 <input type="file" id="taskAttachmentInput" style="display:none;" onchange="uploadTaskAttachment(this)" />
@@ -178,7 +178,7 @@
                                 @csrf
                                 <input type="hidden" name="commenttaskid" value="{{ $task->id }}" />
                                 <div class="d-flex gap-2">
-                                    <div class="et-auth-avatar" style="width:32px; height:32px; border-radius:50%; background:#006666; color:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:0.8rem; font-weight:bold;">
+                                    <div class="et-auth-avatar" style="width:32px; height:32px; border-radius:50%; background:#163f7a; color:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:0.8rem; font-weight:bold;">
                                         {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
                                     </div>
                                     <div class="flex-grow-1">
@@ -186,7 +186,7 @@
                                             <textarea name="taskcomment" rows="2" id="commentInputs" placeholder="Write a comment… (Ctrl+Enter to post)" required style="width:100%; border:none; resize:none; padding:10px; border-radius:6px; outline:none;"></textarea>
                                         </div>
                                         <div class="mt-2 d-flex align-items-center gap-2">
-                                            <button type="submit" class="btn btn-sm text-white" style="font-size:0.8rem; font-weight:600; padding:4px 16px; background:#006666; border-radius:6px;"><i class="bx bx-send"></i> Post</button>
+                                            <button type="submit" class="btn btn-sm text-white" style="font-size:0.8rem; font-weight:600; padding:4px 16px; background:#163f7a; border-radius:6px;"><i class="bx bx-send"></i> Post</button>
                                             <span id="res1" class="small text-success fw-bold"></span>
                                         </div>
                                     </div>
@@ -199,10 +199,10 @@
                                     @foreach($taskComments as $c)
                                         @php $isMine = $c->uid == Auth::user()->id; @endphp
                                         <div class="d-flex gap-3 {{ $isMine ? 'flex-row-reverse' : '' }}">
-                                            <div style="width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:0.75rem; font-weight:700; {{ $isMine ? 'background:rgba(0,102,102,0.12);color:#006666;' : 'background:rgba(26,115,232,0.10);color:#1a73e8;' }}">
+                                            <div style="width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:0.75rem; font-weight:700; {{ $isMine ? 'background:rgba(22, 63, 122,0.12);color:#163f7a;' : 'background:rgba(26,115,232,0.10);color:#1a73e8;' }}">
                                                 {{ strtoupper(substr($c->name ?? 'U', 0, 1)) }}
                                             </div>
-                                            <div class="p-2 px-3 rounded shadow-sm" style="{{ $isMine ? 'background:#006666; color:#fff;' : 'background:#fff; border:1px solid #e8eaed;' }} max-width:85%;">
+                                            <div class="p-2 px-3 rounded shadow-sm" style="{{ $isMine ? 'background:#163f7a; color:#fff;' : 'background:#fff; border:1px solid #e8eaed;' }} max-width:85%;">
                                                 <div class="small fw-bold mb-1" style="{{ $isMine ? 'color:rgba(255,255,255,0.9);' : 'color:#202124;' }}">{{ $c->name ?? 'Unknown' }}</div>
                                                 <div class="small" style="line-height:1.4;">{{ $c->comments }}</div>
                                                 <div style="font-size:0.65rem; margin-top:6px; {{ $isMine ? 'color:rgba(255,255,255,0.7);' : 'color:#9aa0a6;' }} text-align:{{ $isMine?'right':'left' }};">
@@ -233,7 +233,7 @@
                                 {{-- Status --}}
                                 <label class="d-flex align-items-center gap-1"><i class="bx bx-radio-circle-marked"></i> Task Status</label>
                                 @php
-                                    $statusMap = ['0'=>['#80868b','Open'], '1'=>['#ea4335','Urgent'], '2'=>['#f29900','Pending'], '3'=>['#1a73e8','In Progress'], '4'=>['#34a853','Done'], '5'=>['#006666','Closed']];
+                                    $statusMap = ['0'=>['#80868b','Open'], '1'=>['#ea4335','Urgent'], '2'=>['#f29900','Pending'], '3'=>['#1a73e8','In Progress'], '4'=>['#163f7a','Done'], '5'=>['#163f7a','Closed']];
                                     [$sColor, $sLabel] = $statusMap[$task->status] ?? ['#80868b','Open'];
                                 @endphp
                                 <div id="statusWrapper" class="cf-input-box px-2" style="border-color:{{ $sColor }}; border-width:2px; height:42px;">
@@ -264,14 +264,14 @@
                                 <div class="d-flex flex-wrap gap-1 mb-2">
                                     @forelse($task->assignees as $assignee)
                                         <div class="badge bg-light text-dark border p-1 px-2 d-flex align-items-center gap-1" title="{{ $assignee->name }}">
-                                            <div style="width:18px; height:18px; border-radius:50%; background:#006666; color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.5rem;">{{ strtoupper(substr($assignee->name, 0, 1)) }}</div>
+                                            <div style="width:18px; height:18px; border-radius:50%; background:#163f7a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.5rem;">{{ strtoupper(substr($assignee->name, 0, 1)) }}</div>
                                             {{ explode(' ', $assignee->name)[0] }}
                                         </div>
                                     @empty
                                         @php $primary = $userSingle[0] ?? null; @endphp
                                         @if($primary)
                                             <div class="badge bg-light text-dark border p-1 px-2 d-flex align-items-center gap-1" title="{{ $primary->name }}">
-                                                <div style="width:18px; height:18px; border-radius:50%; background:#006666; color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.5rem;">{{ strtoupper(substr($primary->name, 0, 1)) }}</div>
+                                                <div style="width:18px; height:18px; border-radius:50%; background:#163f7a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.5rem;">{{ strtoupper(substr($primary->name, 0, 1)) }}</div>
                                                 {{ explode(' ', $primary->name)[0] }}
                                             </div>
                                         @else
@@ -284,12 +284,12 @@
                                     <div class="bg-light border rounded px-1 pt-1 mt-2" style="max-height:160px; overflow-y:auto;">
                                         @foreach($allUsers as $u)
                                             <label class="d-flex align-items-center gap-2 mb-1 p-1 px-2 rounded" style="cursor:pointer; font-size:0.75rem; font-weight:500; transition:0.2s;">
-                                                <input type="checkbox" class="et-assignee-chk" name="assignee_ids[]" value="{{ $u->id }}" {{ in_array($u->id, $currentAssigneeIds) ? 'checked' : '' }} style="accent-color:#006666; width:14px; height:14px;" />
+                                                <input type="checkbox" class="et-assignee-chk" name="assignee_ids[]" value="{{ $u->id }}" {{ in_array($u->id, $currentAssigneeIds) ? 'checked' : '' }} style="accent-color:#163f7a; width:14px; height:14px;" />
                                                 {{ $u->name }}
                                             </label>
                                         @endforeach
                                     </div>
-                                    <button type="button" class="btn btn-sm mt-2 w-100" id="saveAssigneesBtn" data-taskid="{{ $task->id }}" style="background:rgba(0,102,102,0.1); color:#006666; font-weight:600;">
+                                    <button type="button" class="btn btn-sm mt-2 w-100" id="saveAssigneesBtn" data-taskid="{{ $task->id }}" style="background:rgba(22, 63, 122,0.1); color:#163f7a; font-weight:600;">
                                         <i class="bx bx-save"></i> Update Assignees
                                     </button>
                                 @endif
@@ -318,7 +318,7 @@
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center px-1">
                                     <span class="small text-muted fw-bold"><i class="bx bx-calculator"></i> Total Logged Time</span>
-                                    <strong style="color:#006666; font-size:1.1rem;">{{ $th }}h {{ $tm }}m</strong>
+                                    <strong style="color:#163f7a; font-size:1.1rem;">{{ $th }}h {{ $tm }}m</strong>
                                 </div>
                             </div>
                         @endif
@@ -389,8 +389,8 @@
                 '1': { color: '#ea4335', label: 'Urgent' },
                 '2': { color: '#f29900', label: 'Pending' },
                 '3': { color: '#1a73e8', label: 'In Progress' },
-                '4': { color: '#34a853', label: 'Done' },
-                '5': { color: '#006666', label: 'Closed' }
+                '4': { color: '#163f7a', label: 'Done' },
+                '5': { color: '#163f7a', label: 'Closed' }
             };
             const sc = statusMap[this.value] || statusMap['0'];
 

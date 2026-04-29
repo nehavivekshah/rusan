@@ -9,7 +9,7 @@
             <div class="dash-card p-0" style="width: 100%; max-width: 440px; background: #fff; border: 1px solid #e8eaed; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.04);">
                 
                 {{-- Card Header --}}
-                <div class="p-4 border-bottom text-center" style="background: linear-gradient(135deg, #006666, #004d4d); border-radius: 20px 20px 0 0;">
+                <div class="p-4 border-bottom text-center" style="background: linear-gradient(135deg, #163f7a, #004d4d); border-radius: 20px 20px 0 0;">
                     <div class="mb-3" style="width: 60px; height: 60px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
                         <i class="bx bx-shield-quarter text-white" style="font-size: 2rem;"></i>
                     </div>

@@ -5,12 +5,12 @@
 .cf-section-title {
     font-size: .75rem;
     font-weight: 700;
-    color: #006666;
+    color: #163f7a;
     text-transform: uppercase;
     letter-spacing: .08em;
     margin: 24px 0 12px;
     padding-bottom: 6px;
-    border-bottom: 2px solid rgba(0, 102, 102, 0.08);
+    border-bottom: 2px solid rgba(22, 63, 122, 0.08);
 }
 .cf-section-title:first-child { margin-top: 0; }
 
@@ -19,12 +19,12 @@
     width: 100%; padding: 10px 14px; border: 1.5px solid #e8eaed; border-radius: 10px;
     font-size: 0.88rem; transition: all 0.2s; background: #fff;
 }
-.cf-input:focus { border-color: #006666; outline: none; box-shadow: 0 0 0 3px rgba(0,102,102,0.1); }
+.cf-input:focus { border-color: #163f7a; outline: none; box-shadow: 0 0 0 3px rgba(22, 63, 122,0.1); }
 .cf-input:placeholder { color: #9aa0a6; }
 .cf-input:disabled { background: #f8f9fa; cursor: not-allowed; }
 
 .cf-header {
-    background: linear-gradient(135deg, #006666, #004d4d);
+    background: linear-gradient(135deg, #163f7a, #004d4d);
     padding: 24px 28px;
     border-radius: 16px 16px 0 0;
     color: #fff;

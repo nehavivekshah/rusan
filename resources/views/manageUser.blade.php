@@ -25,7 +25,7 @@
                             <i class="bx bx-arrow-back"></i>
                         </a>
                     @else
-                        <div class="ml-back-btn" style="pointer-events: none; background: rgba(0,102,102,0.1); color: #006666;">
+                        <div class="ml-back-btn" style="pointer-events: none; background: rgba(22, 63, 122,0.1); color: #163f7a;">
                             <i class="bx bx-user-circle"></i>
                         </div>
                     @endif
@@ -82,7 +82,7 @@
                         <div class="ml-card">
                             <div class="ml-card-header d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center gap-3">
-                                    <div class="ml-card-icon" style="background:rgba(0,102,102,0.1);color:#006666;">
+                                    <div class="ml-card-icon" style="background:rgba(22, 63, 122,0.1);color:#163f7a;">
                                         <i class="bx bx-user-detail"></i>
                                     </div>
                                     <div>
@@ -238,7 +238,7 @@
                     <div class="col-lg-4">
                         <div class="ml-card" id="previewCard">
                             {{-- Section: Live Preview --}}
-                            <div class="ml-card-body text-center bg-light" style="background-color:rgba(0,102,102,0.02) !important;">
+                            <div class="ml-card-body text-center bg-light" style="background-color:rgba(22, 63, 122,0.02) !important;">
                                 <div class="mb-3">
                                     <span class="text-muted small fw-bold text-uppercase text-center">
                                         <i class="bx bx-show"></i> Live Preview
@@ -311,7 +311,7 @@
             width: 70px;
             height: 70px;
             border-radius: 18px;
-            background: linear-gradient(135deg, #006666, #009688);
+            background: linear-gradient(135deg, #163f7a, #0f2d57);
             color: #fff;
             font-size: 1.8rem;
             font-weight: 800;
@@ -319,7 +319,7 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 12px;
-            box-shadow: 0 4px 10px rgba(0,102,102,0.2);
+            box-shadow: 0 4px 10px rgba(22, 63, 122,0.2);
             overflow: hidden;
         }
 
@@ -349,8 +349,8 @@
 
         .preview-type {
             display: inline-block;
-            background: rgba(0, 102, 102, 0.08);
-            color: #006666;
+            background: rgba(22, 63, 122, 0.08);
+            color: #163f7a;
             font-size: 0.72rem;
             font-weight: 600;
             border-radius: 20px;

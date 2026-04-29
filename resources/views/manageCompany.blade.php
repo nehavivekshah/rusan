@@ -229,7 +229,7 @@
                         <div class="col-md-2 mc-field" data-tax="{{ $label }}">
                             <label>{{ $label }} Rate (%)</label>
                             <div class="mc-input-box">
-                                <span class="mc-icon" style="font-size:0.75rem; font-weight:700; color:#006666;">%</span>
+                                <span class="mc-icon" style="font-size:0.75rem; font-weight:700; color:#163f7a;">%</span>
                                 <input type="number" step="0.01" min="0" max="100"
                                        name="tax_rates[]"
                                        value="{{ $rates[$i] }}"
@@ -250,7 +250,7 @@
                         <div class="col-md-2 mc-field" data-tax="VAT">
                             <label>VAT Rate (%)</label>
                             <div class="mc-input-box">
-                                <span class="mc-icon" style="font-size:0.75rem; font-weight:700; color:#006666;">%</span>
+                                <span class="mc-icon" style="font-size:0.75rem; font-weight:700; color:#163f7a;">%</span>
                                 <input type="number" step="0.01" min="0" max="100"
                                        name="tax_rates[]"
                                        value="{{ $rates[3] }}"
@@ -329,7 +329,7 @@
 /* ── Banner ── */
 .mc-banner {
     display: flex; align-items: center; gap: 18px;
-    background: linear-gradient(135deg, #005757, #007e7e);
+    background: linear-gradient(135deg, #005757, #163f7a);
     border-radius: 18px; padding: 20px 24px;
     color: #fff; flex-wrap: wrap;
 }
@@ -360,7 +360,7 @@
 .mc-form-header {
     display: flex; align-items: center; justify-content: space-between;
     padding: 20px 28px;
-    background: linear-gradient(135deg, #005757, #007e7e);
+    background: linear-gradient(135deg, #005757, #163f7a);
 }
 .mc-form-header-title { font-size: 1rem; font-weight: 700; color: #fff; margin: 0; }
 .mc-form-header-sub   { font-size: 0.74rem; color: rgba(255,255,255,.72); margin: 4px 0 0; }
@@ -378,10 +378,10 @@
 
 /* ── Section Title ── */
 .mc-section-title {
-    font-size: 0.72rem; font-weight: 700; color: #006666;
+    font-size: 0.72rem; font-weight: 700; color: #163f7a;
     text-transform: uppercase; letter-spacing: .07em;
     margin: 24px 0 14px; padding-bottom: 5px;
-    border-bottom: 1.5px solid rgba(0,102,102,.12);
+    border-bottom: 1.5px solid rgba(22, 63, 122,.12);
 }
 .mc-section-title:first-child { margin-top: 0; }
 
@@ -398,13 +398,13 @@
     transition: border-color .15s, box-shadow .15s; height: 44px;
 }
 .mc-input-box:focus-within {
-    border-color: #006666;
-    box-shadow: 0 0 0 3px rgba(0,102,102,.08);
+    border-color: #163f7a;
+    box-shadow: 0 0 0 3px rgba(22, 63, 122,.08);
 }
 .mc-icon {
     display: flex; align-items: center; justify-content: center;
     width: 40px; height: 100%; flex-shrink: 0;
-    color: #006666; font-size: 1.05rem;
+    color: #163f7a; font-size: 1.05rem;
     border-right: 1.5px solid #e8eaed; background: #f8fdfd;
 }
 .mc-input-box input,
@@ -428,8 +428,8 @@
     transition: border-color .15s, box-shadow .15s;
     position: relative;
 }
-.mc-file-box:hover { border-color: #006666; box-shadow: 0 0 0 3px rgba(0,102,102,.06); }
-.mc-file-icon { color: #006666; font-size: 1.4rem; }
+.mc-file-box:hover { border-color: #163f7a; box-shadow: 0 0 0 3px rgba(22, 63, 122,.06); }
+.mc-file-icon { color: #163f7a; font-size: 1.4rem; }
 .mc-file-preview { display: flex; align-items: center; }
 .mc-file-label { font-size: 0.8rem; color: #80868b; }
 .mc-file-input {
@@ -445,8 +445,8 @@
     text-transform: capitalize;
 }
 .mc-plan-option input[type="radio"] { display: none; }
-.mc-plan-option:hover { border-color: #006666; color: #006666; background: rgba(0,102,102,0.04); }
-.mc-plan-active { border-color: #006666; color: #006666; background: rgba(0,102,102,0.06) !important; }
+.mc-plan-option:hover { border-color: #163f7a; color: #163f7a; background: rgba(22, 63, 122,0.04); }
+.mc-plan-active { border-color: #163f7a; color: #163f7a; background: rgba(22, 63, 122,0.06) !important; }
 
 /* ── Footer ── */
 .mc-form-footer {
@@ -463,7 +463,7 @@
 .mc-btn-save {
     display: inline-flex; align-items: center; gap: 5px;
     font-size: 0.85rem; font-weight: 700; padding: 9px 24px; border-radius: 10px;
-    border: none; background: #006666; color: #fff;
+    border: none; background: #163f7a; color: #fff;
     cursor: pointer; transition: background .15s;
 }
 .mc-btn-save:hover { background: #004e4e; }
@@ -474,7 +474,7 @@
     border-radius: 10px; padding: 12px 16px;
     font-size: 0.85rem; font-weight: 500; margin-bottom: 20px;
 }
-.mc-alert-success { background: rgba(52,168,83,0.08); border:1px solid rgba(52,168,83,0.25); color: #34a853; }
+.mc-alert-success { background: rgba(52,168,83,0.08); border:1px solid rgba(52,168,83,0.25); color: #163f7a; }
 .mc-alert-error   { background: rgba(234,67,53,0.08); border:1px solid rgba(234,67,53,0.25); color: #ea4335; }
 
 @media (max-width: 768px) {

@@ -28,11 +28,11 @@
                     </div>
                 </div>
                 <div class="rv-stat-card">
-                    <div class="rv-stat-icon" style="background:rgba(52,168,83,0.1);color:#34a853;">
+                    <div class="rv-stat-icon" style="background:rgba(52,168,83,0.1);color:#163f7a;">
                         <i class="bx bx-rocket"></i>
                     </div>
                     <div>
-                        <div class="rv-stat-num" style="color:#34a853;">{{ $activeCount }}</div>
+                        <div class="rv-stat-num" style="color:#163f7a;">{{ $activeCount }}</div>
                         <div class="rv-stat-label">Active</div>
                     </div>
                 </div>
@@ -103,7 +103,7 @@
                                                     'WhatsApp' => ['bx bxl-whatsapp', '#25d366'],
                                                     'Email' => ['bx bx-envelope', '#ea4335'],
                                                     'SMS' => ['bx bx-message-rounded-dots', '#1a73e8'],
-                                                    'Web Form' => ['bx bx-window-alt', '#006666']
+                                                    'Web Form' => ['bx bx-window-alt', '#163f7a']
                                                 ][$camp->type] ?? ['bx bx-broadcast', '#5f6368'];
                                             @endphp
                                             <div class="lb-avatar-sm" style="background:{{ $channelData[1] }}15; color:{{ $channelData[1] }}; border:none;">
@@ -114,7 +114,7 @@
                                     </td>
                                     <td>
                                         @php
-                                            $stColor = $camp->status === 'Active' ? '#34a853' : '#80868b';
+                                            $stColor = $camp->status === 'Active' ? '#163f7a' : '#80868b';
                                         @endphp
                                         <span class="rv-status-pill" style="background:{{ $stColor }}15; color:{{ $stColor }};">
                                             <i class="bx {{ $camp->status === 'Active' ? 'bx-check-circle' : 'bx-time' }}"></i>
@@ -128,7 +128,7 @@
                                                     <i class="bx bx-rocket"></i>
                                                 </button>
                                             @else
-                                                <button class="btn kb-action-btn disabled" title="Running" style="background:rgba(52,168,83,0.1); color:#34a853;">
+                                                <button class="btn kb-action-btn disabled" title="Running" style="background:rgba(52,168,83,0.1); color:#163f7a;">
                                                     <i class="bx bx-check"></i>
                                                 </button>
                                             @endif
@@ -164,7 +164,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" style="border-radius:16px; border:none; box-shadow:0 10px 30px rgba(0,0,0,0.1);">
                 <div class="modal-header border-0 pb-0 pt-4 px-4">
-                    <h5 class="modal-title fw-800" style="color:#006666;">Create New Campaign</h5>
+                    <h5 class="modal-title fw-800" style="color:#163f7a;">Create New Campaign</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="{{ route('campaigns.store') }}" method="POST">
@@ -221,7 +221,7 @@
         .rv-empty span { font-size: 0.95rem; font-weight: 500; display: block; margin-bottom: 15px; }
 
         /* ── Form Inputs ── */
-        .form-control:focus, .form-select:focus { border-color: #006666; box-shadow: 0 0 0 0.2rem rgba(0, 102, 102, 0.1); }
+        .form-control:focus, .form-select:focus { border-color: #163f7a; box-shadow: 0 0 0 0.2rem rgba(22, 63, 122, 0.1); }
     </style>
 
     <script>
@@ -240,9 +240,9 @@
                         id: id
                     }, function (res) {
                         if (res.success) {
-                            row.find('.rv-status-pill').css({'background': '#34a85315', 'color': '#34a853'})
+                            row.find('.rv-status-pill').css({'background': '#163f7a15', 'color': '#163f7a'})
                                .html('<i class="bx bx-check-circle"></i> Active');
-                            btn.replaceWith('<button class="btn kb-action-btn disabled" title="Running" style="background:rgba(52,168,83,0.1); color:#34a853;"><i class="bx bx-check"></i></button>');
+                            btn.replaceWith('<button class="btn kb-action-btn disabled" title="Running" style="background:rgba(52,168,83,0.1); color:#163f7a;"><i class="bx bx-check"></i></button>');
                         } else {
                             alert('Launch failed. Please check campaign settings.');
                             btn.prop('disabled', false).html('<i class="bx bx-rocket"></i>');

@@ -24,7 +24,7 @@
             {{-- ── Stat Cards Row ── --}}
             <div class="pj-stat-row mb-4">
                 <div class="pj-stat-card">
-                    <div class="pj-stat-icon" style="background:rgba(0,102,102,0.1);color:#006666;">
+                    <div class="pj-stat-icon" style="background:rgba(22, 63, 122,0.1);color:#163f7a;">
                         <i class="bx bx-layer"></i>
                     </div>
                     <div>
@@ -42,11 +42,11 @@
                     </div>
                 </div>
                 <div class="pj-stat-card">
-                    <div class="pj-stat-icon" style="background:rgba(52,168,83,0.1);color:#34a853;">
+                    <div class="pj-stat-icon" style="background:rgba(52,168,83,0.1);color:#163f7a;">
                         <i class="bx bx-check-circle"></i>
                     </div>
                     <div>
-                        <div class="pj-stat-num" style="color:#34a853;">₹{{ number_format($totalRecovered, 0) }}</div>
+                        <div class="pj-stat-num" style="color:#163f7a;">₹{{ number_format($totalRecovered, 0) }}</div>
                         <div class="pj-stat-label">Total Recovered</div>
                     </div>
                 </div>
@@ -109,12 +109,12 @@
                         $paid = $project->total_paid ?? 0;
                         $amount = $project->amount ?? 0;
                         $pct = $amount > 0 ? min(100, round(($paid / $amount) * 100)) : 0;
-                        $pctColor = $pct >= 80 ? '#34a853' : ($pct >= 40 ? '#fbbc04' : '#ea4335');
+                        $pctColor = $pct >= 80 ? '#163f7a' : ($pct >= 40 ? '#fbbc04' : '#ea4335');
                         $remaining = $amount - $paid;
                     @endphp
                     <div class="pj-card project-row-click" data-url="/project/view/{{ $project->id }}">
                         {{-- Top accent --}}
-                        <div class="pj-card-accent" style="background: linear-gradient(90deg, #006666, #009688);"></div>
+                        <div class="pj-card-accent" style="background: linear-gradient(90deg, #163f7a, #0f2d57);"></div>
 
                         {{-- Header --}}
                         <div class="pj-card-header">
@@ -130,7 +130,7 @@
                                     @endif
                                     @if($project->batchNo)
                                         <span class="badge bg-info text-white border-0 ms-1"
-                                            style="font-size:0.55rem; background: #006666 !important;">{{ $project->batchNo }}</span>
+                                            style="font-size:0.55rem; background: #163f7a !important;">{{ $project->batchNo }}</span>
                                     @endif
                                 </div>
                             </div>
@@ -155,7 +155,7 @@
                                     </a>
                                 @endif
                                 <a href="/manage-project?id={{ $project->id }}" class="btn kb-action-btn" title="Edit"
-                                    style="background:rgba(0,102,102,0.08);color:#006666;"
+                                    style="background:rgba(22, 63, 122,0.08);color:#163f7a;"
                                     onclick="event.stopPropagation();">
                                     <i class="bx bx-pencil"></i>
                                 </a>
@@ -201,11 +201,11 @@
                             </div>
                             <div class="pj-finance-row">
                                 <span>Recovered</span>
-                                <span class="pj-finance-val" style="color:#34a853;">₹{{ number_format($paid, 0) }}</span>
+                                <span class="pj-finance-val" style="color:#163f7a;">₹{{ number_format($paid, 0) }}</span>
                             </div>
                             <div class="pj-finance-row">
                                 <span>Pending</span>
-                                <span class="pj-finance-val" style="color:{{ $remaining > 0 ? '#ea4335' : '#34a853' }};">
+                                <span class="pj-finance-val" style="color:{{ $remaining > 0 ? '#ea4335' : '#163f7a' }};">
                                     ₹{{ number_format($remaining, 0) }}
                                 </span>
                             </div>
@@ -259,7 +259,7 @@
                                     $paid = $project->total_paid ?? 0;
                                     $amt = $project->amount ?? 0;
                                     $pct = $amt > 0 ? min(100, round(($paid / $amt) * 100)) : 0;
-                                    $pctColor = $pct >= 80 ? '#34a853' : ($pct >= 40 ? '#fbbc04' : '#ea4335');
+                                    $pctColor = $pct >= 80 ? '#163f7a' : ($pct >= 40 ? '#fbbc04' : '#ea4335');
                                     $isDone = ($project->status == 0);
                                 @endphp
                                 <tr class="pointer-cursor selectrow project-row-click" data-url="/project/view/{{ $project->id }}">
@@ -270,13 +270,13 @@
                                             #PROJ-{{ str_pad($project->id, 4, '0', STR_PAD_LEFT) }}
                                         @endif
                                     </td>
-                                    <td class="fw-600" style="font-size:0.8rem; color:#006666;">
+                                    <td class="fw-600" style="font-size:0.8rem; color:#163f7a;">
                                         {{ $project->batchNo ?? '—' }}
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center gap-2">
                                             <div class="lb-avatar-sm"
-                                                style="background:linear-gradient(135deg,#006666,#009688);color:#fff;">
+                                                style="background:linear-gradient(135deg,#163f7a,#0f2d57);color:#fff;">
                                                 {{ strtoupper(substr($project->name, 0, 1)) }}
                                             </div>
                                             <div class="min-w-0">
@@ -303,7 +303,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="fw-bold" style="color:#006666;">₹{{ number_format($project->amount, 0) }}
+                                        <div class="fw-bold" style="color:#163f7a;">₹{{ number_format($project->amount, 0) }}
                                         </div>
                                         <div class="d-flex align-items-center gap-1 mt-1" style="font-size:0.65rem;">
                                             <div
@@ -435,9 +435,9 @@
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            background: rgba(0, 102, 102, 0.08);
-            border: 1px solid rgba(0, 102, 102, 0.2);
-            color: #006666;
+            background: rgba(22, 63, 122, 0.08);
+            border: 1px solid rgba(22, 63, 122, 0.2);
+            color: #163f7a;
             border-radius: 20px;
             padding: 3px 10px;
             font-size: 0.75rem;
@@ -529,7 +529,7 @@
 
         .pj-view-btn.active {
             background: #fff;
-            color: #006666;
+            color: #163f7a;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
         }
 
@@ -572,7 +572,7 @@
             width: 42px;
             height: 42px;
             border-radius: 12px;
-            background: linear-gradient(135deg, #006666, #009688);
+            background: linear-gradient(135deg, #163f7a, #0f2d57);
             color: #fff;
             font-size: 1.1rem;
             font-weight: 700;
@@ -617,7 +617,7 @@
         }
 
         .pj-card-client i {
-            color: #006666;
+            color: #163f7a;
             font-size: 0.9rem;
         }
 
@@ -627,8 +627,8 @@
 
         .pj-type-pill {
             display: inline-block;
-            background: rgba(0, 102, 102, 0.08);
-            color: #006666;
+            background: rgba(22, 63, 122, 0.08);
+            color: #163f7a;
             font-size: 0.68rem;
             font-weight: 600;
             border-radius: 20px;

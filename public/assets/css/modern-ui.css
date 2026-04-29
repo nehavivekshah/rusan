@@ -54,14 +54,14 @@
 }
 
 /* Override specific hex codes if used in inline styles or other places */
-[style*="color: #34a853"], [style*="color:#34a853"],
+[style*="color: #163f7a"], [style*="color:#163f7a"],
 [style*="color: #28a745"], [style*="color:#28a745"],
 [style*="color: #25d366"], [style*="color:#25d366"] {
     color: var(--primary-color) !important;
 }
 
-[style*="background-color: #34a853"], [style*="background-color:#34a853"],
-[style*="background: #34a853"], [style*="background:#34a853"],
+[style*="background-color: #163f7a"], [style*="background-color:#163f7a"],
+[style*="background: #163f7a"], [style*="background:#163f7a"],
 [style*="background-color: #28a745"], [style*="background-color:#28a745"] {
     background-color: var(--primary-color) !important;
 }
@@ -394,12 +394,12 @@ table.dataTable tbody tr:last-child td {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(0, 102, 102, 0.2);
+    background: rgba(22, 63, 122, 0.2);
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 102, 102, 0.4);
+    background: rgba(22, 63, 122, 0.4);
 }
 
 /* ================== LEADS TOOLBAR OPTIMIZATION ================== */
@@ -475,7 +475,7 @@ table.dataTable tbody tr:last-child td {
 .lb-btn-secondary {
     background: #e6f4f1 !important;
     color: var(--primary-color) !important;
-    border: 1px solid rgba(0, 102, 102, 0.1) !important;
+    border: 1px solid rgba(22, 63, 122, 0.1) !important;
 }
 
 .lb-btn-secondary:hover {
@@ -607,8 +607,8 @@ table.dataTable tbody tr:last-child td {
     .lb-page-count {
         width: 100% !important;
         justify-content: center !important;
-        background: rgba(0, 102, 102, 0.05) !important;
-        border: 1px solid rgba(0, 102, 102, 0.1) !important;
+        background: rgba(22, 63, 122, 0.05) !important;
+        border: 1px solid rgba(22, 63, 122, 0.1) !important;
         padding: 8px 15px !important;
         font-size: 0.85rem !important;
     }

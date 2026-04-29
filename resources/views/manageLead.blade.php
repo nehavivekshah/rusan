@@ -114,7 +114,7 @@
                     <div class="col-lg-6">
                         <div class="ml-card">
                             <div class="ml-card-header">
-                                <div class="ml-card-icon" style="background:rgba(52,168,83,0.10); color:#34a853;">
+                                <div class="ml-card-icon" style="background:rgba(52,168,83,0.10); color:#163f7a;">
                                     <i class="bx bx-briefcase"></i>
                                 </div>
                                 <div>
@@ -329,7 +329,7 @@
                         <div class="col-12">
                             <div class="ml-card ml-card-accent">
                                 <div class="ml-card-header">
-                                    <div class="ml-card-icon" style="background:rgba(0,102,102,0.10); color:#006666;">
+                                    <div class="ml-card-icon" style="background:rgba(22, 63, 122,0.10); color:#163f7a;">
                                         <i class="bx bx-calendar-event"></i>
                                     </div>
                                     <div>

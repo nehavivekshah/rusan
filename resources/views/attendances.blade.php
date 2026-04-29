@@ -16,7 +16,7 @@
             {{-- ── Stat Cards ── --}}
             <div class="rv-stat-row mb-4">
                 <div class="rv-stat-card">
-                    <div class="rv-stat-icon" style="background:rgba(0,102,102,0.10);color:#006666;">
+                    <div class="rv-stat-icon" style="background:rgba(22, 63, 122,0.10);color:#163f7a;">
                         <i class="bx bx-calendar-check"></i>
                     </div>
                     <div>
@@ -25,11 +25,11 @@
                     </div>
                 </div>
                 <div class="rv-stat-card">
-                    <div class="rv-stat-icon" style="background:rgba(52,168,83,0.10);color:#34a853;">
+                    <div class="rv-stat-icon" style="background:rgba(52,168,83,0.10);color:#163f7a;">
                         <i class="bx bx-user-check"></i>
                     </div>
                     <div>
-                        <div class="rv-stat-num" style="color:#34a853;">{{ $summary['present'] }}</div>
+                        <div class="rv-stat-num" style="color:#163f7a;">{{ $summary['present'] }}</div>
                         <div class="rv-stat-label">Present</div>
                     </div>
                 </div>
@@ -171,7 +171,7 @@
                                     $diff_fmt = sprintf('%s%02d:%02d', $diff >= 0 ? '+' : '-', floor($absDiff), round(($absDiff - floor($absDiff)) * 60));
 
                                     $stStyle = match ($r['status']) {
-                                        'Present' => ['#34a853', 'bx-check-circle'],
+                                        'Present' => ['#163f7a', 'bx-check-circle'],
                                         'Leave' => ['#5f6368', 'bx-calendar-edit'],
                                         'Holiday' => ['#1a73e8', 'bx-calendar-star'],
                                         'Absent' => ['#ea4335', 'bx-user-x'],
@@ -189,7 +189,7 @@
                                         <td>
                                             <div class="d-flex align-items-center gap-2">
                                                 <div class="lb-avatar-sm"
-                                                    style="background:rgba(0,102,102,0.1); color:#006666; border:none; font-weight:800;">
+                                                    style="background:rgba(22, 63, 122,0.1); color:#163f7a; border:none; font-weight:800;">
                                                     {{ substr($r['user'] ?? 'U', 0, 1) }}
                                                 </div>
                                                 <div class="fw-600 text-dark small">{{ $r['user'] }}</div>
@@ -256,7 +256,7 @@
                                                 {{-- Edit – opens modal --}}
                                                 <button type="button" class="btn kb-action-btn open-attendance-modal"
                                                     data-url="{{ $editUrl }}" title="Edit"
-                                                    style="background:rgba(0,102,102,0.10);color:#006666; border:none;">
+                                                    style="background:rgba(22, 63, 122,0.10);color:#163f7a; border:none;">
                                                     <i class="bx bx-edit"></i>
                                                 </button>
                                                 {{-- Delete --}}
@@ -463,8 +463,8 @@
         }
 
         .att-select:focus {
-            border-color: #006666 !important;
-            box-shadow: 0 0 0 3px rgba(0, 102, 102, 0.1) !important;
+            border-color: #163f7a !important;
+            box-shadow: 0 0 0 3px rgba(22, 63, 122, 0.1) !important;
         }
 
         /* ── Action Buttons ── */
@@ -489,8 +489,8 @@
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            background: rgba(0, 102, 102, 0.08);
-            color: #006666;
+            background: rgba(22, 63, 122, 0.08);
+            color: #163f7a;
             border-radius: 20px;
             padding: 12px 20px;
             font-size: 0.75rem;
@@ -519,7 +519,7 @@
                     const content = document.getElementById('manageAttendanceModalContent');
                     const modalEl = document.getElementById('manageAttendanceModal');
 
-                    content.innerHTML = '<div class="p-5 text-center"><i class="bx bx-loader-alt bx-spin" style="font-size:2rem;color:#006666;"></i><p class="mt-2 text-muted">Loading form…</p></div>';
+                    content.innerHTML = '<div class="p-5 text-center"><i class="bx bx-loader-alt bx-spin" style="font-size:2rem;color:#163f7a;"></i><p class="mt-2 text-muted">Loading form…</p></div>';
 
                     bootstrap.Modal.getOrCreateInstance(modalEl).show();
 

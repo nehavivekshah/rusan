@@ -8,12 +8,12 @@
 .af-section-title {
     font-size: .72rem;
     font-weight: 700;
-    color: #006666;
+    color: #163f7a;
     text-transform: uppercase;
     letter-spacing: .07em;
     margin: 18px 0 12px;
     padding-bottom: 4px;
-    border-bottom: 1.5px solid rgba(0,102,102,.12);
+    border-bottom: 1.5px solid rgba(22, 63, 122,.12);
 }
 .af-section-title:first-child { margin-top: 0; }
 
@@ -37,8 +37,8 @@
     height: 42px;
 }
 .af-input-box:focus-within {
-    border-color: #006666;
-    box-shadow: 0 0 0 3px rgba(0,102,102,.08);
+    border-color: #163f7a;
+    box-shadow: 0 0 0 3px rgba(22, 63, 122,.08);
 }
 .af-input-box .af-icon {
     display: flex;
@@ -47,7 +47,7 @@
     width: 38px;
     height: 100%;
     flex-shrink: 0;
-    color: #006666;
+    color: #163f7a;
     font-size: 1.05rem;
     border-right: 1.5px solid #e8eaed;
     background: #f8fdfd;
@@ -92,7 +92,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 16px 20px;
-    background: linear-gradient(135deg, #005757, #007e7e);
+    background: linear-gradient(135deg, #005757, #163f7a);
     border-radius: 16px 16px 0 0;
 }
 .af-modal-header-title { font-size: .975rem; font-weight: 700; color: #fff; margin: 0; }
@@ -117,7 +117,7 @@
 .af-btn-cancel:hover { background: #f5f5f5; }
 .af-btn-save {
     font-size: .85rem; font-weight: 600; padding: 8px 22px; border-radius: 8px;
-    border: none; background: #006666; color: #fff;
+    border: none; background: #163f7a; color: #fff;
     cursor: pointer; transition: background .15s;
     display: flex; align-items: center; gap: 5px;
 }
@@ -217,7 +217,7 @@
                 <div class="col-md-6 af-field">
                     <label><i class="bx bx-log-in-circle text-success me-1"></i>Check-In</label>
                     <div class="af-input-box">
-                        <span class="af-icon" style="color:#34a853;"><i class="bx bx-time-five"></i></span>
+                        <span class="af-icon" style="color:#163f7a;"><i class="bx bx-time-five"></i></span>
                         <input type="time" name="check_in"
                                value="{{ $attendance?->check_in ?? '09:30' }}">
                     </div>

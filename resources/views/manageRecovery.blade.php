@@ -204,7 +204,7 @@
 
     <style>
         .form-label { font-size: 0.85rem; font-weight: 500; color: #5f6368; margin-bottom: 6px; }
-        .form-control:focus, .form-select:focus { border-color: #006666; box-shadow: 0 0 0 0.2rem rgba(0, 102, 102, 0.15); }
+        .form-control:focus, .form-select:focus { border-color: #163f7a; box-shadow: 0 0 0 0.2rem rgba(22, 63, 122, 0.15); }
         .input-group-text { border-right: none; color: #5f6368; }
         .input-group > .form-control { border-left: none; }
         .bg-soft-success { background-color: rgba(52, 168, 83, 0.1); }

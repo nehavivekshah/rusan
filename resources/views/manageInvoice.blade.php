@@ -6,20 +6,20 @@
         /* ── Existing layout styles ── */
         .mp-sidebar-sticky { position: sticky; top: 84px; z-index: 10; }
         .mp-item-row { background: #fff; border: 1px solid #e8eaed; border-radius: 16px; padding: 1.25rem; margin-bottom: 1.25rem; position: relative; transition: all 0.2s; }
-        .mp-item-row:hover { border-color: #006666; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .mp-item-row:hover { border-color: #163f7a; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
         .mp-item-row-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; border-bottom: 1px solid #f1f3f4; padding-bottom: 10px; }
-        .mp-item-num { width: 24px; height: 24px; background: #006666; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; }
+        .mp-item-num { width: 24px; height: 24px; background: #163f7a; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; }
         .mp-item-row-title { font-size: 0.88rem; font-weight: 700; color: #202124; }
         .mp-item-row-body { display: grid; grid-template-columns: 2fr 2fr 0.8fr 1.2fr 1.5fr 1.2fr; gap: 12px; }
         .mp-item-label { display: block; font-size: 0.68rem; font-weight: 700; color: #80868b; text-transform: uppercase; margin-bottom: 4px; }
         .mp-item-amount-val { font-size: 0.9rem; font-weight: 700; color: #202124; display: block; margin-top: 6px; }
         .mp-add-item-btn { width: 100%; padding: 12px; background: #fff; border: 1px dashed #ced4da; border-radius: 12px; color: #5f6368; font-weight: 600; font-size: 0.85rem; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px; }
-        .mp-add-item-btn:hover { background: #f8f9fa; border-color: #006666; color: #006666; }
+        .mp-add-item-btn:hover { background: #f8f9fa; border-color: #163f7a; color: #163f7a; }
         .mp-summary-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; font-size: 0.85rem; }
         .mp-summary-label { color: #80868b; font-weight: 500; }
         .mp-summary-val { color: #202124; font-weight: 700; }
         .mp-summary-total { margin-top: 15px; padding-top: 15px; border-top: 2px solid #f1f3f4; display: flex; justify-content: space-between; align-items: center; }
-        .mp-grand-total-val { font-size: 1.4rem; font-weight: 800; color: #006666; }
+        .mp-grand-total-val { font-size: 1.4rem; font-weight: 800; color: #163f7a; }
         .ml-card { background: #fff; border: 1px solid #e8eaed; border-radius: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
         .ml-card-header { padding: 16px 20px; border-bottom: 1px solid #f1f3f4; display: flex; align-items: center; gap: 12px; }
         .ml-card-icon { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0; }
@@ -29,15 +29,15 @@
         .ml-label { display: block; font-size: 0.75rem; font-weight: 400; color: #5f6368; margin-bottom: 6px; }
         .mp-steps { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 30px; }
         .mp-step { display: flex; align-items: center; gap: 8px; color: #dadce0; }
-        .mp-step-active { color: #006666; }
-        .mp-step-done { color: #34a853; }
+        .mp-step-active { color: #163f7a; }
+        .mp-step-done { color: #163f7a; }
         .mp-step-num { width: 24px; height: 24px; border-radius: 50%; border: 2px solid currentColor; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; }
         .mp-step-label { font-size: 0.85rem; font-weight: 600; }
         .mp-step-line { height: 2px; width: 40px; background: #f1f3f4; border-radius: 2px; }
-        .mp-line-done { background: #34a853; }
+        .mp-line-done { background: #163f7a; }
         .mp-autoresize { resize: none; overflow: hidden; }
         .inv-status-pill { padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-        .bank-info-bg { background: #f8fdfd; border: 1.5px dashed rgba(0,102,102,.25); border-radius: 12px; padding: 16px; }
+        .bank-info-bg { background: #f8fdfd; border: 1.5px dashed rgba(22, 63, 122,.25); border-radius: 12px; padding: 16px; }
         @media (max-width: 1200px) { .mp-item-row-body { grid-template-columns: 1.5fr 1.5fr 0.8fr 1fr 1fr 1fr; } }
         @media (max-width: 991px) { .mp-sidebar-sticky { position: static; } .mp-item-row-body { grid-template-columns: 1fr 1fr; gap: 15px; } }
         @media (max-width: 575px) { .mp-item-row-body { grid-template-columns: 1fr; } }
@@ -49,11 +49,11 @@
             background: #fff; overflow: hidden; height: 42px;
             transition: border-color .15s, box-shadow .15s;
         }
-        .cf-input-box:focus-within { border-color: #006666; box-shadow: 0 0 0 3px rgba(0,102,102,.08); }
+        .cf-input-box:focus-within { border-color: #163f7a; box-shadow: 0 0 0 3px rgba(22, 63, 122,.08); }
         .cf-icon {
             display: flex; align-items: center; justify-content: center;
             width: 38px; min-width: 38px; height: 100%;
-            color: #006666; font-size: 1.05rem;
+            color: #163f7a; font-size: 1.05rem;
             border-right: 1.5px solid #e8eaed; background: #f8fdfd; flex-shrink: 0;
         }
         .cf-input-box input,
@@ -84,7 +84,7 @@
             min-height: 42px; position: relative;
             overflow: hidden;
         }
-        .cf-client-wrap:focus-within { border-color: #006666; box-shadow: 0 0 0 3px rgba(0,102,102,.08); }
+        .cf-client-wrap:focus-within { border-color: #163f7a; box-shadow: 0 0 0 3px rgba(22, 63, 122,.08); }
         .cf-client-wrap .cf-icon { border-right: 1.5px solid #e8eaed; height: 42px; flex-shrink: 0; }
         /* Native select fallback */
         .cf-client-wrap select { flex: 1; border: none !important; outline: none !important; box-shadow: none !important; background: transparent; font-size: .875rem; color: #202124; padding: 0 10px; height: 42px; }
@@ -100,7 +100,7 @@
         .cf-client-wrap .bootstrap-select > .dropdown-toggle:focus { outline: none !important; box-shadow: none !important; }
         .cf-client-wrap .bootstrap-select > .dropdown-toggle::after { margin-left: auto; }
         .cf-client-wrap .btn-add-client {
-            height: 42px; padding: 0 14px; background: #006666;
+            height: 42px; padding: 0 14px; background: #163f7a;
             color: #fff; border: none; font-size: .9rem; cursor: pointer;
             display: flex; align-items: center; transition: background .15s;
             border-radius: 0 7px 7px 0; flex-shrink: 0;
@@ -108,15 +108,15 @@
         .cf-client-wrap .btn-add-client:hover { background: #004e4e; }
         /* bank detail small inputs */
         .cf-bank-input { border: 1.5px solid #d1d5db !important; border-radius: 7px !important; font-size: .82rem !important; padding: 7px 10px !important; color: #202124; transition: border-color .15s, box-shadow .15s; height: 42px !important; }
-        .cf-bank-input:focus { border-color: #006666 !important; box-shadow: 0 0 0 3px rgba(0,102,102,.07) !important; outline: none; }
+        .cf-bank-input:focus { border-color: #163f7a !important; box-shadow: 0 0 0 3px rgba(22, 63, 122,.07) !important; outline: none; }
         /* summary small inputs */
         .cf-summary-select { border: 1.5px solid #d1d5db !important; border-radius: 7px !important; font-size: .82rem !important; padding: 6px 10px !important; background: #fff; }
-        .cf-summary-select:focus { border-color: #006666 !important; outline: none !important; }
+        .cf-summary-select:focus { border-color: #163f7a !important; outline: none !important; }
         /* Contract-style modal header & footer */
         .cf-modal-header {
             display: flex; align-items: center; justify-content: space-between;
             padding: 16px 20px;
-            background: linear-gradient(135deg, #005757, #007e7e);
+            background: linear-gradient(135deg, #005757, #163f7a);
             border-radius: 16px 16px 0 0;
         }
         .cf-modal-header-title { font-size: .975rem; font-weight: 700; color: #fff; margin: 0; }
@@ -135,7 +135,7 @@
         .cf-btn-cancel:hover { background: #f5f5f5; }
         .cf-btn-save {
             font-size: .85rem; font-weight: 600; padding: 8px 22px; border-radius: 8px;
-            border: none; background: #006666; color: #fff;
+            border: none; background: #163f7a; color: #fff;
             cursor: pointer; transition: background .15s;
             display: flex; align-items: center; gap: 5px;
         }
@@ -151,15 +151,15 @@
         .inv-btn-save {
             display: inline-flex; align-items: center; gap: 6px;
             padding: 8px 20px; border-radius: 9px; font-size: .85rem; font-weight: 600;
-            border: none; background: #006666; color: #fff;
+            border: none; background: #163f7a; color: #fff;
             cursor: pointer; transition: background .15s;
         }
         .inv-btn-save:hover { background: #004e4e; }
         .inv-btn-send {
             display: inline-flex; align-items: center; gap: 6px;
             padding: 8px 20px; border-radius: 9px; font-size: .85rem; font-weight: 700;
-            border: none; background: linear-gradient(135deg,#006666,#00a3a3); color: #fff;
-            cursor: pointer; transition: filter .15s; box-shadow: 0 3px 10px rgba(0,102,102,.25);
+            border: none; background: linear-gradient(135deg,#163f7a,#00a3a3); color: #fff;
+            cursor: pointer; transition: filter .15s; box-shadow: 0 3px 10px rgba(22, 63, 122,.25);
         }
         .inv-btn-send:hover { filter: brightness(1.08); }
     </style>
@@ -185,7 +185,7 @@
                     <div>
                         @if(!empty($invoice->id))
                             <span class="lb-page-count"><i class="bx bx-edit"></i> Edit Invoice</span>
-                            <span class="inv-status-pill ms-2" style="background:#00666615;color:#006666;">
+                            <span class="inv-status-pill ms-2" style="background:#163f7a15;color:#163f7a;">
                                 INV-{{ $invoice->invoice_number }}
                             </span>
                         @else
@@ -238,7 +238,7 @@
                         {{-- ── Invoice Information ── --}}
                         <div class="ml-card mb-4">
                             <div class="ml-card-header">
-                                <div class="ml-card-icon" style="background:rgba(0,102,102,0.10);color:#006666;">
+                                <div class="ml-card-icon" style="background:rgba(22, 63, 122,0.10);color:#163f7a;">
                                     <i class="bx bx-file"></i>
                                 </div>
                                 <div>
@@ -370,7 +370,7 @@
                                         </div>
                                         <div id="projectValueBadge" class="mt-1"
                                              style="display:{{ !empty($preloadProject->project_amount) ? 'block' : 'none' }};">
-                                            <span style="font-size:0.72rem;color:#006666;font-weight:600;">
+                                            <span style="font-size:0.72rem;color:#163f7a;font-weight:600;">
                                                 <i class="bx bx-rupee"></i>
                                                 <span id="projectValueText">{{ !empty($preloadProject->project_amount) ? number_format($preloadProject->project_amount, 0) : '0' }}</span> — Contract Value
                                             </span>
@@ -495,7 +495,7 @@
                                     <span class="ml-card-sub">Add line items — totals update automatically</span>
                                 </div>
                                 <button type="button" class="lb-btn" id="addItemButton"
-                                        style="background:rgba(0,102,102,0.08);color:#006666;">
+                                        style="background:rgba(22, 63, 122,0.08);color:#163f7a;">
                                     <i class="bx bx-plus"></i> Add Item
                                 </button>
                             </div>
@@ -691,7 +691,7 @@
                             {{-- Summary card --}}
                             <div class="ml-card mb-3">
                                 <div class="ml-card-header">
-                                    <div class="ml-card-icon" style="background:rgba(52,168,83,0.10);color:#34a853;">
+                                    <div class="ml-card-icon" style="background:rgba(52,168,83,0.10);color:#163f7a;">
                                         <i class="bx bx-calculator"></i>
                                     </div>
                                     <div>

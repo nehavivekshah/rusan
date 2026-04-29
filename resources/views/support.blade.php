@@ -29,20 +29,20 @@
                     </div>
                 </div>
                 <div class="pj-stat-card">
-                    <div class="pj-stat-icon" style="background:rgba(0,102,102,0.1);color:#006666;">
+                    <div class="pj-stat-icon" style="background:rgba(22, 63, 122,0.1);color:#163f7a;">
                         <i class="bx bx-cog"></i>
                     </div>
                     <div>
-                        <div class="pj-stat-num" style="color:#006666;">{{ $stats['processed'] }}</div>
+                        <div class="pj-stat-num" style="color:#163f7a;">{{ $stats['processed'] }}</div>
                         <div class="pj-stat-label">In Progress</div>
                     </div>
                 </div>
                 <div class="pj-stat-card">
-                    <div class="pj-stat-icon" style="background:rgba(52,168,83,0.1);color:#34a853;">
+                    <div class="pj-stat-icon" style="background:rgba(52,168,83,0.1);color:#163f7a;">
                         <i class="bx bx-check-circle"></i>
                     </div>
                     <div>
-                        <div class="pj-stat-num" style="color:#34a853;">{{ $stats['closed'] }}</div>
+                        <div class="pj-stat-num" style="color:#163f7a;">{{ $stats['closed'] }}</div>
                         <div class="pj-stat-label">Resolved</div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                     </div>
                     @if(in_array('support_add', $roleArray) || in_array('All', $roleArray))
                     <button class="btn btn-teal px-3 open-support-modal"
-                        style="background:#006666; color:white; border-radius:20px; font-size: 0.85rem;"
+                        style="background:#163f7a; color:white; border-radius:20px; font-size: 0.85rem;"
                         data-url="/manage-support">
                         <i class="bx bx-plus me-1"></i> New Ticket
                     </button>
@@ -103,11 +103,11 @@
                         data-search="{{ strtolower($ticket->ticket_no . ' ' . $ticket->subject . ' ' . ($ticket->company->name ?? '')) }}">
 
                         <div class="pj-card-accent"
-                            style="background: @if($ticket->status == 0)#ffc107 @elseif($ticket->status == 1)#006666 @else#34a853 @endif;">
+                            style="background: @if($ticket->status == 0)#ffc107 @elseif($ticket->status == 1)#163f7a @else#163f7a @endif;">
                         </div>
 
                         <div class="pj-card-header">
-                            <div class="pj-card-avatar" style="background: linear-gradient(135deg, #006666, #1a73e8);">
+                            <div class="pj-card-avatar" style="background: linear-gradient(135deg, #163f7a, #1a73e8);">
                                 <i class="bx bx-news"></i>
                             </div>
                             <div class="pj-card-meta">
@@ -329,7 +329,7 @@
 
         .pj-view-btn.active {
             background: #fff;
-            color: #006666;
+            color: #163f7a;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
         }
 
@@ -400,7 +400,7 @@
 
         .pj-info-row i {
             font-size: 0.9rem;
-            color: #006666;
+            color: #163f7a;
         }
 
         .pv-badge {
@@ -412,7 +412,7 @@
 
         .pv-badge-success {
             background: rgba(52, 168, 83, 0.1);
-            color: #34a853;
+            color: #163f7a;
         }
 
         .pv-badge-info {
@@ -536,7 +536,7 @@
         function loadSupportModal(url) {
             const content = document.getElementById('supportModalContent');
             const modalEl = document.getElementById('supportModal');
-            content.innerHTML = '<div class="p-5 text-center"><i class="bx bx-loader-alt bx-spin" style="font-size:2rem;color:#006666;"></i></div>';
+            content.innerHTML = '<div class="p-5 text-center"><i class="bx bx-loader-alt bx-spin" style="font-size:2rem;color:#163f7a;"></i></div>';
             bootstrap.Modal.getOrCreateInstance(modalEl).show();
             fetch(url).then(res => res.text()).then(html => { content.innerHTML = html; });
         }

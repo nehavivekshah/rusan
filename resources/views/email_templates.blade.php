@@ -17,7 +17,7 @@
         {{-- ── Stat Cards ── --}}
         <div class="rv-stat-row mb-4">
             <div class="rv-stat-card">
-                <div class="rv-stat-icon" style="background:rgba(0,102,102,0.1);color:#006666;">
+                <div class="rv-stat-icon" style="background:rgba(22, 63, 122,0.1);color:#163f7a;">
                     <i class="bx bx-envelope"></i>
                 </div>
                 <div>
@@ -26,11 +26,11 @@
                 </div>
             </div>
             <div class="rv-stat-card">
-                <div class="rv-stat-icon" style="background:rgba(52,168,83,0.1);color:#34a853;">
+                <div class="rv-stat-icon" style="background:rgba(52,168,83,0.1);color:#163f7a;">
                     <i class="bx bx-check-circle"></i>
                 </div>
                 <div>
-                    <div class="rv-stat-num" style="color:#34a853;">{{ $active }}</div>
+                    <div class="rv-stat-num" style="color:#163f7a;">{{ $active }}</div>
                     <div class="rv-stat-label">Active</div>
                 </div>
             </div>
@@ -94,7 +94,7 @@
                             <td class="m-none text-muted" style="font-size:0.78rem;">{{ $k + 1 }}</td>
                             <td>
                                 @php
-                                    $modColor = ['contracts'=>['#1a73e8','bx-file-blank'], 'invoices'=>['#34a853','bx-receipt'], 'proposals'=>['#f9a825','bx-notepad'], 'recovery'=>['#ea4335','bx-alarm-exclamation']][$tpl->module] ?? ['#80868b','bx-layer'];
+                                    $modColor = ['contracts'=>['#1a73e8','bx-file-blank'], 'invoices'=>['#163f7a','bx-receipt'], 'proposals'=>['#f9a825','bx-notepad'], 'recovery'=>['#ea4335','bx-alarm-exclamation']][$tpl->module] ?? ['#80868b','bx-layer'];
                                 @endphp
                                 <div class="d-flex align-items-center gap-2">
                                     <div class="lb-avatar-sm" style="background:{{ $modColor[0] }}15; color:{{ $modColor[0] }}; border:none;">
@@ -124,7 +124,7 @@
                             </td>
                             <td>
                                 @if($tpl->is_active)
-                                    <span class="rv-status-pill" style="background:#34a85315;color:#34a853;">
+                                    <span class="rv-status-pill" style="background:#163f7a15;color:#163f7a;">
                                         <i class="bx bx-check-circle"></i> Active
                                     </span>
                                 @else
@@ -137,7 +137,7 @@
                                 <div class="d-flex align-items-center justify-content-center gap-1">
                                     <a href="{{ route('email-templates.edit', $tpl->id) }}"
                                        class="btn kb-action-btn kb-action-edit" title="Edit"
-                                       style="background:rgba(0,102,102,0.08);color:#006666;">
+                                       style="background:rgba(22, 63, 122,0.08);color:#163f7a;">
                                         <i class="bx bx-pencil"></i>
                                     </a>
 
@@ -145,7 +145,7 @@
                                         @csrf
                                         <button type="submit" title="{{ $tpl->is_active ? 'Deactivate' : 'Activate' }}"
                                                 class="btn kb-action-btn"
-                                                style="background:{{ $tpl->is_active ? 'rgba(234,67,53,0.08)' : 'rgba(52,168,83,0.08)' }};color:{{ $tpl->is_active ? '#ea4335' : '#34a853' }};">
+                                                style="background:{{ $tpl->is_active ? 'rgba(234,67,53,0.08)' : 'rgba(52,168,83,0.08)' }};color:{{ $tpl->is_active ? '#ea4335' : '#163f7a' }};">
                                             <i class="bx {{ $tpl->is_active ? 'bx-power-off' : 'bx-bolt-circle' }}"></i>
                                         </button>
                                     </form>

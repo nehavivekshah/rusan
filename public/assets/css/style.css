@@ -136,7 +136,7 @@
 
 .section-title i {
     font-size: 1.25rem;
-    background: rgba(0, 102, 102, 0.1);
+    background: rgba(22, 63, 122, 0.1);
     padding: 6px;
     border-radius: 8px;
 }
@@ -159,7 +159,7 @@
 
 .form-control:focus {
     border-color: var(--color-default);
-    box-shadow: 0 0 0 0.2rem rgba(0, 102, 102, 0.15);
+    box-shadow: 0 0 0 0.2rem rgba(22, 63, 122, 0.15);
 }
 
 .btn-primary {
@@ -175,7 +175,7 @@
     background-color: #004d4d;
     border-color: #004d4d;
     transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(0, 102, 102, 0.2);
+    box-shadow: 0 4px 8px rgba(22, 63, 122, 0.2);
 }
 
 .btn-outline-secondary {
@@ -516,7 +516,7 @@ h2 {
     overflow: hidden;
     transition: all .5s ease;
     z-index: 9999;
-    background: #009688;
+    background: #0f2d57;
 }*/
 
 .sidebar li.profile {
@@ -1146,7 +1146,7 @@ ul.tab-list li a span {
 }
 
 .sb-title span {
-    color: #009688;
+    color: #0f2d57;
 }
 
 ul.tab-time-list {

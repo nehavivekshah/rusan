@@ -72,7 +72,7 @@
                         <div class="ml-card">
                             <div class="ml-card-header d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center gap-3">
-                                    <div class="ml-card-icon" style="background:rgba(0,102,102,0.1);color:#006666;">
+                                    <div class="ml-card-icon" style="background:rgba(22, 63, 122,0.1);color:#163f7a;">
                                         <i class="bx bx-detail"></i>
                                     </div>
                                     <div>
@@ -278,7 +278,7 @@
 
                             {{-- Section: Live Preview --}}
                             <div class="ml-card-body text-center border-bottom bg-light"
-                                style="background-color:rgba(0,102,102,0.02) !important;" id="previewCard">
+                                style="background-color:rgba(22, 63, 122,0.02) !important;" id="previewCard">
                                 <div class="mb-3">
                                     <span class="text-muted small fw-bold text-uppercase text-center">
                                         <i class="bx bx-show"></i> Live Preview
@@ -381,16 +381,16 @@
 
         .type-pill:hover,
         .type-pill.active {
-            background: rgba(0, 102, 102, 0.08);
-            border-color: #006666;
-            color: #006666;
+            background: rgba(22, 63, 122, 0.08);
+            border-color: #163f7a;
+            color: #163f7a;
         }
 
         .preview-avatar {
             width: 60px;
             height: 60px;
             border-radius: 16px;
-            background: linear-gradient(135deg, #006666, #009688);
+            background: linear-gradient(135deg, #163f7a, #0f2d57);
             color: #fff;
             font-size: 1.5rem;
             font-weight: 800;
@@ -409,8 +409,8 @@
 
         .preview-type {
             display: inline-block;
-            background: rgba(0, 102, 102, 0.08);
-            color: #006666;
+            background: rgba(22, 63, 122, 0.08);
+            color: #163f7a;
             font-size: 0.72rem;
             font-weight: 600;
             border-radius: 20px;
@@ -421,7 +421,7 @@
         .preview-amount {
             font-size: 1.35rem;
             font-weight: 800;
-            color: #006666;
+            color: #163f7a;
             letter-spacing: -0.02em;
         }
 
@@ -439,12 +439,12 @@
 
         .qlink-item:hover {
             background: #f1f3f4;
-            color: #006666;
+            color: #163f7a;
         }
 
         .qlink-item i {
             font-size: 1rem;
-            color: #006666;
+            color: #163f7a;
         }
 
         .pv-badge {

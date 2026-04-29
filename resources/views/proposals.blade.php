@@ -18,7 +18,7 @@
     $statusConfig = [
         'Draft'    => ['#80868b', 'bx bx-pencil'],
         'Sent'     => ['#1a73e8', 'bx bx-send'],
-        'Accepted' => ['#34a853', 'bx bx-check-circle'],
+        'Accepted' => ['#163f7a', 'bx bx-check-circle'],
         'Declined' => ['#ea4335', 'bx bx-x-circle'],
         'Expired'  => ['#f29900', 'bx bx-time-five'],
     ];
@@ -33,11 +33,11 @@
         <div class="pr-stat-row mb-4">
             @php
                 $statCards = [
-                    ['Total Proposals', $total,    '#006666', 'bx bx-file'],
+                    ['Total Proposals', $total,    '#163f7a', 'bx bx-file'],
                     ['Draft',           $draft,    '#80868b', 'bx bx-pencil'],
                     ['Sent',            $sent,     '#1a73e8', 'bx bx-send'],
-                    ['Accepted',        $accepted, '#34a853', 'bx bx-check-circle'],
-                    ['Total Value',     '₹'.number_format($totalVal, 0), '#006666', 'bx bx-rupee'],
+                    ['Accepted',        $accepted, '#163f7a', 'bx bx-check-circle'],
+                    ['Total Value',     '₹'.number_format($totalVal, 0), '#163f7a', 'bx bx-rupee'],
                 ];
             @endphp
             @foreach($statCards as [$label, $count, $color, $icon])
@@ -49,7 +49,7 @@
                         <i class="{{ $icon }}"></i>
                     </div>
                     <div>
-                        <div class="pr-stat-count" style="color:{{ $label == 'Accepted' ? '#34a853' : '#202124' }};">{{ $count }}</div>
+                        <div class="pr-stat-count" style="color:{{ $label == 'Accepted' ? '#163f7a' : '#202124' }};">{{ $count }}</div>
                         <div class="pr-stat-label">{{ $label }}</div>
                     </div>
                 </div>
@@ -212,7 +212,7 @@
                                             @if(in_array('proposals_edit',$roleArray) || in_array('All',$roleArray))
                                                 <a href="/manage-proposal?id={{ $proposal->id }}"
                                                    class="btn kb-action-btn" title="Edit"
-                                                   style="background:rgba(0,102,102,0.08);color:#006666; flex-shrink: 0;">
+                                                   style="background:rgba(22, 63, 122,0.08);color:#163f7a; flex-shrink: 0;">
                                                     <i class="bx bx-edit"></i>
                                                 </a>
                                             @endif

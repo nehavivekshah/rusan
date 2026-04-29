@@ -29,11 +29,11 @@
                     </div>
                 </div>
                 <div class="pj-stat-card">
-                    <div class="pj-stat-icon" style="background:rgba(52,168,83,0.1);color:#34a853;">
+                    <div class="pj-stat-icon" style="background:rgba(52,168,83,0.1);color:#163f7a;">
                         <i class="bx bx-check-circle"></i>
                     </div>
                     <div>
-                        <div class="pj-stat-num" style="color:#34a853;">{{ $activeCount }}</div>
+                        <div class="pj-stat-num" style="color:#163f7a;">{{ $activeCount }}</div>
                         <div class="pj-stat-label">Active Accounts</div>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
                                                     <img src="{{ asset('assets/images/profile/' . $user->photo) }}" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
                                                 </div>
                                             @else
-                                                <div class="lb-avatar-sm" style="background:linear-gradient(135deg,#006666,#009688);color:#fff;">
+                                                <div class="lb-avatar-sm" style="background:linear-gradient(135deg,#163f7a,#0f2d57);color:#fff;">
                                                     {{ strtoupper(substr($user->name, 0, 1)) }}
                                                 </div>
                                             @endif
@@ -189,9 +189,9 @@
         .pj-stat-num { font-size: 1.2rem; font-weight: 700; color: #202124; line-height: 1.2; }
         .pj-stat-label { font-size: 0.72rem; color: #80868b; font-weight: 500; margin-top: 2px; }
 
-        .pj-type-pill { display: inline-block; background: rgba(0, 102, 102, 0.08); color: #006666; font-size: 0.68rem; font-weight: 600; border-radius: 20px; padding: 2px 10px; }
+        .pj-type-pill { display: inline-block; background: rgba(22, 63, 122, 0.08); color: #163f7a; font-size: 0.68rem; font-weight: 600; border-radius: 20px; padding: 2px 10px; }
 
-        .form-check-input:checked { background-color: #006666; border-color: #006666; }
+        .form-check-input:checked { background-color: #163f7a; border-color: #163f7a; }
 
         /* Row clickable behavior */
         .project-row-click { cursor: pointer; }

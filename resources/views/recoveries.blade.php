@@ -26,7 +26,7 @@
             {{-- ── Stat Cards ── --}}
             <div class="rv-stat-row mb-4">
                 <div class="rv-stat-card">
-                    <div class="rv-stat-icon" style="background:rgba(0,102,102,0.10);color:#006666;">
+                    <div class="rv-stat-icon" style="background:rgba(22, 63, 122,0.10);color:#163f7a;">
                         <i class="bx bx-receipt"></i>
                     </div>
                     <div>
@@ -35,11 +35,11 @@
                     </div>
                 </div>
                 <div class="rv-stat-card">
-                    <div class="rv-stat-icon" style="background:rgba(52,168,83,0.10);color:#34a853;">
+                    <div class="rv-stat-icon" style="background:rgba(52,168,83,0.10);color:#163f7a;">
                         <i class="bx bx-check-circle"></i>
                     </div>
                     <div>
-                        <div class="rv-stat-num" style="color:#34a853;">{{ $paidCount }}</div>
+                        <div class="rv-stat-num" style="color:#163f7a;">{{ $paidCount }}</div>
                         <div class="rv-stat-label">Paid</div>
                     </div>
                 </div>
@@ -129,7 +129,7 @@
                                     $pendingAmt = $recovery->remaining_amount ?? 0;
                                     $paidAmt = $totalAmt - $pendingAmt;
                                     $recPct = $totalAmt > 0 ? min(100, round(($paidAmt / $totalAmt) * 100)) : 0;
-                                    $recColor = $recPct >= 80 ? '#34a853' : ($recPct >= 40 ? '#fbbc04' : '#ea4335');
+                                    $recColor = $recPct >= 80 ? '#163f7a' : ($recPct >= 40 ? '#fbbc04' : '#ea4335');
                                 @endphp
                                 <tr class="lead-row-{{ $reminderTimes }}">
                                     <td class="m-none text-muted" style="font-size:0.78rem;">{{ $k + 1 }}</td>
@@ -139,7 +139,7 @@
                                     <td>
                                         <div class="d-flex align-items-center gap-2">
                                             <div class="lb-avatar-sm"
-                                                style="background:linear-gradient(135deg,#006666,#009688);color:#fff;flex-shrink:0;">
+                                                style="background:linear-gradient(135deg,#163f7a,#0f2d57);color:#fff;flex-shrink:0;">
                                                 {{ strtoupper(substr($recovery->name ?? 'R', 0, 1)) }}
                                             </div>
                                             <div class="min-w-0">
@@ -156,7 +156,7 @@
                                     <td class="m-none text-muted">{{ $recovery->company ?? '—' }}</td>
                                     <td>
                                         @if($isFullyPaid)
-                                            <div class="fw-bold" style="color:#34a853; font-size:0.85rem;">
+                                            <div class="fw-bold" style="color:#163f7a; font-size:0.85rem;">
                                                 ₹{{ number_format($totalAmt, 0) }}</div>
                                             <span class="rv-amount-badge rv-paid mt-1">
                                                 <i class="bx bx-check-circle"></i> Cleared
@@ -205,7 +205,7 @@
                                             {{-- Mark Received --}}
                                             <button class="btn kb-action-btn received" data-id="{{ $recovery->id }}"
                                                 data-type="Received" title="Mark Received"
-                                                style="background:rgba(52,168,83,0.10);color:#34a853;">
+                                                style="background:rgba(52,168,83,0.10);color:#163f7a;">
                                                 <i class="bx bx-rupee"></i>
                                             </button>
                                             @endif
@@ -234,7 +234,7 @@
                                             {{-- Add Recovery (Edit icon) --}}
                                             <button type="button" class="btn kb-action-btn open-recovery-modal"
                                                 data-url="/manage-recovery?project_id={{ $recovery->id ?? '' }}&ajax=1"
-                                                title="Add Recovery" style="background:rgba(0,102,102,0.10);color:#006666;">
+                                                title="Add Recovery" style="background:rgba(22, 63, 122,0.10);color:#163f7a;">
                                                 <i class="bx bx-pencil"></i>
                                             </button>
                                             {{-- Delete --}}
@@ -297,7 +297,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 16px 20px;
-            background: linear-gradient(135deg, #005757, #007e7e);
+            background: linear-gradient(135deg, #005757, #163f7a);
             border-radius: 16px 16px 0 0;
         }
 
@@ -487,7 +487,7 @@
 
         .rv-paid {
             background: rgba(52, 168, 83, 0.08);
-            color: #34a853;
+            color: #163f7a;
         }
 
         /* ── Reminder ── */

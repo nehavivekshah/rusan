@@ -60,7 +60,7 @@
                     {{-- ── Proposal Information ── --}}
                     <div class="ml-card mb-4">
                         <div class="ml-card-header">
-                            <div class="ml-card-icon" style="background:rgba(0,102,102,0.10);color:#006666;">
+                            <div class="ml-card-icon" style="background:rgba(22, 63, 122,0.10);color:#163f7a;">
                                 <i class="bx bx-file"></i>
                             </div>
                             <div>
@@ -320,7 +320,7 @@
                                 <span class="ml-card-sub">Add line items — totals update automatically</span>
                             </div>
                             <button type="button" class="lb-btn add-item-btn"
-                                    style="background:rgba(0,102,102,0.08);color:#006666;">
+                                    style="background:rgba(22, 63, 122,0.08);color:#163f7a;">
                                 <i class="bx bx-plus"></i> Add Item
                             </button>
                         </div>
@@ -478,7 +478,7 @@
                         {{-- Summary card --}}
                         <div class="ml-card mb-3">
                             <div class="ml-card-header">
-                                <div class="ml-card-icon" style="background:rgba(52,168,83,0.10);color:#34a853;">
+                                <div class="ml-card-icon" style="background:rgba(52,168,83,0.10);color:#163f7a;">
                                     <i class="bx bx-calculator"></i>
                                 </div>
                                 <div>

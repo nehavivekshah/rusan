@@ -18,11 +18,11 @@
                     </div>
                 </div>
                 <div class="rv-stat-card">
-                    <div class="rv-stat-icon" style="background:rgba(52,168,83,0.1);color:#34a853;">
+                    <div class="rv-stat-icon" style="background:rgba(52,168,83,0.1);color:#163f7a;">
                         <i class="bx bx-check-shield"></i>
                     </div>
                     <div>
-                        <div class="rv-stat-num" style="color:#34a853;">₹{{ number_format($totalWonValue) }}</div>
+                        <div class="rv-stat-num" style="color:#163f7a;">₹{{ number_format($totalWonValue) }}</div>
                         <div class="rv-stat-label">Revenue Won</div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                 <div class="col-lg-12">
                     <div class="dash-card">
                         <div class="p-4">
-                            <h5 class="fw-800 mb-2" style="color:#006666;">Expected Revenue Forecast</h5>
+                            <h5 class="fw-800 mb-2" style="color:#163f7a;">Expected Revenue Forecast</h5>
                             <p class="text-muted small mb-4">AI-driven forecast using weighted probability multipliers across sales stages.</p>
                             <div style="height: 350px;">
                                 <canvas id="forecastChart"></canvas>
@@ -83,7 +83,7 @@
                 <div class="col-lg-12">
                     <div class="dash-card">
                         <div class="p-4 border-bottom d-flex align-items-center justify-content-between">
-                            <h5 class="fw-800 m-0" style="color:#006666;">Agent Sales Performance</h5>
+                            <h5 class="fw-800 m-0" style="color:#163f7a;">Agent Sales Performance</h5>
                             <span class="badge bg-light text-muted fw-bold px-3">Real-time Ranking</span>
                         </div>
                         <div class="table-responsive">
@@ -110,7 +110,7 @@
                                             </td>
                                             <td><span class="fw-600">{{ $agent->total_deals }}</span> Deals</td>
                                             <td>
-                                                <span class="rv-status-pill" style="background:#34a85315; color:#34a853;">
+                                                <span class="rv-status-pill" style="background:#163f7a15; color:#163f7a;">
                                                     <i class="bx bx-check"></i> {{ $agent->won_deals }} Won
                                                 </span>
                                             </td>
@@ -118,7 +118,7 @@
                                                 @php $pct = $agent->total_deals > 0 ? ($agent->won_deals / $agent->total_deals) * 100 : 0; @endphp
                                                 <div class="d-flex flex-column gap-1">
                                                     <div class="progress" style="height: 6px; background:#f1f3f4; border-radius:10px;">
-                                                        <div class="progress-bar" style="width: {{ $pct }}%; background:#34a853; border-radius:10px;"></div>
+                                                        <div class="progress-bar" style="width: {{ $pct }}%; background:#163f7a; border-radius:10px;"></div>
                                                     </div>
                                                     <div class="text-muted" style="font-size:0.7rem; font-weight:600;">{{ round($pct, 1) }}% Conversion</div>
                                                 </div>

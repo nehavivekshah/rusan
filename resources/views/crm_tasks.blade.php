@@ -41,7 +41,7 @@
                 <div class="col-lg-4">
                     <div class="ml-card crt-add-card">
                         <div class="ml-card-header">
-                            <div class="ml-card-icon" style="background:rgba(0,102,102,0.10);color:#006666;">
+                            <div class="ml-card-icon" style="background:rgba(22, 63, 122,0.10);color:#163f7a;">
                                 <i class="bx bx-plus-circle"></i>
                             </div>
                             <div>
@@ -142,7 +142,7 @@
                                             'Call'    => ['#1a73e8', 'bx bx-phone'],
                                             'Meeting' => ['#f29900', 'bx bx-group'],
                                             'Email'   => ['#9334e9', 'bx bx-envelope'],
-                                            'To-Do'   => ['#34a853', 'bx bx-task'],
+                                            'To-Do'   => ['#163f7a', 'bx bx-task'],
                                         ];
                                         [$tc, $ti] = $typeConfig[$task->type] ?? ['#80868b', 'bx bx-circle'];
                                     @endphp

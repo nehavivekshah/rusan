@@ -9,14 +9,14 @@
         {{-- Breadcrumb --}}
         <nav aria-label="breadcrumb" class="mb-3">
             <ol class="breadcrumb" style="font-size:0.8rem; background:none; padding:0; margin:0;">
-                <li class="breadcrumb-item"><a href="/attendances" class="text-decoration-none" style="color:#006666;">Attendances</a></li>
+                <li class="breadcrumb-item"><a href="/attendances" class="text-decoration-none" style="color:#163f7a;">Attendances</a></li>
                 <li class="breadcrumb-item active text-muted">{{ $attendance ? 'Edit Record' : 'New Record' }}</li>
             </ol>
         </nav>
 
         <div class="dash-card p-4">
             <div class="d-flex align-items-center gap-3 mb-4 pb-3" style="border-bottom:1px solid #f1f3f4;">
-                <div style="width:48px;height:48px;border-radius:14px;background:rgba(0,102,102,0.1);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#006666;">
+                <div style="width:48px;height:48px;border-radius:14px;background:rgba(22, 63, 122,0.1);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#163f7a;">
                     <i class="bx bx-calendar-check"></i>
                 </div>
                 <div>
@@ -161,8 +161,8 @@
     .dash-container { padding: 0 24px 24px; }
     .dash-card { background: #fff; border: 1px solid #e8eaed; border-radius: 16px; }
     .form-control:focus, .form-select:focus {
-        border-color: #006666 !important;
-        box-shadow: 0 0 0 3px rgba(0,102,102,0.1) !important;
+        border-color: #163f7a !important;
+        box-shadow: 0 0 0 3px rgba(22, 63, 122,0.1) !important;
     }
 </style>
 

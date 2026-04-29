@@ -10,7 +10,7 @@
             {{-- ── Plan Analytics ── --}}
             <div class="pj-stat-row mb-4">
                 <div class="pj-stat-card">
-                    <div class="pj-stat-icon" style="background:rgba(0,102,102,0.1);color:#006666;">
+                    <div class="pj-stat-icon" style="background:rgba(22, 63, 122,0.1);color:#163f7a;">
                         <i class="bx bx-building"></i>
                     </div>
                     <div>
@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="pj-stat-card">
-                    <div class="pj-stat-icon" style="background:rgba(52, 168, 83, 0.1);color:#34a853;">
+                    <div class="pj-stat-icon" style="background:rgba(52, 168, 83, 0.1);color:#163f7a;">
                         <i class="bx bx-trending-up"></i>
                     </div>
                     <div>
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="pj-stat-card">
-                    <div class="pj-stat-icon" style="background:rgba(0, 102, 102, 0.1);color:#006666;">
+                    <div class="pj-stat-icon" style="background:rgba(22, 63, 122, 0.1);color:#163f7a;">
                         <i class="bx bx-shield-quarter"></i>
                     </div>
                     <div>
@@ -89,12 +89,12 @@
                         <div class="pj-card-accent" style="background: linear-gradient(90deg, #d4af37, #b8860b);"></div>
                         
                         <div class="pj-card-header">
-                            <div class="pj-card-avatar" style="background: rgba(0,102,102,0.08); color: #006666;">
+                            <div class="pj-card-avatar" style="background: rgba(22, 63, 122,0.08); color: #163f7a;">
                                 <i class="bx {{ strtolower($plan->name) == 'pro' ? 'bx-crown' : 'bx-badge' }}"></i>
                             </div>
                             <div class="pj-card-meta">
                                 <div class="pj-card-name">{{ $plan->name }}</div>
-                                <div class="pj-card-id font-bold text-indigo" style="color:#006666;">₹{{ number_format($plan->price, 2) }}/mo</div>
+                                <div class="pj-card-id font-bold text-indigo" style="color:#163f7a;">₹{{ number_format($plan->price, 2) }}/mo</div>
                             </div>
                             <div class="pj-card-actions">
                                 <div class="dropdown">
@@ -151,7 +151,7 @@
                                         <div class="small text-muted truncate-1" style="max-width:300px;">{{ $plan->description }}</div>
                                     </td>
                                     <td>
-                                        <div class="badge bg-soft-primary px-3 py-1 rounded-pill text-indigo" style="font-size:0.75rem; background:rgba(0,102,102,0.08); color:#006666;">
+                                        <div class="badge bg-soft-primary px-3 py-1 rounded-pill text-indigo" style="font-size:0.75rem; background:rgba(22, 63, 122,0.08); color:#163f7a;">
                                             ₹{{ number_format($plan->price, 2) }}/mo
                                         </div>
                                     </td>
@@ -206,7 +206,7 @@
 
     <style>
         .dash-container { padding: 0 20px; }
-        .bg-teal-premium { background-color: #006666 !important; color: #fff !important; }
+        .bg-teal-premium { background-color: #163f7a !important; color: #fff !important; }
         
         /* ── Project/Company Standard Stats ── */
         .pj-stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
@@ -231,7 +231,7 @@
             font-size: 1rem; display: flex; align-items: center; justify-content: center;
             transition: all 0.15s;
         }
-        .pj-view-btn.active { background: #fff; color: #006666; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+        .pj-view-btn.active { background: #fff; color: #163f7a; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
 
         /* ── Card Grid ── */
         .pj-card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
@@ -248,7 +248,7 @@
         .pj-card-name { font-size: 0.9rem; font-weight: 700; color: #202124; }
         .pj-card-id { font-size: 0.68rem; color: #80868b; }
         .pv-badge { padding: 3px 10px; border-radius: 20px; font-size: 0.68rem; font-weight: 600; }
-        .pv-badge-success { background: rgba(52,168,83,0.1); color: #34a853; }
+        .pv-badge-success { background: rgba(52,168,83,0.1); color: #163f7a; }
 
         .truncate-1 { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
     </style>
@@ -316,7 +316,7 @@
                         const content = document.getElementById(contentId);
                         const modalEl = document.getElementById(modalId);
 
-                        content.innerHTML = `<div class="p-5 text-center"><i class="bx bx-loader-alt bx-spin" style="font-size:2rem;color:#006666;"></i><p class="mt-2 text-muted small">${loaderText}</p></div>`;
+                        content.innerHTML = `<div class="p-5 text-center"><i class="bx bx-loader-alt bx-spin" style="font-size:2rem;color:#163f7a;"></i><p class="mt-2 text-muted small">${loaderText}</p></div>`;
                         bootstrap.Modal.getOrCreateInstance(modalEl).show();
 
                         fetch(url)

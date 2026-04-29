@@ -9,23 +9,23 @@
 
     // All modules the app supports — must match sidebar keys exactly
     $modules = [
-        'leads'       => ['label' => 'Leads',          'icon' => 'bx-user-voice',        'color' => '#34a853'],
+        'leads'       => ['label' => 'Leads',          'icon' => 'bx-user-voice',        'color' => '#163f7a'],
         'clients'     => ['label' => 'Customers',      'icon' => 'bx-briefcase',         'color' => '#1a73e8'],
         'projects'    => ['label' => 'Projects',        'icon' => 'bx-folder-open',       'color' => '#8e24aa'],
         'proposals'   => ['label' => 'Proposals',       'icon' => 'bx-notepad',           'color' => '#ea4335'],
-        'invoice'     => ['label' => 'Invoices',        'icon' => 'bx-receipt',           'color' => '#34a853'],
-        'contracts'   => ['label' => 'Contracts',       'icon' => 'bx-file-blank',        'color' => '#006666'],
+        'invoice'     => ['label' => 'Invoices',        'icon' => 'bx-receipt',           'color' => '#163f7a'],
+        'contracts'   => ['label' => 'Contracts',       'icon' => 'bx-file-blank',        'color' => '#163f7a'],
         'recoveries'  => ['label' => 'Recovery',        'icon' => 'bx-alarm-exclamation', 'color' => '#d93025'],
         'tasks'       => ['label' => 'Tasks',           'icon' => 'bx-task',              'color' => '#f9a825'],
         'attendances' => ['label' => 'Attendances',     'icon' => 'bx-calendar-check',    'color' => '#0d47a1'],
         'campaigns'   => ['label' => 'Campaigns',       'icon' => 'bx-broadcast',         'color' => '#f57c00'],
         'automations' => ['label' => 'Automations',     'icon' => 'bx-git-branch',        'color' => '#00838f'],
         'reports'     => ['label' => 'Reports',         'icon' => 'bx-line-chart',        'color' => '#1565c0'],
-        'support'     => ['label' => 'Support',         'icon' => 'bx-help-circle',       'color' => '#006666'],
+        'support'     => ['label' => 'Support',         'icon' => 'bx-help-circle',       'color' => '#163f7a'],
         'users'       => ['label' => 'Users / Staff',   'icon' => 'bx-group',             'color' => '#4a148c'],
         'company'     => ['label' => 'Company Profile', 'icon' => 'bx-building',          'color' => '#37474f'],
         'smtp'        => ['label' => 'SMTP & Email',    'icon' => 'bx-envelope-open',     'color' => '#5f6368'],
-        'settings'    => ['label' => 'Role Settings',   'icon' => 'bx-shield-quarter',    'color' => '#006666'],
+        'settings'    => ['label' => 'Role Settings',   'icon' => 'bx-shield-quarter',    'color' => '#163f7a'],
     ];
 
     // Permission types per module
@@ -229,7 +229,7 @@
 
 .rs-form-header {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 28px; background: linear-gradient(135deg, #005757, #007e7e);
+    padding: 20px 28px; background: linear-gradient(135deg, #005757, #163f7a);
 }
 .rs-form-header-title { font-size: 1rem; font-weight: 700; color: #fff; margin: 0; }
 .rs-form-header-sub   { font-size: 0.74rem; color: rgba(255,255,255,.72); margin: 4px 0 0; }
@@ -244,10 +244,10 @@
 .rs-form-body { padding: 28px; background: #f4fbfb; }
 
 .rs-section-title {
-    font-size: 0.72rem; font-weight: 700; color: #006666;
+    font-size: 0.72rem; font-weight: 700; color: #163f7a;
     text-transform: uppercase; letter-spacing: .07em;
     margin: 24px 0 14px; padding-bottom: 5px;
-    border-bottom: 1.5px solid rgba(0,102,102,.12);
+    border-bottom: 1.5px solid rgba(22, 63, 122,.12);
 }
 .rs-section-title:first-child { margin-top: 0; }
 
@@ -260,11 +260,11 @@
     border: 1.5px solid #d1d5db; border-radius: 10px; background: #fff;
     overflow: hidden; transition: border-color .15s, box-shadow .15s; height: 44px;
 }
-.rs-input-box:focus-within { border-color: #006666; box-shadow: 0 0 0 3px rgba(0,102,102,.08); }
+.rs-input-box:focus-within { border-color: #163f7a; box-shadow: 0 0 0 3px rgba(22, 63, 122,.08); }
 .rs-icon {
     display: flex; align-items: center; justify-content: center;
     width: 40px; height: 100%; flex-shrink: 0;
-    color: #006666; font-size: 1.05rem;
+    color: #163f7a; font-size: 1.05rem;
     border-right: 1.5px solid #e8eaed; background: #f8fdfd;
 }
 .rs-input-box input,
@@ -282,22 +282,22 @@
 /* Bulk buttons */
 .rs-bulk-btn {
     display: inline-flex; align-items: center; gap: 4px;
-    border: 1.5px solid rgba(0,102,102,.2); background: rgba(0,102,102,.05);
-    color: #006666; border-radius: 8px; padding: 5px 12px;
+    border: 1.5px solid rgba(22, 63, 122,.2); background: rgba(22, 63, 122,.05);
+    color: #163f7a; border-radius: 8px; padding: 5px 12px;
     font-size: 0.72rem; font-weight: 700; cursor: pointer; transition: all .15s;
 }
-.rs-bulk-btn:hover { background: rgba(0,102,102,.1); }
+.rs-bulk-btn:hover { background: rgba(22, 63, 122,.1); }
 .rs-bulk-danger { border-color: rgba(234,67,53,.2); background: rgba(234,67,53,.05); color: #ea4335; }
 .rs-bulk-danger:hover { background: rgba(234,67,53,.1); }
 
 /* Legend */
 .rs-legend {
     display: flex; align-items: center; flex-wrap: wrap; gap: 6px;
-    font-size: 0.72rem; color: #80868b; background: rgba(0,102,102,0.04);
-    border: 1px solid rgba(0,102,102,0.1); border-radius: 10px;
+    font-size: 0.72rem; color: #80868b; background: rgba(22, 63, 122,0.04);
+    border: 1px solid rgba(22, 63, 122,0.1); border-radius: 10px;
     padding: 9px 14px;
 }
-.rs-legend i { color: #006666; font-size: 0.88rem; }
+.rs-legend i { color: #163f7a; font-size: 0.88rem; }
 .rs-legend-sep { color: #dadce0; }
 
 /* Permissions Table */
@@ -315,7 +315,7 @@
 }
 
 .rs-perm-head {
-    background: linear-gradient(135deg, #005757, #007e7e);
+    background: linear-gradient(135deg, #005757, #163f7a);
     padding: 11px 16px; gap: 4px; position: sticky; top: 0; z-index: 5;
 }
 .rs-perm-head .rs-col-module { color: rgba(255,255,255,.9); font-size: 0.78rem; font-weight: 700; }
@@ -331,7 +331,7 @@
 }
 .rs-perm-row:last-child { border-bottom: none; }
 .rs-perm-row:nth-child(even) { background: #fafbfc; }
-.rs-perm-row:hover { background: rgba(0,102,102,0.03); }
+.rs-perm-row:hover { background: rgba(22, 63, 122,0.03); }
 
 .rs-col-module { padding-right: 8px; }
 .rs-col-perm   { display: flex; align-items: center; justify-content: center; }
@@ -347,8 +347,8 @@
     background: none; border: none; padding: 0; cursor: pointer;
     text-decoration: underline; transition: color .12s; margin-top: 1px;
 }
-.rs-row-toggle:hover { color: #006666; }
-.rs-row-toggle-on { color: #006666; font-weight: 700; }
+.rs-row-toggle:hover { color: #163f7a; }
+.rs-row-toggle-on { color: #163f7a; font-weight: 700; }
 
 /* Custom Checkboxes */
 .rs-check-wrap { display: inline-flex; cursor: pointer; margin: 0; }
@@ -359,9 +359,9 @@
     display: flex; align-items: center; justify-content: center;
     transition: all .15s; color: #fff; font-size: 0.9rem;
 }
-.rs-check-wrap input:checked + .rs-check-box { background: #006666; border-color: #006666; }
+.rs-check-wrap input:checked + .rs-check-box { background: #163f7a; border-color: #163f7a; }
 .rs-check-wrap:hover input:not(:checked) + .rs-check-box {
-    border-color: #006666; background: rgba(0,102,102,.05);
+    border-color: #163f7a; background: rgba(22, 63, 122,.05);
 }
 .rs-check-na { color: #dadce0; font-size: 1.1rem; font-weight: 600; line-height: 1; }
 
@@ -384,7 +384,7 @@
 .rs-btn-save {
     display: inline-flex; align-items: center; gap: 5px;
     font-size: 0.85rem; font-weight: 700; padding: 9px 24px; border-radius: 10px;
-    border: none; background: #006666; color: #fff; cursor: pointer; transition: background .15s;
+    border: none; background: #163f7a; color: #fff; cursor: pointer; transition: background .15s;
 }
 .rs-btn-save:hover { background: #004e4e; }
 

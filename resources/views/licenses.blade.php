@@ -15,7 +15,7 @@
             {{-- ── Stat Cards Row ── --}}
             <div class="pj-stat-row mb-4">
                 <div class="pj-stat-card">
-                    <div class="pj-stat-icon" style="background:rgba(0,102,102,0.1);color:#006666;">
+                    <div class="pj-stat-icon" style="background:rgba(22, 63, 122,0.1);color:#163f7a;">
                         <i class="bx bx-key"></i>
                     </div>
                     <div>
@@ -24,11 +24,11 @@
                     </div>
                 </div>
                 <div class="pj-stat-card">
-                    <div class="pj-stat-icon" style="background:rgba(52,168,83,0.1);color:#34a853;">
+                    <div class="pj-stat-icon" style="background:rgba(52,168,83,0.1);color:#163f7a;">
                         <i class="bx bx-check-shield"></i>
                     </div>
                     <div>
-                        <div class="pj-stat-num" style="color:#34a853;">{{ $stats['active'] }}</div>
+                        <div class="pj-stat-num" style="color:#163f7a;">{{ $stats['active'] }}</div>
                         <div class="pj-stat-label">Active Keys</div>
                     </div>
                 </div>
@@ -98,10 +98,10 @@
                         $isExpiring = !$isExpired && \Carbon\Carbon::parse($license->expiry_date)->diffInDays(now()) <= 30;
                     @endphp
                     <div class="pj-card">
-                        <div class="pj-card-accent" style="background: {{ $isExpired ? '#ea4335' : ($isExpiring ? '#fbbc04' : '#006666') }};"></div>
+                        <div class="pj-card-accent" style="background: {{ $isExpired ? '#ea4335' : ($isExpiring ? '#fbbc04' : '#163f7a') }};"></div>
                         
                         <div class="pj-card-header">
-                            <div class="pj-card-avatar" style="background: {{ $isExpired ? 'rgba(234,67,53,0.1)' : 'rgba(0,102,102,0.1)' }}; color: {{ $isExpired ? '#ea4335' : '#006666' }};">
+                            <div class="pj-card-avatar" style="background: {{ $isExpired ? 'rgba(234,67,53,0.1)' : 'rgba(22, 63, 122,0.1)' }}; color: {{ $isExpired ? '#ea4335' : '#163f7a' }};">
                                 <i class="bx {{ $isExpired ? 'bx-error' : 'bx-badge-check' }}"></i>
                             </div>
                             <div class="pj-card-meta">
@@ -133,7 +133,7 @@
                         </div>
 
                         <div class="mt-3 pt-2 border-top d-flex justify-content-between align-items-center">
-                            <span class="badge" style="background:rgba(0,102,102,0.06); color:#006666; font-size:0.65rem;">
+                            <span class="badge" style="background:rgba(22, 63, 122,0.06); color:#163f7a; font-size:0.65rem;">
                                 {{ $license->technology_stack ?? 'Web App' }}
                             </span>
                             <div class="d-flex gap-2">
@@ -184,7 +184,7 @@
                                         <code class="px-2 py-1 bg-light rounded text-dark fw-bold" style="font-size:0.8rem; letter-spacing:0.5px;">{{ $license->eselicense_key }}</code>
                                     </td>
                                     <td class="m-none">
-                                        <span class="badge" style="background:rgba(0,102,102,0.08); color:#006666; font-weight:500;">
+                                        <span class="badge" style="background:rgba(22, 63, 122,0.08); color:#163f7a; font-weight:500;">
                                             {{ $license->technology_stack ?? 'N/A' }}
                                         </span>
                                     </td>
@@ -254,7 +254,7 @@
 
         .pj-view-toggle { display: flex; gap: 3px; background: #f1f3f4; border-radius: 20px; padding: 3px; }
         .pj-view-btn { width: 32px; height: 32px; border: none; background: transparent; border-radius: 50%; cursor: pointer; color: #80868b; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
-        .pj-view-btn.active { background: #fff; color: #006666; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+        .pj-view-btn.active { background: #fff; color: #163f7a; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
 
         .pj-card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
         .pj-card {
@@ -272,7 +272,7 @@
 
         .pj-card-info { display: flex; flex-direction: column; gap: 8px; }
         .pj-info-row { display: flex; align-items: center; gap: 10px; font-size: 0.78rem; color: #5f6368; }
-        .pj-info-row i { font-size: 1rem; color: #006666; opacity: 0.7; }
+        .pj-info-row i { font-size: 1rem; color: #163f7a; opacity: 0.7; }
         .pj-info-row code { color: #202124; }
 
         .pj-empty { text-align: center; padding: 60px 20px; color: #dadce0; grid-column: 1/-1; }
@@ -328,7 +328,7 @@
                     const content = document.getElementById('licenseModalContent');
                     const modalEl = document.getElementById('licenseModal');
 
-                    content.innerHTML = '<div class="p-5 text-center"><i class="bx bx-loader-alt bx-spin" style="font-size:2rem;color:#006666;"></i><p class="mt-2 text-muted">Loading license data...</p></div>';
+                    content.innerHTML = '<div class="p-5 text-center"><i class="bx bx-loader-alt bx-spin" style="font-size:2rem;color:#163f7a;"></i><p class="mt-2 text-muted">Loading license data...</p></div>';
                     bootstrap.Modal.getOrCreateInstance(modalEl).show();
 
                     fetch(url)

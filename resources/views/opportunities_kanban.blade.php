@@ -35,8 +35,8 @@
                 'New'         => ['#1a73e8', 'bx bx-star'],
                 'Qualified'   => ['#9334e9', 'bx bx-check-shield'],
                 'Proposal'    => ['#f29900', 'bx bx-file'],
-                'Negotiation' => ['#006666', 'bx bx-transfer'],
-                'Closed Won'  => ['#34a853', 'bx bx-trophy'],
+                'Negotiation' => ['#163f7a', 'bx bx-transfer'],
+                'Closed Won'  => ['#163f7a', 'bx bx-trophy'],
                 'Closed Lost' => ['#ea4335', 'bx bx-x-circle'],
             ];
             @endphp
@@ -93,7 +93,7 @@
 {{-- ── ADD DEAL OFFCANVAS ── --}}
 <div class="offcanvas offcanvas-end" tabindex="-1" id="addDealOffcanvas"
      style="width:440px; max-width:100vw;">
-    <div class="offcanvas-header" style="background:linear-gradient(135deg,#006666,#008080); color:#fff;">
+    <div class="offcanvas-header" style="background:linear-gradient(135deg,#163f7a,#163f7a); color:#fff;">
         <div class="d-flex align-items-center gap-3">
             <div style="width:36px;height:36px;background:rgba(255,255,255,0.15);border-radius:10px;
                         display:flex;align-items:center;justify-content:center;font-size:1.1rem;">
@@ -171,8 +171,8 @@ const STAGE_COLORS = {
     'New':         '#1a73e8',
     'Qualified':   '#9334e9',
     'Proposal':    '#f29900',
-    'Negotiation': '#006666',
-    'Closed Won':  '#34a853',
+    'Negotiation': '#163f7a',
+    'Closed Won':  '#163f7a',
     'Closed Lost': '#ea4335',
 };
 

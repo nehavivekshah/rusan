@@ -6,10 +6,10 @@
 /* ── Reuse contract modal style ── */
 .cf-wrap * { box-sizing: border-box; font-family: inherit; }
 .cf-section-title {
-    font-size: .72rem; font-weight: 700; color: #006666;
+    font-size: .72rem; font-weight: 700; color: #163f7a;
     text-transform: uppercase; letter-spacing: .07em;
     margin: 16px 0 10px; padding-bottom: 4px;
-    border-bottom: 1.5px solid rgba(0,102,102,.12);
+    border-bottom: 1.5px solid rgba(22, 63, 122,.12);
 }
 .cf-section-title:first-child { margin-top: 0; }
 .cf-field { display: flex; flex-direction: column; }
@@ -21,11 +21,11 @@
     background: #fff; overflow: hidden; height: 42px;
     transition: border-color .15s, box-shadow .15s;
 }
-.cf-input-box:focus-within { border-color: #006666; box-shadow: 0 0 0 3px rgba(0,102,102,.08); }
+.cf-input-box:focus-within { border-color: #163f7a; box-shadow: 0 0 0 3px rgba(22, 63, 122,.08); }
 .cf-icon {
     display: flex; align-items: center; justify-content: center;
     width: 38px; height: 100%; flex-shrink: 0;
-    color: #006666; font-size: 1.05rem;
+    color: #163f7a; font-size: 1.05rem;
     border-right: 1.5px solid #e8eaed; background: #f8fdfd;
 }
 .cf-input-box input,
@@ -54,11 +54,11 @@
     background: #fff; height: 42px; overflow: hidden;
     transition: border-color .15s, box-shadow .15s;
 }
-.cf-select2-wrap:focus-within { border-color: #006666; box-shadow: 0 0 0 3px rgba(0,102,102,.08); }
+.cf-select2-wrap:focus-within { border-color: #163f7a; box-shadow: 0 0 0 3px rgba(22, 63, 122,.08); }
 .cf-select2-wrap .cf-icon-abs {
     display: flex; align-items: center; justify-content: center;
     width: 38px; height: 100%; flex-shrink: 0;
-    color: #006666; font-size: 1.05rem;
+    color: #163f7a; font-size: 1.05rem;
     border-right: 1.5px solid #e8eaed; background: #f8fdfd; pointer-events: none; z-index: 2;
 }
 .cf-select2-wrap .select2-container { flex: 1; min-width: 0; }
@@ -72,7 +72,7 @@
 .select2-dropdown { border: 1.5px solid #d1d5db; border-radius: 8px; box-shadow: 0 6px 24px rgba(0,0,0,.1); z-index: 99999 !important; }
 .select2-search--dropdown .select2-search__field { border: 1px solid #e0e0e0; border-radius: 6px; font-size: .85rem; padding: 6px 10px; }
 .select2-results__option { font-size: .85rem; padding: 8px 12px; }
-.select2-results__option--highlighted { background: #006666 !important; }
+.select2-results__option--highlighted { background: #163f7a !important; }
 /* Native selects inside Select2 wrapper — no border */
 .cf-select2-wrap select,
 #rf_client,
@@ -81,7 +81,7 @@
 /* Modal header */
 .cf-modal-header {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 16px 20px; background: linear-gradient(135deg, #005757, #007e7e);
+    padding: 16px 20px; background: linear-gradient(135deg, #005757, #163f7a);
     border-radius: 16px 16px 0 0;
 }
 .cf-modal-header-title { font-size: .975rem; font-weight: 700; color: #fff; margin: 0; }
@@ -95,7 +95,7 @@
 }
 .cf-btn-cancel { font-size: .85rem; padding: 8px 20px; border-radius: 8px; border: 1.5px solid #d1d5db; background: #fff; color: #5f6368; cursor: pointer; }
 .cf-btn-cancel:hover { background: #f5f5f5; }
-.cf-btn-save { font-size: .85rem; font-weight: 600; padding: 8px 22px; border-radius: 8px; border: none; background: #006666; color: #fff; cursor: pointer; display: flex; align-items: center; gap: 5px; }
+.cf-btn-save { font-size: .85rem; font-weight: 600; padding: 8px 22px; border-radius: 8px; border: none; background: #163f7a; color: #fff; cursor: pointer; display: flex; align-items: center; gap: 5px; }
 .cf-btn-save:hover { background: #004e4e; }
 </style>
 @endonce
@@ -223,8 +223,8 @@
             @if(!$isEdit)
             <div class="col-md-4 cf-field">
                 <label>Amount Received</label>
-                <div class="cf-input-box" style="border-color:#34a853;">
-                    <span class="cf-icon" style="font-size:.9rem; font-weight:700; color:#34a853; background:rgba(52,168,83,.05);">₹</span>
+                <div class="cf-input-box" style="border-color:#163f7a;">
+                    <span class="cf-icon" style="font-size:.9rem; font-weight:700; color:#163f7a; background:rgba(52,168,83,.05);">₹</span>
                     <input type="number" step="0.01" min="0" name="received" placeholder="0.00"
                            value="{{ $recoveries->paid ?? '0' }}">
                 </div>

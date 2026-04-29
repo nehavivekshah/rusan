@@ -11,7 +11,7 @@
             {{-- ── Stat Cards Row ── --}}
             <div class="pj-stat-row mb-4">
                 <div class="pj-stat-card">
-                    <div class="pj-stat-icon" style="background:rgba(0,102,102,0.1);color:#006666;">
+                    <div class="pj-stat-icon" style="background:rgba(22, 63, 122,0.1);color:#163f7a;">
                         <i class="bx bx-mail-send"></i>
                     </div>
                     <div>
@@ -38,11 +38,11 @@
                     </div>
                 </div>
                 <div class="pj-stat-card">
-                    <div class="pj-stat-icon" style="background:rgba(52,168,83,0.1);color:#34a853;">
+                    <div class="pj-stat-icon" style="background:rgba(52,168,83,0.1);color:#163f7a;">
                         <i class="bx bx-check-double"></i>
                     </div>
                     <div>
-                        <div class="pj-stat-num" style="color:#34a853;">{{ $stats['closed'] }}</div>
+                        <div class="pj-stat-num" style="color:#163f7a;">{{ $stats['closed'] }}</div>
                         <div class="pj-stat-label">Qualified/Closed</div>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
 
                         {{-- Top accent --}}
                         <div class="pj-card-accent"
-                            style="background: @if($enquiry->status == 0)#1a73e8 @elseif($enquiry->status == 1)#ffc107 @else#34a853 @endif;">
+                            style="background: @if($enquiry->status == 0)#1a73e8 @elseif($enquiry->status == 1)#ffc107 @else#163f7a @endif;">
                         </div>
 
                         {{-- Header --}}
@@ -268,7 +268,7 @@
     <div class="modal fade" id="apiDocsModal" tabindex="-1" aria-hidden="true" style="z-index: 1060;">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg" style="border-radius: 20px; overflow: hidden;">
-                <div class="modal-header border-0 p-4" style="background: linear-gradient(90deg, #006666, #009688);">
+                <div class="modal-header border-0 p-4" style="background: linear-gradient(90deg, #163f7a, #0f2d57);">
                     <h5 class="modal-title fw-bold text-white">
                         <i class="bx bx-code-block me-2"></i> API Integration Guide
                     </h5>
@@ -283,7 +283,7 @@
                         <div class="col-md-5">
                             <div class="p-3 bg-white rounded-3 shadow-sm border h-100">
                                 <div class="small fw-bold mb-2 text-uppercase tracking-wider"
-                                    style="font-size: 0.65rem; color: #006666;">Endpoint Details</div>
+                                    style="font-size: 0.65rem; color: #163f7a;">Endpoint Details</div>
                                 <div class="mb-3">
                                     <label class="small text-muted d-block">POST URL</label>
                                     <div
@@ -315,7 +315,7 @@
                         <div class="col-md-7">
                             <div class="p-3 bg-white rounded-3 shadow-sm border h-100">
                                 <div class="small fw-bold mb-2 text-uppercase tracking-wider"
-                                    style="font-size: 0.65rem; color: #006666;">Sample HTML Form</div>
+                                    style="font-size: 0.65rem; color: #163f7a;">Sample HTML Form</div>
                                 <pre class="bg-dark text-white p-3 rounded-3 mb-0" style="font-size: 0.7rem; overflow-x: auto;">&lt;form action="{{ url('/enquiry-submit') }}" method="POST"&gt;
     &lt;input type="text" name="name" placeholder="Full Name" required&gt;
     &lt;input type="email" name="email" placeholder="Email"&gt;
@@ -331,7 +331,7 @@
                     <button type="button" class="btn btn-light px-4" data-bs-dismiss="modal"
                         style="border-radius:12px;">Close</button>
                     <button type="button" class="btn btn-teal px-4" onclick="copyApiEndpoint()"
-                        style="background:#006666; color:white; border-radius:12px;">
+                        style="background:#163f7a; color:white; border-radius:12px;">
                         <i class="bx bx-copy me-2"></i> Copy Endpoint URL
                     </button>
                 </div>
@@ -425,7 +425,7 @@
 
         .pj-view-btn.active {
             background: #fff;
-            color: #006666;
+            color: #163f7a;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
         }
 
@@ -468,7 +468,7 @@
             width: 42px;
             height: 42px;
             border-radius: 12px;
-            background: linear-gradient(135deg, #006666, #009688);
+            background: linear-gradient(135deg, #163f7a, #0f2d57);
             color: #fff;
             font-size: 1.1rem;
             font-weight: 700;
@@ -513,7 +513,7 @@
 
         .pj-info-row i {
             font-size: 0.95rem;
-            color: #006666;
+            color: #163f7a;
         }
 
         .pv-badge {
@@ -525,7 +525,7 @@
 
         .pv-badge-success {
             background: rgba(52, 168, 83, 0.1);
-            color: #34a853;
+            color: #163f7a;
         }
 
         .pv-badge-info {
@@ -592,7 +592,7 @@
             const oldIcon = icon.className;
 
             icon.className = 'bx bx-check';
-            btn.style.color = '#34a853';
+            btn.style.color = '#163f7a';
 
             setTimeout(() => {
                 icon.className = oldIcon;
@@ -604,7 +604,7 @@
             const content = document.getElementById('enquiryModalContent');
             const modalEl = document.getElementById('enquiryModal');
 
-            content.innerHTML = '<div class="p-5 text-center"><i class="bx bx-loader-alt bx-spin" style="font-size:2rem;color:#006666;"></i><p class="mt-2 text-muted">Loading...</p></div>';
+            content.innerHTML = '<div class="p-5 text-center"><i class="bx bx-loader-alt bx-spin" style="font-size:2rem;color:#163f7a;"></i><p class="mt-2 text-muted">Loading...</p></div>';
 
             bootstrap.Modal.getOrCreateInstance(modalEl).show();
 

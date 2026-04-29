@@ -37,7 +37,7 @@
                     </li>
                     <li>
                         <a class="dropdown-item header-dropdown-item" href="/manage-client">
-                            <span class="hdi-icon" style="background:rgba(52,168,83,0.08); color:#34a853;"><i class="bx bx-group"></i></span>
+                            <span class="hdi-icon" style="background:rgba(52,168,83,0.08); color:#163f7a;"><i class="bx bx-group"></i></span>
                             <div>
                                 <div class="hdi-title">New Client</div>
                                 <small class="hdi-sub">Add to client base</small>
@@ -220,7 +220,7 @@
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     margin-right: 18px;
-    /* box-shadow: 0 4px 12px rgba(0, 102, 102, 0.2); */
+    /* box-shadow: 0 4px 12px rgba(22, 63, 122, 0.2); */
     z-index: 100;
 }
 
@@ -259,7 +259,7 @@
     white-space: nowrap;
     min-width: 160px;
 }
-.header-search-trigger:hover { background: #e8eaed; border-color: #00666630; color: #3c4043; }
+.header-search-trigger:hover { background: #e8eaed; border-color: #163f7a30; color: #3c4043; }
 .header-search-trigger i { font-size: 1rem; }
 .header-search-trigger kbd {
     margin-left: auto; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2px;
@@ -433,8 +433,8 @@
 
         const sections = [
             { key: 'leads',     label: 'Leads',     icon: 'bx bx-user-check',   color: '#1a73e8', bg: 'rgba(26,115,232,0.08)' },
-            { key: 'clients',   label: 'Clients',   icon: 'bx bx-group',        color: '#34a853', bg: 'rgba(52,168,83,0.08)'  },
-            { key: 'projects',  label: 'Projects',  icon: 'bx bx-layer',        color: '#006666', bg: 'rgba(0,102,102,0.08)'  },
+            { key: 'clients',   label: 'Clients',   icon: 'bx bx-group',        color: '#163f7a', bg: 'rgba(52,168,83,0.08)'  },
+            { key: 'projects',  label: 'Projects',  icon: 'bx bx-layer',        color: '#163f7a', bg: 'rgba(22, 63, 122,0.08)'  },
             { key: 'proposals', label: 'Proposals', icon: 'bx bx-file',         color: '#f29900', bg: 'rgba(242,153,0,0.08)'  },
         ];
 

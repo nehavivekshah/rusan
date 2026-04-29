@@ -7,9 +7,9 @@
 <style>
 .cf-wrap * { box-sizing: border-box; font-family: inherit; }
 .cf-section-title {
-    font-size:.72rem; font-weight:700; color:#006666; text-transform:uppercase;
+    font-size:.72rem; font-weight:700; color:#163f7a; text-transform:uppercase;
     letter-spacing:.07em; margin:16px 0 10px; padding-bottom:4px;
-    border-bottom:1.5px solid rgba(0,102,102,.12);
+    border-bottom:1.5px solid rgba(22, 63, 122,.12);
 }
 .cf-section-title:first-child { margin-top:0; }
 .cf-field { display:flex; flex-direction:column; }
@@ -19,10 +19,10 @@
     border-radius:8px; background:#fff; overflow:hidden; height:42px;
     transition:border-color .15s, box-shadow .15s;
 }
-.cf-input-box:focus-within { border-color:#006666; box-shadow:0 0 0 3px rgba(0,102,102,.08); }
+.cf-input-box:focus-within { border-color:#163f7a; box-shadow:0 0 0 3px rgba(22, 63, 122,.08); }
 .cf-icon {
     display:flex; align-items:center; justify-content:center; width:38px; height:100%;
-    flex-shrink:0; color:#006666; font-size:1.05rem;
+    flex-shrink:0; color:#163f7a; font-size:1.05rem;
     border-right:1.5px solid #e8eaed; background:#f8fdfd;
 }
 .cf-input-box input, .cf-input-box textarea {
@@ -51,7 +51,7 @@
 }
 .cf-btn-cancel { font-size:.85rem; padding:8px 20px; border-radius:8px; border:1.5px solid #d1d5db; background:#fff; color:#5f6368; cursor:pointer; }
 .cf-btn-cancel:hover { background:#f5f5f5; }
-.cf-btn-save { font-size:.85rem; font-weight:600; padding:8px 22px; border-radius:8px; border:none; background:#006666; color:#fff; cursor:pointer; display:flex; align-items:center; gap:5px; }
+.cf-btn-save { font-size:.85rem; font-weight:600; padding:8px 22px; border-radius:8px; border:none; background:#163f7a; color:#fff; cursor:pointer; display:flex; align-items:center; gap:5px; }
 .cf-btn-save:hover { background:#004e4e; }
 </style>
 

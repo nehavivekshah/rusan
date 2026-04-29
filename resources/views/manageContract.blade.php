@@ -137,7 +137,7 @@
                         @else
                             <a href="/contracts" class="btn btn-light rounded-pill border px-4 me-2">Cancel</a>
                         @endif
-                        <button type="submit" class="btn btn-primary rounded-pill px-4" style="background:#006666; border:none;">
+                        <button type="submit" class="btn btn-primary rounded-pill px-4" style="background:#163f7a; border:none;">
                             {{ isset($contract) && $contract->exists ? 'Update Contract' : 'Save Contract' }}
                         </button>
                     </div>

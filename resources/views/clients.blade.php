@@ -26,7 +26,7 @@
             {{-- â”€â”€ Stat Cards â”€â”€ --}}
             <div class="cl-stat-row mb-4">
                 <div class="cl-stat-card">
-                    <div class="cl-stat-icon" style="background:rgba(0,102,102,0.10);color:#006666;">
+                    <div class="cl-stat-icon" style="background:rgba(22, 63, 122,0.10);color:#163f7a;">
                         <i class="bx bx-group"></i>
                     </div>
                     <div>
@@ -35,11 +35,11 @@
                     </div>
                 </div>
                 <div class="cl-stat-card">
-                    <div class="cl-stat-icon" style="background:rgba(52,168,83,0.10);color:#34a853;">
+                    <div class="cl-stat-icon" style="background:rgba(52,168,83,0.10);color:#163f7a;">
                         <i class="bx bx-check-circle"></i>
                     </div>
                     <div>
-                        <div class="cl-stat-num" style="color:#34a853;">{{ $activeClients }}</div>
+                        <div class="cl-stat-num" style="color:#163f7a;">{{ $activeClients }}</div>
                         <div class="cl-stat-label">Active</div>
                     </div>
                 </div>
@@ -128,7 +128,7 @@
                                     <td>
                                         <div class="d-flex align-items-center gap-2">
                                             <div class="lb-avatar-sm"
-                                                style="background:linear-gradient(135deg,#006666,#009688);color:#fff;">
+                                                style="background:linear-gradient(135deg,#163f7a,#0f2d57);color:#fff;">
                                                 {{ strtoupper(substr($client->name ?? 'C', 0, 1)) }}
                                             </div>
                                              <div>
@@ -154,7 +154,7 @@
                                     {{-- Status --}}
                                     <td>
                                         @if($client->status == '1')
-                                            <span class="inv-status-pill" style="background:rgba(52,168,83,0.10);color:#34a853;">
+                                            <span class="inv-status-pill" style="background:rgba(52,168,83,0.10);color:#163f7a;">
                                                 <i class="bx bx-check-circle"></i> Active
                                             </span>
                                         @else
@@ -292,7 +292,7 @@
         }
         .cl-toggle-active {
             background: rgba(52, 168, 83, 0.12);
-            color: #34a853;
+            color: #163f7a;
         }
         .cl-toggle-active:hover {
             background: rgba(52, 168, 83, 0.22);
@@ -356,7 +356,7 @@
                     button.innerHTML = isActive ? '<i class="bx bx-toggle-right"></i>' : '<i class="bx bx-toggle-left"></i>';
                     const row = button.closest('tr'); const pill = row?.querySelector('.inv-status-pill');
                     if (pill) {
-                        if (isActive) { pill.style.background = 'rgba(52,168,83,0.10)'; pill.style.color = '#34a853'; pill.innerHTML = '<i class="bx bx-check-circle"></i> Active'; }
+                        if (isActive) { pill.style.background = 'rgba(52,168,83,0.10)'; pill.style.color = '#163f7a'; pill.innerHTML = '<i class="bx bx-check-circle"></i> Active'; }
                         else          { pill.style.background = 'rgba(234,67,53,0.10)';  pill.style.color = '#ea4335'; pill.innerHTML = '<i class="bx bx-minus-circle"></i> Inactive'; }
                     }
                     let active = 0, inactive = 0; document.querySelectorAll('.cl-toggle-status').forEach(b => { if (b.dataset.status == '1') active++; else inactive++; });

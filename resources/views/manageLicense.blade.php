@@ -24,11 +24,11 @@
         background:#fff; overflow:hidden; height:42px;
         transition:border-color .15s, box-shadow .15s;
     }
-    .cf-input-box:focus-within { border-color:#006666; box-shadow:0 0 0 3px rgba(0,102,102,.08); }
+    .cf-input-box:focus-within { border-color:#163f7a; box-shadow:0 0 0 3px rgba(22, 63, 122,.08); }
     .cf-icon {
         display:flex; align-items:center; justify-content:center;
         width:38px; min-width:38px; height:100%;
-        color:#006666; font-size:1.05rem;
+        color:#163f7a; font-size:1.05rem;
         border-right:1.5px solid #e8eaed; background:#f8fdfd; flex-shrink:0;
     }
     .cf-input-box input,
@@ -58,7 +58,7 @@
         background:#fff; overflow:hidden; min-height:42px;
         transition:border-color .15s, box-shadow .15s;
     }
-    .cf-select-wrap:focus-within { border-color:#006666; box-shadow:0 0 0 3px rgba(0,102,102,.08); }
+    .cf-select-wrap:focus-within { border-color:#163f7a; box-shadow:0 0 0 3px rgba(22, 63, 122,.08); }
     .cf-select-wrap .cf-icon { border-right:1.5px solid #e8eaed; height:42px; flex-shrink:0; }
     .cf-select-wrap select { flex:1; border:none !important; outline:none !important;
         box-shadow:none !important; background:transparent; font-size:.875rem;
@@ -84,7 +84,7 @@
     .lic-key-row .cf-input-box { flex:1; }
     .btn-gen-key {
         height:42px; padding:0 16px; border-radius:8px;
-        border:1.5px solid #006666; background:#006666; color:#fff;
+        border:1.5px solid #163f7a; background:#163f7a; color:#fff;
         font-size:.82rem; font-weight:600; cursor:pointer; white-space:nowrap;
         display:flex; align-items:center; gap:5px; transition:background .15s;
     }
@@ -94,7 +94,7 @@
     .inv-btn-save {
         display:inline-flex; align-items:center; gap:6px;
         padding:8px 22px; border-radius:9px; font-size:.875rem; font-weight:600;
-        border:none; background:#006666; color:#fff; cursor:pointer; transition:background .15s;
+        border:none; background:#163f7a; color:#fff; cursor:pointer; transition:background .15s;
         text-decoration:none;
     }
     .inv-btn-save:hover { background:#004e4e; color:#fff; }
@@ -108,9 +108,9 @@
 
     /* Preload badge */
     .pv-preload-notice {
-        background:linear-gradient(135deg,rgba(0,102,102,.07),rgba(0,163,163,.05));
-        border:1px solid rgba(0,102,102,.2); border-radius:10px;
-        padding:10px 16px; font-size:.82rem; color:#006666; font-weight:500;
+        background:linear-gradient(135deg,rgba(22, 63, 122,.07),rgba(0,163,163,.05));
+        border:1px solid rgba(22, 63, 122,.2); border-radius:10px;
+        padding:10px 16px; font-size:.82rem; color:#163f7a; font-weight:500;
         display:flex; align-items:center; gap:8px; margin-bottom:20px;
     }
 </style>
@@ -133,7 +133,7 @@
                         {{ !empty($license->id) ? 'Edit License' : 'Add New License' }}
                     </span>
                     @if(!empty($preloadProject))
-                        <span class="ms-2" style="font-size:.78rem;color:#006666;font-weight:600;">
+                        <span class="ms-2" style="font-size:.78rem;color:#163f7a;font-weight:600;">
                             <i class="bx bx-link-alt"></i> Pre-filled from: {{ $preloadProject->project_name }}
                         </span>
                     @endif
@@ -157,7 +157,7 @@
             {{-- ── Project Link ── --}}
             <div class="ml-card mb-4">
                 <div class="ml-card-header">
-                    <div class="ml-card-icon" style="background:rgba(0,102,102,.10);color:#006666;">
+                    <div class="ml-card-icon" style="background:rgba(22, 63, 122,.10);color:#163f7a;">
                         <i class="bx bx-folder-open"></i>
                     </div>
                     <div>
@@ -264,7 +264,7 @@
             {{-- ── Project Details ── --}}
             <div class="ml-card mb-4">
                 <div class="ml-card-header">
-                    <div class="ml-card-icon" style="background:rgba(52,168,83,.10);color:#34a853;">
+                    <div class="ml-card-icon" style="background:rgba(52,168,83,.10);color:#163f7a;">
                         <i class="bx bx-git-repo-forked"></i>
                     </div>
                     <div>
@@ -467,8 +467,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Flash the generate button
         generateBtn.innerHTML = '<i class="bx bx-check"></i> Copied!';
-        generateBtn.style.background = '#34a853';
-        generateBtn.style.borderColor = '#34a853';
+        generateBtn.style.background = '#163f7a';
+        generateBtn.style.borderColor = '#163f7a';
         setTimeout(() => {
             generateBtn.innerHTML = '<i class="bx bx-refresh"></i> Generate';
             generateBtn.style.background = '';

@@ -1,4 +1,4 @@
-<div class="modal-header border-0 p-4" style="background: linear-gradient(90deg, #006666, #009688);">
+<div class="modal-header border-0 p-4" style="background: linear-gradient(90deg, #163f7a, #0f2d57);">
     <h5 class="modal-title fw-bold text-white">
         <i class="bx bx-envelope me-2"></i> {{ $enquiry ? 'Manage Enquiry' : 'New Enquiry' }}
     </h5>
@@ -12,7 +12,7 @@
     <div class="modal-body p-4 bg-light bg-opacity-50">
         {{-- Section 1: Contact Details --}}
         <div class="cf-section-title mb-4">
-            <h6 class="fw-bold mb-1" style="color: #006666;">Contact & Identification</h6>
+            <h6 class="fw-bold mb-1" style="color: #163f7a;">Contact & Identification</h6>
             <p class="text-muted small mb-0">Basic information captured from the landing page</p>
         </div>
 
@@ -61,7 +61,7 @@
 
         {{-- Section 2: Message Content --}}
         <div class="cf-section-title mt-5 mb-4 border-top pt-4">
-            <h6 class="fw-bold mb-1" style="color: #006666;">Submission Details</h6>
+            <h6 class="fw-bold mb-1" style="color: #163f7a;">Submission Details</h6>
             <p class="text-muted small mb-0">The message and context provided by the lead</p>
         </div>
 
@@ -83,17 +83,17 @@
 
     <div class="modal-footer border-0 p-4 bg-white">
         <button type="button" class="btn btn-light px-4 py-2" data-bs-dismiss="modal" style="border-radius: 12px; font-weight: 500;">Cancel</button>
-        <button type="submit" class="btn btn-teal px-5 py-2" style="border-radius: 12px; background: #006666; color: white; border: none; font-weight: 600;">
+        <button type="submit" class="btn btn-teal px-5 py-2" style="border-radius: 12px; background: #163f7a; color: white; border: none; font-weight: 600;">
             <i class="bx bx-check me-2"></i> Update Enquiry
         </button>
     </div>
 </form>
 
 <style>
-    .text-teal { color: #006666; }
+    .text-teal { color: #163f7a; }
     .cf-input-box .form-control:focus, .cf-input-box .form-select:focus {
-        border-color: #006666;
-        box-shadow: 0 0 0 3px rgba(0, 102, 102, 0.1);
+        border-color: #163f7a;
+        box-shadow: 0 0 0 3px rgba(22, 63, 122, 0.1);
     }
     .cf-section-title h6 { position: relative; display: inline-block; }
     .cf-section-title h6::after {
@@ -103,7 +103,7 @@
         left: 0;
         width: 100%;
         height: 2px;
-        background: #006666;
+        background: #163f7a;
         border-radius: 2px;
     }
 </style>

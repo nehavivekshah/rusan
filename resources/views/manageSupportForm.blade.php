@@ -3,7 +3,7 @@
 @endphp
 
 <div class="modal-header border-0 p-4 pb-0">
-    <h5 class="modal-title fw-bold" style="color: #006666;">
+    <h5 class="modal-title fw-bold" style="color: #163f7a;">
         <i class="bx @if($ticket) bx-edit @else bx-plus-circle @endif me-2"></i>
         {{ $ticket ? 'Ticket Details' : 'Raise New Ticket' }}
     </h5>
@@ -75,7 +75,7 @@
 
     <div class="d-flex gap-2">
         <button type="button" class="btn btn-light flex-grow-1" data-bs-dismiss="modal" style="border-radius:10px;">Cancel</button>
-        <button type="submit" id="submitBtn" class="btn btn-teal flex-grow-1" style="background:#006666; color:white; border-radius:10px;">
+        <button type="submit" id="submitBtn" class="btn btn-teal flex-grow-1" style="background:#163f7a; color:white; border-radius:10px;">
             <i class="bx bx-check-circle me-1"></i> {{ $ticket ? 'Update Ticket' : 'Raise Ticket' }}
         </button>
     </div>

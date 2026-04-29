@@ -16,7 +16,7 @@
         {{-- ── Stat Cards ── --}}
         <div class="rv-stat-row mb-4">
             <div class="rv-stat-card">
-                <div class="rv-stat-icon" style="background:rgba(0,102,102,0.1);color:#006666;">
+                <div class="rv-stat-icon" style="background:rgba(22, 63, 122,0.1);color:#163f7a;">
                     <i class="bx bx-shield-quarter"></i>
                 </div>
                 <div>
@@ -25,11 +25,11 @@
                 </div>
             </div>
             <div class="rv-stat-card">
-                <div class="rv-stat-icon" style="background:rgba(52,168,83,0.1);color:#34a853;">
+                <div class="rv-stat-icon" style="background:rgba(52,168,83,0.1);color:#163f7a;">
                     <i class="bx bx-check-shield"></i>
                 </div>
                 <div>
-                    <div class="rv-stat-num" style="color:#34a853;">{{ $active }}</div>
+                    <div class="rv-stat-num" style="color:#163f7a;">{{ $active }}</div>
                     <div class="rv-stat-label">Active Roles</div>
                 </div>
             </div>
@@ -84,7 +84,7 @@
             <div class="rs-role-card">
                 {{-- Header --}}
                 <div class="rs-role-header">
-                    <div class="rs-role-avatar" style="background:linear-gradient(135deg,#005757,#007e7e);">
+                    <div class="rs-role-avatar" style="background:linear-gradient(135deg,#005757,#163f7a);">
                         {{ strtoupper(substr($role->title ?? 'R', 0, 1)) }}
                     </div>
                     <div class="rs-role-meta">
@@ -92,7 +92,7 @@
                         <div class="rs-role-sub">{{ $role->subtitle ?? 'No designation' }}</div>
                     </div>
                     @if($role->status == '1')
-                        <span class="rv-status-pill" style="background:#34a85315;color:#34a853;">
+                        <span class="rv-status-pill" style="background:#163f7a15;color:#163f7a;">
                             <i class="bx bx-check-circle"></i> Active
                         </span>
                     @else
@@ -197,7 +197,7 @@
 .rs-perm-preview { padding:14px 18px; flex:1; }
 .rs-perm-chip {
     display:inline-flex; align-items:center; gap:5px;
-    background:rgba(0,102,102,0.07); color:#006666;
+    background:rgba(22, 63, 122,0.07); color:#163f7a;
     border-radius:8px; padding:5px 12px; font-size:0.75rem; font-weight:700;
 }
 .rs-perm-all { background:rgba(26,115,232,0.08); color:#1a73e8; }
@@ -208,7 +208,7 @@
     padding:3px 9px; font-size:0.70rem; font-weight:600;
     text-transform:capitalize;
 }
-.rs-feat-more { background:rgba(0,102,102,0.06); color:#006666; }
+.rs-feat-more { background:rgba(22, 63, 122,0.06); color:#163f7a; }
 
 /* Card Footer */
 .rs-role-footer {
@@ -219,7 +219,7 @@
 .rs-locked-hint { font-size:0.72rem; color:#9aa0a6; display:flex; align-items:center; gap:4px; }
 .rs-btn-edit {
     display:inline-flex; align-items:center; gap:5px;
-    background:#006666; color:#fff; border-radius:8px;
+    background:#163f7a; color:#fff; border-radius:8px;
     padding:6px 14px; font-size:0.78rem; font-weight:700;
     text-decoration:none; border:none; cursor:pointer; transition:background .15s;
 }

@@ -27,11 +27,11 @@
                     </div>
                 </div>
                 <div class="rv-stat-card">
-                    <div class="rv-stat-icon" style="background:rgba(52,168,83,0.1);color:#34a853;">
+                    <div class="rv-stat-icon" style="background:rgba(52,168,83,0.1);color:#163f7a;">
                         <i class="bx bx-bolt-circle"></i>
                     </div>
                     <div>
-                        <div class="rv-stat-num" style="color:#34a853;">{{ $activeCount }}</div>
+                        <div class="rv-stat-num" style="color:#163f7a;">{{ $activeCount }}</div>
                         <div class="rv-stat-label">Active & Running</div>
                     </div>
                 </div>
@@ -109,7 +109,7 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center gap-2">
-                                            <div class="lb-avatar-sm" style="background:rgba(52,168,83,0.1); color:#34a853; border:none;">
+                                            <div class="lb-avatar-sm" style="background:rgba(52,168,83,0.1); color:#163f7a; border:none;">
                                                 <i class="bx bx-bolt-circle"></i>
                                             </div>
                                             <span class="fw-500 text-dark">{{ $auto->action }}</span>
@@ -117,7 +117,7 @@
                                     </td>
                                     <td>
                                         @php
-                                            $stColor = $auto->status === 'Active' ? '#34a853' : '#80868b';
+                                            $stColor = $auto->status === 'Active' ? '#163f7a' : '#80868b';
                                         @endphp
                                         <span class="rv-status-pill status-badge" style="background:{{ $stColor }}15; color:{{ $stColor }};">
                                             <i class="bx {{ $auto->status === 'Active' ? 'bx-check-circle' : 'bx-pause-circle' }}"></i>
@@ -150,7 +150,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" style="border-radius:16px; border:none; box-shadow:0 10px 30px rgba(0,0,0,0.1);">
                 <div class="modal-header border-0 pb-0 pt-4 px-4">
-                    <h5 class="modal-title fw-800" style="color:#006666;">Create Workflow Rule</h5>
+                    <h5 class="modal-title fw-800" style="color:#163f7a;">Create Workflow Rule</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="{{ route('automations.store') }}" method="POST">
@@ -176,7 +176,7 @@
 
                         <div class="mb-2">
                             <label class="form-label text-muted fw-bold small mb-2">2. THEN DO THIS... (ACTION)</label>
-                            <select name="action" class="form-select" style="border-radius:10px; padding:12px 15px; border-left: 4px solid #34a853;" required>
+                            <select name="action" class="form-select" style="border-radius:10px; padding:12px 15px; border-left: 4px solid #163f7a;" required>
                                 <option value="">Select Action</option>
                                 <option value="Send Welcome Email">Send Welcome Email Template</option>
                                 <option value="Send Thank You Email">Send Thank You Email</option>
@@ -218,8 +218,8 @@
         .rv-empty span { font-size: 0.95rem; font-weight: 500; display: block; margin-bottom: 15px; }
 
         /* ── Form Inputs ── */
-        .form-control:focus, .form-select:focus { border-color: #006666; box-shadow: 0 0 0 0.2rem rgba(0, 102, 102, 0.1); }
-        .custom-switch:checked { background-color: #34a853; border-color: #34a853; }
+        .form-control:focus, .form-select:focus { border-color: #163f7a; box-shadow: 0 0 0 0.2rem rgba(22, 63, 122, 0.1); }
+        .custom-switch:checked { background-color: #163f7a; border-color: #163f7a; }
     </style>
 
     <script>
@@ -234,7 +234,7 @@
                     id: id
                 }, function (res) {
                     if (res.status === 'Active') {
-                        badge.css({'background': '#34a85315', 'color': '#34a853'})
+                        badge.css({'background': '#163f7a15', 'color': '#163f7a'})
                              .html('<i class="bx bx-check-circle"></i> Active');
                     } else {
                         badge.css({'background': '#80868b15', 'color': '#80868b'})

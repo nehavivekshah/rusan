@@ -34,7 +34,7 @@
                             <i class="bx bx-file-blank"></i>
                             <span class="d-none d-sm-inline">Proposal</span>
                         </a>
-                        <a href="/manage-invoice?id=&client_id={{ $clients->id }}" class="lb-btn lb-btn-ghost" style="color:#34a853;">
+                        <a href="/manage-invoice?id=&client_id={{ $clients->id }}" class="lb-btn lb-btn-ghost" style="color:#163f7a;">
                             <i class="bx bx-receipt"></i>
                             <span class="d-none d-sm-inline">Invoice</span>
                         </a>
@@ -188,7 +188,7 @@
                         <div class="col-lg-6">
                             <div class="ml-card h-100">
                                 <div class="ml-card-header">
-                                    <div class="ml-card-icon" style="background:rgba(52,168,83,0.10);color:#34a853;">
+                                    <div class="ml-card-icon" style="background:rgba(52,168,83,0.10);color:#163f7a;">
                                         <i class="bx bx-briefcase"></i>
                                     </div>
                                     <div>
@@ -502,7 +502,7 @@
                             <div class="col-md-8">
                                 <div class="ml-card">
                                     <div class="ml-card-header">
-                                        <div class="ml-card-icon" style="background:rgba(0,102,102,0.10);color:#006666;"><i class="bx bx-history"></i></div>
+                                        <div class="ml-card-icon" style="background:rgba(22, 63, 122,0.10);color:#163f7a;"><i class="bx bx-history"></i></div>
                                         <div><h6 class="ml-card-title">Interaction History</h6><span class="ml-card-sub">All logged activities</span></div>
                                     </div>
                                     <div class="ml-card-body" style="max-height:500px;overflow-y:auto;">
@@ -540,7 +540,7 @@
                     <div class="tab-pane fade" id="journey" role="tabpanel">
                         <div class="ml-card">
                             <div class="ml-card-header">
-                                <div class="ml-card-icon" style="background:rgba(0,102,102,0.10);color:#006666;"><i class="bx bx-git-commit"></i></div>
+                                <div class="ml-card-icon" style="background:rgba(22, 63, 122,0.10);color:#163f7a;"><i class="bx bx-git-commit"></i></div>
                                 <div><h6 class="ml-card-title">Full Lifecycle Journey</h6><span class="ml-card-sub">Lead to customer path</span></div>
                             </div>
                             <div class="ml-card-body">
@@ -609,7 +609,7 @@
                                     <div class="mc-timeline-item mc-tl-green mc-tl-last">
                                         <div class="mc-tl-dot mc-tl-dot-success"></div>
                                         <div class="mc-tl-content">
-                                            <h6 class="mc-tl-title" style="color:#34a853;">Customer Relationship Established</h6>
+                                            <h6 class="mc-tl-title" style="color:#163f7a;">Customer Relationship Established</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -651,7 +651,7 @@
                             <div class="col-md-8">
                                 <div class="ml-card">
                                     <div class="ml-card-header">
-                                        <div class="ml-card-icon" style="background:rgba(0,102,102,0.10);color:#006666;"><i class="bx bx-folder-open"></i></div>
+                                        <div class="ml-card-icon" style="background:rgba(22, 63, 122,0.10);color:#163f7a;"><i class="bx bx-folder-open"></i></div>
                                         <div><h6 class="ml-card-title">Customer Documents</h6><span class="ml-card-sub">All uploaded files</span></div>
                                     </div>
                                     <div class="ml-card-body p-0">

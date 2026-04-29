@@ -79,7 +79,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 20px 22px 14px;
-        background: linear-gradient(135deg, #006666 0%, #009688 100%);
+        background: linear-gradient(135deg, #163f7a 0%, #0f2d57 100%);
     }
 
     .todo-header-left {
@@ -138,7 +138,7 @@
         align-items: center;
         gap: 10px;
         padding: 10px 22px 0;
-        background: linear-gradient(135deg, #006666 0%, #009688 100%);
+        background: linear-gradient(135deg, #163f7a 0%, #0f2d57 100%);
     }
 
     .todo-progress-bar {
@@ -186,15 +186,15 @@
     }
 
     .todo-filter-btn.active {
-        background: #006666;
+        background: #163f7a;
         color: #fff;
-        border-color: #006666;
+        border-color: #163f7a;
     }
 
     .todo-filter-btn:hover:not(.active) {
         background: #f0f5f5;
-        color: #006666;
-        border-color: #006666;
+        color: #163f7a;
+        border-color: #163f7a;
     }
 
     /* List Wrap */
@@ -226,8 +226,8 @@
     }
 
     .todo-item:hover {
-        border-color: #00666640;
-        box-shadow: 0 2px 8px rgba(0, 102, 102, 0.08);
+        border-color: #163f7a40;
+        box-shadow: 0 2px 8px rgba(22, 63, 122, 0.08);
     }
 
     .todo-item.done {
@@ -264,8 +264,8 @@
     }
 
     .todo-check:checked {
-        background: #006666;
-        border-color: #006666;
+        background: #163f7a;
+        border-color: #163f7a;
     }
 
     .todo-check:checked::after {
@@ -412,8 +412,8 @@
     }
 
     .todo-input:focus {
-        border-color: #006666;
-        box-shadow: 0 0 0 3px rgba(0, 102, 102, 0.10);
+        border-color: #163f7a;
+        box-shadow: 0 0 0 3px rgba(22, 63, 122, 0.10);
     }
 
     .todo-add-btn {
@@ -421,7 +421,7 @@
         height: 42px;
         border-radius: 10px;
         border: none;
-        background: #006666;
+        background: #163f7a;
         color: #fff;
         font-size: 1.3rem;
         display: flex;
@@ -446,7 +446,7 @@
     }
 
     .todo-edit-input {
-        border: 1.5px solid #006666;
+        border: 1.5px solid #163f7a;
         border-radius: 8px;
         padding: 6px 10px;
         font-size: 0.875rem;
@@ -473,7 +473,7 @@
         padding: 5px 14px;
         border-radius: 8px;
         border: none;
-        background: #006666;
+        background: #163f7a;
         color: #fff;
         font-size: 0.78rem;
         font-weight: 600;

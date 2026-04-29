@@ -7,10 +7,10 @@
 .cf-wrap * { box-sizing: border-box; font-family: inherit; }
 
 .cf-section-title {
-    font-size: .72rem; font-weight: 700; color: #006666;
+    font-size: .72rem; font-weight: 700; color: #163f7a;
     text-transform: uppercase; letter-spacing: .07em;
     margin: 18px 0 12px; padding-bottom: 4px;
-    border-bottom: 1.5px solid rgba(0,102,102,.12);
+    border-bottom: 1.5px solid rgba(22, 63, 122,.12);
 }
 .cf-section-title:first-child { margin-top: 0; }
 
@@ -23,10 +23,10 @@
     border-radius: 8px; background: #fff; overflow: hidden;
     transition: border-color .15s, box-shadow .15s; height: 42px;
 }
-.cf-input-box:focus-within { border-color: #006666; box-shadow: 0 0 0 3px rgba(0,102,102,.08); }
+.cf-input-box:focus-within { border-color: #163f7a; box-shadow: 0 0 0 3px rgba(22, 63, 122,.08); }
 .cf-input-box .cf-icon {
     display: flex; align-items: center; justify-content: center;
-    width: 38px; height: 100%; flex-shrink: 0; color: #006666;
+    width: 38px; height: 100%; flex-shrink: 0; color: #163f7a;
     font-size: 1.05rem; border-right: 1.5px solid #e8eaed; background: #f8fdfd;
 }
 .cf-input-box input, .cf-input-box textarea {
@@ -39,7 +39,7 @@
 /* Modal Header */
 .cf-modal-header {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 16px 20px; background: linear-gradient(135deg, #005757, #007e7e);
+    padding: 16px 20px; background: linear-gradient(135deg, #005757, #163f7a);
     border-radius: 16px 16px 0 0;
 }
 .cf-modal-header-title { font-size: .975rem; font-weight: 700; color: #fff; margin: 0; }
@@ -60,7 +60,7 @@
 .cf-btn-cancel:hover { background: #f5f5f5; }
 .cf-btn-save {
     font-size: .85rem; font-weight: 600; padding: 8px 22px; border-radius: 8px;
-    border: none; background: #006666; color: #fff;
+    border: none; background: #163f7a; color: #fff;
     cursor: pointer; transition: background .15s;
     display: flex; align-items: center; gap: 5px;
 }
@@ -139,7 +139,7 @@
                     </div>
                 @endforelse
             </div>
-            <button type="button" class="btn btn-sm mt-1 border-0 fw-600" id="add_feature_btn" style="color:#006666; background:rgba(0,102,102,0.05); font-size:0.75rem;">
+            <button type="button" class="btn btn-sm mt-1 border-0 fw-600" id="add_feature_btn" style="color:#163f7a; background:rgba(22, 63, 122,0.05); font-size:0.75rem;">
                 <i class="bx bx-plus me-1"></i> Add Another Benefit
             </button>
         </div>

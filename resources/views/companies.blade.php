@@ -21,7 +21,7 @@
             {{-- ── Stat Cards Row ── --}}
             <div class="pj-stat-row mb-4">
                 <div class="pj-stat-card">
-                    <div class="pj-stat-icon" style="background:rgba(0,102,102,0.1);color:#006666;">
+                    <div class="pj-stat-icon" style="background:rgba(22, 63, 122,0.1);color:#163f7a;">
                         <i class="bx bx-building"></i>
                     </div>
                     <div>
@@ -30,11 +30,11 @@
                     </div>
                 </div>
                 <div class="pj-stat-card">
-                    <div class="pj-stat-icon" style="background:rgba(52,168,83,0.1);color:#34a853;">
+                    <div class="pj-stat-icon" style="background:rgba(52,168,83,0.1);color:#163f7a;">
                         <i class="bx bx-check-circle"></i>
                     </div>
                     <div>
-                        <div class="pj-stat-num" style="color:#34a853;">{{ $activeCompanies }}</div>
+                        <div class="pj-stat-num" style="color:#163f7a;">{{ $activeCompanies }}</div>
                         <div class="pj-stat-label">Active Companies</div>
                     </div>
                 </div>
@@ -103,7 +103,7 @@
                 @forelse($companies as $company)
                     <div class="pj-card open-company-modal" data-url="/view-company?id={{ $company->id }}&ajax=1">
                         {{-- Top accent --}}
-                        <div class="pj-card-accent" style="background: linear-gradient(90deg, #006666, #009688);"></div>
+                        <div class="pj-card-accent" style="background: linear-gradient(90deg, #163f7a, #0f2d57);"></div>
 
                         {{-- Header --}}
                         <div class="pj-card-header">
@@ -122,7 +122,7 @@
                             </div>
                             <div class="pj-card-actions">
                                 <button type="button" class="btn kb-action-btn open-company-modal" data-url="/manage-company?id={{ $company->id }}&ajax=1" title="Edit"
-                                    style="background:rgba(0,102,102,0.08);color:#006666; border:none;">
+                                    style="background:rgba(22, 63, 122,0.08);color:#163f7a; border:none;">
                                     <i class="bx bx-pencil"></i>
                                 </button>
                             </div>
@@ -203,7 +203,7 @@
                                     <td>
                                         <div class="d-flex align-items-center gap-2">
                                             <div class="lb-avatar-sm"
-                                                style="background:linear-gradient(135deg,#006666,#009688);color:#fff; overflow:hidden;">
+                                                style="background:linear-gradient(135deg,#163f7a,#0f2d57);color:#fff; overflow:hidden;">
                                                 @if($company->logo)
                                                     <img src="{{ asset('assets/images/company/logos/' . $company->logo) }}" alt="" style="width:100%; height:100%; object-fit:contain; background:#fff;">
                                                 @else
@@ -330,7 +330,7 @@
             transition: all 0.15s;
         }
 
-        .pj-view-btn.active { background: #fff; color: #006666; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12); }
+        .pj-view-btn.active { background: #fff; color: #163f7a; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12); }
 
         /* ── Card Grid ── */
         .pj-card-grid {
@@ -349,7 +349,7 @@
         .pj-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
         .pj-card-avatar {
             width: 42px; height: 42px; border-radius: 12px;
-            background: linear-gradient(135deg, #006666, #009688);
+            background: linear-gradient(135deg, #163f7a, #0f2d57);
             color: #fff; font-size: 1.1rem; font-weight: 700;
             display: flex; align-items: center; justify-content: center; flex-shrink: 0;
         }
@@ -360,7 +360,7 @@
 
         .pj-card-info { display: flex; flex-direction: column; gap: 6px; }
         .pj-info-row { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: #5f6368; }
-        .pj-info-row i { font-size: 0.95rem; color: #006666; }
+        .pj-info-row i { font-size: 0.95rem; color: #163f7a; }
 
         .pj-empty { text-align: center; padding: 60px 20px; color: #9aa0a6; }
         .pj-empty i { font-size: 3rem; display: block; margin-bottom: 12px; color: #dadce0; }
@@ -369,7 +369,7 @@
         .pv-badge {
             padding: 3px 10px; border-radius: 20px; font-size: 0.68rem; font-weight: 600;
         }
-        .pv-badge-success { background: rgba(52,168,83,0.1); color: #34a853; }
+        .pv-badge-success { background: rgba(52,168,83,0.1); color: #163f7a; }
         .pv-badge-danger { background: rgba(234,67,53,0.1); color: #ea4335; }
         .pv-badge-info { background: rgba(26,115,232,0.1); color: #1a73e8; }
     </style>
@@ -432,7 +432,7 @@
                     const content = document.getElementById('manageCompanyModalContent');
                     const modalEl = document.getElementById('manageCompanyModal');
 
-                    content.innerHTML = '<div class="p-5 text-center"><i class="bx bx-loader-alt bx-spin" style="font-size:2rem;color:#006666;"></i><p class="mt-2 text-muted">Loading form...</p></div>';
+                    content.innerHTML = '<div class="p-5 text-center"><i class="bx bx-loader-alt bx-spin" style="font-size:2rem;color:#163f7a;"></i><p class="mt-2 text-muted">Loading form...</p></div>';
 
                     bootstrap.Modal.getOrCreateInstance(modalEl).show();
 

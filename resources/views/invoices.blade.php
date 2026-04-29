@@ -14,7 +14,7 @@
         $paidValue = $invoices->where('status', 'paid')->sum('total_amount');
 
         $statusConfig = [
-            'paid' => ['#34a853', 'Paid', 'bx bx-check-circle'],
+            'paid' => ['#163f7a', 'Paid', 'bx bx-check-circle'],
             'unpaid' => ['#ea4335', 'Unpaid', 'bx bx-x-circle'],
             'partial' => ['#f29900', 'Partial', 'bx bx-time-five'],
         ];
@@ -28,11 +28,11 @@
             {{-- ── Stat Cards ── --}}
         <div class="inv-stat-row mb-4">
             @foreach([
-                ['Total Invoices', $total,        '#006666', 'bx bx-file-blank'],
-                ['Paid',           $paidCount,   '#34a853', 'bx bx-check-circle'],
+                ['Total Invoices', $total,        '#163f7a', 'bx bx-file-blank'],
+                ['Paid',           $paidCount,   '#163f7a', 'bx bx-check-circle'],
                 ['Unpaid',         $unpaidCount, '#ea4335', 'bx bx-x-circle'],
-                ['Total Value',    '₹'.number_format($totalValue, 0), '#006666', 'bx bx-rupee'],
-                ['Collected',      '₹'.number_format($paidValue, 0), '#34a853', 'bx bx-trending-up'],
+                ['Total Value',    '₹'.number_format($totalValue, 0), '#163f7a', 'bx bx-rupee'],
+                ['Collected',      '₹'.number_format($paidValue, 0), '#163f7a', 'bx bx-trending-up'],
             ] as [$label, $count, $color, $icon])
                 @php
                     $fVal = ($label == 'Total Invoices' || $label == 'Total Value' || $label == 'Collected') ? 'all' : strtolower($label);
@@ -42,7 +42,7 @@
                         <i class="{{ $icon }}"></i>
                     </div>
                     <div>
-                        <div class="inv-stat-num" style="color:{{ in_array($label, ['Paid','Collected']) ? '#34a853' : (in_array($label, ['Unpaid']) ? '#ea4335' : '#202124') }};">{{ $count }}</div>
+                        <div class="inv-stat-num" style="color:{{ in_array($label, ['Paid','Collected']) ? '#163f7a' : (in_array($label, ['Unpaid']) ? '#ea4335' : '#202124') }};">{{ $count }}</div>
                         <div class="inv-stat-label">{{ $label }}</div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                 {{-- Status filter pills --}}
                 <div class="pr-filter-group" id="statusFilterGroup">
                     <button class="pr-filter active" data-filter="all">All</button>
-                    <button class="pr-filter" data-filter="paid" style="--pr-color:#34a853;"><i class="bx bx-check-circle"></i> Paid</button>
+                    <button class="pr-filter" data-filter="paid" style="--pr-color:#163f7a;"><i class="bx bx-check-circle"></i> Paid</button>
                     <button class="pr-filter" data-filter="unpaid" style="--pr-color:#ea4335;"><i class="bx bx-x-circle"></i> Unpaid</button>
                     <button class="pr-filter" data-filter="partial" style="--pr-color:#f29900;"><i class="bx bx-time-five"></i> Partial</button>
                 </div>
@@ -121,7 +121,7 @@
                                 $isOverdue = !$isPaid && !empty($invoice->due_date) &&
                                     \Carbon\Carbon::parse($invoice->due_date)->isPast();
                                 [$stColor, $stIcon] = [
-                                    'paid' => ['#34a853', 'bx bx-check-circle'],
+                                    'paid' => ['#163f7a', 'bx bx-check-circle'],
                                     'unpaid' => ['#ea4335', 'bx bx-x-circle'],
                                     'partial' => ['#f29900', 'bx bx-time-five']
                                 ][$st] ?? ['#80868b', 'bx bx-file'];
@@ -186,7 +186,7 @@
                                         {{-- Edit --}}
                                         @if(in_array('invoice_edit', $roleArray) || in_array('All', $roleArray))
                                             <a href="/manage-invoice?id={{ $invoice->id }}" class="btn kb-action-btn"
-                                                title="Edit" style="background:rgba(0,102,102,0.08);color:#006666;">
+                                                title="Edit" style="background:rgba(22, 63, 122,0.08);color:#163f7a;">
                                                 <i class="bx bx-edit"></i>
                                             </a>
                                         @endif
@@ -294,7 +294,7 @@
         .inv-number {
             font-size: 0.82rem;
             font-weight: 700;
-            color: #006666;
+            color: #163f7a;
             font-family: 'Courier New', monospace;
         }
 

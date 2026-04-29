@@ -8,7 +8,7 @@
 /* ── Info Banner (edit page only) ── */
 .et-banner {
     display: flex; align-items: center; gap: 16px;
-    background: linear-gradient(135deg, #005757, #007e7e);
+    background: linear-gradient(135deg, #005757, #163f7a);
     border-radius: 18px; padding: 18px 24px; color: #fff; flex-wrap: wrap;
 }
 .et-banner-icon {
@@ -34,7 +34,7 @@
 .et-form-header {
     display: flex; align-items: center; justify-content: space-between;
     padding: 20px 28px;
-    background: linear-gradient(135deg, #005757, #007e7e);
+    background: linear-gradient(135deg, #005757, #163f7a);
 }
 .et-form-header-title { font-size: 1rem; font-weight: 700; color: #fff; margin: 0; }
 .et-form-header-sub   { font-size: 0.74rem; color: rgba(255,255,255,.72); margin: 4px 0 0; }
@@ -51,10 +51,10 @@
 
 /* ── Section Title ── */
 .et-section-title {
-    font-size: 0.72rem; font-weight: 700; color: #006666;
+    font-size: 0.72rem; font-weight: 700; color: #163f7a;
     text-transform: uppercase; letter-spacing: .07em;
     margin: 24px 0 14px; padding-bottom: 5px;
-    border-bottom: 1.5px solid rgba(0,102,102,.12);
+    border-bottom: 1.5px solid rgba(22, 63, 122,.12);
 }
 .et-section-title:first-child { margin-top: 0; }
 
@@ -71,15 +71,15 @@
     transition: border-color .15s, box-shadow .15s; height: 44px;
 }
 .et-input-box:focus-within {
-    border-color: #006666;
-    box-shadow: 0 0 0 3px rgba(0,102,102,.08);
+    border-color: #163f7a;
+    box-shadow: 0 0 0 3px rgba(22, 63, 122,.08);
 }
 .et-disabled { background: #f8f9fa; }
 .et-disabled .et-icon { opacity: .5; }
 .et-icon {
     display: flex; align-items: center; justify-content: center;
     width: 40px; height: 100%; flex-shrink: 0;
-    color: #006666; font-size: 1.05rem;
+    color: #163f7a; font-size: 1.05rem;
     border-right: 1.5px solid #e8eaed; background: #f8fdfd;
 }
 .et-input-box input,
@@ -101,7 +101,7 @@
     transition: border-color .15s, box-shadow .15s;
 }
 .et-textarea-box:focus-within {
-    border-color: #006666; box-shadow: 0 0 0 3px rgba(0,102,102,.08);
+    border-color: #163f7a; box-shadow: 0 0 0 3px rgba(22, 63, 122,.08);
 }
 .et-textarea-box textarea {
     width: 100%; border: none !important; outline: none !important;
@@ -114,11 +114,11 @@
 /* ── Variable Bar ── */
 .et-variables-bar {
     display: flex; align-items: center; flex-wrap: wrap; gap: 7px;
-    background: rgba(0,102,102,0.04); border: 1.5px solid rgba(0,102,102,0.15);
+    background: rgba(22, 63, 122,0.04); border: 1.5px solid rgba(22, 63, 122,0.15);
     border-radius: 12px; padding: 12px 16px;
 }
 .et-var-label {
-    font-size: 0.75rem; font-weight: 700; color: #006666;
+    font-size: 0.75rem; font-weight: 700; color: #163f7a;
     display: flex; align-items: center; gap: 4px; margin-right: 4px;
 }
 .et-var-hint { font-size: 0.70rem; color: #80868b; margin-right: 6px; }
@@ -143,11 +143,11 @@
 .et-remove-day:hover { background: #ea4335; color: #fff; }
 .et-add-day-btn {
     display: inline-flex; align-items: center; gap: 5px;
-    border: 1.5px dashed #006666; background: rgba(0,102,102,0.04); color: #006666;
+    border: 1.5px dashed #163f7a; background: rgba(22, 63, 122,0.04); color: #163f7a;
     border-radius: 10px; padding: 7px 16px; font-size: 0.82rem; font-weight: 600;
     cursor: pointer; transition: all .15s; margin-top: 2px;
 }
-.et-add-day-btn:hover { background: rgba(0,102,102,.1); }
+.et-add-day-btn:hover { background: rgba(22, 63, 122,.1); }
 
 /* ── Footer ── */
 .et-form-footer {
@@ -164,7 +164,7 @@
 .et-btn-save {
     display: inline-flex; align-items: center; gap: 5px;
     font-size: 0.85rem; font-weight: 700; padding: 9px 24px; border-radius: 10px;
-    border: none; background: #006666; color: #fff; cursor: pointer; transition: background .15s;
+    border: none; background: #163f7a; color: #fff; cursor: pointer; transition: background .15s;
 }
 .et-btn-save:hover { background: #004e4e; }
 
