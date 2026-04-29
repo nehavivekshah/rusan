@@ -52,7 +52,7 @@
             <td>
                 <table>
                     <tr>
-                        <td style="padding: 15px; text-align: center; background-color: #007265;border-top-left-radius:5px;border-top-right-radius:5px;">
+                        <td style="padding: 15px; text-align: center; background-color: #163f7a;border-top-left-radius:5px;border-top-right-radius:5px;">
                             <img src="{{ asset('logo.png') }}" style="height:60px;margin:auto;" />
                         </td>
                     </tr>

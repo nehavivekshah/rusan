@@ -29,6 +29,43 @@
     --transition-snappy: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Global Success/Green Override to Primary Blue */
+.btn-success, 
+.bg-success,
+.badge.bg-success,
+.pv-badge-success,
+.pv-rec-paid {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: #ffffff !important;
+}
+
+.text-success,
+.bx.text-success,
+.pj-stat-num.text-success,
+.bx.bxl-whatsapp {
+    color: var(--primary-color) !important;
+}
+
+/* Specific button override for WhatsApp buttons to ensure they are blue */
+.btn-success .bxl-whatsapp,
+.btn-success i {
+    color: #ffffff !important; /* Keep icon white inside blue button */
+}
+
+/* Override specific hex codes if used in inline styles or other places */
+[style*="color: #34a853"], [style*="color:#34a853"],
+[style*="color: #28a745"], [style*="color:#28a745"],
+[style*="color: #25d366"], [style*="color:#25d366"] {
+    color: var(--primary-color) !important;
+}
+
+[style*="background-color: #34a853"], [style*="background-color:#34a853"],
+[style*="background: #34a853"], [style*="background:#34a853"],
+[style*="background-color: #28a745"], [style*="background-color:#28a745"] {
+    background-color: var(--primary-color) !important;
+}
+
 /* Typography & Body */
 body {
     background-color: var(--background-color) !important;
