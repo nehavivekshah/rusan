@@ -31,41 +31,48 @@
 
         <div class="db-wrap">
 
-            {{-- ═══════════════════════ PREMIUM GREETING BANNER ═══════════════════════ --}}
+            {{-- ═══════════════════════ USER-FRIENDLY HERO BANNER ═══════════════════════ --}}
             <div class="db-hero-premium">
                 <div class="db-hero-content">
-                    <div class="db-hero-badge">System Status: Online</div>
-                    <h1 class="db-hero-title">{{ $greeting }}, {{ explode(' ', Auth::user()->name ?? 'User')[0] }}</h1>
-                    <p class="db-hero-subtitle">
-                        @if(Auth::user()->role == 'master')
-                            Master Administration Portal — {{ date('l, F jS') }}
-                        @else
-                            Welcome back to <strong>{{ $company->name ?? 'Rusan CRM' }}</strong>. Here is your sales overview for today.
-                        @endif
-                    </p>
+                    <div class="db-hero-welcome">
+                        <div class="db-hero-text">
+                            <h1 class="db-hero-title">Welcome back, {{ explode(' ', Auth::user()->name ?? 'User')[0] }}! 👋</h1>
+                            <p class="db-hero-subtitle">
+                                @if(Auth::user()->role == 'master')
+                                    System Administrator Panel | {{ date('l, F jS') }}
+                                @else
+                                    You have <strong>{{ $myPendingTasks }}</strong> tasks to follow up on today. Let's make it a productive day!
+                                @endif
+                            </p>
+                        </div>
+                        <div class="db-hero-search-wrap">
+                            <i class="bx bx-search db-hero-search-icon"></i>
+                            <input type="text" class="db-hero-search" placeholder="Search leads, customers or deals..." onkeyup="heroSearch(this.value)">
+                        </div>
+                    </div>
                     
                     @if(Auth::user()->role != 'master')
-                    <div class="db-hero-stats">
-                        <div class="db-hs-item">
-                            <span class="db-hs-val">{{ count($leads) }}</span>
-                            <span class="db-hs-label">Active Leads</span>
+                    <div class="db-hero-glance">
+                        <div class="db-glance-card">
+                            <span class="db-glance-val">{{ count($leads) }}</span>
+                            <span class="db-glance-label">Total Leads</span>
                         </div>
-                        <div class="db-hs-sep"></div>
-                        <div class="db-hs-item">
-                            <span class="db-hs-val">{{ count($clients) }}</span>
-                            <span class="db-hs-label">Customers</span>
+                        <div class="db-glance-card">
+                            <span class="db-glance-val">{{ count($clients) }}</span>
+                            <span class="db-glance-label">Customers</span>
                         </div>
-                        <div class="db-hs-sep"></div>
-                        <div class="db-hs-item">
-                            <span class="db-hs-val">{{ $myPendingTasks }}</span>
-                            <span class="db-hs-label">Open Tasks</span>
+                        <div class="db-glance-card">
+                            <span class="db-glance-val text-warning">{{ $pendingProposals }}</span>
+                            <span class="db-glance-label">Proposals</span>
                         </div>
                     </div>
                     @endif
                 </div>
-                <div class="db-hero-visual">
-                    <div class="db-visual-circle"></div>
-                    <div class="db-visual-circle-small"></div>
+                
+                {{-- Dynamic Greeting Background Elements --}}
+                <div class="db-hero-decor">
+                    <div class="decor-circle-1"></div>
+                    <div class="decor-circle-2"></div>
                 </div>
             </div>
 
@@ -380,84 +387,145 @@
             padding: 20px 24px 36px;
         }
 
-        /* ── Hero Banner Premium ── */
+        /* ── User Friendly Hero Banner ── */
         .db-hero-premium {
-            background: linear-gradient(135deg, #163f7a 0%, #0f2d57 100%);
+            background: linear-gradient(135deg, #163f7a 0%, #1e40af 100%);
             border-radius: 24px;
-            padding: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            padding: 32px 40px;
             margin-bottom: 32px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(22, 63, 122, 0.15);
+            box-shadow: 0 15px 35px rgba(22, 63, 122, 0.2);
             color: #ffffff;
         }
 
-        .db-hero-badge {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: inline-block;
-            margin-bottom: 16px;
+        .db-hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
         }
 
+        .db-hero-welcome {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .db-hero-text { flex: 1; min-width: 300px; }
+
         .db-hero-title {
-            font-size: 2.2rem;
+            font-size: 2.1rem;
             font-weight: 800;
             margin: 0;
-            letter-spacing: -0.5px;
-            line-height: 1.1;
+            letter-spacing: -0.8px;
         }
 
         .db-hero-subtitle {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-top: 8px;
-            max-width: 500px;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-top: 6px;
+            max-width: 480px;
+            line-height: 1.5;
         }
 
-        .db-hero-stats {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            margin-top: 32px;
+        /* Hero Search Bar */
+        .db-hero-search-wrap {
+            position: relative;
+            flex: 0 0 350px;
+            min-width: 250px;
         }
 
-        .db-hs-item { display: flex; flex-direction: column; }
-        .db-hs-val { font-size: 1.4rem; font-weight: 800; }
-        .db-hs-label { font-size: 0.75rem; color: rgba(255, 255, 255, 0.6); font-weight: 500; }
-        .db-hs-sep { width: 1px; height: 30px; background: rgba(255, 255, 255, 0.15); }
+        .db-hero-search {
+            width: 100%;
+            padding: 12px 18px 12px 48px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            color: #fff;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
 
-        .db-hero-visual {
+        .db-hero-search::placeholder { color: rgba(255, 255, 255, 0.6); }
+
+        .db-hero-search:focus {
+            background: #fff;
+            color: #1e293b;
+            outline: none;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .db-hero-search-icon {
             position: absolute;
-            right: -50px;
-            top: -50px;
-            width: 300px;
-            height: 300px;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.7);
             pointer-events: none;
         }
 
-        .db-visual-circle {
-            position: absolute;
-            width: 100%; height: 100%;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        .db-hero-search:focus + .db-hero-search-icon { color: #163f7a; }
+
+        /* Glance Cards */
+        .db-hero-glance {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+            flex-wrap: wrap;
         }
 
-        .db-visual-circle-small {
-            position: absolute;
-            right: 100px; bottom: 40px;
-            width: 120px; height: 120px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
+        .db-glance-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 14px 24px;
+            display: flex;
+            flex-direction: column;
+            min-width: 140px;
+            transition: transform 0.3s ease;
+        }
+
+        .db-glance-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .db-glance-val {
+            font-size: 1.35rem;
+            font-weight: 800;
+        }
+
+        .db-glance-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 2px;
+        }
+
+        /* Decoration */
+        .db-hero-decor { position: absolute; inset: 0; pointer-events: none; }
+        .decor-circle-1 {
+            position: absolute; width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            top: -100px; right: -50px; border-radius: 50%;
+        }
+        .decor-circle-2 {
+            position: absolute; width: 200px; height: 200px;
+            background: rgba(255,255,255,0.03);
+            bottom: -50px; left: 10%; border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        @media (max-width: 992px) {
+            .db-hero-welcome { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .db-hero-search-wrap { flex: 1; width: 100%; }
         }
 
         /* ── KPI Cards ── */
@@ -1262,6 +1330,12 @@
 
         // Close on Escape key
         document.addEventListener('keydown', e => { if (e.key === 'Escape') dbZoomClose(); });
+
+        // ── Hero Quick Search ──
+        window.heroSearch = function(val) {
+            const query = val.toLowerCase().trim();
+            // Implement search logic here
+        };
     </script>
 
     <!-- Firebase Scripts -->
