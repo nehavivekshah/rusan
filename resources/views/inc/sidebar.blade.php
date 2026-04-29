@@ -19,7 +19,12 @@
         @else
             <div class="logo_name text-white">{{ $company->name ?? 'Admin Panel' }}</div>
         @endif
+    </div>
 
+    {{-- Sidebar Clock Widget --}}
+    <div class="sidebar-clock-wrap">
+        <div id="sbClock">--:--</div>
+        <div id="sbDate">{{ date('D, M d') }}</div>
     </div>
     <ul class="nav-list" id="accordion">
 

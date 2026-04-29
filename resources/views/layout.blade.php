@@ -84,9 +84,21 @@
         </div>
         
         @if(Auth::check())
-        
-        @include('inc.sidebar')
+            @include('inc.sidebar')
             
+            {{-- Global Search Modal --}}
+            <div id="globalSearchModal" class="gs-modal">
+                <div class="gs-content">
+                    <div class="gs-header">
+                        <i class="bx bx-search"></i>
+                        <input type="text" id="gsInput" placeholder="Jump to..." autocomplete="off">
+                        <span class="gs-esc">ESC</span>
+                    </div>
+                    <div id="gsResults" class="gs-results">
+                        <div class="gs-hint">Type to search for leads, customers, or features...</div>
+                    </div>
+                </div>
+            </div>
         @endif
         
         @yield('content')
@@ -283,6 +295,60 @@
                     navigator.serviceWorker.register('/service-worker.js');
                 });
             }
+        </script>
+        <script>
+            // ── Theme Management ──
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const currentTheme = localStorage.getItem('theme') || 'light';
+
+            if (currentTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                if(themeIcon) themeIcon.className = 'bx bx-sun';
+            }
+
+            if(themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    let theme = document.documentElement.getAttribute('data-theme');
+                    if (theme === 'dark') {
+                        document.documentElement.setAttribute('data-theme', 'light');
+                        localStorage.setItem('theme', 'light');
+                        themeIcon.className = 'bx bx-moon';
+                    } else {
+                        document.documentElement.setAttribute('data-theme', 'dark');
+                        localStorage.setItem('theme', 'dark');
+                        themeIcon.className = 'bx bx-sun';
+                    }
+                });
+            // ── Global Search ──
+            const gsModal = document.getElementById('globalSearchModal');
+            const gsInput = document.getElementById('gsInput');
+
+            function toggleGS() {
+                if(!gsModal) return;
+                gsModal.classList.toggle('active');
+                if(gsModal.classList.contains('active')) {
+                    setTimeout(() => gsInput.focus(), 50);
+                }
+            }
+
+            document.addEventListener('keydown', e => {
+                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                    e.preventDefault();
+                    toggleGS();
+                }
+                if (e.key === 'Escape' && gsModal && gsModal.classList.contains('active')) {
+                    toggleGS();
+                }
+            // ── Sidebar Clock ──
+            function updateSBClock() {
+                const el = document.getElementById('sbClock');
+                if(!el) return;
+                const now = new Date();
+                el.textContent = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true });
+                setTimeout(updateSBClock, 1000);
+            }
+            updateSBClock();
         </script>
     </body>
 

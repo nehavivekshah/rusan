@@ -64,6 +64,11 @@
             </button>
         @endif
 
+        {{-- Theme Toggle --}}
+        <button class="header-icon-btn theme-toggle-btn" id="themeToggle" title="Toggle Dark/Light Mode">
+            <i class="bx bx-moon" id="themeIcon"></i>
+        </button>
+
         {{-- Notifications --}}
         <div class="dropdown">
             <button class="header-icon-btn position-relative" type="button" data-bs-toggle="dropdown" aria-label="Notifications">
