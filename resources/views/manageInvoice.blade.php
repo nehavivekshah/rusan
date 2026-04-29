@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Manage Invoice - eseCRM')
+@section('title', 'Manage Invoice - Rusan')
 
 @section('content')
     <style>

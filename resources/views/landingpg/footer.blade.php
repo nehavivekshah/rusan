@@ -84,7 +84,7 @@
             <div class="row justify-content-center align-items-center">
                 <div class="col-lg-12 text-center">
                     <p class="copyright-text">
-                        Esecrm <i class="fal fa-copyright"></i> 2025. All Rights Reserved
+                        Rusan <i class="fal fa-copyright"></i> 2025. All Rights Reserved
                     </p>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'SMTP Email Setup - eseCRM')
+@section('title', 'SMTP Email Setup - Rusan')
 
 @section('content')
 
@@ -177,7 +177,7 @@
                             <div class="smtp-input-box">
                                 <span class="smtp-icon"><i class="bx bx-user-voice"></i></span>
                                 <input type="text" name="from_name" id="from_name" required
-                                       placeholder="e.g. eseCRM Notifications"
+                                       placeholder="e.g. Rusan Notifications"
                                        value="{{ old('from_name', $smtpsetup?->from_name ?? '') }}">
                             </div>
                             <small class="text-muted" style="font-size:0.72rem; margin-top:3px;">

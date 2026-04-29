@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'CRM Follow-Up Tasks - eseCRM')
+@section('title', 'CRM Follow-Up Tasks - Rusan')
 
 @section('content')
 

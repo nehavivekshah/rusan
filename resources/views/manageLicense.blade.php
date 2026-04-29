@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', isset($license->id) ? 'Edit License - eseCRM' : 'Add New License - eseCRM')
+@section('title', isset($license->id) ? 'Edit License - Rusan' : 'Add New License - Rusan')
 
 @section('content')
 @php

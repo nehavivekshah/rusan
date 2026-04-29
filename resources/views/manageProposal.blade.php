@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Manage Proposal - eseCRM')
+@section('title', 'Manage Proposal - Rusan')
 
 @section('content')
 @php $taxes = !empty($companies->tax) ? explode(',', $companies->tax) : []; @endphp

@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', Request::segment(1) === 'my-company' ? 'My Company - eseCRM' : 'Manage Company - eseCRM')
+@section('title', Request::segment(1) === 'my-company' ? 'My Company - Rusan' : 'Manage Company - Rusan')
 
 @section('content')
 @php

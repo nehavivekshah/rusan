@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Enquiries - eseCRM')
+@section('title', 'Enquiries - Rusan')
 
 @section('content')
     <section class="task__section">
@@ -276,7 +276,7 @@
                         aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4 bg-light">
-                    <p class="text-muted mb-4">Integrate your external landing pages with the eseCRM lead capture system
+                    <p class="text-muted mb-4">Integrate your external landing pages with the Rusan lead capture system
                         using the details below.</p>
 
                     <div class="row g-4">

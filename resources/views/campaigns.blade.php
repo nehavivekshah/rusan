@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Marketing Campaigns - eseCRM')
+@section('title', 'Marketing Campaigns - Rusan')
 
 @section('content')
     @php

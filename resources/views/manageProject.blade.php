@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', ($project ? 'Edit Project' : 'Add Project') . ' - eseCRM')
+@section('title', ($project ? 'Edit Project' : 'Add Project') . ' - Rusan')
 
 @section('content')
     <section class="task__section">

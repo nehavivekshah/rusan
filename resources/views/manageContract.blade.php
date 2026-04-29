@@ -1,6 +1,6 @@
 @if(!request()->has('ajax'))
 @extends('layout')
-@section('title', 'Contract - eseCRM')
+@section('title', 'Contract - Rusan')
 
 @section('content')
 @endif

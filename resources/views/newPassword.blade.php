@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title','New Password - eseCRM')
+@section('title','New Password - Rusan')
 
 @section('content')
 <div class="container">

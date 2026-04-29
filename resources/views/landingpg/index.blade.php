@@ -11,10 +11,10 @@
                             <h1 class="hero-title"><span class="text-theme">Everything <span class="fw-normal">You
                                         Need</span></span> to Manage & Track</h1> 
                             <div class="btn-group mt-30">
-                                <a href="https://play.google.com/store/apps/details?id=com.esecrm.app&pcampaignid=web_share"
+                                <a href="https://play.google.com/store/apps/details?id=com.Rusan.app&pcampaignid=web_share"
                                     target="_blank" class="th-btn style7 style-radius">
                                     <img src="{{ asset('assets/landingpg/img/theme-img/play-store-btn.png') }}" alt="img"></a>
-                                <a href="https://play.google.com/store/apps/details?id=com.esecrm.app&pcampaignid=web_share"
+                                <a href="https://play.google.com/store/apps/details?id=com.Rusan.app&pcampaignid=web_share"
                                     class="th-btn style7 style-radius">
                                     <img src="{{ asset('assets/landingpg/img/theme-img/apple-btn.png') }}" alt="img">
                                 </a>

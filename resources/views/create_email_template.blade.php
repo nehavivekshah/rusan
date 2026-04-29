@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'New Email Template - eseCRM')
+@section('title', 'New Email Template - Rusan')
 
 @section('content')
 

@@ -636,7 +636,7 @@ class LeadController extends Controller
                 $message = "We have also attached our business proposal for your kind perusal.<br><br>
                             <b>Proposal ID:</b> #000" . ($proposal->id ?? '') . "<br>
                             <b>Valid Until:</b> " . (date_format(date_create($proposal->open_till ?? null), 'd M, Y')) . "<br>
-                            You can view the full proposal at the following link: <a href='https://esecrm.com/proposal/" . ($proposal->id ?? '') . "/" . md5($proposal->client_email ?? '') . "'>View Proposal</a><br><br>
+                            You can view the full proposal at the following link: <a href='https://Rusan.com/proposal/" . ($proposal->id ?? '') . "/" . md5($proposal->client_email ?? '') . "'>View Proposal</a><br><br>
                             If you have any questions or comments, feel free to reach out or comment online. We are here to assist you.<br><br>
                             Thank you once again for your interest and trust.<br><br>";
 
@@ -774,7 +774,7 @@ class LeadController extends Controller
             <b>Proposal ID:</b> #000{$proposal->id}<br>
             <b>Valid Until:</b> " . ($proposal->open_till ? date('d M, Y', strtotime($proposal->open_till)) : '-') . "<br>
             You can view the full proposal at the following link: 
-            <a href='https://esecrm.com/proposal/{$proposal->id}/" . md5($proposal->client_email) . "'>View Proposal</a><br><br>
+            <a href='https://Rusan.com/proposal/{$proposal->id}/" . md5($proposal->client_email) . "'>View Proposal</a><br><br>
             If you have any questions or comments, feel free to reach out or comment online. We are here to assist you.<br><br>
             Thank you once again for your interest and trust.<br><br>
         ";
@@ -840,7 +840,7 @@ class LeadController extends Controller
             <b>Proposal ID:</b> #000{$proposal->id}<br>
             <b>Valid Until:</b> " . ($proposal->open_till ? date('d M, Y', strtotime($proposal->open_till)) : '-') . "<br>
             You can view the full proposal at the following link: 
-            <a href='https://esecrm.com/proposal/{$proposal->id}/" . md5($proposal->client_email) . "'>View Proposal</a><br><br>
+            <a href='https://Rusan.com/proposal/{$proposal->id}/" . md5($proposal->client_email) . "'>View Proposal</a><br><br>
             We look forward to working together and building a successful collaboration.<br><br>
             If you have any questions or suggestions, feel free to reach out to us.<br><br>
             Thank you for your trust and confidence in our company.<br><br>
@@ -1032,12 +1032,12 @@ class LeadController extends Controller
             foreach ($leads as $lead) {
                 if ($lead->next_date && Carbon::parse($lead->next_date)->isToday()) {
                     // Prepare the notification message with a clickable link
-                    $notificationLink = "https://esecrm.com/leads"; // Replace with your actual lead detail URL  Click here to view details: {$notificationLink}
+                    $notificationLink = "https://Rusan.com/leads"; // Replace with your actual lead detail URL  Click here to view details: {$notificationLink}
                     $message = "Reminder for Lead: {$lead->name}. Message: {$lead->msg}.";
 
                     // Prepare the API URL
-                    $url = "https://esecrm.com/api/v1/send-notification?" . http_build_query([
-                        'title' => 'ESECRM',
+                    $url = "https://Rusan.com/api/v1/send-notification?" . http_build_query([
+                        'title' => 'Rusan',
                         'msg' => $message,
                         'url' => $notificationLink,
                         'mono' => "msetah@gmail.com",
@@ -1060,9 +1060,9 @@ class LeadController extends Controller
                 $client = \App\Models\Clients::find($invoice->client_id);
                 if ($client) {
                     $message = "Overdue Invoice #{$invoice->invoice_number}: Balance pending from {$client->name}. Please follow up.";
-                    $notificationLink = "https://esecrm.com/manage-invoice?id={$invoice->id}";
+                    $notificationLink = "https://Rusan.com/manage-invoice?id={$invoice->id}";
 
-                    $url = "https://esecrm.com/api/v1/send-notification?" . http_build_query([
+                    $url = "https://Rusan.com/api/v1/send-notification?" . http_build_query([
                         'title' => 'INVOICE OVERDUE',
                         'msg' => $message,
                         'url' => $notificationLink,

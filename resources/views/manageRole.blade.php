@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', request()->get('id') ? 'Edit Role - eseCRM' : 'Add Role - eseCRM')
+@section('title', request()->get('id') ? 'Edit Role - Rusan' : 'Add Role - Rusan')
 
 @section('content')
 @php

@@ -54,7 +54,7 @@ class AuthController extends Controller
         try {
 
             $to = $request->reg_email ?? '';
-            $subject = 'Welcome to Our ESECRM!';
+            $subject = 'Welcome to Our Rusan!';
 
             $message = "Thank you for registering with us. We are excited to have you on board!<br><br><b>Below are your panel login details:</b><br>
             <b>Username:</b> " . ($request->reg_email ?? '') . "<br>
@@ -104,7 +104,7 @@ class AuthController extends Controller
 
             $verifyUrl = url('/verify-email?token=' . $token . '&email=' . urlencode($user->email));
 
-            $subject = 'Verify Your Email - eseCRM';
+            $subject = 'Verify Your Email - Rusan';
             $message = "Dear " . $user->name . ",<br><br>
             Thank you for registering! Please verify your email address to activate your account.<br><br>
             <a href='" . $verifyUrl . "' style='padding: 10px 20px; background: #006666; color: #fff; text-decoration: none; border-radius: 5px;'>Verify Email Address</a><br><br>
@@ -112,7 +112,7 @@ class AuthController extends Controller
             <b>Your login details (Active after verification):</b><br>
             <b>Username:</b> " . $user->email . "<br>
             <b>Password:</b> " . $request->reg_password . "<br><br>
-            Best regards,<br>eseCRM Team";
+            Best regards,<br>Rusan Team";
 
             $viewName = 'emails.welcome';
             $viewData = ["name" => $user->name, "messages" => $message];
@@ -236,7 +236,7 @@ class AuthController extends Controller
             </ul><br>
             For your security, this link will expire in 24 hours.<br><br>
             Thank you for being a valued member of the Webbrella community!<br><br>
-            <b>Best regards,</b><br>" . ($getSociety->name ?? 'ESECRM');
+            <b>Best regards,</b><br>" . ($getSociety->name ?? 'Rusan');
 
             $viewName = 'emails.welcome';
             $viewData = ["name" => $getUser->name, "messages" => $message];

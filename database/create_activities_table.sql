@@ -1,5 +1,5 @@
 -- =====================================================
--- eseCRM: Create Activities Table
+-- Rusan: Create Activities Table
 -- Run this in phpMyAdmin / MySQL console on the live DB
 -- =====================================================
 

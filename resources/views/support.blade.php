@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Customer Support - eseCRM')
+@section('title', 'Customer Support - Rusan')
 
 @section('content')
     <section class="task__section">

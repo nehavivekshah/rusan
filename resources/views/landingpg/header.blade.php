@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Easiest Sales CRM | Free Simple & Easy-to-Use CRM for Small/Medium Business</title>
     
-    <meta name="author" content="eseCRM">
+    <meta name="author" content="Rusan">
     <meta name="description" content="Simple, lightweight, easy-to-use CRM tool for small businesses. Rated as the best CRM to track leads, stay organized, and follow up. Try free">
     
     <!-- Keywords -->

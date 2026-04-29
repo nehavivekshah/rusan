@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <link rel="shortcut icon" href="https://esecrm.com/assets/images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="https://Rusan.com/assets/images/favicon.ico" type="image/x-icon">
         <title>Proposal: {{ $proposal->subject ?? 'Details' }}</title>
         {{-- Bootstrap CSS --}}
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">

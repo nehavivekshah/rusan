@@ -48,7 +48,7 @@ class ApiController extends Controller
 
         $regId = $validated['regID'];
         $mono = $validated['mono'];
-        $url = $validated['click_action'] ?? 'https://esecrm.com';
+        $url = $validated['click_action'] ?? 'https://Rusan.com';
 
         // Log incoming request data
         Log::info('Register FCM Request', compact('regId', 'mono', 'url'));
@@ -80,8 +80,8 @@ class ApiController extends Controller
             $message = CloudMessage::fromArray([
                 'token' => $regId,
                 'notification' => [
-                    'title' => 'Esecrm',
-                    'body' => 'Welcome to esecrm',
+                    'title' => 'Rusan',
+                    'body' => 'Welcome to Rusan',
                 ],
                 'data' => [
                     'click_action' => $url,
@@ -316,7 +316,7 @@ class ApiController extends Controller
 
         $token = $request->query('token');
         $getCompanyId = explode('ese$$', $token);
-        $validateToken = md5("eseCRMLeadSync") . 'ese$$' . ($getCompanyId[1] ?? '');
+        $validateToken = md5("RusanLeadSync") . 'ese$$' . ($getCompanyId[1] ?? '');
 
         if ($token !== $validateToken) { // || $incomingDomain !== $expectedDomain
             return response()->json([

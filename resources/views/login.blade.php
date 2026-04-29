@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title','eseCRM Login')
+@section('title','Rusan Login')
 @php if(Auth::check()){ Auth::logout(); } @endphp
 
 @section('content')

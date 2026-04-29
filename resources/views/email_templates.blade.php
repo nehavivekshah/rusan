@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Email Templates - eseCRM')
+@section('title', 'Email Templates - Rusan')
 
 @section('content')
 @php

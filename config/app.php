@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'eseCRM'),
+    'name' => env('APP_NAME', 'Rusan'),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://esecrm.com'),
+    'url' => env('APP_URL', 'https://rusan.in'),
 
     'asset_url' => env('ASSET_URL'),
 

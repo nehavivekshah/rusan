@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', (Request::segment(1) != 'my-profile' ? ($users->id ?? false ? 'Edit User' : 'Add User') : 'My Account') . ' - eseCRM')
+@section('title', (Request::segment(1) != 'my-profile' ? ($users->id ?? false ? 'Edit User' : 'Add User') : 'My Account') . ' - Rusan')
 
 @section('content')
 

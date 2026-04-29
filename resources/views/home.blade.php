@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Dashboard - eseCRM')
+@section('title', 'Dashboard - Rusan')
 
 @section('content')
     @php
@@ -38,7 +38,7 @@
                     </div>
                     <div class="db-hero-sub">
                         @if(Auth::user()->role == 'master')
-                            Welcome back to eseCRM Master Panel — {{ date('l, d M Y') }}
+                            Welcome back to Rusan Master Panel — {{ date('l, d M Y') }}
                         @else
                             Here's what's happening with <strong>{{ $company->name ?? 'your company' }}</strong> today.
                         @endif

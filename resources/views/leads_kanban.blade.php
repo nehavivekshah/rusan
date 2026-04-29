@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Leads Pipeline (Kanban) - eseCRM')
+@section('title', 'Leads Pipeline (Kanban) - Rusan')
 
 <style>
     /* Kanban Filter Bar */
