@@ -6,15 +6,16 @@
     <div class="row justify-content-center align-items-center h-90">
         <div class="col-md-4">
             <div class="card w-100 shadow pl-3 pr-3">
-                <form id="resetPasswordForm" action="{{ route('newPassword') }}" method="POST" class="card-body" onsubmit="return validatePassword()">
+                <form id="resetPasswordForm" action="{{ route('newPasswordPost') }}" method="POST" class="card-body" onsubmit="return validatePassword()">
                     <h4 class="card-title mb-4 mt-3">Reset Password <br><span class="small">Create a new password</span></h4>
                     @csrf
+                    <input type="hidden" name="email" value="{{ $email ?? '' }}">
+                    <input type="hidden" name="token" value="{{ $token ?? '' }}">
                     
                     <div class="form-group">
-                        <input type="hidden" name="uid" value="{{ $id ?? '' }}">
                         <div class="input-group">
                             <img src="{{ asset('assets/icons/lock.svg'); }}" class="input-icon" />
-                            <input type="password" name="new_password" id="new_password" class="form-control" placeholder="new Password" required />
+                            <input type="password" name="new_password" id="new_password" class="form-control" placeholder="new Password" required minlength="8" />
                             <button type="button" class="btn btn-trans" 
                                 onclick="togglePassword('new_password', 'toggleIconNew')">
                                 <i class="bx bx-show-alt" id="toggleIconNew"></i>
@@ -25,7 +26,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <img src="{{ asset('assets/icons/lock.svg'); }}" class="input-icon" />
-                            <input type="password" name="cn_password" id="cn_password" class="form-control" placeholder="Confirm new Password" required />
+                            <input type="password" name="cn_password" id="cn_password" class="form-control" placeholder="Confirm new Password" required minlength="8" />
                             <button type="button" class="btn btn-trans" 
                                 onclick="togglePassword('cn_password', 'toggleIconCn')">
                                 <i class="bx bx-show-alt" id="toggleIconCn"></i>

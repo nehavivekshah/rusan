@@ -149,20 +149,21 @@ class ApiController extends Controller
         }
     }
 
-    public function checkLogin()
-    {
-        if (session_status() !== PHP_SESSION_ACTIVE) {
-            session_start();
-        }
-
-        $email = $_SESSION['loginEmail'] ?? '';
-        $password = $_SESSION['loginPassword'] ?? '';
-
-        return response()->json(['email' => $email, 'password' => $password], 200);
-    }
+    // REMOVED: checkLogin — leaked credentials (Security Audit #23)
 
     public function attendancePost(Request $request)
     {
+        // Validate request
+        $request->validate([
+            'user_id'   => 'required|string',
+            'date'      => 'required|date',
+            'check_in'  => 'nullable|string',
+            'check_out' => 'nullable|string',
+            'status'    => 'nullable|string',
+            'remarks'   => 'nullable|string',
+            'userIp'    => 'required|ip'
+        ]);
+
         $clientIp = $request->ip();
 
         // Check if provided IP matches client IP
@@ -177,17 +178,6 @@ class ApiController extends Controller
                 'client_ip' => $clientIp
             ], 403);
         }
-
-        // Validate request
-        /*$request->validate([
-            'user_id'   => 'required|exists:users,id',
-            'date'      => 'required|date',
-            'check_in'  => 'nullable|date_format:H:i',
-            'check_out' => 'nullable|date_format:H:i|after:check_in',
-            'status'    => 'nullable|string',
-            'remarks'   => 'nullable|string',
-        ])*/
-        ;
 
         $user = User::where('email', $request->user_id)
             ->orWhere('id', $request->user_id)
@@ -310,18 +300,25 @@ class ApiController extends Controller
 
     public function enquiryPost(Request $request)
     {
-        // Optional: Validate domain and token
-        //$expectedDomain = 'yourdomain.com'; // Replace with real domain
-        //$incomingDomain = parse_url($request->website, PHP_URL_HOST);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'mob' => 'nullable|string|max:20',
+            'company' => 'nullable|string|max:255',
+            'token' => 'required|string'
+        ]);
 
-        $token = $request->query('token');
+        $token = $request->token;
         $getCompanyId = explode('ese$$', $token);
-        $validateToken = md5("RusanLeadSync") . 'ese$$' . ($getCompanyId[1] ?? '');
+        
+        // Use a more secure secret from config or env
+        $secret = env('API_SYNC_SECRET', 'RusanLeadSync');
+        $validateToken = md5($secret) . 'ese$$' . ($getCompanyId[1] ?? '');
 
-        if ($token !== $validateToken) { // || $incomingDomain !== $expectedDomain
+        if ($token !== $validateToken) {
             return response()->json([
                 'success' => false,
-                'message' => 'Invalid token or unauthorized domain.',
+                'message' => 'Invalid token or unauthorized access.',
             ], 403);
         }
 

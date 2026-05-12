@@ -1059,8 +1059,13 @@ class LeadController extends Controller
         return view('leads', ['leads' => $leads]);
     }
 
-    public function reminderScript()
+    public function reminderScript(Request $request)
     {
+        // --- Security Check: Token required for unauthenticated cron access ---
+        if (!Auth::check() && $request->token !== env('CRON_TOKEN')) {
+            abort(403, 'Unauthorized cron access.');
+        }
+
         try {
             // Fetch leads with reminders
             $leads = DB::table('leads')
@@ -1518,59 +1523,7 @@ class LeadController extends Controller
         return response()->stream($callback, 200, $headers);
     }
 
-    public function exportAllLeads()
-    {
-
-        // Set the headers for the CSV file download
-        $headers = array(
-            "Content-type" => "text/csv",
-            "Content-Disposition" => "attachment; filename=leads.csv",
-            "Pragma" => "no-cache",
-            "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
-            "Expires" => "0"
-        );
-
-        // Callback function to write the CSV content
-        $callback = function () {
-            // Open output buffer for writing the CSV data
-            $file = fopen('php://output', 'w');
-
-            // Write the column headers in the first row (matching the columns in the import)
-            fputcsv($file, ['CID', 'Name', 'Email', 'Mobile', 'WhatsApp', 'Company', 'GST No', 'Position', 'Industry', 'Location', 'Website', 'Assigned', 'Purpose', 'Values', 'Language', 'POC', 'Status']);
-
-            // Fetch data from the database
-            $leads = DB::table('leads')->get();
-
-            // Loop through the leads and write each row into the CSV
-            foreach ($leads as $lead) {
-                fputcsv($file, [
-                    $lead->cid,
-                    $lead->name,
-                    $lead->email,
-                    $lead->mob,
-                    $lead->whatsapp,
-                    $lead->company,
-                    $lead->gst_no ?? $lead->gstno, // GST No
-                    $lead->position,
-                    $lead->industry,
-                    $lead->location,
-                    $lead->website,
-                    $lead->assigned,
-                    $lead->purpose,
-                    $lead->values,
-                    $lead->language,
-                    $lead->poc,
-                    $lead->status,
-                ]);
-            }
-
-            // Close the file
-            fclose($file);
-        };
-
-        // Return the response with headers and content generated from the callback
-        return response()->stream($callback, 200, $headers);
-    }
+    // REMOVED: exportAllLeads — leaked all leads without authentication (Security Audit)
     public function sendProposalWhatsApp($id)
     {
         $proposal = Proposals::findOrFail($id);

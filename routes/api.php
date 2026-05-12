@@ -30,7 +30,7 @@ Route::prefix('/v1')->group(function () {
     //FCM Registration api
     Route::get('/registerfcm', [ApiController::class, 'registerFcm']);
     Route::get('/send-notification', [ApiController::class, 'sendNotification']);
-    Route::get('/check-login', [ApiController::class, 'checkLogin']);
+    // REMOVED: /check-login — leaked credentials as plaintext JSON (Security Audit #23)
 
     Route::post('/enquiry', [ApiController::class, 'enquiryPost']);
     Route::get('/attendance', [ApiController::class, 'attendancePost']);
