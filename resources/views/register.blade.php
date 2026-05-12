@@ -44,7 +44,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <img src="{{ asset('assets/icons/lock.svg') }}" class="input-icon" />
-                            <input type="password" name="reg_password" class="form-control" placeholder="Password" required minlength="8" />
+                            <input type="password" name="reg_password" class="form-control" placeholder="Password" required />
                         </div>
                          @error('reg_password')
                             <span class="text-danger">{{ $message }}</span>
@@ -71,9 +71,15 @@
                         @enderror
                     </div>
                      <!-- Captcha -->
+                    @php
+                        $num1 = rand(1, 10);
+                        $num2 = rand(1, 10);
+                        $captcha_answer = $num1 + $num2;
+                    @endphp
                     <div class="form-group">
                         <label for="captcha" class="text-muted">Please solve: {{ $num1 }} + {{ $num2 }} = ?</label>
                         <input type="text" name="captcha" class="form-control" placeholder="Your answer" required />
+                        <input type="hidden" name="captcha_answer" value="{{ $captcha_answer }}">
                            @error('captcha')
                             <span class="text-danger">{{ $message }}</span>
                            @enderror

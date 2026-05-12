@@ -36,22 +36,23 @@ Route::get('/', [AuthController::class, 'login'])->name('login');
 //Route::post('/send', [HomeController::class, 'send']);
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', [AuthController::class, 'register'])->name('register');
-    Route::post('/register', [AuthController::class, 'registerPost'])->name('register.submit')->middleware('throttle:5,1');
+    Route::post('/register', [AuthController::class, 'registerPost'])->name('register');
     Route::get('/verify-email', [AuthController::class, 'verifyEmail'])->name('verifyEmail');
     Route::get('/', [AuthController::class, 'login'])->name('login');
-    Route::get('/login', [AuthController::class, 'login'])->name('login.view');
-    Route::post('/login', [AuthController::class, 'loginPost'])->name('login.submit')->middleware('throttle:5,1');
-    Route::get('/forgot-password', [AuthController::class, 'forgotPassword'])->name('forgotPassword.view');
-    Route::post('/forgot-password', [AuthController::class, 'forgotPasswordPost'])->name('forgotPassword.submit')->middleware('throttle:3,1');
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
+    Route::get('/forgot-password', [AuthController::class, 'forgotPassword']);
+    Route::post('/forgot-password', [AuthController::class, 'forgotPasswordPost'])->name('forgotPassword');
 
-    Route::get('/new-password', [AuthController::class, 'newPassword'])->name('newPassword.view');
-    Route::post('/new-password', [AuthController::class, 'newPasswordPost'])->name('newPassword.submit');
+    Route::get('/new-password', [AuthController::class, 'newPassword'])->name('newPassword');
+    Route::post('/new-password', [AuthController::class, 'newPasswordPost'])->name('newPassword');
 
+    Route::get('/export-lead-all', [LeadController::class, 'exportAllLeads'])->name('exportAllLeads');
     // NOTE: /reminders is also registered inside the auth group (for logged-in use)
     // This one serves as a cron/scheduler hook (unauthenticated scheduler calls)
     Route::get('/reminders', [LeadController::class, 'reminderScript'])->name('reminderScript');
     Route::post('/enquiry-submit', [AjaxController::class, 'storeEnquiry'])->name('enquiry.submit');
-
+    
     /* Email Tracking */
     Route::get('/t/o/{token}', [\App\Http\Controllers\EmailTrackingController::class, 'trackOpen'])->name('email.track_open');
     Route::get('/t/c/{token}', [\App\Http\Controllers\EmailTrackingController::class, 'trackClick'])->name('email.track_click');
@@ -210,7 +211,7 @@ Route::group(['middleware' => ['auth', 'checkplan']], function () {
     Route::post('/products/update/{id}', [\App\Http\Controllers\ProductController::class, 'update'])->name('products.update');
     Route::delete('/products/delete/{id}', [\App\Http\Controllers\ProductController::class, 'destroy'])->name('products.destroy');
     Route::get('/products/get/{id}', [\App\Http\Controllers\ProductController::class, 'getProductAjax'])->name('products.get');
-
+    
     /* Customer 360 View */
     Route::get('/customer-360/{type}/{id}', [\App\Http\Controllers\Customer360Controller::class, 'view'])->name('customer.360');
     Route::post('/initiate-call', [\App\Http\Controllers\AjaxController::class, 'initiateExotelCall'])->name('call.initiate');
@@ -368,8 +369,14 @@ Route::group(['middleware' => ['auth', 'checkplan']], function () {
 
     //Notification Reminders
     Route::get('/reminders', [LeadController::class, 'reminderScript'])->name('reminderScript');
+    Route::get('/trigger-url', [AuthController::class, 'triggerCurl']);
 
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/signout', function () {
+        Auth::logout();
+
+        return redirect()->route('login');
+    });
 });
 
 Route::get('/test-scheduler', [SchedulerTestController::class, 'run']);

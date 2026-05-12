@@ -248,13 +248,10 @@ class LeadController extends Controller
             ->orderBy('name')
             ->get();
 
-        $products = \App\Models\Product::orderBy('name')->get();
-
         return view('manageLead', [
             'leads'       => $leads,
             'leadComments'=> $leadComments,
             'salesUsers'  => $salesUsers,
-            'products'    => $products,
         ]);
 
     }
@@ -273,35 +270,16 @@ class LeadController extends Controller
         if (empty($request->id)) {
             $leadSingle = new Leads();
 
-            // Build legacy name from first/middle/last
-            $nameParts = array_filter([$request->first_name, $request->middle_name, $request->last_name]);
-            $leadSingle->name = !empty($nameParts) ? implode(' ', $nameParts) : ($request->name ?? '');
-            $leadSingle->first_name = ($request->first_name ?? '');
-            $leadSingle->middle_name = ($request->middle_name ?? '');
-            $leadSingle->last_name = ($request->last_name ?? '');
-
-            // Demographics
-            $leadSingle->gender = ($request->gender ?? '');
-            $leadSingle->dob = ($request->dob ?? null);
-            $leadSingle->progress = ($request->progress ?? '');
-
-            // Contact
+            $leadSingle->name = ($request->name ?? '');
             $leadSingle->email = ($request->email ?? '');
             $leadSingle->mob = ($request->mob ?? '');
             $leadSingle->gstno = ($request->gstno ?? '');
             $leadSingle->whatsapp = ($request->whatsapp ?? '');
-
-            // Business
             $leadSingle->company = ($request->company ?? '');
             $leadSingle->position = ($request->position ?? '');
             $leadSingle->industry = ($request->industry ?? '');
-            $leadSingle->interested_product = ($request->interested_product ?? '');
             $leadSingle->location = ($location ?? '');
             $leadSingle->website = ($request->website ?? '');
-
-            // Communication preferences
-            $leadSingle->first_call = $request->has('first_call') ? 1 : 0;
-            $leadSingle->sms_opt = $request->has('sms_opt') ? 1 : 0;
             
             // Auto-Assignment Logic: If current user is Sales, assign to self
             $roles = session('roles'); 
@@ -324,26 +302,6 @@ class LeadController extends Controller
             $leadSingle->language = ($request->language ?? '');
             $leadSingle->poc = ($request->poc ?? '');
             $leadSingle->tags = ($request->tags ?? '');
-            $leadSingle->source = ($request->source ?? '');
-
-            // Additional Information: Call Tracking
-            $leadSingle->lead_state = ($request->lead_state ?? '');
-            $leadSingle->last_call_feedback = ($request->last_call_feedback ?? '');
-            $leadSingle->last_call_comment = ($request->last_call_comment ?? '');
-            $leadSingle->next_call_date = ($request->next_call_date ?? null);
-            $leadSingle->marketing_source = ($request->marketing_source ?? '');
-
-            // Additional Information: Healthcare / Tobacco
-            $leadSingle->age = ($request->age ?? null);
-            $leadSingle->consumption_years = ($request->consumption_years ?? null);
-            $leadSingle->tobacco_frequency = ($request->tobacco_frequency ?? null);
-            $leadSingle->craving_for_smoking = ($request->craving_for_smoking ?? '');
-            $leadSingle->problem_smoking = ($request->problem_smoking ?? '');
-            $leadSingle->experience_intense_craving = ($request->experience_intense_craving ?? '');
-
-            if ($request->hasFile('attachment')) {
-                $leadSingle->attachment = $request->file('attachment')->store('leads/attachments', 'public');
-            }
 
             if ((!empty($request->nxtDate) && (new DateTime($request->nxtDate) > new DateTime())) || !empty($request->message)) {
                 $leadSingle->status = ($request->status ?? '1');
@@ -432,64 +390,22 @@ class LeadController extends Controller
                 }
 
                 $leadSingle->cid = (Auth::user()->cid ?? '');
-
-                // Build legacy name from first/middle/last
-                $nameParts = array_filter([$request->first_name, $request->middle_name, $request->last_name]);
-                $leadSingle->name = !empty($nameParts) ? implode(' ', $nameParts) : ($request->name ?? '');
-                $leadSingle->first_name = ($request->first_name ?? '');
-                $leadSingle->middle_name = ($request->middle_name ?? '');
-                $leadSingle->last_name = ($request->last_name ?? '');
-
-                // Demographics
-                $leadSingle->gender = ($request->gender ?? '');
-                $leadSingle->dob = ($request->dob ?? null);
-                $leadSingle->progress = ($request->progress ?? '');
-
-                // Contact
+                $leadSingle->name = ($request->name ?? '');
                 $leadSingle->email = ($request->email ?? '');
                 $leadSingle->mob = ($request->mob ?? '');
                 $leadSingle->gstno = ($request->gstno ?? '');
                 $leadSingle->whatsapp = ($request->whatsapp ?? '');
-
-                // Business
                 $leadSingle->company = ($request->company ?? '');
                 $leadSingle->position = ($request->position ?? '');
                 $leadSingle->industry = ($request->industry ?? '');
-                $leadSingle->interested_product = ($request->interested_product ?? '');
                 $leadSingle->location = ($location ?? '');
                 $leadSingle->website = ($request->website ?? '');
-
-                // Communication preferences
-                $leadSingle->first_call = $request->has('first_call') ? 1 : 0;
-                $leadSingle->sms_opt = $request->has('sms_opt') ? 1 : 0;
-
                 $leadSingle->assigned = ($request->assigned ?? '');
                 $leadSingle->purpose = ($request->purpose ?? '');
                 $leadSingle->values = ($request->value ?? '');
                 $leadSingle->language = ($request->language ?? '');
                 $leadSingle->poc = ($request->poc ?? '');
                 $leadSingle->tags = ($request->tags ?? '');
-                $leadSingle->source = ($request->source ?? '');
-
-                // Additional Information: Call Tracking
-                $leadSingle->lead_state = ($request->lead_state ?? '');
-                $leadSingle->last_call_feedback = ($request->last_call_feedback ?? '');
-                $leadSingle->last_call_comment = ($request->last_call_comment ?? '');
-                $leadSingle->next_call_date = ($request->next_call_date ?? null);
-                $leadSingle->marketing_source = ($request->marketing_source ?? '');
-
-                // Additional Information: Healthcare / Tobacco
-                $leadSingle->age = ($request->age ?? null);
-                $leadSingle->consumption_years = ($request->consumption_years ?? null);
-                $leadSingle->tobacco_frequency = ($request->tobacco_frequency ?? null);
-                $leadSingle->craving_for_smoking = ($request->craving_for_smoking ?? '');
-                $leadSingle->problem_smoking = ($request->problem_smoking ?? '');
-                $leadSingle->experience_intense_craving = ($request->experience_intense_craving ?? '');
-
-                if ($request->hasFile('attachment')) {
-                    $leadSingle->attachment = $request->file('attachment')->store('leads/attachments', 'public');
-                }
-
                 $leadSingle->status = ($request->status ?? '10');
 
                 if ($leadSingle->update()) {
@@ -1059,13 +975,8 @@ class LeadController extends Controller
         return view('leads', ['leads' => $leads]);
     }
 
-    public function reminderScript(Request $request)
+    public function reminderScript()
     {
-        // --- Security Check: Token required for unauthenticated cron access ---
-        if (!Auth::check() && $request->token !== env('CRON_TOKEN')) {
-            abort(403, 'Unauthorized cron access.');
-        }
-
         try {
             // Fetch leads with reminders
             $leads = DB::table('leads')
@@ -1523,7 +1434,59 @@ class LeadController extends Controller
         return response()->stream($callback, 200, $headers);
     }
 
-    // REMOVED: exportAllLeads — leaked all leads without authentication (Security Audit)
+    public function exportAllLeads()
+    {
+
+        // Set the headers for the CSV file download
+        $headers = array(
+            "Content-type" => "text/csv",
+            "Content-Disposition" => "attachment; filename=leads.csv",
+            "Pragma" => "no-cache",
+            "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
+            "Expires" => "0"
+        );
+
+        // Callback function to write the CSV content
+        $callback = function () {
+            // Open output buffer for writing the CSV data
+            $file = fopen('php://output', 'w');
+
+            // Write the column headers in the first row (matching the columns in the import)
+            fputcsv($file, ['CID', 'Name', 'Email', 'Mobile', 'WhatsApp', 'Company', 'GST No', 'Position', 'Industry', 'Location', 'Website', 'Assigned', 'Purpose', 'Values', 'Language', 'POC', 'Status']);
+
+            // Fetch data from the database
+            $leads = DB::table('leads')->get();
+
+            // Loop through the leads and write each row into the CSV
+            foreach ($leads as $lead) {
+                fputcsv($file, [
+                    $lead->cid,
+                    $lead->name,
+                    $lead->email,
+                    $lead->mob,
+                    $lead->whatsapp,
+                    $lead->company,
+                    $lead->gst_no ?? $lead->gstno, // GST No
+                    $lead->position,
+                    $lead->industry,
+                    $lead->location,
+                    $lead->website,
+                    $lead->assigned,
+                    $lead->purpose,
+                    $lead->values,
+                    $lead->language,
+                    $lead->poc,
+                    $lead->status,
+                ]);
+            }
+
+            // Close the file
+            fclose($file);
+        };
+
+        // Return the response with headers and content generated from the callback
+        return response()->stream($callback, 200, $headers);
+    }
     public function sendProposalWhatsApp($id)
     {
         $proposal = Proposals::findOrFail($id);

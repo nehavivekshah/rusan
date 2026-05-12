@@ -1,9 +1,0 @@
-[{
-  "relation": ["delegate_permission/common.handle_all_urls"],
-  "target": {
-    "namespace": "android_app",
-    "package_name": "com.esecrm.app",
-    "sha256_cert_fingerprints":
-    ["83:7D:E5:EB:D7:83:A5:09:3A:72:DB:F3:90:8F:EF:13:E9:38:3A:DE:60:47:1B:6F:AD:4C:46:6B:14:53:89:67"]
-  }
-}]

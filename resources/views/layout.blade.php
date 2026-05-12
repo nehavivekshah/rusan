@@ -76,7 +76,7 @@
         
         <script src="https://cdn.tiny.cloud/1/wa5nrulndxu7i9yumfv1j52xb09r488mk492qb9qku6w4zvp/tinymce/8/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
     </head>
-    <body class="bg-light" onload="if(typeof loadSharedPrefData === 'function') loadSharedPrefData()">
+    <body class="bg-light" onload="loadSharedPrefData()">
         
         <!-- Loader -->
         <div id="page-loader">
@@ -104,7 +104,6 @@
         @yield('content')
         
         @if (Session::has('success'))
-        <!-- Legacy Swal (Properly Commented Out)
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 if (typeof swal !== 'undefined') {
@@ -290,7 +289,6 @@
 
         @include('inc.todo-modal')
         @stack('scripts')
-        {{-- 
         <script>
             if ('serviceWorker' in navigator) {
                 window.addEventListener('load', () => {
@@ -298,7 +296,6 @@
                 });
             }
         </script>
-        --}}
         <script>
             // ── Theme Management ──
             const themeToggle = document.getElementById('themeToggle');
