@@ -289,6 +289,7 @@
 
         @include('inc.todo-modal')
         @stack('scripts')
+        {{-- 
         <script>
             if ('serviceWorker' in navigator) {
                 window.addEventListener('load', () => {
@@ -296,6 +297,7 @@
                 });
             }
         </script>
+        --}}
         <script>
             // ── Theme Management ──
             const themeToggle = document.getElementById('themeToggle');
@@ -320,6 +322,8 @@
                         themeIcon.className = 'bx bx-sun';
                     }
                 });
+            }
+
             // ── Global Search ──
             const gsModal = document.getElementById('globalSearchModal');
             const gsInput = document.getElementById('gsInput');
@@ -340,6 +344,8 @@
                 if (e.key === 'Escape' && gsModal && gsModal.classList.contains('active')) {
                     toggleGS();
                 }
+            });
+
             // ── Sidebar Clock ──
             function updateSBClock() {
                 const el = document.getElementById('sbClock');

@@ -217,8 +217,10 @@ class LeadController extends Controller
         if ($page == 'leads') {
 
             $leads = Leads::where('id', '=', $request->id)->first();
-
             $leadComments = Lead_comments::where('lead_id', '=', ($leads->id ?? ''))->get();
+            $receivedEmails = \App\Models\ReceivedEmail::where('lead_id', '=', ($leads->id ?? ''))
+                ->orderBy('received_at', 'DESC')
+                ->get();
 
             $proposals = Proposals::leftJoin('leads', 'proposals.lead_id', '=', 'leads.id')
                 ->select('leads.name as lead_name', 'proposals.*')
@@ -226,7 +228,12 @@ class LeadController extends Controller
                 ->orderBy('proposals.proposal_date', 'DESC')
                 ->orderBy('proposals.id', 'DESC')->get();
 
-            return json_encode(['leads' => $leads, 'leadComments' => $leadComments, 'proposals' => $proposals]);
+            return json_encode([
+                'leads' => $leads, 
+                'leadComments' => $leadComments, 
+                'receivedEmails' => $receivedEmails,
+                'proposals' => $proposals
+            ]);
         }
     }
 
@@ -241,10 +248,13 @@ class LeadController extends Controller
             ->orderBy('name')
             ->get();
 
+        $products = \App\Models\Product::orderBy('name')->get();
+
         return view('manageLead', [
             'leads'       => $leads,
             'leadComments'=> $leadComments,
             'salesUsers'  => $salesUsers,
+            'products'    => $products,
         ]);
 
     }
@@ -263,16 +273,35 @@ class LeadController extends Controller
         if (empty($request->id)) {
             $leadSingle = new Leads();
 
-            $leadSingle->name = ($request->name ?? '');
+            // Build legacy name from first/middle/last
+            $nameParts = array_filter([$request->first_name, $request->middle_name, $request->last_name]);
+            $leadSingle->name = !empty($nameParts) ? implode(' ', $nameParts) : ($request->name ?? '');
+            $leadSingle->first_name = ($request->first_name ?? '');
+            $leadSingle->middle_name = ($request->middle_name ?? '');
+            $leadSingle->last_name = ($request->last_name ?? '');
+
+            // Demographics
+            $leadSingle->gender = ($request->gender ?? '');
+            $leadSingle->dob = ($request->dob ?? null);
+            $leadSingle->progress = ($request->progress ?? '');
+
+            // Contact
             $leadSingle->email = ($request->email ?? '');
             $leadSingle->mob = ($request->mob ?? '');
             $leadSingle->gstno = ($request->gstno ?? '');
             $leadSingle->whatsapp = ($request->whatsapp ?? '');
+
+            // Business
             $leadSingle->company = ($request->company ?? '');
             $leadSingle->position = ($request->position ?? '');
             $leadSingle->industry = ($request->industry ?? '');
+            $leadSingle->interested_product = ($request->interested_product ?? '');
             $leadSingle->location = ($location ?? '');
             $leadSingle->website = ($request->website ?? '');
+
+            // Communication preferences
+            $leadSingle->first_call = $request->has('first_call') ? 1 : 0;
+            $leadSingle->sms_opt = $request->has('sms_opt') ? 1 : 0;
             
             // Auto-Assignment Logic: If current user is Sales, assign to self
             $roles = session('roles'); 
@@ -295,6 +324,26 @@ class LeadController extends Controller
             $leadSingle->language = ($request->language ?? '');
             $leadSingle->poc = ($request->poc ?? '');
             $leadSingle->tags = ($request->tags ?? '');
+            $leadSingle->source = ($request->source ?? '');
+
+            // Additional Information: Call Tracking
+            $leadSingle->lead_state = ($request->lead_state ?? '');
+            $leadSingle->last_call_feedback = ($request->last_call_feedback ?? '');
+            $leadSingle->last_call_comment = ($request->last_call_comment ?? '');
+            $leadSingle->next_call_date = ($request->next_call_date ?? null);
+            $leadSingle->marketing_source = ($request->marketing_source ?? '');
+
+            // Additional Information: Healthcare / Tobacco
+            $leadSingle->age = ($request->age ?? null);
+            $leadSingle->consumption_years = ($request->consumption_years ?? null);
+            $leadSingle->tobacco_frequency = ($request->tobacco_frequency ?? null);
+            $leadSingle->craving_for_smoking = ($request->craving_for_smoking ?? '');
+            $leadSingle->problem_smoking = ($request->problem_smoking ?? '');
+            $leadSingle->experience_intense_craving = ($request->experience_intense_craving ?? '');
+
+            if ($request->hasFile('attachment')) {
+                $leadSingle->attachment = $request->file('attachment')->store('leads/attachments', 'public');
+            }
 
             if ((!empty($request->nxtDate) && (new DateTime($request->nxtDate) > new DateTime())) || !empty($request->message)) {
                 $leadSingle->status = ($request->status ?? '1');
@@ -383,22 +432,64 @@ class LeadController extends Controller
                 }
 
                 $leadSingle->cid = (Auth::user()->cid ?? '');
-                $leadSingle->name = ($request->name ?? '');
+
+                // Build legacy name from first/middle/last
+                $nameParts = array_filter([$request->first_name, $request->middle_name, $request->last_name]);
+                $leadSingle->name = !empty($nameParts) ? implode(' ', $nameParts) : ($request->name ?? '');
+                $leadSingle->first_name = ($request->first_name ?? '');
+                $leadSingle->middle_name = ($request->middle_name ?? '');
+                $leadSingle->last_name = ($request->last_name ?? '');
+
+                // Demographics
+                $leadSingle->gender = ($request->gender ?? '');
+                $leadSingle->dob = ($request->dob ?? null);
+                $leadSingle->progress = ($request->progress ?? '');
+
+                // Contact
                 $leadSingle->email = ($request->email ?? '');
                 $leadSingle->mob = ($request->mob ?? '');
                 $leadSingle->gstno = ($request->gstno ?? '');
                 $leadSingle->whatsapp = ($request->whatsapp ?? '');
+
+                // Business
                 $leadSingle->company = ($request->company ?? '');
                 $leadSingle->position = ($request->position ?? '');
                 $leadSingle->industry = ($request->industry ?? '');
+                $leadSingle->interested_product = ($request->interested_product ?? '');
                 $leadSingle->location = ($location ?? '');
                 $leadSingle->website = ($request->website ?? '');
+
+                // Communication preferences
+                $leadSingle->first_call = $request->has('first_call') ? 1 : 0;
+                $leadSingle->sms_opt = $request->has('sms_opt') ? 1 : 0;
+
                 $leadSingle->assigned = ($request->assigned ?? '');
                 $leadSingle->purpose = ($request->purpose ?? '');
                 $leadSingle->values = ($request->value ?? '');
                 $leadSingle->language = ($request->language ?? '');
                 $leadSingle->poc = ($request->poc ?? '');
                 $leadSingle->tags = ($request->tags ?? '');
+                $leadSingle->source = ($request->source ?? '');
+
+                // Additional Information: Call Tracking
+                $leadSingle->lead_state = ($request->lead_state ?? '');
+                $leadSingle->last_call_feedback = ($request->last_call_feedback ?? '');
+                $leadSingle->last_call_comment = ($request->last_call_comment ?? '');
+                $leadSingle->next_call_date = ($request->next_call_date ?? null);
+                $leadSingle->marketing_source = ($request->marketing_source ?? '');
+
+                // Additional Information: Healthcare / Tobacco
+                $leadSingle->age = ($request->age ?? null);
+                $leadSingle->consumption_years = ($request->consumption_years ?? null);
+                $leadSingle->tobacco_frequency = ($request->tobacco_frequency ?? null);
+                $leadSingle->craving_for_smoking = ($request->craving_for_smoking ?? '');
+                $leadSingle->problem_smoking = ($request->problem_smoking ?? '');
+                $leadSingle->experience_intense_craving = ($request->experience_intense_craving ?? '');
+
+                if ($request->hasFile('attachment')) {
+                    $leadSingle->attachment = $request->file('attachment')->store('leads/attachments', 'public');
+                }
+
                 $leadSingle->status = ($request->status ?? '10');
 
                 if ($leadSingle->update()) {
@@ -1479,5 +1570,39 @@ class LeadController extends Controller
 
         // Return the response with headers and content generated from the callback
         return response()->stream($callback, 200, $headers);
+    }
+    public function sendProposalWhatsApp($id)
+    {
+        $proposal = Proposals::findOrFail($id);
+        
+        $phone = $proposal->client_phone;
+        if (empty($phone)) {
+            $lead = Leads::find($proposal->lead_id);
+            $phone = $lead->whatsapp ?? $lead->mob ?? '';
+        }
+
+        if (empty($phone)) {
+            return back()->with('error', 'No WhatsApp number found for this client.');
+        }
+
+        $phone = preg_replace('/[^0-9]/', '', $phone);
+        if (strlen($phone) == 10) { $phone = '91' . $phone; }
+
+        $wa = new \App\Services\WhatsAppService();
+        $pdfUrl = url("/proposal/download/{$proposal->id}/" . md5($proposal->client_email));
+        
+        $result = $wa->sendDocument(
+            $phone, 
+            $pdfUrl, 
+            "Proposal-" . str_pad($proposal->id, 4, '0', STR_PAD_LEFT) . ".pdf", 
+            "Hello " . ($proposal->client_name ?: 'there') . ", please find our proposal for " . $proposal->subject
+        );
+
+        if ($result['success']) {
+            $this->logActivity('Proposal Shared (WA)', 'proposals', $proposal->id, $proposal->subject, "Shared proposal via WhatsApp to {$phone}");
+            return back()->with('success', 'Proposal sent successfully via WhatsApp!');
+        } else {
+            return back()->with('error', 'WhatsApp Failed: ' . ($result['message'] ?? 'Unknown error'));
+        }
     }
 }

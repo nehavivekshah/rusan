@@ -56,6 +56,7 @@
             </a>
         </li>
 
+        {{--
         @if(Auth::user()->role != 'master' && (in_array('tasks', $roleArray) || in_array('All', $roleArray)))
             <li>
                 <a href="/task" @if(Request::segment(1) == 'task' || Request::segment(1) == 'edit-task') class="active" @endif>
@@ -83,6 +84,7 @@
                 </a>
             </li>
         @endif
+        --}}
 
 
         @if(Auth::user()->role != 'master')
@@ -115,6 +117,7 @@
                 </li>
             @endif
 
+            {{--
             <li class="nav-title">ANALYTICS</li>
             <li>
                 <a href="/reports" @if(Request::segment(1) == 'reports' && Request::segment(2) == '') class="active" @endif>
@@ -471,5 +474,6 @@
             </span>
             @endif
         </li>
+        --}}
     </ul>
 </div>

@@ -150,7 +150,7 @@ class AuthController extends Controller
                 'password' => $request->login_password,
             ];
 
-            if (Auth::attempt($credentials)) {
+            if (Auth::attempt($credentials, true)) {
 
                 // Get the authenticated user
                 $user = Auth::user();
@@ -176,12 +176,7 @@ class AuthController extends Controller
                     'roles' => $role,
                 ]);
 
-                // Start PHP session if not already started and store credentials
-                if (session_status() == PHP_SESSION_NONE) {
-                    session_start();
-                }
-
-                $_SESSION['loginEmail'] = $request->login_email ?? '';
+                session(['loginEmail' => $request->login_email ?? '']);
 
                 $this->logLogin();
 

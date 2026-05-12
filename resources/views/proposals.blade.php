@@ -209,6 +209,11 @@
                                                style="background:rgba(26,115,232,0.08);color:#1a73e8; flex-shrink: 0;">
                                                 <i class="bx bx-show"></i>
                                             </a>
+                                            <a href="/send-proposal-whatsapp/{{ $proposal->id }}"
+                                               class="btn kb-action-btn" title="Send WhatsApp"
+                                               style="background:rgba(37, 211, 102, 0.08);color:#25D366; flex-shrink: 0;">
+                                                <i class="bx bxl-whatsapp"></i>
+                                            </a>
                                             @if(in_array('proposals_edit',$roleArray) || in_array('All',$roleArray))
                                                 <a href="/manage-proposal?id={{ $proposal->id }}"
                                                    class="btn kb-action-btn" title="Edit"

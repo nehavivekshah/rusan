@@ -434,6 +434,10 @@
                                                         <span class="ld-info-val" id="v_address_full"
                                                             style="font-size:0.78rem;color:#5f6368;">—</span>
                                                     </div>
+                                                    <div class="ld-info-row">
+                                                        <span class="ld-info-label"><i class="bx bx-paperclip"></i> Attachment</span>
+                                                        <span class="ld-info-val" id="v_attachment">—</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -470,192 +474,188 @@
                                         <input type="hidden" id="m_id" name="id">
                                         <div class="row g-3 p-3" style="background:#f4fbfb;">
 
-                                            <div class="ld-section-label col-12">Contact Information</div>
+                                            <div class="ld-section-label col-12">Lead Information</div>
                                             <div class="col-md-4">
-                                                <label class="ld-label">Full Name <span
-                                                        style="color:#ea4335;">*</span></label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i class="bx bx-user"></i></span>
-                                                    <input type="text" class="form-control" id="m_name" name="name"
-                                                        placeholder="Full Name" required>
-                                                </div>
+                                                <label class="ld-label">First Name <span style="color:#ea4335;">*</span></label>
+                                                <input type="text" class="form-control" id="m_first_name" name="first_name" placeholder="First Name" required>
                                             </div>
                                             <div class="col-md-4">
-                                                <label class="ld-label">Email</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i class="bx bx-envelope"></i></span>
-                                                    <input type="email" class="form-control" id="m_email" name="email"
-                                                        placeholder="Email">
-                                                </div>
+                                                <label class="ld-label">Middle Name</label>
+                                                <input type="text" class="form-control" id="m_middle_name" name="middle_name" placeholder="Middle Name">
                                             </div>
                                             <div class="col-md-4">
-                                                <label class="ld-label">Mobile <span style="color:#ea4335;">*</span></label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i class="bx bx-phone"></i></span>
-                                                    <input type="text" class="form-control" id="m_mob" name="mob"
-                                                        placeholder="91XXXXXXXXXX" required>
-                                                </div>
+                                                <label class="ld-label">Last Name</label>
+                                                <input type="text" class="form-control" id="m_last_name" name="last_name" placeholder="Last Name">
                                             </div>
                                             <div class="col-md-4">
-                                                <label class="ld-label">WhatsApp</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i class="bx bxl-whatsapp"></i></span>
-                                                    <input type="text" class="form-control" id="m_whatsapp" name="whatsapp"
-                                                        placeholder="91XXXXXXXXXX">
-                                                </div>
+                                                <label class="ld-label">Gender</label>
+                                                <select class="form-select" id="m_gender" name="gender">
+                                                    <option value="">Select...</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
                                             </div>
                                             <div class="col-md-4">
-                                                <label class="ld-label">Language</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i class="bx bx-world"></i></span>
-                                                    <input type="text" class="form-control" id="m_language" name="language"
-                                                        placeholder="EN / HI">
-                                                </div>
+                                                <label class="ld-label">Date of Birth</label>
+                                                <input type="date" class="form-control" id="m_dob" name="dob">
                                             </div>
-
-                                            <div class="ld-section-label col-12">Business Details</div>
+                                            <div class="col-md-4">
+                                                <label class="ld-label">Progress</label>
+                                                <input type="text" class="form-control" id="m_progress" name="progress" placeholder="Call Back">
+                                            </div>
                                             <div class="col-md-4">
                                                 <label class="ld-label">Company</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i class="bx bx-briefcase"></i></span>
-                                                    <input type="text" class="form-control" id="m_company" name="company"
-                                                        placeholder="Company">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label class="ld-label">Position</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i class="bx bx-user-pin"></i></span>
-                                                    <input type="text" class="form-control" id="m_position" name="position"
-                                                        placeholder="e.g. Manager">
-                                                </div>
+                                                <input type="text" class="form-control" id="m_company" name="company" placeholder="Company">
                                             </div>
                                             <div class="col-md-4">
                                                 <label class="ld-label">Industry</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i class="bx bx-building"></i></span>
-                                                    <input type="text" class="form-control" id="m_industry" name="industry"
-                                                        placeholder="e.g. IT">
-                                                </div>
+                                                <input type="text" class="form-control" id="m_industry" name="industry" placeholder="e.g. IT">
                                             </div>
                                             <div class="col-md-4">
-                                                <label class="ld-label">GST No.</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i class="bx bx-id-card"></i></span>
-                                                    <input type="text" class="form-control" id="m_gstno" name="gstno"
-                                                        placeholder="GSTIN">
+                                                <label class="ld-label">Interested Product</label>
+                                                <input type="text" class="form-control" id="m_interested_product" name="interested_product" placeholder="Product">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="ld-label">Lead Source</label>
+                                                <select class="form-select" id="m_source" name="source">
+                                                    <option value="">Select...</option>
+                                                    <option value="Web">Web Form</option>
+                                                    <option value="Referral">Referral</option>
+                                                    <option value="Ad">Advertisement</option>
+                                                    <option value="Event">Event / Expo</option>
+                                                    <option value="Cold Call">Cold Call</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4 d-flex align-items-end gap-3">
+                                                <div class="form-check">
+                                                    <input type="checkbox" class="form-check-input" id="m_first_call" name="first_call" value="1">
+                                                    <label class="form-check-label ld-label" for="m_first_call">First Call</label>
                                                 </div>
+                                                <div class="form-check">
+                                                    <input type="checkbox" class="form-check-input" id="m_sms_opt" name="sms_opt" value="1">
+                                                    <label class="form-check-label ld-label" for="m_sms_opt">SMS Opt</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="ld-section-label col-12">Contact Information</div>
+                                            <div class="col-md-4">
+                                                <label class="ld-label">Mobile <span style="color:#ea4335;">*</span></label>
+                                                <input type="text" class="form-control" id="m_mob" name="mob" placeholder="Phone" required>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="ld-label">Email</label>
+                                                <input type="email" class="form-control" id="m_email" name="email" placeholder="Email">
                                             </div>
                                             <div class="col-md-4">
                                                 <label class="ld-label">Website</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i class="bx bx-link"></i></span>
-                                                    <input type="url" class="form-control" id="m_website" name="website"
-                                                        placeholder="https://">
-                                                </div>
+                                                <input type="url" class="form-control" id="m_website" name="website" placeholder="https://">
                                             </div>
-
-                                            <div class="ld-section-label col-12">Address</div>
                                             <div class="col-md-4">
-                                                <label class="ld-label">Street</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i class="bx bx-home"></i></span>
-                                                    <input type="text" class="form-control" id="m_address"
-                                                        name="address[address]" placeholder="Street">
-                                                </div>
+                                                <label class="ld-label">Address</label>
+                                                <input type="text" class="form-control" id="m_address" name="address[address]" placeholder="Street">
                                             </div>
                                             <div class="col-md-4">
                                                 <label class="ld-label">City</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i class="bx bx-map-alt"></i></span>
-                                                    <input type="text" class="form-control" id="m_city" name="address[city]"
-                                                        placeholder="City">
-                                                </div>
+                                                <input type="text" class="form-control" id="m_city" name="address[city]" placeholder="City">
                                             </div>
                                             <div class="col-md-4">
                                                 <label class="ld-label">State</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i class="bx bx-map-pin"></i></span>
-                                                    <input type="text" class="form-control" id="m_state"
-                                                        name="address[state]" placeholder="State">
-                                                </div>
+                                                <input type="text" class="form-control" id="m_state" name="address[state]" placeholder="State">
                                             </div>
                                             <div class="col-md-4">
                                                 <label class="ld-label">Country</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i class="bx bx-globe"></i></span>
-                                                    <input type="text" class="form-control" id="m_country"
-                                                        name="address[country]" placeholder="Country">
-                                                </div>
+                                                <input type="text" class="form-control" id="m_country" name="address[country]" placeholder="Country">
                                             </div>
                                             <div class="col-md-4">
-                                                <label class="ld-label">ZIP</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i class="bx bx-pin"></i></span>
-                                                    <input type="text" class="form-control" id="m_zip" name="address[zip]"
-                                                        placeholder="ZIP Code">
-                                                </div>
+                                                <label class="ld-label">PIN Code</label>
+                                                <input type="text" class="form-control" id="m_zip" name="address[zip]" placeholder="PIN Code">
                                             </div>
 
-                                            <div class="ld-section-label col-12">CRM Intelligence</div>
+                                            <div class="ld-section-label col-12">Additional Information</div>
                                             <div class="col-md-4">
-                                                <label class="ld-label">Purpose</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i class="bx bx-target-lock"></i></span>
-                                                    <input type="text" class="form-control" id="m_purpose" name="purpose"
-                                                        placeholder="e.g. Sales">
-                                                </div>
+                                                <label class="ld-label">Lead State</label>
+                                                <select class="form-select" id="m_lead_state" name="lead_state">
+                                                    <option value="">Select...</option>
+                                                    <option value="New">New</option>
+                                                    <option value="Contacted">Contacted</option>
+                                                    <option value="Qualified">Qualified</option>
+                                                    <option value="Converted">Converted</option>
+                                                    <option value="Lost">Lost</option>
+                                                </select>
                                             </div>
                                             <div class="col-md-4">
-                                                <label class="ld-label">Lead Value (₹)</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i class="bx bx-rupee"></i></span>
-                                                    <input type="number" class="form-control" id="m_value" name="values"
-                                                        placeholder="0">
-                                                </div>
+                                                <label class="ld-label">Last Call Feedback</label>
+                                                <select class="form-select" id="m_last_call_feedback" name="last_call_feedback">
+                                                    <option value="">Select...</option>
+                                                    <option value="Interested">Interested</option>
+                                                    <option value="Not Interested">Not Interested</option>
+                                                    <option value="Call Back">Call Back</option>
+                                                    <option value="Not Reachable">Not Reachable</option>
+                                                    <option value="Wrong Number">Wrong Number</option>
+                                                </select>
                                             </div>
                                             <div class="col-md-4">
-                                                <label class="ld-label">POC</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i class="bx bx-user-check"></i></span>
-                                                    <input type="text" class="form-control" id="m_poc" name="poc"
-                                                        placeholder="Point of Contact">
-                                                </div>
+                                                <label class="ld-label">Marketing Source</label>
+                                                <select class="form-select" id="m_marketing_source" name="marketing_source">
+                                                    <option value="">Select...</option>
+                                                    <option value="Google Ads">Google Ads</option>
+                                                    <option value="Facebook">Facebook</option>
+                                                    <option value="Instagram">Instagram</option>
+                                                    <option value="LinkedIn">LinkedIn</option>
+                                                    <option value="Email Campaign">Email Campaign</option>
+                                                    <option value="Direct">Direct</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
                                             </div>
                                             <div class="col-md-4">
-                                                <label class="ld-label">Assign Salesperson</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i class="bx bx-share-alt"></i></span>
-                                                    <select class="form-select" id="m_assigned" name="assigned">
-                                                        <option value="">— Select —</option>
-                                                        @foreach($getUsers as $u)
-                                                            <option value="{{ $u->id }}">{{ $u->name }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
+                                                <label class="ld-label">Last Call Comment</label>
+                                                <textarea class="form-control" id="m_last_call_comment" name="last_call_comment" rows="2" placeholder="Last Call Comment"></textarea>
                                             </div>
                                             <div class="col-md-4">
-                                                <label class="ld-label">Tags</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i
-                                                            class="bx bx-purchase-tag-alt"></i></span>
-                                                    <input type="text" class="form-control" id="m_tags" name="tags"
-                                                        placeholder="K2, Hot, VIP">
-                                                </div>
+                                                <label class="ld-label">Next Call Date</label>
+                                                <input type="datetime-local" class="form-control" id="m_next_call_date" name="next_call_date">
                                             </div>
                                             <div class="col-md-4">
                                                 <label class="ld-label">Status</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i class="bx bx-list-check"></i></span>
-                                                    <select name="status" id="m_status" class="form-select">
-                                                        <option value="0">🔵 New / Fresh</option>
-                                                        <option value="1">🟠 Contacted / Follow Up</option>
-                                                        <option value="2">🟣 Qualified</option>
-                                                        <option value="3">🟢 Proposal Sent</option>
-                                                        <option value="5">✅ Closed (Won)</option>
-                                                        <option value="9">❌ Lost</option>
-                                                    </select>
-                                                </div>
+                                                <select name="status" id="m_status" class="form-select">
+                                                    <option value="0">🔵 New / Fresh</option>
+                                                    <option value="1">🟠 Contacted / Follow Up</option>
+                                                    <option value="2">🟣 Qualified</option>
+                                                    <option value="3">🟢 Proposal Sent</option>
+                                                    <option value="5">✅ Closed (Won)</option>
+                                                    <option value="9">❌ Lost</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="ld-label">Age</label>
+                                                <input type="number" class="form-control" id="m_age" name="age" placeholder="Age">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="ld-label">Consumption Years</label>
+                                                <input type="number" class="form-control" id="m_consumption_years" name="consumption_years" placeholder="Number of consumption years">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="ld-label">Tobacco Frequency</label>
+                                                <input type="number" class="form-control" id="m_tobacco_frequency" name="tobacco_frequency" placeholder="Number of Times Tobacco consume">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="ld-label">Craving for Smoking</label>
+                                                <input type="text" class="form-control" id="m_craving_for_smoking" name="craving_for_smoking" placeholder="Craving For Smoking">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="ld-label">Problem Smoking</label>
+                                                <input type="text" class="form-control" id="m_problem_smoking" name="problem_smoking" placeholder="Problem Smoking">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="ld-label">Experience Intense Craving</label>
+                                                <input type="text" class="form-control" id="m_experience_intense_craving" name="experience_intense_craving" placeholder="Experience Intense Craving">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="ld-label">Attachment</label>
+                                                <input type="file" class="form-control" id="m_attachment" name="attachment">
+                                                <div id="m_attachment_preview" class="mt-1"></div>
                                             </div>
 
                                             <!-- Edit Footer (matching cf-modal-footer) -->
@@ -1078,17 +1078,42 @@
                     $('#quick_assign_user').val(l.assigned || '');
                     $('#quickAssignMsg').text('');
 
-                    // ── Conversation Timeline ──
+                    // ── Conversation Timeline (Combined Comments & Emails) ──
+                    var timelineData = [];
+                    (data.leadComments || []).forEach(function (c) {
+                        timelineData.push({
+                            type: 'comment',
+                            date: c.created_at,
+                            displayDate: new Date(c.created_at).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }),
+                            msg: c.msg,
+                            icon: 'bx-comment-detail',
+                            color: '#163f7a'
+                        });
+                    });
+                    (data.receivedEmails || []).forEach(function (e) {
+                        timelineData.push({
+                            type: 'email',
+                            date: e.received_at,
+                            displayDate: new Date(e.received_at).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }),
+                            msg: '<b>Email Received:</b> ' + e.subject + '<br><small>' + (e.body_text || '').substring(0, 100) + '...</small>',
+                            icon: 'bx-envelope',
+                            color: '#4b6cb7'
+                        });
+                    });
+
+                    // Sort by date descending
+                    timelineData.sort((a, b) => new Date(b.date) - new Date(a.date));
+
                     var html = '';
-                    data.comments.forEach(function (c) {
+                    timelineData.forEach(function (item) {
                         html += '<div class="ld-timeline-item">'
-                            + '<div class="ld-tl-dot"></div>'
+                            + '<div class="ld-tl-dot" style="background:' + item.color + '"></div>'
                             + '<div class="ld-tl-body">'
-                            + '<div class="ld-tl-meta">' + (c.next_date ? c.next_date : c.created_at) + '</div>'
-                            + '<p class="ld-tl-msg">' + c.msg + '</p>'
+                            + '<div class="ld-tl-meta"><i class="bx ' + item.icon + ' me-1"></i>' + item.displayDate + '</div>'
+                            + '<p class="ld-tl-msg">' + item.msg + '</p>'
                             + '</div></div>';
                     });
-                    $('#commentHistory').html(html || '<p class="text-muted text-center p-4" style="font-size:0.82rem">No conversations yet.</p>');
+                    $('#commentHistory').html(html || '<p class="text-muted text-center p-4" style="font-size:0.82rem">No activity yet.</p>');
 
                     // ── WhatsApp Template Auto-load ──
                     window._activeLeadId = l.id;
@@ -1195,53 +1220,49 @@
                     });
                 }
             });
-        });
-        /* ── Tab Switcher for Lead Details Panel ────────────────── */
-        function ldShowTab(tabId, btnEl) {
-            // Hide all panes
-            document.querySelectorAll('#leadModal .ld-tab-pane').forEach(function (p) {
-                p.style.display = 'none';
+
+            // Handle Exotel Call
+            $(document).on('click', '#ld_btn_call', function (e) {
+                var phone = $(this).attr('href').replace('tel:+', '').replace('tel:', '');
+                if (phone === '#' || !phone) return;
+                
+                e.preventDefault();
+                
+                if (!confirm('Do you want to initiate an automatic call to ' + phone + ' via Exotel?')) {
+                    window.location.href = $(this).attr('href'); // Fallback to tel link
+                    return;
+                }
+
+                var btn = $(this);
+                var originalHtml = btn.html();
+                btn.html('<i class="bx bx-loader-alt bx-spin"></i>').addClass('disabled');
+
+                $.ajax({
+                    url: "{{ route('call.initiate') }}",
+                    method: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        phone: phone
+                    },
+                    success: function (res) {
+                        if (res.success) {
+                            alert('Call initiated successfully! Your phone will ring shortly.');
+                        } else {
+                            alert('Error: ' + res.message);
+                            // Fallback to tel link if Exotel fails
+                            window.location.href = "tel:+" + phone;
+                        }
+                    },
+                    error: function (xhr) {
+                        alert('Error initiating call. Falling back to browser default.');
+                        window.location.href = "tel:+" + phone;
+                    },
+                    complete: function () {
+                        btn.html(originalHtml).removeClass('disabled');
+                    }
+                });
             });
-            // Show target pane
-            var pane = document.getElementById(tabId);
-            if (pane) pane.style.display = 'block';
-
-            // Update active tab button
-            document.querySelectorAll('#leadModal .ld-tab').forEach(function (b) {
-                b.classList.remove('active');
-            });
-            if (btnEl) btnEl.classList.add('active');
-        }
-
-        // Reset to Profile tab every time the modal opens
-        document.getElementById('leadModal').addEventListener('show.bs.modal', function () {
-            var firstBtn = this.querySelector('.ld-tab-nav .ld-tab');
-            ldShowTab('tab-profile', firstBtn);
-            // Also reset edit mode back to view mode
-            var viewMode = document.getElementById('ld-view-mode');
-            var editMode = document.getElementById('ld-edit-mode');
-            if (viewMode) viewMode.style.display = '';
-            if (editMode) editMode.style.display = 'none';
         });
-
-        // ── Direct WhatsApp Send from Leads List Modal (no popup) ──
-        var _ldDefaultTemplate = '🚀 *Grow Your Business with Our Digital Solutions*\n\n✅ Website Design & Development\n✅ ERP & CRM Solutions\n✅ Mobile App Development\n✅ SEO & Digital Growth Services\n\n🎁 *FREE with Our Services (Limited-Time Value Add):*\n🔹 SMS Pilot – Reach your customers instantly with promotional & transactional SMS\n🔹 Digital Visiting Card – Share your professional profile anytime, anywhere with one click\n🔹 Sales Lead Management – Track, manage, and convert leads more efficiently\n\n📞 *Call / WhatsApp:*\n+91 95945 45556 | +91 96197 75533\n\n🌐 *Learn more:*\nhttps://webbrella.com/website-design-and-development';
-
-        function directSendLeadWa() {
-            var waHref = $('#ld_btn_wa').attr('href') || '';
-            var number = '';
-            if (waHref && waHref.includes('wa.me')) {
-                try { number = new URL(waHref).pathname.replace('/', ''); } catch(_) { number = waHref.split('wa.me/')[1] || ''; }
-            }
-            number = String(number).replace(/\D/g, '');
-            if (!number) { alert('No valid WhatsApp number found for this lead.'); return; }
-
-            var leadId = window._activeLeadId || $('#m_id').val() || $('#c_lead_id').val() || '';
-            var text = (leadId ? localStorage.getItem('wa_msg_lead_' + leadId) : null) || _ldDefaultTemplate;
-            var url = 'https://wa.me/' + number + '?text=' + encodeURIComponent(text);
-            window.open(url, '_blank');
-        }
-    </script>
 
     {{-- Hidden form for CSV import (required by #importFile button handler) --}}
     <form id="leadsubmit" action="/import-leads-file" method="post" enctype="multipart/form-data">

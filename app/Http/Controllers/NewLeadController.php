@@ -294,7 +294,6 @@ class NewLeadController extends Controller
     {
         $request->validate([
             'id' => 'required|exists:leads,id',
-            'name' => 'required',
             'mob' => 'required',
         ]);
 
@@ -302,24 +301,27 @@ class NewLeadController extends Controller
 
             $lead = Leads::findOrFail($request->id);
 
+            // Build legacy name from first/middle/last
+            $nameParts = array_filter([$request->first_name, $request->middle_name, $request->last_name]);
+            $computedName = !empty($nameParts) ? implode(' ', $nameParts) : ($request->name ?? $lead->name);
+
             $data = $request->only([
-                'name',
-                'company',
-                'email',
-                'mob',
-                'gstno',
-                'purpose',
-                'assigned',
-                'poc',
-                'status',
-                'whatsapp',
-                'position',
-                'industry',
-                'website',
-                'language',
-                'values',
-                'tags'
+                'first_name', 'middle_name', 'last_name',
+                'gender', 'dob', 'progress',
+                'company', 'email', 'mob', 'gstno',
+                'purpose', 'assigned', 'poc', 'status',
+                'whatsapp', 'position', 'industry',
+                'interested_product', 'website', 'language',
+                'values', 'tags', 'source',
+                'lead_state', 'last_call_feedback', 'last_call_comment',
+                'next_call_date', 'marketing_source',
+                'age', 'consumption_years', 'tobacco_frequency',
+                'craving_for_smoking', 'problem_smoking', 'experience_intense_craving',
             ]);
+
+            $data['name'] = $computedName;
+            $data['first_call'] = $request->has('first_call') ? 1 : 0;
+            $data['sms_opt'] = $request->has('sms_opt') ? 1 : 0;
 
             if ($request->filled('address')) {
                 $data['location'] = json_encode($request->address);

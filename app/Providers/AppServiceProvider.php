@@ -21,6 +21,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        \App\Models\Leads::observe(\App\Observers\LeadObserver::class);
+
         // ── @canperm('module', 'action') ... @endcanperm ──────────────────
         // Renders the block only if the current user has the permission.
         // Example: @canperm('leads', 'add') <button>Add Lead</button> @endcanperm

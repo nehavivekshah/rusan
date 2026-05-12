@@ -184,4 +184,40 @@ class SettingController extends Controller
 
         return back();
     }
+    public function inboxSetup(Request $request)
+    {
+        $inboxes = \App\Models\EmailInbox::where('cid', Auth::user()->cid)->get();
+        return view('inboxSettings', ['inboxes' => $inboxes]);
+    }
+
+    public function inboxSetupPost(Request $request)
+    {
+        $validated = $request->validate([
+            'email' => 'required|email',
+            'imap_host' => 'required',
+            'imap_port' => 'required|integer',
+            'imap_encryption' => 'required',
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+
+        \App\Models\EmailInbox::updateOrCreate(
+            ['email' => $validated['email'], 'cid' => Auth::user()->cid],
+            $validated + ['cid' => Auth::user()->cid, 'user_id' => Auth::id()]
+        );
+
+        return redirect()->back()->with('success', 'Inbox configured successfully!');
+    }
+
+    public function inboxSync(Request $request)
+    {
+        $service = new \App\Services\EmailSyncService();
+        $result = $service->syncAll(Auth::user()->cid);
+
+        if (isset($result['success']) && !$result['success']) {
+            return response()->json($result);
+        }
+
+        return response()->json(['success' => true, 'message' => 'Sync completed.']);
+    }
 }
