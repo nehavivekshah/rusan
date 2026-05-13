@@ -36,7 +36,7 @@ Route::post('/proposal/{id}/{token}/decline', [LeadController::class, 'declinePr
 Route::post('/send', [HomeController::class, 'send']);
 
 Route::group(['middleware' => 'guest'], function () {
-    Route::get('/', [AuthController::class, 'login'])->name('login');
+    Route::get('/', [HomeController::class, 'redirectLogin'])->name('redirectLogin');
     Route::get('/register', [AuthController::class, 'register'])->name('register');
     Route::post('/register', [AuthController::class, 'registerPost'])->name('register');
     Route::get('/verify-email', [AuthController::class, 'verifyEmail'])->name('verifyEmail');

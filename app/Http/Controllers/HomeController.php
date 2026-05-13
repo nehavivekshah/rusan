@@ -30,6 +30,15 @@ class HomeController extends Controller
         $this->leadService = $leadService;
     }
 
+    public function redirectLogin()
+    {
+        if (Auth::user() != null) {
+            return redirect()->route('home');
+        } else {
+            return redirect()->route('login');
+        }
+    }
+
     public function index()
     {
         return view('landingpg.index');
@@ -209,7 +218,6 @@ class HomeController extends Controller
             'expiringProposals'
         ));
     }
-
     public function store(Request $request)
     {
         $validatedData = $request->validate([
