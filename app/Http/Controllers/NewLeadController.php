@@ -318,7 +318,20 @@ class NewLeadController extends Controller
                 'website',
                 'language',
                 'values',
-                'tags'
+                'tags',
+                'first_name',
+                'middle_name',
+                'last_name',
+                'gender',
+                'dob',
+                'age',
+                'consumption_years',
+                'tobacco_frequency',
+                'craving_for_smoking',
+                'problem_smoking',
+                'experience_intense_craving',
+                'email_opt_out',
+                'sms_opt_out'
             ]);
 
             if ($request->filled('address')) {

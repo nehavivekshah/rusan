@@ -4,7 +4,7 @@
 @section('content')
     @php
         $roles = session('roles');
-        $roleArray = is_array($roles->permissions ?? '') ? $roles->permissions : explode(',', (string) ($roles->permissions ?? ''));
+        $roleArray = is_array($roles?->permissions ?? '') ? $roles->permissions : explode(',', (string) ($roles?->permissions ?? ''));
     @endphp
 
     <link rel="stylesheet" href="{{ asset('assets/css/lead-panel.css') }}">
@@ -437,6 +437,41 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <!-- Health & Medical Profile (Full Width) -->
+                                        <div class="ld-info-card" style="grid-column: 1 / -1; background: #fffcf4;">
+                                            <div class="ld-info-card-header" style="color: #f29900;"><i class="bx bx-plus-medical"></i> Health & Medical Profile</div>
+                                            <div class="row g-0">
+                                                <div class="col-md-6 pe-md-3" style="border-right:1.5px solid #f1f3f4;">
+                                                    <div class="ld-info-row">
+                                                        <span class="ld-info-label">Age</span>
+                                                        <span class="ld-info-val" id="v_age">—</span>
+                                                    </div>
+                                                    <div class="ld-info-row">
+                                                        <span class="ld-info-label">Consumption Years</span>
+                                                        <span class="ld-info-val" id="v_consumption_years">—</span>
+                                                    </div>
+                                                    <div class="ld-info-row">
+                                                        <span class="ld-info-label">Tobacco Frequency</span>
+                                                        <span class="ld-info-val" id="v_tobacco_frequency">—</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 ps-md-3">
+                                                    <div class="ld-info-row">
+                                                        <span class="ld-info-label">Smoking Craving</span>
+                                                        <span class="ld-info-val" id="v_craving_for_smoking">—</span>
+                                                    </div>
+                                                    <div class="ld-info-row">
+                                                        <span class="ld-info-label">Problem Smoking</span>
+                                                        <span class="ld-info-val" id="v_problem_smoking">—</span>
+                                                    </div>
+                                                    <div class="ld-info-row">
+                                                        <span class="ld-info-label">Intense Craving Exp.</span>
+                                                        <span class="ld-info-val" id="v_experience_intense_craving">—</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <!-- Action Bar -->
@@ -614,12 +649,26 @@
                                                         placeholder="0">
                                                 </div>
                                             </div>
+                                            <div class="ld-section-label col-12">CRM Intelligence</div>
+                                            <div class="col-md-4">
+                                                <label class="ld-label">Purpose</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text"><i class="bx bx-target-lock"></i></span>
+                                                    <input type="text" class="form-control" id="m_purpose" name="purpose" placeholder="e.g. Sales">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="ld-label">Lead Value (₹)</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text"><i class="bx bx-rupee"></i></span>
+                                                    <input type="number" class="form-control" id="m_value" name="values" placeholder="0">
+                                                </div>
+                                            </div>
                                             <div class="col-md-4">
                                                 <label class="ld-label">POC</label>
                                                 <div class="input-group">
                                                     <span class="input-group-text"><i class="bx bx-user-check"></i></span>
-                                                    <input type="text" class="form-control" id="m_poc" name="poc"
-                                                        placeholder="Point of Contact">
+                                                    <input type="text" class="form-control" id="m_poc" name="poc" placeholder="Point of Contact">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -637,10 +686,8 @@
                                             <div class="col-md-4">
                                                 <label class="ld-label">Tags</label>
                                                 <div class="input-group">
-                                                    <span class="input-group-text"><i
-                                                            class="bx bx-purchase-tag-alt"></i></span>
-                                                    <input type="text" class="form-control" id="m_tags" name="tags"
-                                                        placeholder="K2, Hot, VIP">
+                                                    <span class="input-group-text"><i class="bx bx-purchase-tag-alt"></i></span>
+                                                    <input type="text" class="form-control" id="m_tags" name="tags" placeholder="K2, Hot, VIP">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -655,6 +702,43 @@
                                                         <option value="5">✅ Closed (Won)</option>
                                                         <option value="9">❌ Lost</option>
                                                     </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="ld-section-label col-12">Medical & Health Details</div>
+                                            <div class="col-md-4">
+                                                <label class="ld-label">Age</label>
+                                                <input type="number" class="form-control" id="m_age" name="age">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="ld-label">Consumption Years</label>
+                                                <input type="number" class="form-control" id="m_consumption_years" name="consumption_years">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="ld-label">Tobacco Frequency</label>
+                                                <input type="text" class="form-control" id="m_tobacco_frequency" name="tobacco_frequency">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="ld-label">Smoking Craving</label>
+                                                <input type="text" class="form-control" id="m_craving_for_smoking" name="craving_for_smoking">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="ld-label">Problem Smoking</label>
+                                                <input type="text" class="form-control" id="m_problem_smoking" name="problem_smoking">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="ld-label">Intense Craving Experience</label>
+                                                <input type="text" class="form-control" id="m_experience_intense_craving" name="experience_intense_craving">
+                                            </div>
+
+                                            <div class="col-12">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="m_email_opt_out" name="email_opt_out" value="1">
+                                                    <label class="form-check-label" for="m_email_opt_out">Email Opt-Out</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="m_sms_opt_out" name="sms_opt_out" value="1">
+                                                    <label class="form-check-label" for="m_sms_opt_out">SMS Opt-Out</label>
                                                 </div>
                                             </div>
 
@@ -1051,8 +1135,30 @@
                     let isDup = (l.is_duplicate == 1 || String(l.is_duplicate) === 'true' || String(l.is_duplicate) === '1');
                     $('#v_duplicate').html(isDup ? '<span class="badge bg-danger text-white"><i class="bx bx-error me-1"></i>Yes</span>' : '<span class="badge bg-success text-white"><i class="bx bx-check me-1"></i>No</span>');
 
+                    // Medical fields
+                    $('#v_age').text(l.age || '—');
+                    $('#v_consumption_years').text(l.consumption_years || '—');
+                    $('#v_tobacco_frequency').text(l.tobacco_frequency || '—');
+                    $('#v_craving_for_smoking').text(l.craving_for_smoking || '—');
+                    $('#v_problem_smoking').text(l.problem_smoking || '—');
+                    $('#v_experience_intense_craving').text(l.experience_intense_craving || '—');
+
                     // ── Edit Form pre-fill ──
+                    $('#m_id').val(l.id); // ensure ID is set
                     $('#m_name').val(l.name);
+                    $('#m_first_name').val(l.first_name);
+                    $('#m_middle_name').val(l.middle_name);
+                    $('#m_last_name').val(l.last_name);
+                    $('#m_gender').val(l.gender);
+                    $('#m_dob').val(l.dob);
+                    $('#m_age').val(l.age);
+                    $('#m_consumption_years').val(l.consumption_years);
+                    $('#m_tobacco_frequency').val(l.tobacco_frequency);
+                    $('#m_craving_for_smoking').val(l.craving_for_smoking);
+                    $('#m_problem_smoking').val(l.problem_smoking);
+                    $('#m_experience_intense_craving').val(l.experience_intense_craving);
+                    $('#m_email_opt_out').prop('checked', !!l.email_opt_out);
+                    $('#m_sms_opt_out').prop('checked', !!l.sms_opt_out);
                     $('#m_email').val(l.email);
                     $('#m_mob').val(l.mob);
                     $('#m_whatsapp').val(l.whatsapp);

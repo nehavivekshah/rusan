@@ -270,16 +270,53 @@ class LeadController extends Controller
         if (empty($request->id)) {
             $leadSingle = new Leads();
 
-            $leadSingle->name = ($request->name ?? '');
+            $leadSingle->name = trim(($request->first_name ?? '') . ' ' . ($request->middle_name ?? '') . ' ' . ($request->last_name ?? ''));
+            $leadSingle->first_name = ($request->first_name ?? '');
+            $leadSingle->middle_name = ($request->middle_name ?? '');
+            $leadSingle->last_name = ($request->last_name ?? '');
+            $leadSingle->gender = ($request->gender ?? '');
+            $leadSingle->dob = ($request->dob ?? null);
+            $leadSingle->progress = ($request->progress ?? '');
+            
             $leadSingle->email = ($request->email ?? '');
             $leadSingle->mob = ($request->mob ?? '');
-            $leadSingle->gstno = ($request->gstno ?? '');
             $leadSingle->whatsapp = ($request->whatsapp ?? '');
+            
             $leadSingle->company = ($request->company ?? '');
-            $leadSingle->position = ($request->position ?? '');
             $leadSingle->industry = ($request->industry ?? '');
-            $leadSingle->location = ($location ?? '');
+            $leadSingle->interested_product = ($request->product ?? '');
+            $leadSingle->source = ($request->source ?? '');
+            $leadSingle->email_opt_out = $request->has('email_opt_out') ? 1 : 0;
+            $leadSingle->sms_opt_out = $request->has('sms_opt_out') ? 1 : 0;
+
             $leadSingle->website = ($request->website ?? '');
+            $leadSingle->address = ($request->address ?? '');
+            $leadSingle->city = ($request->city ?? '');
+            $leadSingle->state = ($request->state ?? '');
+            $leadSingle->country = ($request->country ?? '');
+            $leadSingle->pin_code = ($request->pin_code ?? '');
+            $leadSingle->location = json_encode([
+                'address' => $request->address ?? '',
+                'city' => $request->city ?? '',
+                'state' => $request->state ?? '',
+                'country' => $request->country ?? '',
+                'zip' => $request->pin_code ?? ''
+            ]);
+
+            $leadSingle->lead_state = ($request->lead_state ?? '');
+            $leadSingle->last_call_feedback = ($request->last_call_feedback ?? '');
+            $leadSingle->last_call_comment = ($request->last_call_comment ?? '');
+            $leadSingle->next_call_date = ($request->nxtDate ?? null);
+            $leadSingle->marketing_source = ($request->marketing_source ?? '');
+            
+            $leadSingle->age = ($request->age ?? null);
+            $leadSingle->consumption_years = ($request->consumption_years ?? null);
+            $leadSingle->tobacco_frequency = ($request->tobacco_frequency ?? '');
+            $leadSingle->craving_for_smoking = ($request->craving_for_smoking ?? '');
+            $leadSingle->problem_smoking = ($request->problem_smoking ?? '');
+            $leadSingle->experience_intense_craving = ($request->experience_intense_craving ?? '');
+
+            $leadSingle->cid = (Auth::user()->cid ?? '');
             
             // Auto-Assignment Logic: If current user is Sales, assign to self
             $roles = session('roles'); 
@@ -297,13 +334,7 @@ class LeadController extends Controller
             // Duplicate Detection
             $leadSingle->is_duplicate = $this->leadService->isDuplicate($request->email, $request->mob, Auth::user()->cid) ? 1 : 0;
 
-            $leadSingle->purpose = ($request->purpose ?? '');
-            $leadSingle->values = ($request->value ?? '');
-            $leadSingle->language = ($request->language ?? '');
-            $leadSingle->poc = ($request->poc ?? '');
-            $leadSingle->tags = ($request->tags ?? '');
-
-            if ((!empty($request->nxtDate) && (new DateTime($request->nxtDate) > new DateTime())) || !empty($request->message)) {
+            if ((!empty($request->nxtDate) && (new DateTime($request->nxtDate) > new DateTime())) || !empty($request->last_call_comment)) {
                 $leadSingle->status = ($request->status ?? '1');
             } else {
                 $leadSingle->status = ($request->status ?? '0');
@@ -313,10 +344,10 @@ class LeadController extends Controller
                 // CRM Lifecycle Hook: Auto-create follow-up task
                 $this->leadService->createFollowUpTask($leadSingle);
 
-                if ((!empty($request->nxtDate) && (new DateTime($request->nxtDate) > new DateTime())) || !empty($request->message)) {
+                if ((!empty($request->nxtDate) && (new DateTime($request->nxtDate) > new DateTime())) || !empty($request->last_call_comment)) {
                     $leadComment = new Lead_comments();
                     $leadComment->lead_id = ($leadSingle->id ?? '');
-                    $leadComment->msg = ($request->message ?? 'Call back at next date');
+                    $leadComment->msg = ($request->last_call_comment ?? 'Call back at next date');
                     $leadComment->next_date = ($request->nxtDate ?? null);
                     $leadComment->save();
                 }
@@ -337,32 +368,30 @@ class LeadController extends Controller
 
                 $leadSingle = Leads::find($id);
 
-                // Creating a new lead
+                // Creating a new client/customer
                 $client = new Clients();
 
                 $client->cid = (Auth::user()->cid ?? '');
                 $client->commentLeadID = ($id ?? '');
-                $client->name = ($request->name ?? '');
+                $client->name = trim(($request->first_name ?? '') . ' ' . ($request->middle_name ?? '') . ' ' . ($request->last_name ?? ''));
                 $client->email = ($request->email ?? '');
                 $client->mob = ($request->mob ?? '');
-                $client->gstno = ($request->gstno ?? '');
                 $client->whatsapp = ($request->whatsapp ?? '');
                 $client->company = ($request->company ?? '');
-                $client->position = ($request->position ?? '');
                 $client->industry = ($request->industry ?? '');
-                $client->location = ($location ?? '');
+                $client->location = json_encode([
+                    'address' => $request->address ?? '',
+                    'city' => $request->city ?? '',
+                    'state' => $request->state ?? '',
+                    'country' => $request->country ?? '',
+                    'zip' => $request->pin_code ?? ''
+                ]);
                 $client->website = ($request->website ?? '');
-                /*$client->assigned = ($request->assigned ?? '');*/
-                $client->purpose = ($request->purpose ?? '');
-                $client->values = ($request->value ?? '');
-                $client->language = ($request->language ?? '');
-                $client->poc = ($request->poc ?? '');
-                $client->tags = ($request->tags ?? '');
                 $client->status = '0';
 
                 if ($client->save()) {
 
-                    $proposal = Proposals::where('lead_id', $id)->first(); // get the proposal model
+                    $proposal = Proposals::where('lead_id', $id)->first(); 
 
                     if ($proposal) {
                         $proposal->lead_id = $client->id;
@@ -374,7 +403,7 @@ class LeadController extends Controller
                     $leadSingle->update();
 
 
-                    $this->logActivity('Lead Converted', 'leads', (int)$id, $request->name ?? '', "Lead converted to customer: {$request->name}");
+                    $this->logActivity('Lead Converted', 'leads', (int)$id, $client->name, "Lead converted to customer: {$client->name}");
 
                     return redirect($redirectTo)->with('success', "Successfully converted leads moved to client list.");
                 } else {
@@ -390,28 +419,59 @@ class LeadController extends Controller
                 }
 
                 $leadSingle->cid = (Auth::user()->cid ?? '');
-                $leadSingle->name = ($request->name ?? '');
+                $leadSingle->name = trim(($request->first_name ?? '') . ' ' . ($request->middle_name ?? '') . ' ' . ($request->last_name ?? ''));
+                $leadSingle->first_name = ($request->first_name ?? '');
+                $leadSingle->middle_name = ($request->middle_name ?? '');
+                $leadSingle->last_name = ($request->last_name ?? '');
+                $leadSingle->gender = ($request->gender ?? '');
+                $leadSingle->dob = ($request->dob ?? null);
+                $leadSingle->progress = ($request->progress ?? '');
+                
                 $leadSingle->email = ($request->email ?? '');
                 $leadSingle->mob = ($request->mob ?? '');
-                $leadSingle->gstno = ($request->gstno ?? '');
                 $leadSingle->whatsapp = ($request->whatsapp ?? '');
+                
                 $leadSingle->company = ($request->company ?? '');
-                $leadSingle->position = ($request->position ?? '');
                 $leadSingle->industry = ($request->industry ?? '');
-                $leadSingle->location = ($location ?? '');
+                $leadSingle->interested_product = ($request->product ?? '');
+                $leadSingle->source = ($request->source ?? '');
+                $leadSingle->email_opt_out = $request->has('email_opt_out') ? 1 : 0;
+                $leadSingle->sms_opt_out = $request->has('sms_opt_out') ? 1 : 0;
+
                 $leadSingle->website = ($request->website ?? '');
+                $leadSingle->address = ($request->address ?? '');
+                $leadSingle->city = ($request->city ?? '');
+                $leadSingle->state = ($request->state ?? '');
+                $leadSingle->country = ($request->country ?? '');
+                $leadSingle->pin_code = ($request->pin_code ?? '');
+                $leadSingle->location = json_encode([
+                    'address' => $request->address ?? '',
+                    'city' => $request->city ?? '',
+                    'state' => $request->state ?? '',
+                    'country' => $request->country ?? '',
+                    'zip' => $request->pin_code ?? ''
+                ]);
+
+                $leadSingle->lead_state = ($request->lead_state ?? '');
+                $leadSingle->last_call_feedback = ($request->last_call_feedback ?? '');
+                $leadSingle->last_call_comment = ($request->last_call_comment ?? '');
+                $leadSingle->next_call_date = ($request->nxtDate ?? null);
+                $leadSingle->marketing_source = ($request->marketing_source ?? '');
+                
+                $leadSingle->age = ($request->age ?? null);
+                $leadSingle->consumption_years = ($request->consumption_years ?? null);
+                $leadSingle->tobacco_frequency = ($request->tobacco_frequency ?? '');
+                $leadSingle->craving_for_smoking = ($request->craving_for_smoking ?? '');
+                $leadSingle->problem_smoking = ($request->problem_smoking ?? '');
+                $leadSingle->experience_intense_craving = ($request->experience_intense_craving ?? '');
+
                 $leadSingle->assigned = ($request->assigned ?? '');
-                $leadSingle->purpose = ($request->purpose ?? '');
-                $leadSingle->values = ($request->value ?? '');
-                $leadSingle->language = ($request->language ?? '');
-                $leadSingle->poc = ($request->poc ?? '');
-                $leadSingle->tags = ($request->tags ?? '');
                 $leadSingle->status = ($request->status ?? '10');
 
                 if ($leadSingle->update()) {
                     $this->logActivity('Lead Updated', 'leads', (int)$id, $leadSingle->name, "Updated lead: {$leadSingle->name}");
 
-                return redirect($redirectTo)->with('success', 'This Lead was successfully updated in the Leads Table.');
+                    return redirect($redirectTo)->with('success', 'This Lead was successfully updated in the Leads Table.');
                 } else {
                     return redirect($redirectTo)->with('error', 'Failed to update this lead in the leads table.');
                 }

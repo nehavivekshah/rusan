@@ -383,6 +383,41 @@
                                     </div>
                                 </div>
                             </div>
+
+                            {{-- Health & Medical Card --}}
+                            <div class="ld-info-card" style="grid-column:1/-1; background:#fffcf4;">
+                                <div class="ld-info-card-header" style="color:#f29900;"><i class="bx bx-plus-medical"></i> Health & Medical Profile</div>
+                                <div class="row g-0">
+                                    <div class="col-md-6 pe-md-3" style="border-right:1.5px solid #f1f3f4;">
+                                        <div class="ld-info-row">
+                                            <span class="ld-info-label">Age</span>
+                                            <span class="ld-info-val" id="kb_age">—</span>
+                                        </div>
+                                        <div class="ld-info-row">
+                                            <span class="ld-info-label">Consumption Years</span>
+                                            <span class="ld-info-val" id="kb_consumption_years">—</span>
+                                        </div>
+                                        <div class="ld-info-row">
+                                            <span class="ld-info-label">Tobacco Frequency</span>
+                                            <span class="ld-info-val" id="kb_tobacco_frequency">—</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ps-md-3">
+                                        <div class="ld-info-row">
+                                            <span class="ld-info-label">Smoking Craving</span>
+                                            <span class="ld-info-val" id="kb_craving_for_smoking">—</span>
+                                        </div>
+                                        <div class="ld-info-row">
+                                            <span class="ld-info-label">Problem Smoking</span>
+                                            <span class="ld-info-val" id="kb_problem_smoking">—</span>
+                                        </div>
+                                        <div class="ld-info-row">
+                                            <span class="ld-info-label">Intense Craving Exp.</span>
+                                            <span class="ld-info-val" id="kb_experience_intense_craving">—</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="ld-action-bar">
                             <a href="#" id="kb_editBtn" class="ld-btn ld-btn-primary"><i class="bx bx-edit-alt"></i> Edit
@@ -778,6 +813,14 @@
 
                 // Location combined
                 $('#kb_location_val').text([loc.address, loc.city, loc.state, loc.zip, loc.country].filter(Boolean).join(', ') || '—');
+
+                // Medical fields
+                $('#kb_age').text(l.age || '—');
+                $('#kb_consumption_years').text(l.consumption_years || '—');
+                $('#kb_tobacco_frequency').text(l.tobacco_frequency || '—');
+                $('#kb_craving_for_smoking').text(l.craving_for_smoking || '—');
+                $('#kb_problem_smoking').text(l.problem_smoking || '—');
+                $('#kb_experience_intense_craving').text(l.experience_intense_craving || '—');
 
                 // Edit button
                 $('#kb_editBtn').attr('href', '/manage-lead?id=' + id + '&from=kanban');
