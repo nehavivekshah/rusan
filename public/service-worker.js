@@ -1,9 +1,10 @@
-const CACHE_NAME = 'rusan-crm-v1';
+const CACHE_NAME = 'rusan-crm-v2';
 const urlsToCache = [
   '/',
   '/home',
   '/assets/css/premium.css',
   '/assets/css/modern-ui.css',
+  '/assets/css/app.css',
   'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css',
   'https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
 ];

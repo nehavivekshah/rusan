@@ -81,11 +81,16 @@
 }
 
 .input-icon {
-    width: 45px;
-    background: #ddd;
-    padding: 0px 12px;
-    border-top-left-radius: var(--radius-sm) !important;
-    border-bottom-left-radius: var(--radius-sm) !important;
+    width: 45px !important;
+    height: 42px !important;
+    object-fit: contain;
+    background: #eee;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-right: none;
+    border-top-left-radius: 8px !important;
+    border-bottom-left-radius: 8px !important;
+    flex: 0 0 45px !important;
 }
 
 .card-title {

@@ -21,7 +21,6 @@ use App\Models\Invoices;
 use App\Models\Proposals;
 use App\Models\Task;
 use App\Services\LeadService;
-
 class HomeController extends Controller
 {
     protected $leadService;
@@ -30,6 +29,7 @@ class HomeController extends Controller
     {
         $this->leadService = $leadService;
     }
+
     public function index()
     {
         return view('landingpg.index');
