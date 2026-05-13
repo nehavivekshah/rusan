@@ -649,21 +649,6 @@
                                                         placeholder="0">
                                                 </div>
                                             </div>
-                                            <div class="ld-section-label col-12">CRM Intelligence</div>
-                                            <div class="col-md-4">
-                                                <label class="ld-label">Purpose</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i class="bx bx-target-lock"></i></span>
-                                                    <input type="text" class="form-control" id="m_purpose" name="purpose" placeholder="e.g. Sales">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label class="ld-label">Lead Value (₹)</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i class="bx bx-rupee"></i></span>
-                                                    <input type="number" class="form-control" id="m_value" name="values" placeholder="0">
-                                                </div>
-                                            </div>
                                             <div class="col-md-4">
                                                 <label class="ld-label">POC</label>
                                                 <div class="input-group">
